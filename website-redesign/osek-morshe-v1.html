@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>רואה חשבון לעוסק מורשה | MyCompany</title>
+<meta name="description" content="רואה חשבון לעוסק מורשה שמנהל לך את העסק, לא רק מגיש דוחות. מע״מ, מקדמות והוצאות מוכרות בשליטה, עם מענה בוואטסאפ מרו״ח אמיתי." />
+<meta name="theme-color" content="#FAF8F1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=Frank+Ruhl+Libre:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site-system.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237B5BFF'/%3E%3Cstop offset='1' stop-color='%235B2FE6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23g)'/%3E%3Cpath d='M32 15l4.6 9.9L47 29l-10.4 4.1L32 43l-4.6-9.9L17 29l10.4-4.1z' fill='%23fff'/%3E%3Ccircle cx='47' cy='47' r='6' fill='%23FF8B3D'/%3E%3C/svg%3E" />
+<style>
+  /* page-local components only — everything else comes from site-system.css */
+  .phead-in{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,60px);align-items:center}
+  @media(max-width:980px){.phead-in{grid-template-columns:1fr;gap:36px}}
+  .segbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding-top:22px;border-top:1px solid var(--hairline);font-size:14.5px;color:var(--ink)}
+  .segbar span{display:inline-flex;align-items:center;gap:8px}
+
+  /* device frame — 9px bezel, 46/37 radii, per the locked spec */
+  .hero-visual{position:relative;display:grid;justify-items:center}
+  .hero-visual::before{content:"";position:absolute;inset:6% 12% 10%;border-radius:50%;
+    background:radial-gradient(ellipse at 50% 50%,rgba(91,47,230,.16),transparent 70%);filter:blur(28px);pointer-events:none}
+  .phone{position:relative;z-index:1;width:min(322px,100%);
+    background:linear-gradient(160deg,#413B31,#2A2620 62%,#37332B);padding:9px;border-radius:46px;
+    box-shadow:0 34px 64px -22px rgba(32,32,32,.42),0 2px 6px rgba(32,32,32,.16),inset 0 0 0 1px rgba(255,255,255,.10)}
+  .screen{position:relative;overflow:hidden;background:var(--ground);border-radius:37px;padding:38px 13px 16px;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+  .island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:74px;height:21px;border-radius:99px;background:#2A2620}
+  .chat-head{display:flex;align-items:center;gap:11px;padding:4px 4px 13px;border-bottom:1px solid var(--hairline);margin-bottom:13px}
+  .chat-head .ava{width:36px;height:36px;border-radius:50%;flex:none;background:linear-gradient(135deg,#7B5BFF,var(--brand));
+    display:grid;place-items:center;font-weight:600;color:#fff;font-size:13px}
+  .chat-head b{display:block;color:var(--ink-dark);font-size:14.5px;font-weight:600;line-height:1.3}
+  .chat-head i{font-style:normal;font-size:12.5px;color:var(--ok);font-weight:600}
+  .chat-head i::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);margin-left:6px}
+  .chat-body{display:grid;gap:9px}
+  .bub{max-width:92%;padding:11px 13px;border-radius:14px;font-size:14px;line-height:1.55}
+  .bub.in{background:var(--tint);color:var(--ink);border-top-right-radius:4px;justify-self:start}
+  .bub.out{background:var(--wa);color:#14532D;border-top-left-radius:4px;justify-self:end}
+  .bub b{color:var(--ink-dark);font-weight:600}
+  .bub .t{display:block;font-size:11px;color:var(--faint);margin-top:5px;font-variant-numeric:tabular-nums lining}
+  .cap{margin-top:18px;font-size:13px;color:var(--faint);text-align:center;max-width:34ch}
+
+  /* calculator */
+  .calc{background:var(--ground);border:1px solid var(--hairline);border-radius:16px;
+    padding:clamp(24px,3.4vw,38px);box-shadow:var(--shadow-lg);max-width:840px;margin:36px auto 0}
+  .calc-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:620px){.calc-row{grid-template-columns:1fr}}
+  .calc label{display:block;font-size:14px;font-weight:600;color:var(--ink-dark);margin-bottom:7px}
+  .calc label small{display:block;font-weight:400;color:var(--faint);font-size:13px;margin-top:2px}
+  .calc input,.calc select{width:100%;border:1px solid var(--hairline);border-radius:6px;padding:12px 14px;
+    font-size:17px;color:var(--ink-dark);background:var(--ground);font-variant-numeric:tabular-nums lining;
+    transition:border-color .16s ease,box-shadow .16s ease}
+  .calc input:focus,.calc select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(91,47,230,.14)}
+  .calc-out{margin-top:24px;padding:24px;border-radius:12px;background:var(--money-pale);border:1px solid #F0B07A}
+  .calc-lines{display:grid;gap:9px;margin-bottom:16px}
+  .calc-lines div{display:flex;justify-content:space-between;gap:16px;font-size:15.5px;color:#7A5510}
+  .calc-lines b{font-weight:600;font-variant-numeric:tabular-nums lining}
+  .calc-total{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    padding-top:16px;border-top:1px solid rgba(122,85,16,.28)}
+  .calc-total span{font-size:16px;font-weight:600;color:#7A5510}
+  .calc-total b{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);color:#7A5510;
+    line-height:1;font-variant-numeric:tabular-nums lining}
+  .calc-note{font-size:13.5px;color:var(--faint);margin-top:14px;text-align:center;max-width:none}
+
+  .steps{display:grid;gap:0;margin-top:8px}
+  .step{display:grid;grid-template-columns:52px 1fr;gap:18px;padding-bottom:24px;position:relative}
+  .step:not(:last-child)::before{content:"";position:absolute;top:50px;bottom:0;right:25px;width:2px;
+    background:linear-gradient(180deg,var(--hairline),transparent)}
+  .step .n{width:50px;height:50px;border-radius:12px;display:grid;place-items:center;background:var(--brand-soft);
+    color:var(--brand);font-family:var(--display);font-weight:400;font-size:19px;border:1px solid #DED3FA}
+  .step h3{font-size:17.5px;margin-bottom:4px;padding-top:10px}
+  .step p{font-size:15.5px;line-height:1.6}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);margin-top:40px}
+  @media(max-width:860px){.two-col{grid-template-columns:1fr;gap:32px}}
+  .cta-band{display:grid;grid-template-columns:1.2fr auto;gap:28px;align-items:center}
+  @media(max-width:800px){.cta-band{grid-template-columns:1fr}.cta-band .btn{width:100%}}
+</style>
+<style id="navdrop-css">
+/* These pages were authored as artifact fragments: the runtime supplied the
+   <html dir="rtl" lang="he"> wrapper. Served as plain files that wrapper is
+   gone, the document falls back to LTR, and every logical property
+   (margin-inline, grid order, text-align:start) flips — the "everything is
+   suddenly left-aligned" bug. Restore it here. */
+html{direction:rtl}
+
+/* The notice strip sat above a sticky nav pinned at top:0, so one pixel of
+   scroll parked the nav over it and its link could never be clicked. Stack
+   them: strip sticks first, nav sticks directly beneath it. --strip-h is
+   measured at runtime so wrapping on narrow screens stays correct. */
+.strip{position:sticky;top:0;z-index:70}
+.nav{top:var(--strip-h,0px)}
+
+/* nav dropdown — generated by nav.js, do not hand-edit.
+   The trigger must be visually indistinguishable from a nav link: same weight,
+   tracking, colour and the same underline-on-hover. It is a <button> for
+   semantics, so every one of those has to be restated explicitly. */
+.navdrop{position:relative;display:inline-block}
+.navdrop>.navdrop-t{
+  background:none;border:none;margin:0;padding:0;cursor:pointer;
+  font-family:inherit;font-size:inherit;line-height:inherit;
+  font-weight:500;letter-spacing:.002em;color:var(--ink,#4A4A4A);
+  display:inline-flex;align-items:center;gap:7px;
+  transition:color .16s ease;
+}
+.navdrop>.navdrop-t>.navdrop-lbl{position:relative;padding-block:3px}
+.navdrop>.navdrop-t>.navdrop-lbl::after{
+  content:"";position:absolute;inset-inline:0;bottom:0;height:1.5px;background:#5B2FE6;
+  transform:scaleX(0);transform-origin:right;transition:transform .18s cubic-bezier(.2,.8,.2,1);
+}
+.navdrop>.navdrop-t:hover,.navdrop.open>.navdrop-t{color:#5B2FE6}
+.navdrop>.navdrop-t:hover>.navdrop-lbl::after,
+.navdrop.open>.navdrop-t>.navdrop-lbl::after{transform:scaleX(1)}
+.navdrop>.navdrop-t>.navdrop-car{
+  width:7px;height:7px;flex:none;
+  border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;
+  transform:rotate(45deg) translate(-1px,-2px);transition:transform .2s cubic-bezier(.2,.8,.2,1);
+}
+.navdrop.open>.navdrop-t>.navdrop-car{transform:rotate(-135deg) translate(-2px,-1px)}
+/* the two page families draw their underline differently — match each exactly:
+   sprint pages (.links)  = 2px sitting 6px below, no padding on the link
+   new pages (.nav-links) = 1.5px at the box edge, 3px padding-block */
+.links .navdrop>.navdrop-t>.navdrop-lbl{padding-block:0}
+.links .navdrop>.navdrop-t>.navdrop-lbl::after{height:2px;bottom:-6px}
+.nav-links .navdrop>.navdrop-t>.navdrop-lbl{padding-block:3px}
+.nav-links .navdrop>.navdrop-t>.navdrop-lbl::after{height:1.5px;bottom:0}
+/* current section — replaces the old inline-style hack */
+.navdrop.has-active>.navdrop-t{color:#5B2FE6;font-weight:600}
+.navdrop-m{
+  position:absolute;top:100%;margin-top:10px;right:0;min-width:212px;z-index:80;
+  background:#fff;border:1px solid #DADADA;border-radius:10px;padding:6px;
+  box-shadow:0 14px 40px -8px rgba(32,32,32,.16);
+  display:none;
+}
+/* transparent bridge across the 10px offset — without it the pointer leaves
+   :hover on the way down and the menu closes before it can be clicked */
+.navdrop-m::before{content:"";position:absolute;top:-12px;left:0;right:0;height:12px}
+.navdrop.open>.navdrop-m{display:grid}
+@media(hover:hover){.navdrop:hover>.navdrop-m{display:grid}}
+.navdrop-m a{display:block;padding:9px 12px;border-radius:6px;font-size:15px;font-weight:500;color:#37332B;white-space:nowrap}
+.navdrop-m a::after{display:none !important}
+.navdrop-m a:hover{background:#EDE7FC;color:#5B2FE6}
+.navdrop-m a.sep{margin-top:6px;padding-top:12px;border-top:1px solid #DADADA;border-radius:0 0 6px 6px}
+.navdrop-m a.active,.links a.active,.nav-links a.active{color:#5B2FE6;font-weight:600}
+@media(max-width:1180px){.navdrop-m{right:auto;left:0}}
+</style>
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="nav-logo" href="homepage-v1.html"><img src="assets/logo.png" alt="MyCompany" /></a>
+    <div class="nav-links">
+      <a href="homepage-v1.html">דף הבית</a>
+      <a href="about-v1.html">עלינו</a>
+      <a href="how-it-works-v1.html">איך זה עובד</a>
+      <div class="navdrop has-active">
+        <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">למי זה מתאים</span><i class="navdrop-car" aria-hidden="true"></i></button>
+        <div class="navdrop-m" role="menu">
+        <a href="osek-morshe-v1.html" class="active" aria-current="page">עוסק מורשה</a>
+        <a href="ltd-v1.html">חברה בע״מ</a>
+        </div>
+      </div>
+      <a href="pricing-v1.html">מחירון</a>
+      <a href="technology-v1.html">הטכנולוגיה</a>
+      <a href="videos-v1.html">מדריכי וידאו</a>
+      <div class="navdrop">
+        <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">מרכז מידע</span><i class="navdrop-car" aria-hidden="true"></i></button>
+        <div class="navdrop-m" role="menu">
+        <a href="glossary-v1.html">מילון מונחים</a>
+        <a href="faq-v1.html">שאלות</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="nav-tel" href="tel:0555560774">055-556-0774</a>
+      <a class="btn btn-primary" href="#contact">דברו איתנו</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ PAGE HEAD ============ -->
+<header class="phead">
+  <div class="wrap phead-in">
+    <div>
+      <nav class="crumb" aria-label="מיקום">
+        <a href="homepage-v1.html">דף הבית</a><span>›</span>למי זה מתאים<span>›</span>עוסק מורשה
+      </nav>
+      <h1>רואה חשבון לעוסק מורשה<br />שמנהל לך את העסק, לא רק מגיש דוחות</h1>
+      <p class="lead" style="margin-top:18px">
+        רוב העצמאים בישראל לא סובלים מבעיה חשבונאית. הם סובלים מזה שהמידע מגיע אליהם מאוחר מדי
+        כדי לעשות איתו משהו. מע״מ שמתגלה ב-15 לחודש, מקדמות שאף אחד לא עדכן, והוצאות שנשכחו
+        ואף אחד לא ביקש. אנחנו בנויים הפוך.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">
+        <a class="btn btn-primary btn-lg" href="#contact">בואו נדבר</a>
+        <a class="btn btn-ghost btn-lg" href="#calc">כמה אני מפסיד היום?</a>
+      </div>
+      <div class="segbar">
+        <span>מלווים מאות עסקים בישראל</span>
+        <span>מערכת מאושרת רשות המיסים</span>
+        <span>רו״ח, הנה״ח ועו״ד בערוץ אחד</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="phone">
+        <div class="screen" aria-label="דוגמה להתראה שמגיעה בוואטסאפ">
+          <span class="island" aria-hidden="true"></span>
+          <div class="chat-head">
+            <div class="ava">MC</div>
+            <div><b>MyCompany · רו״ח</b><i>מקוון</i></div>
+          </div>
+          <div class="chat-body">
+            <div class="bub in">בוקר טוב עמית. הדיווח הדו-חודשי נסגר בעוד 6 ימים, והצפי שלך למע״מ הוא <b>4,180 ₪</b>.<span class="t">08:41</span></div>
+            <div class="bub in">חסרות לי 3 חשבוניות ספק מהחודש שעבר. אם תשלח אותן היום, הצפי יורד לסביבות <b>3,600 ₪</b>.<span class="t">08:41</span></div>
+            <div class="bub out">שולח עכשיו 🙏<span class="t">09:02 ✓✓</span></div>
+            <div class="bub in">קיבלתי, קלטתי את שלושתן. אין צורך לעשות כלום נוסף עד הדיווח.<span class="t">09:15</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="cap">כך נראה דיווח מע״מ אצלנו. בלי הפתעות ב-15 לחודש.</p>
+    </div>
+  </div>
+</header>
+
+<!-- ============ THE ADVANCE-PAYMENTS LANDMINE ============ -->
+<section>
+  <div class="wrap">
+    <div class="band">
+      <div class="eyebrow">הטעות הכי יקרה של עצמאים</div>
+      <h2>המקדמות שלך נקבעו לפי השנה שעברה. לא לפי השנה הזאת.</h2>
+      <div class="two-col" style="margin-top:0">
+        <div>
+          <p>
+            רשות המסים קובעת לך אחוז מקדמות על בסיס הדוח האחרון שהגשת. הוא ממשיך לרוץ אוטומטית
+            כל חודש או חודשיים, גם אם העסק שלך נראה היום אחרת לגמרי.
+          </p>
+          <p>
+            אם השנה חלשה יותר, אתה מממן את המדינה בהלוואה ללא ריבית ומקבל את הכסף בחזרה רק אחרי
+            שתגיש את הדוח השנתי. אם השנה חזקה יותר, נוצר לך פער שמתגלה כשומה, בבת אחת, בדיוק
+            כשלא תכננת אותו.
+          </p>
+          <p class="kicker">
+            אפשר לבקש הקטנה או הגדלה של המקדמות במהלך השנה. זה טופס. רוב העצמאים פשוט לא יודעים
+            שזה קיים, כי אף אחד לא יזם את השיחה.
+          </p>
+        </div>
+        <div class="grid" style="grid-auto-rows:auto;gap:14px">
+          <div class="stat"><b>18%</b><span>מע״מ על כל הוצאה שלא דיווחת</span></div>
+          <div class="stat"><b>כל חודשיים</b><span>קצב הדיווח של רוב העוסקים המורשים</span></div>
+          <div class="stat hot"><b>עד 18 חודשים</b><span>עד שמקדמות עודפות חוזרות אליך</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALCULATOR ============ -->
+<section id="calc" class="band-tint">
+  <div class="wrap">
+    <div class="eyebrow">בדיקה מהירה</div>
+    <h2>כמה עולה לך הוצאה שנשכחה?</h2>
+    <p class="lead" style="margin-top:12px">
+      זו לא שאלה רטורית, יש לה תשובה מדויקת. כל שקל של הוצאה מוכרת שלא הגיע לרו״ח מחזיר לך
+      מע״מ בשיעור 18% ומקטין את ההכנסה החייבת שלך. הכניסו הערכה, ותראו את המספר השנתי.
+    </p>
+
+    <div class="calc">
+      <div class="calc-row">
+        <div>
+          <label for="c-amt">כמה הוצאות בחודש לא מגיעות לרו״ח?
+            <small>הערכה גסה, בשקלים, לפני מע״מ</small>
+          </label>
+          <input id="c-amt" type="number" min="0" step="50" value="600" inputmode="numeric" />
+        </div>
+        <div>
+          <label for="c-rate">מדרגת המס השולי שלך
+            <small>לא בטוחים? בחרו את האמצעית</small>
+          </label>
+          <select id="c-rate">
+            <option value="0.20">20% — רווח נמוך</option>
+            <option value="0.31" selected>31% — רווח בינוני</option>
+            <option value="0.47">47% — רווח גבוה</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-out">
+        <div class="calc-lines">
+          <div><span>מע״מ שלא נדרש בחזרה</span><b id="o-vat">—</b></div>
+          <div><span>מס הכנסה מיותר</span><b id="o-tax">—</b></div>
+        </div>
+        <div class="calc-total">
+          <span>יוצא מהכיס שלך בשנה</span><b id="o-total">—</b>
+        </div>
+      </div>
+      <p class="calc-note">
+        הערכה בלבד, ובכוונה שמרנית: היא לא כוללת ביטוח לאומי, שרק יגדיל את הסכום.
+        החישוב המדויק נעשה על הספרים שלכם.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INCLUDED ============ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">מה כלול</div>
+    <h2>הכל בחבילה אחת, בערוץ אחד</h2>
+    <p class="lead" style="margin-top:12px">בלי תוספות שמתגלות בחשבון, ובלי לרדוף אחרי אף אחד.</p>
+
+    <div class="grid g3" style="margin-top:40px">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>דיווחי מע״מ ומקדמות</h3>
+        <p>דיווח דו-חודשי או חודשי, מקדמות מס הכנסה וביטוח לאומי. אתם מקבלים את הצפי לפני המועד, לא חשבון אחריו.</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>דוח שנתי והצהרת הון</h3>
+        <p>הכנה והגשה, כולל ליווי מלא אם נדרשת הצהרת הון. זה המקום שבו רוב ההפתעות נולדות, ואנחנו נכנסים אליו מוקדם.</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>מקסום הוצאות מוכרות</h3>
+        <p>לא רק קליטה של מה ששלחתם. אנחנו אומרים לכם מה עוד מוכר בתחום שלכם, ומה כדאי לתעד אחרת.</p>
+      </div>
+      <div class="card">
+        <div class="num">04</div>
+        <h3>אפליקציה לחשבוניות והוצאות</h3>
+        <p>הפקת חשבונית בשלוש שניות מהנייד, וצילום קבלה שנקלט אוטומטית. בלי אקסלים ובלי תיקייה של קבלות.</p>
+      </div>
+      <div class="card">
+        <div class="num">05</div>
+        <h3>מענה בוואטסאפ מרו״ח אמיתי</h3>
+        <p>שואלים בבוקר, מקבלים תשובה מאדם עם שם. לא מוקד, לא בוט, ולא ״הוא יחזור אליך״.</p>
+      </div>
+      <div class="card">
+        <div class="num">06</div>
+        <h3>ייצוג מלא מול הרשויות</h3>
+        <p>מע״מ, מס הכנסה וביטוח לאומי. כולל ליווי בביקורת אם וכאשר, כדי שלא תעמדו מול זה לבד.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW ============ -->
+<section class="band-tint">
+  <div class="wrap">
+    <div class="eyebrow">איך מתחילים</div>
+    <h2>שני מצבים, אותו סוף</h2>
+
+    <div class="two-col">
+      <div>
+        <h3 style="margin-bottom:20px">פותחים עסק חדש</h3>
+        <div class="steps">
+          <div class="step"><div class="n">1</div><div><h3>שיחת אבחון</h3><p>מה אתם עושים, מה הצפי, ואיזה מעמד נכון לכם. אם עדיף לכם לחכות, נגיד גם את זה.</p></div></div>
+          <div class="step"><div class="n">2</div><div><h3>פתיחת תיקים</h3><p>מע״מ, מס הכנסה וביטוח לאומי. אנחנו נרשמים כמייצגים שלכם מול כולם.</p></div></div>
+          <div class="step"><div class="n">3</div><div><h3>מוכנים לעבוד</h3><p>אפליקציה להפקת חשבוניות, הסבר קצר על מה לשמור, ומקדמות שנקבעות נכון מההתחלה.</p></div></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="margin-bottom:20px">מחליפים רואה חשבון</h3>
+        <div class="steps">
+          <div class="step"><div class="n">1</div><div><h3>שיחת היכרות</h3><p>מה עובד ומה לא אצל הרו״ח הנוכחי, ומה בדיוק חסר לכם. חצי שעה, בלי התחייבות.</p></div></div>
+          <div class="step"><div class="n">2</div><div><h3>אנחנו אוספים את התיק</h3><p>מול הרו״ח הקודם, לא מולכם. אתם לא צריכים לנהל את השיחה הזאת ולא לרדוף אחרי קבצים.</p></div></div>
+          <div class="step"><div class="n">3</div><div><h3>בדיקה אחורה</h3><p>עוברים על השנים הפתוחות ובודקים החזרים והוצאות שלא נוצלו. לא פעם זה מכסה את העלות.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">ההבדל בפועל</div>
+    <h2>רואה חשבון קלאסי מול MyCompany</h2>
+    <div class="tbl-scroll" style="margin-top:36px">
+      <table>
+        <thead><tr><th>&nbsp;</th><th>רואה חשבון קלאסי</th><th>MyCompany</th></tr></thead>
+        <tbody>
+          <tr><td>מתי אתם שומעים ממנו</td><td class="dim">כשצריך חתימה או מסמך</td><td>לפני כל מועד דיווח</td></tr>
+          <tr><td>צפי מע״מ</td><td class="dim">מתגלה ב-15 לחודש</td><td>מגיע אליכם לפני, עם מה שחסר</td></tr>
+          <tr><td>מקדמות</td><td class="dim">רצות כמו שנקבעו אשתקד</td><td>נבדקות במהלך השנה</td></tr>
+          <tr><td>הוצאות מוכרות</td><td class="dim">קולט מה ששלחתם</td><td>אומר לכם מה עוד מוכר אצלכם</td></tr>
+          <tr><td>ערוץ</td><td class="dim">מייל, והודעה ש״יחזור אליכם״</td><td>וואטסאפ, מענה באותו יום</td></tr>
+          <tr><td>מבנה מחיר</td><td class="dim">לפי שעות, מפתיע בסוף שנה</td><td>חבילה חודשית קבועה מראש</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS (real, on-segment) ============ -->
+<section class="band-tint">
+  <div class="wrap">
+    <div class="eyebrow">לקוחות משתפים</div>
+    <h2>מה אומרים עוסקים מורשים</h2>
+    <div class="grid g3" style="margin-top:40px">
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>אני לקוח פעיל כבר שנה ומתחילת הדרך עד כה אני מקבל שירות יוצא דופן, מהיר ומקצועי בוואטסאפ. בעבר הייתי צריך לרדוף אחרי רואה החשבון שלי, היום אני מרגיש שרואה החשבון שלי רודף אחריי. ממליץ בחום!</p>
+        <div class="who"><div class="av">ס</div><div><b>סלבה גורביץ׳</b><span>עוסק מורשה</span></div></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>השירות של MyCompany שינה את כל התפיסה שלי על רואי חשבון. המידע זמין, התקשורת קלה ומהירה, והכי חשוב, אני מרגיש שהם תמיד שם בשבילי.</p>
+        <div class="who"><div class="av">ע</div><div><b>עידו ברמי</b><span>עוסק מורשה</span></div></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>לפני שהצטרפתי ל-MyCompany הייתי מבולבלת ומלאת חרדה בכל מה שקשור לפיננסים של העסק שלי. השירות שלהם מקצועי, נגיש ומהיר. עכשיו אני יודעת בדיוק מה קורה בעסק שלי בכל רגע נתון.</p>
+        <div class="who"><div class="av">נ</div><div><b>נועה אמיר</b><span>עוסקת מורשה</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section>
+  <div class="wrap narrow">
+    <div class="eyebrow">שאלות נפוצות</div>
+    <h2>מה עצמאים שואלים אותנו</h2>
+    <div style="margin-top:36px;border-top:1px solid var(--hairline)">
+      <details open>
+        <summary>אני עוסק פטור. אתם מתאימים לי?</summary>
+        <div class="a">אנחנו מלווים עוסקים מורשים וחברות בע״מ. אם אתם עוסק פטור ומתקרבים לתקרת המחזור, זה בדיוק הרגע לדבר, כי המעבר למורשה משנה לכם את אופן הדיווח ואת ניכוי המע״מ. אפשר לקרוא על ההבדל ב<a href="glossary-v1.html#osek-patur">מילון המונחים</a>.</div>
+      </details>
+      <details>
+        <summary>אפשר להחליף רואה חשבון באמצע השנה?</summary>
+        <div class="a">כן, בכל חודש. לא צריך לחכות לסוף שנה ולא צריך סיבה. אנחנו מבצעים החלפת מייצג ברשויות ואוספים את החומרים מהרו״ח הקודם. אתם לא מנהלים את השיחה הזאת.</div>
+      </details>
+      <details>
+        <summary>מה קורה עם השנים שכבר הוגשו?</summary>
+        <div class="a">אנחנו עוברים עליהן. יש שנים פתוחות שאפשר עדיין לתקן בהן דברים, ולפעמים מתגלות הוצאות או החזרים שלא נוצלו. זה חלק מהקליטה, לא שירות בתוספת תשלום.</div>
+      </details>
+      <details>
+        <summary>כל כמה זמן אני מדווח מע״מ?</summary>
+        <div class="a">רוב העוסקים המורשים מדווחים אחת לחודשיים, וחלק מדווחים חודשי בהתאם למחזור. מה שקובע זה המחזור השנתי שלכם, והרשות מעדכנת את זה. אנחנו עוקבים אחרי הקצב שלכם ומתריעים לפני כל מועד.</div>
+      </details>
+      <details>
+        <summary>מה נחשב הוצאה מוכרת?</summary>
+        <div class="a">כל הוצאה שנועדה לייצר את ההכנסה שלכם. הכלל הפרקטי: אל תסננו לבד. הרבה עצמאים מחליטים בראש ש״זה לא יעבור״ ומשלמים מס מלא על הוצאה שהייתה מוכרת. תשלחו הכל, ההחלטה מה נכנס היא של רואה החשבון. פירוט ב<a href="glossary-v1.html#hotzaot">מילון המונחים</a>.</div>
+      </details>
+      <details>
+        <summary>כמה זה עולה?</summary>
+        <div class="a">חבילה חודשית קבועה שנקבעת לפי המחזור וכמות התנועות. מה שקבוע הוא המבנה: מחיר אחד שיודעים מראש, בלי חיוב לפי שעות ובלי הפתעות בסוף שנה. <a href="pricing-v1.html">המחירון המלא כאן</a>.</div>
+      </details>
+      <details>
+        <summary>אני שוקל לפתוח חברה בע״מ. מתי זה נכון?</summary>
+        <div class="a">בגדול, כשהרווח השנתי עובר בקביעות את הנקודה שבה המס השולי שלכם גבוה ממס החברות, או כשיש שותפים, משקיעים או חשיפה לאחריות. זה חישוב, לא תחושה, ונשמח לעשות אותו איתכם. <a href="../landing-page-ltd/index.html">קראו על הליווי לחברות בע״מ</a>.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="band cta-band">
+      <div>
+        <h2 style="margin-bottom:12px">שיחה אחת, ואתם מחליטים</h2>
+        <p>
+          משאירים פרטים ורואה חשבון מהצוות חוזר אליכם. השיחה הראשונה היא אבחון, לא מכירה,
+          ואנחנו נגיד לכם גם אם אתם לא צריכים אותנו.
+        </p>
+      </div>
+      <a class="btn btn-primary btn-lg" href="homepage-v1.html#panel">להתחלה מהירה ←</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <img src="assets/logo-white.png" alt="MyCompany" />
+      <p>ליווי פיננסי ומשפטי לעוסקים מורשים ולחברות בע״מ בישראל.</p>
+    </div>
+    <div>
+      <b>למי זה מתאים</b>
+      <div class="foot-links">
+        <a href="osek-morshe-v1.html">עוסק מורשה</a>
+        <a href="../landing-page-ltd/index.html">חברה בע״מ</a>
+        <a href="glossary-v1.html">מילון מונחים</a>
+      </div>
+    </div>
+    <div>
+      <b>יצירת קשר</b>
+      <div class="foot-links">
+        <a href="tel:0555560774" style="direction:ltr;display:inline-block">055-556-0774</a>
+        <span>הברזל 34, רמת החייל, תל אביב</span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:13.5px">
+    © 2026 כל הזכויות שמורות ל-MyCompany · מערכת מאושרת על ידי רשות המיסים בישראל
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* nav shadow after 8px */
+  var nav = document.querySelector('.nav');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* expense-leak calculator */
+  var VAT = 0.18;                       /* מע״מ בישראל — 18% */
+  var amt = document.getElementById('c-amt');
+  var rate = document.getElementById('c-rate');
+  var oVat = document.getElementById('o-vat');
+  var oTax = document.getElementById('o-tax');
+  var oTot = document.getElementById('o-total');
+  var ils = new Intl.NumberFormat('he-IL', {style:'currency', currency:'ILS', maximumFractionDigits:0});
+
+  function calc(){
+    var monthly = Math.max(0, Number(amt.value) || 0);
+    var yearly = monthly * 12;
+    var vat = yearly * VAT;
+    var tax = yearly * Number(rate.value);
+    oVat.textContent = ils.format(vat);
+    oTax.textContent = ils.format(tax);
+    oTot.textContent = ils.format(vat + tax);
+  }
+  amt.addEventListener('input', calc);
+  rate.addEventListener('change', calc);
+  calc();
+
+  /* staggered reveal */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('.card,.quote,.step,.stat');
+  if(reduce || !('IntersectionObserver' in window)){
+    targets.forEach(function(t){ t.classList.add('in'); });
+  } else {
+    targets.forEach(function(t){ t.classList.add('reveal'); });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e,i){
+        if(!e.isIntersecting) return;
+        var el = e.target;
+        setTimeout(function(){ el.classList.add('in'); }, (i % 6) * 55);
+        io.unobserve(el);
+      });
+    }, {threshold:.15});
+    targets.forEach(function(t){ io.observe(t); });
+  }
+})();
+</script>
+<script id="navdrop-js">
+/* nav dropdown toggle + RTL bootstrap — generated by nav.js */
+(function(){
+  /* fragments have no <html dir>; set it so :dir(), form controls and
+     scrollbar placement match the artifact environment */
+  var de=document.documentElement;
+  if(!de.getAttribute('dir')) de.setAttribute('dir','rtl');
+  if(!de.getAttribute('lang')) de.setAttribute('lang','he');
+
+  /* keep the sticky nav parked exactly below the notice strip */
+  var strip=document.querySelector('.strip');
+  function stripH(){
+    if(!strip) return;
+    de.style.setProperty('--strip-h', Math.round(strip.getBoundingClientRect().height)+'px');
+  }
+  stripH();
+  window.addEventListener('resize', stripH, {passive:true});
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(stripH);
+  document.querySelectorAll('.navdrop').forEach(function(d){
+    var t=d.querySelector('.navdrop-t');
+    if(!t) return;
+    t.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=d.classList.toggle('open');
+      t.setAttribute('aria-expanded',open?'true':'false');
+    });
+  });
+  document.addEventListener('click',function(e){
+    document.querySelectorAll('.navdrop.open').forEach(function(d){
+      /* never close on a click INSIDE the menu — doing so removes the anchor
+         mid-click and the browser cancels the navigation */
+      if(d.contains(e.target)) return;
+      d.classList.remove('open');
+      var t=d.querySelector('.navdrop-t'); if(t) t.setAttribute('aria-expanded','false');
+    });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape') return;
+    document.querySelectorAll('.navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+  });
+})();
+</script>
+</body>
+</html>

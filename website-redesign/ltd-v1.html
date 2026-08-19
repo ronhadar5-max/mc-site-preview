@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>רואה חשבון לחברה בע״מ | MyCompany</title>
+<meta name="description" content="רואה חשבון לחברה בע״מ שמתכנן איתך את המשיכה מהחברה, לא רק חותם על הדוח. משיכות בעלים, רווחים כלואים ותמהיל משכורת-דיבידנד — מראש, לא בדיעבד." />
+<meta name="theme-color" content="#FAF8F1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=Frank+Ruhl+Libre:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site-system.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237B5BFF'/%3E%3Cstop offset='1' stop-color='%235B2FE6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23g)'/%3E%3Cpath d='M32 15l4.6 9.9L47 29l-10.4 4.1L32 43l-4.6-9.9L17 29l10.4-4.1z' fill='%23fff'/%3E%3Ccircle cx='47' cy='47' r='6' fill='%23FF8B3D'/%3E%3C/svg%3E" />
+<style>
+  /* page-local only — the rest comes from assets/site-system.css */
+  .phead-in{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,60px);align-items:center}
+  @media(max-width:980px){.phead-in{grid-template-columns:1fr;gap:36px}}
+  .segbar{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:26px;padding-top:22px;border-top:1px solid var(--hairline);font-size:14.5px;color:var(--ink)}
+
+  /* device frame — 9px bezel, 46/37 radii */
+  .hero-visual{position:relative;display:grid;justify-items:center}
+  .hero-visual::before{content:"";position:absolute;inset:6% 12% 10%;border-radius:50%;
+    background:radial-gradient(ellipse at 50% 50%,rgba(91,47,230,.16),transparent 70%);filter:blur(28px);pointer-events:none}
+  .phone{position:relative;z-index:1;width:min(322px,100%);
+    background:linear-gradient(160deg,#413B31,#2A2620 62%,#37332B);padding:9px;border-radius:46px;
+    box-shadow:0 34px 64px -22px rgba(32,32,32,.42),0 2px 6px rgba(32,32,32,.16),inset 0 0 0 1px rgba(255,255,255,.10)}
+  .screen{position:relative;overflow:hidden;background:var(--ground);border-radius:37px;padding:38px 13px 16px;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+  .island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:74px;height:21px;border-radius:99px;background:#2A2620}
+  .chat-head{display:flex;align-items:center;gap:11px;padding:4px 4px 13px;border-bottom:1px solid var(--hairline);margin-bottom:13px}
+  .chat-head .ava{width:36px;height:36px;border-radius:50%;flex:none;background:linear-gradient(135deg,#7B5BFF,var(--brand));
+    display:grid;place-items:center;font-weight:600;color:#fff;font-size:13px}
+  .chat-head b{display:block;color:var(--ink-dark);font-size:14.5px;font-weight:600;line-height:1.3}
+  .chat-head i{font-style:normal;font-size:12.5px;color:var(--ok);font-weight:600}
+  .chat-head i::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);margin-left:6px}
+  .chat-body{display:grid;gap:9px}
+  .bub{max-width:92%;padding:11px 13px;border-radius:14px;font-size:14px;line-height:1.55}
+  .bub.in{background:var(--tint);color:var(--ink);border-top-right-radius:4px;justify-self:start}
+  .bub.out{background:var(--wa);color:#14532D;border-top-left-radius:4px;justify-self:end}
+  .bub b{color:var(--ink-dark);font-weight:600}
+  .bub .t{display:block;font-size:11px;color:var(--faint);margin-top:5px;font-variant-numeric:tabular-nums lining}
+  .cap{margin-top:18px;font-size:13px;color:var(--faint);text-align:center;max-width:34ch}
+
+  /* two tracks */
+  .tracks{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;grid-auto-rows:1fr}
+  @media(max-width:860px){.tracks{grid-template-columns:1fr}}
+  .track{background:var(--ground);border:1px solid var(--hairline);border-radius:14px;
+    padding:clamp(26px,3.4vw,36px);box-shadow:var(--shadow);display:flex;flex-direction:column;
+    transition:box-shadow .2s ease,transform .2s var(--ease)}
+  .track:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+  .track-tag{align-self:flex-start;font-size:12.5px;font-weight:600;letter-spacing:.04em;
+    padding:5px 12px;border-radius:6px;margin-bottom:16px}
+  .track-a .track-tag{background:var(--brand-soft);color:var(--brand-deep)}
+  .track-b .track-tag{background:var(--money-pale);color:#8A4A12}
+  .track h3{margin-bottom:10px;font-family:var(--display);font-weight:400;font-size:clamp(21px,2.4vw,25px);letter-spacing:-.014em}
+  .track p{font-size:16px;margin-bottom:20px}
+  .track ul{list-style:none;margin-bottom:26px;display:grid;gap:11px}
+  .track li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;line-height:1.55}
+  .track li::before{content:"";flex:none;width:19px;height:19px;margin-top:5px;border-radius:50%;
+    background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/12px no-repeat}
+  .track .btn{margin-top:auto;align-self:flex-start}
+
+  .second-door{margin-top:22px;border:1px solid var(--hairline);border-radius:14px;box-shadow:var(--shadow);
+    background:linear-gradient(120deg,var(--brand-soft),var(--ground) 66%);padding:clamp(24px,3.2vw,34px);
+    display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center}
+  @media(max-width:800px){.second-door{grid-template-columns:1fr;gap:18px}.second-door .btn{width:100%}}
+  .second-door h3{font-family:var(--display);font-weight:400;font-size:clamp(20px,2.3vw,24px);letter-spacing:-.014em;margin-bottom:9px}
+
+  /* self-check */
+  .check{background:var(--ground);border:1px solid var(--hairline);border-radius:16px;
+    padding:clamp(24px,3.4vw,38px);box-shadow:var(--shadow-lg);max-width:840px;margin:36px auto 0}
+  .check-q{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:17px 0;border-bottom:1px solid var(--hairline)}
+  .check-q:last-of-type{border-bottom:none}
+  .check-q p{font-size:16.5px;font-weight:600;color:var(--ink-dark);margin:0;max-width:56ch;line-height:1.5}
+  .check-q p small{display:block;font-weight:400;font-size:14px;color:var(--faint);margin-top:3px;line-height:1.5}
+  .yn{display:flex;gap:7px;flex:none}
+  .yn button{border:1px solid var(--hairline);background:var(--ground);color:var(--ink);border-radius:5px;
+    padding:9px 18px;font-size:14.5px;font-weight:600;cursor:pointer;transition:all .16s var(--ease)}
+  .yn button:hover{border-color:var(--brand);color:var(--brand)}
+  .yn button.on{background:var(--brand);border-color:var(--brand);color:#fff}
+  .check-out{margin-top:22px;padding:20px 22px;border-radius:10px;background:var(--tint);
+    border:1px solid var(--hairline);font-size:16px;color:var(--ink);line-height:1.65;max-width:none}
+  .check-out b{color:var(--ink-dark);font-weight:600}
+  .check-out.hot{background:var(--money-pale);border-color:#F0B07A}
+  .check-out.ok{background:var(--wa);border-color:#A9DCC0}
+  .check-out .btn{margin-top:15px}
+  .check-note{font-size:13.5px;color:var(--faint);margin-top:14px;text-align:center;max-width:none;line-height:1.6}
+  @media(max-width:560px){.check-q{grid-template-columns:1fr;gap:11px}.yn{width:100%}.yn button{flex:1}}
+
+  .two-col{display:grid;grid-template-columns:1.25fr .95fr;gap:clamp(28px,4vw,52px);align-items:center}
+  @media(max-width:880px){.two-col{grid-template-columns:1fr}}
+  .raise-list{display:grid;gap:12px}
+  .raise-list div{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);
+    border-radius:11px;padding:15px 19px;font-size:15.5px;font-weight:600;color:#fff}
+  .cta-band{display:grid;grid-template-columns:1.2fr auto;gap:28px;align-items:center}
+  @media(max-width:800px){.cta-band{grid-template-columns:1fr}.cta-band .btn{width:100%}}
+</style>
+<style id="navdrop-css">
+/* These pages were authored as artifact fragments: the runtime supplied the
+   <html dir="rtl" lang="he"> wrapper. Served as plain files that wrapper is
+   gone, the document falls back to LTR, and every logical property
+   (margin-inline, grid order, text-align:start) flips — the "everything is
+   suddenly left-aligned" bug. Restore it here. */
+html{direction:rtl}
+
+/* The notice strip sat above a sticky nav pinned at top:0, so one pixel of
+   scroll parked the nav over it and its link could never be clicked. Stack
+   them: strip sticks first, nav sticks directly beneath it. --strip-h is
+   measured at runtime so wrapping on narrow screens stays correct. */
+.strip{position:sticky;top:0;z-index:70}
+.nav{top:var(--strip-h,0px)}
+
+/* nav dropdown — generated by nav.js, do not hand-edit.
+   The trigger must be visually indistinguishable from a nav link: same weight,
+   tracking, colour and the same underline-on-hover. It is a <button> for
+   semantics, so every one of those has to be restated explicitly. */
+.navdrop{position:relative;display:inline-block}
+.navdrop>.navdrop-t{
+  background:none;border:none;margin:0;padding:0;cursor:pointer;
+  font-family:inherit;font-size:inherit;line-height:inherit;
+  font-weight:500;letter-spacing:.002em;color:var(--ink,#4A4A4A);
+  display:inline-flex;align-items:center;gap:7px;
+  transition:color .16s ease;
+}
+.navdrop>.navdrop-t>.navdrop-lbl{position:relative;padding-block:3px}
+.navdrop>.navdrop-t>.navdrop-lbl::after{
+  content:"";position:absolute;inset-inline:0;bottom:0;height:1.5px;background:#5B2FE6;
+  transform:scaleX(0);transform-origin:right;transition:transform .18s cubic-bezier(.2,.8,.2,1);
+}
+.navdrop>.navdrop-t:hover,.navdrop.open>.navdrop-t{color:#5B2FE6}
+.navdrop>.navdrop-t:hover>.navdrop-lbl::after,
+.navdrop.open>.navdrop-t>.navdrop-lbl::after{transform:scaleX(1)}
+.navdrop>.navdrop-t>.navdrop-car{
+  width:7px;height:7px;flex:none;
+  border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;
+  transform:rotate(45deg) translate(-1px,-2px);transition:transform .2s cubic-bezier(.2,.8,.2,1);
+}
+.navdrop.open>.navdrop-t>.navdrop-car{transform:rotate(-135deg) translate(-2px,-1px)}
+/* the two page families draw their underline differently — match each exactly:
+   sprint pages (.links)  = 2px sitting 6px below, no padding on the link
+   new pages (.nav-links) = 1.5px at the box edge, 3px padding-block */
+.links .navdrop>.navdrop-t>.navdrop-lbl{padding-block:0}
+.links .navdrop>.navdrop-t>.navdrop-lbl::after{height:2px;bottom:-6px}
+.nav-links .navdrop>.navdrop-t>.navdrop-lbl{padding-block:3px}
+.nav-links .navdrop>.navdrop-t>.navdrop-lbl::after{height:1.5px;bottom:0}
+/* current section — replaces the old inline-style hack */
+.navdrop.has-active>.navdrop-t{color:#5B2FE6;font-weight:600}
+.navdrop-m{
+  position:absolute;top:100%;margin-top:10px;right:0;min-width:212px;z-index:80;
+  background:#fff;border:1px solid #DADADA;border-radius:10px;padding:6px;
+  box-shadow:0 14px 40px -8px rgba(32,32,32,.16);
+  display:none;
+}
+/* transparent bridge across the 10px offset — without it the pointer leaves
+   :hover on the way down and the menu closes before it can be clicked */
+.navdrop-m::before{content:"";position:absolute;top:-12px;left:0;right:0;height:12px}
+.navdrop.open>.navdrop-m{display:grid}
+@media(hover:hover){.navdrop:hover>.navdrop-m{display:grid}}
+.navdrop-m a{display:block;padding:9px 12px;border-radius:6px;font-size:15px;font-weight:500;color:#37332B;white-space:nowrap}
+.navdrop-m a::after{display:none !important}
+.navdrop-m a:hover{background:#EDE7FC;color:#5B2FE6}
+.navdrop-m a.sep{margin-top:6px;padding-top:12px;border-top:1px solid #DADADA;border-radius:0 0 6px 6px}
+.navdrop-m a.active,.links a.active,.nav-links a.active{color:#5B2FE6;font-weight:600}
+@media(max-width:1180px){.navdrop-m{right:auto;left:0}}
+</style>
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="nav-logo" href="homepage-v1.html"><img src="assets/logo.png" alt="MyCompany" /></a>
+    <div class="nav-links">
+      <a href="homepage-v1.html">דף הבית</a>
+      <a href="about-v1.html">עלינו</a>
+      <a href="how-it-works-v1.html">איך זה עובד</a>
+      <div class="navdrop has-active">
+        <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">למי זה מתאים</span><i class="navdrop-car" aria-hidden="true"></i></button>
+        <div class="navdrop-m" role="menu">
+        <a href="osek-morshe-v1.html">עוסק מורשה</a>
+        <a href="ltd-v1.html" class="active" aria-current="page">חברה בע״מ</a>
+        </div>
+      </div>
+      <a href="pricing-v1.html">מחירון</a>
+      <a href="technology-v1.html">הטכנולוגיה</a>
+      <a href="videos-v1.html">מדריכי וידאו</a>
+      <div class="navdrop">
+        <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">מרכז מידע</span><i class="navdrop-car" aria-hidden="true"></i></button>
+        <div class="navdrop-m" role="menu">
+        <a href="glossary-v1.html">מילון מונחים</a>
+        <a href="faq-v1.html">שאלות</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="nav-tel" href="tel:0555560774">055-556-0774</a>
+      <a class="btn btn-primary" href="#contact">דברו איתנו</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ PAGE HEAD ============ -->
+<header class="phead">
+  <div class="wrap phead-in">
+    <div>
+      <nav class="crumb" aria-label="מיקום">
+        <a href="homepage-v1.html">דף הבית</a><span>›</span>למי זה מתאים<span>›</span>חברה בע״מ
+      </nav>
+      <h1>רואה חשבון לחברה בע״מ<br />שמתכנן איתך את המשיכה, לא רק חותם על הדוח</h1>
+      <p class="lead" style="margin-top:18px">
+        החברה מרוויחה. השאלה היא כמה מזה באמת מגיע אליך, ובאיזו דרך. משיכות בעלים,
+        תמהיל משכורת מול דיבידנד ורווחים שנשארו בחברה — אצל רוב היזמים כל אלה מתבררים
+        בדוח השנתי, כשכבר אי אפשר לתכנן, רק לשלם.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">
+        <a class="btn btn-primary btn-lg" href="#contact">בואו נדבר</a>
+        <a class="btn btn-ghost btn-lg" href="#check">בדיקת רווחים כלואים</a>
+      </div>
+      <div class="segbar">
+        <span>מלווים מאות עסקים בישראל</span>
+        <span>מערכת מאושרת רשות המיסים</span>
+        <span>רו״ח, הנה״ח ועו״ד בערוץ אחד</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="phone">
+        <div class="screen" aria-label="דוגמה להתראה שמגיעה בוואטסאפ">
+          <span class="island" aria-hidden="true"></span>
+          <div class="chat-head">
+            <div class="ava">MC</div>
+            <div><b>MyCompany · רו״ח</b><i>מקוון</i></div>
+          </div>
+          <div class="chat-body">
+            <div class="bub in">שלום דנה. יתרת המשיכות שלך מהחברה עברה היום את <b>182,000 ₪</b>, מעל תקרת ה-100,000 ₪ של סעיף 3(ט1).<span class="t">09:14</span></div>
+            <div class="bub in">אם היתרה לא תיסגר עד סוף 2027 היא תיחשב הכנסה שלך. יש לנו שנה וחצי לתכנן את זה בשקט.<span class="t">09:14</span></div>
+            <div class="bub out">מעולה, בוא נעשה את זה<span class="t">09:31 ✓✓</span></div>
+            <div class="bub in">מטפל. פרוטוקול הדירקטוריון יגיע אלייך לחתימה מחר.<span class="t">09:33</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="cap">כך נראית התראה יזומה. לא דוח בסוף השנה.</p>
+    </div>
+  </div>
+</header>
+
+<!-- ============ WHY LTD IS DIFFERENT ============ -->
+<section class="band-tint">
+  <div class="wrap">
+    <div class="eyebrow">למה זה משחק אחר</div>
+    <h2>חברה בע״מ היא לא עוסק מורשה בגדול</h2>
+    <p class="lead" style="margin-top:12px">
+      זו לא אותה עבודה עם יותר אפסים. ארבעה דברים משתנים ברגע שפתחתם חברה, וכל אחד מהם עולה כסף כשמפספסים אותו.
+    </p>
+
+    <div class="grid g4" style="margin-top:40px">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>דוח מבוקר הוא חוק</h3>
+        <p>חברה חייבת ב<a href="glossary-v1.html#duhot">דוחות כספיים מבוקרים</a> חתומים ברואה חשבון. אין גרסה של ״אני אגיש לבד השנה״. זו חובה סטטוטורית, לא שאלה של נוחות.</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>שני כיסים, לא אחד</h3>
+        <p>הכסף בחשבון <a href="glossary-v1.html#hevra">החברה</a> הוא לא הכסף שלכם. לכל שקל צריך מסלול: משכורת, <a href="glossary-v1.html#dividend">דיבידנד</a>, החזר הוצאות או הלוואת בעלים.</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>יש לכם תלושים, גם לבד</h3>
+        <p>ברגע שאתם שכירים בחברה שלכם נכנסים שכר, ניכויים, פנסיה ו<a href="glossary-v1.html#nikuyim">תיק ניכויים</a> שרץ כל חודש. עולם תפעולי שלעוסק פשוט אין.</p>
+      </div>
+      <div class="card">
+        <div class="num">04</div>
+        <h3>רשם החברות לא שוכח</h3>
+        <p>דוח שנתי, אגרה, שינויי בעלות ומינויים. גם חברה בלי פעילות ממשיכה לצבור חובות ב<a href="glossary-v1.html#rasham">רשם החברות</a> בשקט.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE OWNER-DRAW LANDMINE ============ -->
+<section>
+  <div class="wrap">
+    <div class="band">
+      <div class="eyebrow">המוקש הכי נפוץ</div>
+      <h2>משכתם כסף מהחברה. יש לזה תקרה, ויש לזה שעון.</h2>
+      <div class="two-col" style="margin-top:0">
+        <div>
+          <p>
+            הסיפור שחוזר אצל יזמים שוב ושוב. מושכים מהחשבון לאורך השנה כי זו החברה שלכם, ואף אחד
+            לא אומר כלום. אבל ל<a href="glossary-v1.html#mishichat-baalim" style="color:#fff;text-decoration:underline;text-underline-offset:3px">סעיף 3(ט1)</a>
+            יש שני מספרים שכדאי להכיר: <b>תקרה של 100,000 ₪</b>, שמתחתיה המשיכה לא נחשבת הכנסה,
+            <b>ושעון שמתחיל לרוץ ברגע שעברתם אותה</b>.
+          </p>
+          <p>
+            מרגע שהיתרה חצתה את התקרה, יש לכם עד <b>סוף שנת המס שאחרי</b> לסגור אותה. לא נסגרה,
+            והיא נחשבת הכנסה שלכם — כדיבידנד, כמשכורת או כהכנסה עסקית, לפי סדר שהחוק קובע ולא אתם.
+          </p>
+          <p class="kicker">
+            אנחנו לא מגלים לכם את זה בדוח. אנחנו אומרים לכם ביום שחציתם את התקרה: כמה, עד מתי, ומה האפשרויות.
+          </p>
+        </div>
+        <div class="grid" style="grid-auto-rows:auto;gap:14px">
+          <div class="stat"><b>100,000 ₪</b><span>התקרה שמעליה המשיכה נחשבת הכנסה</span></div>
+          <div class="stat"><b>23% + 30%</b><span>מס חברות, ואז דיבידנד לבעל מניות מהותי</span></div>
+          <div class="stat hot"><b>כ-46%</b><span>העלות המצטברת כשלא מתכננים מראש</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAPPED PROFITS SELF-CHECK ============ -->
+<section id="check" class="band-tint">
+  <div class="wrap">
+    <div class="eyebrow">חדש מ-2025 — ורוב בעלי החברות לא יודעים</div>
+    <h2>יש רווחים שנשארו בחברה? יש עליהם החלטה שנתית.</h2>
+    <p class="lead" style="max-width:76ch;margin-top:12px">
+      תיקון 277 קבע ש<a href="glossary-v1.html#revahim-kluim">חברת מעטים</a> עם רווחים צבורים שלא חולקו
+      עומדת כל שנה מול בחירה: לחלק דיבידנד של <b>6%</b> מהרווחים הצבורים, או לשלם <b>2%</b> על מה שלא חולק.
+      החוק לא חל על כל חברה — יש מגן מס שמכסה חלק גדול מהן. <b>בדקו ב-30 שניות אם הוא מכסה אתכם.</b>
+    </p>
+
+    <div class="check">
+      <div class="check-q">
+        <p>החברה היא חברת מעטים — עד חמישה בעלי שליטה?<small>רוב החברות הפרטיות בישראל כן</small></p>
+        <div class="yn" data-q="0"><button data-v="1">כן</button><button data-v="0">לא</button></div>
+      </div>
+      <div class="check-q">
+        <p>נצברו בחברה רווחים שלא חולקו כדיבידנד?<small>עודפים שנשארו בחברה משנים קודמות</small></p>
+        <div class="yn" data-q="1"><button data-v="1">כן</button><button data-v="0">לא</button></div>
+      </div>
+      <div class="check-q">
+        <p>הרווחים הצבורים גבוהים גם מ-750,000 ₪ וגם מההוצאות השנתיות של החברה?<small>זה בערך מה שמגן המס מכסה — הגבוה מבין השניים</small></p>
+        <div class="yn" data-q="2"><button data-v="1">כן</button><button data-v="0">לא</button></div>
+      </div>
+      <div class="check-q">
+        <p>חילקתם השנה דיבידנד של לפחות 6% מהרווחים הצבורים?<small>זו החלופה שמייתרת את תוספת המס</small></p>
+        <div class="yn" data-q="3"><button data-v="1">כן</button><button data-v="0">לא</button></div>
+      </div>
+
+      <div class="check-out" id="checkOut">ענו על ארבע השאלות ותקבלו אינדיקציה מיידית, בלי להשאיר פרטים.</div>
+      <p class="check-note">
+        אינדיקציה בלבד, לא חוות דעת. יש חריגים, בין היתר חברה מועדפת ומפעל תעשייתי או טכנולוגי
+        עם יצוא של 25% ומעלה. הקביעה נעשית על הדוחות עצמם.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INCLUDED ============ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">מה כלול</div>
+    <h2>הכל תחת גג אחד, בערוץ אחד</h2>
+    <p class="lead" style="margin-top:12px">רואה חשבון, מנהלת חשבונות ועורך דין. לא שלושה ספקים שמאשימים אחד את השני.</p>
+
+    <div class="grid g3" style="margin-top:40px">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>תמהיל משכורת ודיבידנד</h3>
+        <p>נקבע מראש בתחילת השנה ומתעדכן תוך כדי. כמה משכורת, כמה <a href="glossary-v1.html#dividend">דיבידנד</a>, מתי ולמה — ולא מתגלה בדיעבד.</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>דוחות כספיים מבוקרים בזמן</h3>
+        <p>לוח זמנים שנקבע מראש ומתקיים, כולל דוח 1214 ודיווח לרשם החברות. לא מייל בהול על שנה שנגמרה מזמן.</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>שכר ותלושים</h3>
+        <p>לכם ולעובדים: תלושים, ניכויים, פנסיה, 106 ו-126, וטיפול בכניסה ויציאה. רץ כל חודש בלי שתזכירו.</p>
+      </div>
+      <div class="card">
+        <div class="num">04</div>
+        <h3>דיווחים שוטפים</h3>
+        <p><a href="glossary-v1.html#maam">מע״מ</a>, <a href="glossary-v1.html#mikdamot">מקדמות</a>, ניכויים וביטוח לאומי. אתם מקבלים התראה לפני, לא קנס אחרי.</p>
+      </div>
+      <div class="card">
+        <div class="num">05</div>
+        <h3>הכל בוואטסאפ, כולל הרו״ח</h3>
+        <p>שואלים בבוקר, מקבלים תשובה מאדם אמיתי עם שם. בלי מייל שנעלם ובלי ״הוא יחזור אליך״.</p>
+      </div>
+      <div class="card">
+        <div class="num">06</div>
+        <h3>עורך דין בבית</h3>
+        <p>הסכם מייסדים, <a href="glossary-v1.html#takanon">תקנון</a>, <a href="glossary-v1.html#saif-102">אופציות לעובדים</a>, חוזי לקוח וספק. אותה חברה, אותו צוות.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TWO TRACKS ============ -->
+<section class="band-tint">
+  <div class="wrap">
+    <div class="eyebrow">שתי נקודות כניסה</div>
+    <h2>מקימים חברה, או מחליפים רואה חשבון?</h2>
+    <p class="lead" style="margin-top:12px">שני מצבים שונים לגמרי. אנחנו עושים את שניהם, ומתחילים בשאלה איפה אתם עומדים.</p>
+
+    <div class="tracks">
+      <div class="track track-a">
+        <span class="track-tag">מסלול 1</span>
+        <h3>מקימים חברה חדשה</h3>
+        <p>מהרעיון ועד חברה פעילה עם תיקים פתוחים, חשבון בנק וחשבונית ראשונה. בלי לרוץ בין רשם החברות, מע״מ ועורך דין.</p>
+        <ul>
+          <li>קודם כל בדיקה: בע״מ באמת נכון לכם, או שעוסק מורשה עדיף כרגע</li>
+          <li>הקמה מלאה מול רשם החברות: תקנון, מניות, מנהלים</li>
+          <li>פתיחת תיקים במע״מ, מס הכנסה, ניכויים וביטוח לאומי</li>
+          <li>הסכם מייסדים ומסמכים משפטיים, עם עו״ד מהצוות</li>
+          <li>תכנון תמהיל המשיכה כבר לשנה הראשונה</li>
+        </ul>
+        <a class="btn btn-primary" href="#contact">מתחילים בהקמה</a>
+      </div>
+
+      <div class="track track-b">
+        <span class="track-tag">מסלול 2</span>
+        <h3>מחליפים רואה חשבון</h3>
+        <p>מעבר מסודר, בכל חודש בשנה. אתם לא מתקשרים לרו״ח הקודם ולא רודפים אחרי קבצים. אנחנו עושים את זה במקומכם.</p>
+        <ul>
+          <li>אנחנו מושכים את החומרים והגיבויים מהרו״ח הקודם</li>
+          <li>החלפת <a href="glossary-v1.html#meyatzeg">מייצג</a> ברשויות והעברת יתרות פתיחה</li>
+          <li>בדיקת עומק: יתרות בעלים, חובות מס פתוחים, דוחות חסרים</li>
+          <li>אומרים לכם בכנות מה מצאנו, גם כשזה לא נעים</li>
+          <li>סגירת פערים לפני שהם הופכים ל<a href="glossary-v1.html#shuma">שומה</a></li>
+        </ul>
+        <a class="btn btn-primary" href="#contact">מתחילים במעבר</a>
+      </div>
+    </div>
+
+    <div class="second-door">
+      <div>
+        <h3>עוד לא בטוחים שאתם רוצים להחליף?</h3>
+        <p style="margin:0">
+          זה בסדר גמור, ולא צריך להחליט היום. מתי בפעם האחרונה מישהו חיצוני עבר על הדוחות הכספיים
+          של החברה שלכם? תתחילו מחוות דעת שנייה: נעבור על יתרות הבעלים, על הרווחים הצבורים ועל
+          תמהיל המשכורת והדיבידנד, ונגיד לכם מה מצאנו. גם אם התשובה היא שהכל מטופל יפה.
+        </p>
+      </div>
+      <a class="btn btn-primary btn-lg" href="#contact">רוצה חוות דעת שנייה</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RAISE / DUE DILIGENCE ============ -->
+<section>
+  <div class="wrap">
+    <div class="band two-col">
+      <div>
+        <div class="eyebrow">לקראת גיוס או עסקה</div>
+        <h2 style="margin-bottom:14px">משקיע לא שואל כמה החברה מרוויחה. הוא מבקש לראות.</h2>
+        <p>
+          חברה עם דוחות מסודרים עוברת בדיקת נאותות בשבועות. חברה בלי, מגלה את הפערים בדיוק
+          כשהיא הכי צריכה שהכל יהיה חלק.
+        </p>
+      </div>
+      <div class="raise-list">
+        <div>דוחות מבוקרים ערוכים ומוכנים ל-Data Room</div>
+        <div>תוכנית אופציות לעובדים לפי סעיף 102</div>
+        <div>טבלת בעלי מניות מסודרת ומעודכנת ברשם</div>
+        <div>מסמכי מייסדים והשקעה, עם עו״ד מהבית</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section class="band-tint">
+  <div class="wrap">
+    <div class="eyebrow">ההבדל בפועל</div>
+    <h2>רואה חשבון קלאסי מול MyCompany</h2>
+    <div class="tbl-scroll" style="margin-top:36px">
+      <table>
+        <thead><tr><th>&nbsp;</th><th>רואה חשבון קלאסי</th><th>MyCompany</th></tr></thead>
+        <tbody>
+          <tr><td>מתי אתם שומעים ממנו</td><td class="dim">כשצריך שתחתמו על משהו</td><td>לפני שאתם צריכים להחליט</td></tr>
+          <tr><td>דוחות כספיים</td><td class="dim">מגיעים חודשים אחרי סוף השנה</td><td>לוח זמנים שנקבע מראש</td></tr>
+          <tr><td>תמהיל משכורת ודיבידנד</td><td class="dim">נקבע בדיעבד, פעם בשנה</td><td>מתוכנן מראש ומתעדכן</td></tr>
+          <tr><td>משיכות בעלים</td><td class="dim">מתגלות בדוח השנתי</td><td>התראה ביום חציית התקרה</td></tr>
+          <tr><td>ערוץ תקשורת</td><td class="dim">מייל, והודעה ש״יחזור אליכם״</td><td>וואטסאפ, מענה באותו יום</td></tr>
+          <tr><td>עורך דין</td><td class="dim">ספק נפרד, חשבון נפרד</td><td>בצוות, כלול בליווי</td></tr>
+          <tr><td>מעבר אליו</td><td class="dim">אתם רודפים אחרי הקבצים</td><td>אנחנו מנהלים את ההעברה</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section>
+  <div class="wrap narrow">
+    <div class="eyebrow">שאלות נפוצות</div>
+    <h2>מה יזמים שואלים אותנו</h2>
+    <div style="margin-top:36px;border-top:1px solid var(--hairline)">
+      <details open>
+        <summary>מה זה חוק הרווחים הכלואים ולמה כולם מדברים עליו?</summary>
+        <div class="a">מ-2025, חברת מעטים שצברה רווחים ולא חילקה אותם עומדת כל שנה מול בחירה: לחלק דיבידנד של 6% מהרווחים הצבורים (5% ב-2025), או לשלם תוספת מס של 2% על היתרה. הנקודה שרוב הפאניקה מפספסת היא <b>מגן המס</b>: לפני החישוב מנכים את הגבוה מבין 750,000 ₪, ההוצאות השנתיות של החברה ועלות הנכסים. הרבה חברות מגלות שהמגן מכסה אותן לגמרי. <a href="#check">אפשר לבדוק כאן ב-30 שניות</a>, או לקרוא את <a href="glossary-v1.html#revahim-kluim">ההגדרה המלאה במילון</a>.</div>
+      </details>
+      <details>
+        <summary>משכתי כסף מהחברה במהלך השנה. כמה זמן יש לי?</summary>
+        <div class="a">יותר ממה שרוב האנשים חושבים, ופחות ממה שנוח. <a href="glossary-v1.html#mishichat-baalim">סעיף 3(ט1)</a> מתחיל לחול כשיתרת המשיכות עוברת 100,000 ₪. מרגע שעברתם, יש לכם עד סוף שנת המס <b>שאחרי</b> שנת המשיכה לסגור את היתרה. לא נסגרה, והיא נחשבת הכנסה שלכם.</div>
+      </details>
+      <details>
+        <summary>אני עוסק מורשה ושוקל לעבור לבע״מ. מה נכון לי?</summary>
+        <div class="a">תלוי בשלושה דברים: כמה רווח נשאר אחרי הוצאות, האם יש שותפים או משקיעים, ומה רמת החשיפה לאחריות בתחום שלכם. כשהרווח השנתי עובר בקביעות את הנקודה שבה המס השולי שלכם גבוה מ<a href="glossary-v1.html#mas-hevrot">מס החברות</a>, ההפרש מתחיל להצדיק את העלות התפעולית. נעשה את החישוב איתכם על המספרים האמיתיים, ונגיד לכם גם אם עדיף להישאר <a href="osek-morshe-v1.html">עוסק מורשה</a> בינתיים.</div>
+      </details>
+      <details>
+        <summary>אפשר להחליף רואה חשבון באמצע שנת המס?</summary>
+        <div class="a">כן, בכל חודש. לא צריך לחכות לסוף שנה. אנחנו מבצעים החלפת מייצג ברשויות, מושכים את החומרים מהרו״ח הקודם וקולטים יתרות פתיחה. אתם לא מנהלים את המעבר בעצמכם.</div>
+      </details>
+      <details>
+        <summary>הרואה חשבון הנוכחי שלי לא משחרר חומרים. מה עושים?</summary>
+        <div class="a">זה קורה, ויש לזה נוהל מסודר. אנחנו פונים אליו ישירות בשמכם ומנהלים את ההתכתבות. במקרים שדורשים את זה, עורך דין מהצוות נכנס לתמונה. אתם לא צריכים לנהל את העימות הזה.</div>
+      </details>
+      <details>
+        <summary>יש לי חברה עם מעט או בלי פעילות. זה רלוונטי לי?</summary>
+        <div class="a">כן, ולפעמים דווקא שם מצטברות הבעיות. גם חברה ללא פעילות חייבת בדיווח שנתי ל<a href="glossary-v1.html#rasham">רשם החברות</a>, באגרה שנתית ובדיווחים לרשויות המס. חברות רדומות מגלות את החוב כשהן מנסות להתחיל לפעול, לגייס או להיסגר.</div>
+      </details>
+      <details>
+        <summary>כמה זה עולה?</summary>
+        <div class="a">המחיר נקבע לפי מחזור, מספר עובדים, כמות התנועות ומורכבות הפעילות. מה שקבוע הוא המבנה: חבילה חודשית אחת שיודעים מראש, בלי חיוב לפי שעות ובלי הפתעות בסוף שנה. <a href="pricing-v1.html">המחירון כאן</a>.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="band cta-band">
+      <div>
+        <h2 style="margin-bottom:12px">ביקורת חינם על התיק של החברה</h2>
+        <p>
+          לא שיחת מכירה ולא הרצאה. עוברים על ארבעה דברים שכמעט תמיד מסתתר בהם כסף:
+          יתרות בעלים, רווחים צבורים, תמהיל משכורת ודיבידנד, ודוחות ואגרות פתוחים.
+          בסוף אתם מקבלים תמונת מצב — גם אם לא תתקדמו איתנו.
+        </p>
+      </div>
+      <a class="btn btn-primary btn-lg" href="homepage-v1.html#panel">להתחלה מהירה ←</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <img src="assets/logo-white.png" alt="MyCompany" />
+      <p>ליווי פיננסי ומשפטי לעוסקים מורשים ולחברות בע״מ בישראל.</p>
+    </div>
+    <div>
+      <b>למי זה מתאים</b>
+      <div class="foot-links">
+        <a href="osek-morshe-v1.html">עוסק מורשה</a>
+        <a href="ltd-v1.html">חברה בע״מ</a>
+        <a href="glossary-v1.html">מילון מונחים</a>
+      </div>
+    </div>
+    <div>
+      <b>יצירת קשר</b>
+      <div class="foot-links">
+        <a href="tel:0555560774" style="direction:ltr;display:inline-block">055-556-0774</a>
+        <span>הברזל 34, רמת החייל, תל אביב</span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:13.5px">
+    © 2026 כל הזכויות שמורות ל-MyCompany · מערכת מאושרת על ידי רשות המיסים בישראל
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.querySelector('.nav');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* ---- trapped-profits self-check ----
+     verdict copy is PLAIN TEXT only; the DOM is built with createElement.
+     Never inject markup through JS string literals. */
+  var ans = [null,null,null,null];
+  var outEl = document.getElementById('checkOut');
+
+  document.querySelectorAll('.yn').forEach(function(g){
+    var qi = +g.getAttribute('data-q');
+    g.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){
+        g.querySelectorAll('button').forEach(function(x){ x.classList.remove('on'); });
+        b.classList.add('on');
+        ans[qi] = +b.getAttribute('data-v');
+        render();
+      });
+    });
+  });
+
+  function verdict(){
+    if(ans.indexOf(null) > -1) return null;
+    if(!ans[0]) return {tone:'ok', lead:'', body:'החוק מכוון לחברות מעטים, עד חמישה בעלי שליטה. אם החברה שלכם לא כזו, תוספת המס הזו כנראה לא רלוונטית לכם. יש עוד כמה דברים שכן, ונשמח לעבור עליהם.'};
+    if(!ans[1]) return {tone:'ok', lead:'', body:'אין רווחים צבורים שלא חולקו, אז אין על מה להטיל את התוספת. שווה לחזור לבדיקה הזו בכל שנה שבה החברה מסיימת ברווח שנשאר בפנים.'};
+    if(!ans[2]) return {tone:'ok', lead:'מגן המס כנראה מכסה אתכם.', body:' המגן הוא הגבוה מבין 750,000 ₪, ההוצאות השנתיות של החברה ועלות הנכסים. אם הרווחים הצבורים נמוכים ממנו, אין רווחים עודפים לחייב. זו בדיוק הנקודה שרוב הבהלה סביב החוק מפספסת.'};
+    if(ans[3]) return {tone:'ok', lead:'חילקתם, וכנראה סגרתם את השנה הזו.', body:' חלוקה של 6% מהרווחים הצבורים מייתרת את תוספת המס. השאלה הבאה היא אם הדרך שבה חילקתם הייתה הזולה ביותר עבורכם אישית, ומה קורה בשנה הבאה.'};
+    return {tone:'hot', lead:'נראה שהחוק כן נוגע אליכם.', body:' לפי מה שסימנתם יש רווחים עודפים מעל מגן המס ולא חולק דיבידנד בשיעור הנדרש, כלומר החברה צפויה לשלם 2% על היתרה. זו החלטה שנתית, והיא נעשית בין אם אתם מקבלים אותה ובין אם לא. יש דרכים חוקיות לצמצם אותה: תזמון החלוקה, השקעה חוזרת בחברה, ובדיקה מה בכלל נכנס להגדרת רווחים עודפים.'};
+  }
+
+  function render(){
+    var v = verdict();
+    outEl.className = 'check-out';
+    outEl.textContent = '';
+    if(!v){
+      var left = ans.filter(function(a){ return a === null; }).length;
+      outEl.textContent = 'נשארו ' + left + (left === 1 ? ' שאלה.' : ' שאלות.') + ' התוצאה תופיע כאן, בלי להשאיר פרטים.';
+      return;
+    }
+    outEl.classList.add(v.tone);
+    if(v.lead){
+      var strong = document.createElement('b');
+      strong.textContent = v.lead;
+      outEl.appendChild(strong);
+    }
+    outEl.appendChild(document.createTextNode(v.body));
+
+    var a = document.createElement('a');
+    a.className = 'btn ' + (v.tone === 'hot' ? 'btn-primary' : 'btn-ghost');
+    a.href = '#contact';
+    a.textContent = v.tone === 'hot' ? 'רוצה שנעבור על זה על הדוחות שלך' : 'רוצה בכל זאת עין שנייה על הדוחות';
+    outEl.appendChild(document.createElement('br'));
+    outEl.appendChild(a);
+  }
+
+  /* staggered reveal */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('.card,.track,.stat,.raise-list div,.second-door');
+  if(reduce || !('IntersectionObserver' in window)){
+    targets.forEach(function(t){ t.classList.add('in'); });
+  } else {
+    targets.forEach(function(t){ t.classList.add('reveal'); });
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e,i){
+        if(!e.isIntersecting) return;
+        var el = e.target;
+        setTimeout(function(){ el.classList.add('in'); }, (i % 6) * 55);
+        io.unobserve(el);
+      });
+    }, {threshold:.15});
+    targets.forEach(function(t){ io.observe(t); });
+  }
+})();
+</script>
+<script id="navdrop-js">
+/* nav dropdown toggle + RTL bootstrap — generated by nav.js */
+(function(){
+  /* fragments have no <html dir>; set it so :dir(), form controls and
+     scrollbar placement match the artifact environment */
+  var de=document.documentElement;
+  if(!de.getAttribute('dir')) de.setAttribute('dir','rtl');
+  if(!de.getAttribute('lang')) de.setAttribute('lang','he');
+
+  /* keep the sticky nav parked exactly below the notice strip */
+  var strip=document.querySelector('.strip');
+  function stripH(){
+    if(!strip) return;
+    de.style.setProperty('--strip-h', Math.round(strip.getBoundingClientRect().height)+'px');
+  }
+  stripH();
+  window.addEventListener('resize', stripH, {passive:true});
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(stripH);
+  document.querySelectorAll('.navdrop').forEach(function(d){
+    var t=d.querySelector('.navdrop-t');
+    if(!t) return;
+    t.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=d.classList.toggle('open');
+      t.setAttribute('aria-expanded',open?'true':'false');
+    });
+  });
+  document.addEventListener('click',function(e){
+    document.querySelectorAll('.navdrop.open').forEach(function(d){
+      /* never close on a click INSIDE the menu — doing so removes the anchor
+         mid-click and the browser cancels the navigation */
+      if(d.contains(e.target)) return;
+      d.classList.remove('open');
+      var t=d.querySelector('.navdrop-t'); if(t) t.setAttribute('aria-expanded','false');
+    });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape') return;
+    document.querySelectorAll('.navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+  });
+})();
+</script>
+</body>
+</html>
