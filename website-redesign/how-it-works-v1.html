@@ -891,7 +891,7 @@
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
   }
   (function () {
-    if (/^(localhost|127\.0\.0\.1|192\.168\.|172\.|10\.)/.test(location.hostname)) return;
+    if (!location.hostname || /^(localhost|127.0.0.1|192.168.|172.|10.)/.test(location.hostname) || /github.io$/.test(location.hostname)) return;
     var MAP = {
       'videos-v1.html': 'https://claude.ai/code/artifact/77759056-dcdd-4b6e-97e1-b33ad402b034',
       'technology-v1.html': 'https://claude.ai/code/artifact/f164c45d-4adb-498b-a5f4-87fd734512aa',
