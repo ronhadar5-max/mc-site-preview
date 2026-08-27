@@ -163,6 +163,22 @@ html{direction:rtl}
 .navdrop-m a.sep{margin-top:6px;padding-top:12px;border-top:1px solid #DADADA;border-radius:0 0 6px 6px}
 .navdrop-m a.active,.links a.active,.nav-links a.active{color:#5B2FE6;font-weight:600}
 @media(max-width:1180px){.navdrop-m{right:auto;left:0}}
+
+  /* two doors in the hero — Firstbase's device */
+  .doors{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+  @media(max-width:620px){.doors{grid-template-columns:1fr}}
+  .door{display:flex;flex-direction:column;gap:5px;padding:17px 19px;border-radius:10px;
+    border:1px solid var(--hairline);background:var(--ground);box-shadow:var(--shadow);
+    text-decoration:none;transition:border-color .16s ease,box-shadow .16s ease,transform .16s var(--ease)}
+  .door:hover{border-color:var(--brand);box-shadow:0 10px 26px -12px rgba(91,47,230,.5);transform:translateY(-2px)}
+  .door b{font-size:17px;font-weight:700;color:var(--ink-dark)}
+  .door span{font-size:14px;color:var(--faint);line-height:1.5}
+  .door:hover b{color:var(--brand)}
+  .opens{margin-top:16px;font-size:15.5px;color:var(--ink);max-width:52ch}
+  .doors-alt{margin-top:10px;font-size:14.5px}
+  .doors-alt a{color:var(--brand);font-weight:600;text-decoration:none}
+  .doors-alt a:hover{text-decoration:underline;text-underline-offset:3px}
+  .track{scroll-margin-top:110px}
 </style>
 </head>
 <body>
@@ -212,10 +228,18 @@ html{direction:rtl}
         תמהיל משכורת מול דיבידנד ורווחים שנשארו בחברה — אצל רוב היזמים כל אלה מתבררים
         בדוח השנתי, כשכבר אי אפשר לתכנן, רק לשלם.
       </p>
-      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">
-        <a class="btn btn-primary btn-lg" href="#contact">בואו נדבר</a>
-        <a class="btn btn-ghost btn-lg" href="#check">בדיקת רווחים כלואים</a>
+      <div class="doors">
+        <a class="door" href="#track-new">
+          <b>מקים חברה חדשה</b>
+          <span>מהרעיון עד חברה פעילה עם תיקים וחשבון בנק</span>
+        </a>
+        <a class="door" href="#track-switch">
+          <b>כבר יש לי חברה</b>
+          <span>מעבר מסודר מרו״ח קיים, בכל חודש בשנה</span>
+        </a>
       </div>
+      <p class="opens">חשבון בנק עסקי, משכורת מסודרת ומשיכות בלי הפתעות — מהחודש הראשון.</p>
+      <p class="doors-alt"><a href="#check">או: בדיקת רווחים כלואים ב-30 שניות ←</a></p>
       <div class="segbar">
         <span>מלווים מאות עסקים בישראל</span>
         <span>מערכת מאושרת רשות המיסים</span>
@@ -398,7 +422,7 @@ html{direction:rtl}
     <p class="lead" style="margin-top:12px">שני מצבים שונים לגמרי. אנחנו עושים את שניהם, ומתחילים בשאלה איפה אתם עומדים.</p>
 
     <div class="tracks">
-      <div class="track track-a">
+      <div class="track track-a" id="track-new">
         <span class="track-tag">מסלול 1</span>
         <h3>מקימים חברה חדשה</h3>
         <p>מהרעיון ועד חברה פעילה עם תיקים פתוחים, חשבון בנק וחשבונית ראשונה. בלי לרוץ בין רשם החברות, מע״מ ועורך דין.</p>
@@ -412,7 +436,7 @@ html{direction:rtl}
         <a class="btn btn-primary" href="#contact">מתחילים בהקמה</a>
       </div>
 
-      <div class="track track-b">
+      <div class="track track-b" id="track-switch">
         <span class="track-tag">מסלול 2</span>
         <h3>מחליפים רואה חשבון</h3>
         <p>מעבר מסודר, בכל חודש בשנה. אתם לא מתקשרים לרו״ח הקודם ולא רודפים אחרי קבצים. אנחנו עושים את זה במקומכם.</p>
