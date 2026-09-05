@@ -19,9 +19,9 @@
 <style>
   :root {
     --ink: #4A4A4A; --ink-dark: #37332B;
-    --accent: #5B2FE6; --accent-deep: #3D1DA8; --accent-soft: #EDE7FC;
+    --accent: #7A2BFF; --accent-deep: #5A19DB; --accent-soft: #F0E8FF;
     --money: #FF8B3D; --money-ink: #2A1670;
-    --hairline: #DADADA; --tint: #F3EFE4; --blob: #F1ECFC;
+    --hairline: #DADADA; --tint: #F3EFE4; --blob: #F2EAFF;
     --ground: #FFFFFF; --paper: #FAF8F1; --faint: #9B9B9B; --good: #1E8A5A; --wa: #E9FBEF;
     --shadow: 0 6px 20px -4px rgba(32,32,32,.08);
   }
@@ -294,13 +294,13 @@
   html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
     scroll-padding-top: 76px; interpolate-size: allow-keywords; }
   * { -webkit-tap-highlight-color: transparent; }
-  ::selection { background: #5B2FE6; color: #fff; }
+  ::selection { background: #7A2BFF; color: #fff; }
   ::-webkit-scrollbar { width: 11px; }
   ::-webkit-scrollbar-thumb { background: #D8D2C4; border-radius: 99px; border: 3px solid #FAF8F1; }
   ::-webkit-scrollbar-thumb:hover { background: #C4BDAC; }
   ::-webkit-scrollbar-track { background: transparent; }
   a { text-underline-offset: 3px; text-decoration-thickness: 1px; }
-  :focus-visible { outline: 2.5px solid #5B2FE6; outline-offset: 3px; border-radius: 4px; }
+  :focus-visible { outline: 2.5px solid #7A2BFF; outline-offset: 3px; border-radius: 4px; }
   .phead h1, .hero h1, h2.big, .band h2, .done-h { letter-spacing: -0.012em; }
   .btn, .cta { transition: transform .16s cubic-bezier(.2,.8,.2,1), background-color .16s ease, box-shadow .16s ease; will-change: transform; }
   .btn:hover, .cta:hover { transform: translateY(-1px); }
@@ -310,7 +310,7 @@
   .nav.scrolled { box-shadow: 0 8px 22px -12px rgba(40,32,20,.18); }
   .nav .links a { position: relative; }
   .nav .links a::after { content: ""; position: absolute; inset-inline: 0; bottom: -6px; height: 2px;
-    border-radius: 2px; background: #5B2FE6; transform: scaleX(0); transition: transform .18s ease; }
+    border-radius: 2px; background: #7A2BFF; transform: scaleX(0); transition: transform .18s ease; }
   .nav .links a:hover::after { transform: scaleX(1); }
   details::details-content { transition: height .28s ease, content-visibility .28s allow-discrete; height: 0; overflow: clip; }
   details[open]::details-content { height: auto; }
@@ -644,10 +644,10 @@ html{direction:rtl}
 }
 .navdrop>.navdrop-t>.navdrop-lbl{position:relative;padding-block:3px}
 .navdrop>.navdrop-t>.navdrop-lbl::after{
-  content:"";position:absolute;inset-inline:0;bottom:0;height:1.5px;background:#5B2FE6;
+  content:"";position:absolute;inset-inline:0;bottom:0;height:1.5px;background:#7A2BFF;
   transform:scaleX(0);transform-origin:right;transition:transform .18s cubic-bezier(.2,.8,.2,1);
 }
-.navdrop>.navdrop-t:hover,.navdrop.open>.navdrop-t{color:#5B2FE6}
+.navdrop>.navdrop-t:hover,.navdrop.open>.navdrop-t{color:#7A2BFF}
 .navdrop>.navdrop-t:hover>.navdrop-lbl::after,
 .navdrop.open>.navdrop-t>.navdrop-lbl::after{transform:scaleX(1)}
 .navdrop>.navdrop-t>.navdrop-car{
@@ -664,7 +664,7 @@ html{direction:rtl}
 .nav-links .navdrop>.navdrop-t>.navdrop-lbl{padding-block:3px}
 .nav-links .navdrop>.navdrop-t>.navdrop-lbl::after{height:1.5px;bottom:0}
 /* current section — replaces the old inline-style hack */
-.navdrop.has-active>.navdrop-t{color:#5B2FE6;font-weight:600}
+.navdrop.has-active>.navdrop-t{color:#7A2BFF;font-weight:600}
 .navdrop-m{
   position:absolute;top:100%;margin-top:10px;right:0;min-width:212px;z-index:80;
   background:#fff;border:1px solid #DADADA;border-radius:10px;padding:6px;
@@ -678,9 +678,9 @@ html{direction:rtl}
 @media(hover:hover){.navdrop:hover>.navdrop-m{display:grid}}
 .navdrop-m a{display:block;padding:9px 12px;border-radius:6px;font-size:15px;font-weight:500;color:#37332B;white-space:nowrap}
 .navdrop-m a::after{display:none !important}
-.navdrop-m a:hover{background:#EDE7FC;color:#5B2FE6}
+.navdrop-m a:hover{background:#F0E8FF;color:#7A2BFF}
 .navdrop-m a.sep{margin-top:6px;padding-top:12px;border-top:1px solid #DADADA;border-radius:0 0 6px 6px}
-.navdrop-m a.active,.links a.active,.nav-links a.active{color:#5B2FE6;font-weight:600}
+.navdrop-m a.active,.links a.active,.nav-links a.active{color:#7A2BFF;font-weight:600}
 @media(max-width:1180px){.navdrop-m{right:auto;left:0}}
 </style>
 <script id="navdrop-js">
