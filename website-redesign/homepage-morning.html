@@ -684,7 +684,7 @@
     <div class="grid stacked">
       <div class="hcol">
         <h1>תשכחו כל מה שאתם יודעים על <em>רואי חשבון</em>.</h1>
-        <p class="sub">רואה חשבון מלא לעסק שלך — AI שעובד 24/7, רו״ח מורשה שחותם, והכל קורה בוואטסאפ.</p>
+        <p class="sub">רואה חשבון מלא לעסק שלך — AI שעובד 24/7, אפליקציה לחשבוניות, והכל קורה בוואטסאפ.</p>
         <div class="hcta">
           <a class="btn lg hcta-b" href="panel-prototype-v0.html">בדקו מחיר — 90 שניות</a>
           <p class="hcta-m">רואים את המחיר לפני שמשלמים שקל · בלי טלפון · בלי איש מכירות</p>
@@ -1678,12 +1678,15 @@ html{direction:rtl}
     margin: 24px 0 0; }
 
   /* 40px, then the product — their image starts 40px under the microcopy */
-  .hero .grid.stacked .phone { margin: 40px auto 0; width: min(280px, 100%); max-width: 280px; }
-  .phone .thread { height: clamp(200px, calc(100vh - 590px), 500px); }
-  .phone .head b { font-size: 13px; }
-  .phone .head span { font-size: 10.5px; }
-  .msg { font-size: 12.5px; padding: 7px 11px; }
-  .msg .t { font-size: 9.5px; }
+  /* The device gets a FIXED, correct aspect. Sizing it to the leftover fold
+     space was what made it squat: at 900px tall it came out 280x421 (1.5:1)
+     and on a short window 280x314 (1.12:1) — a square, not a phone.
+     272 x 584 is 2.15:1, an actual handset. Since the measured spacing wins,
+     the fold crops it on short screens exactly as morning crop their own
+     hero image — a cropped phone still reads as a phone; a squashed one
+     reads as broken. */
+  .hero .grid.stacked .phone { margin: 40px auto 0; width: min(272px, 100%); max-width: 272px; }
+  .phone .thread { height: 470px; }
 
   /* their hero has no trust strip at all — ours goes under the device, quiet */
   .hero .grid.stacked .trust-strip {
