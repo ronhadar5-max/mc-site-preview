@@ -1,0 +1,62 @@
+<meta name="robots" content="noindex, nofollow" />
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>עמוד מתוכנן · MyCompany</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Frank+Ruhl+Libre:wght@400;500&display=swap">
+<style>
+  :root { --paper:#FAF8F1; --ground:#FFFFFF; --ink:#4A4A4A; --ink-dark:#37332B; --faint:#8E887C;
+          --accent:#7A2BFF; --accent-deep:#5A19DB; --accent-soft:#F0E8FF; --hairline:#E4E0D6; }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; display:grid; place-items:center; padding:24px;
+         background:var(--paper); color:var(--ink); font-family:"Heebo","Segoe UI",system-ui,sans-serif; line-height:1.6; }
+  .card { width:min(560px,100%); background:var(--ground); border:1px solid var(--hairline); border-radius:18px; padding:30px 30px 26px; }
+  .k { font-size:12.5px; font-weight:700; letter-spacing:.06em; color:var(--accent); margin:0 0 10px; }
+  h1 { font-family:"Frank Ruhl Libre",Georgia,serif; font-weight:400; font-size:30px; line-height:1.15; color:var(--ink-dark); margin:0 0 14px; text-wrap:balance; }
+  p { margin:0 0 12px; font-size:16px; }
+  code { display:inline-block; direction:ltr; font-family:ui-monospace,Consolas,monospace; font-size:14.5px;
+         background:var(--accent-soft); color:var(--accent-deep); padding:4px 10px; border-radius:8px; }
+  .meta { display:flex; gap:18px; flex-wrap:wrap; margin:16px 0 22px; font-size:14px; color:var(--faint); }
+  .meta b { color:var(--ink-dark); font-weight:600; }
+  .row { display:flex; gap:10px; flex-wrap:wrap; }
+  a.btn { display:inline-block; padding:11px 20px; border-radius:10px; text-decoration:none; font-weight:600; font-size:15px;
+          background:var(--accent); color:#fff; }
+  a.btn:hover { background:var(--accent-deep); }
+  a.ghost { background:var(--ground); color:var(--ink-dark); border:1px solid var(--hairline); }
+  a.ghost:hover { border-color:var(--accent); color:var(--accent); background:var(--ground); }
+  a:focus-visible { outline:3px solid var(--accent-deep); outline-offset:3px; }
+</style>
+</head>
+<body>
+  <main class="card">
+    <p class="k">עמוד מתוכנן — עדיין לא נבנה</p>
+    <h1 id="t">העמוד הזה נמצא במפת האתר</h1>
+    <p>הקישור שלחצת עליו מוביל לעמוד שמוגדר בארכיטקטורה החדשה אבל עוד לא קיים בתצוגה המקדימה. הכתובת המתוכננת שלו:</p>
+    <p><code id="u">/</code></p>
+    <div class="meta"><span>גל השקה: <b id="w">—</b></span><span>מקור: <b>מסמך ההחלטות · 05.09.2026</b></span></div>
+    <div class="row">
+      <a class="btn" href="homepage-morning.html">חזרה לדף הבית</a>
+      <a class="btn ghost" href="panel-prototype-v0.html">בדקו מחיר</a>
+    </div>
+  </main>
+  <script>
+    (function(){
+      var q=new URLSearchParams(location.search);
+      var p=q.get('p')||'/'; var w=q.get('w');
+      document.getElementById('u').textContent=p;
+      document.getElementById('w').textContent = w==='1' ? 'Wave 1 — השקה' : w==='2' ? 'Wave 2 — 90 הימים הראשונים' : 'לא סומן';
+      var names={'/open-business/':'פתיחת עסק אונליין','/open-business/choose-business-type/':'עוסק מורשה או חברה בע״מ? (wizard)',
+        '/accounting/online-accountant/':'רואה חשבון אונליין','/accounting/bookkeeping/':'הנהלת חשבונות אונליין',
+        '/accounting/reports/annual-report-self-employed/':'דוח שנתי לעצמאי','/accounting/reports/annual-report-company/':'דוח שנתי לחברה בע״מ',
+        '/switch-to-mycompany/':'מעבירים עסק קיים ל-MyCompany','/payroll/':'שכר והעסקת עובדים',
+        '/open-business/dealer-to-company/':'מעבר מעוסק לחברה בע״מ','/company/':'לחברה בע״מ — Company Hub',
+        '/tools/':'מחשבונים וכלים','/tax-calendar/':'לוח מועדי דיווח ותשלום','/blog/':'בלוג'};
+      if(names[p]){document.getElementById('t').textContent=names[p];document.title=names[p]+' · MyCompany';}
+    })();
+  </script>
+</body>
+</html>
