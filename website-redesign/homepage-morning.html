@@ -1,5 +1,5 @@
 <meta name="robots" content="noindex, nofollow" />
-<title>ג · מסך אחד — הטלפון מתחת, בלי גלילה</title>
+<title>ג · CTA אחד — הטלפון מתחת, מסך אחד</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#FFFFFF">
 <style id="fonts">
@@ -685,17 +685,10 @@
       <div class="hcol">
         <h1>תשכחו כל מה שאתם יודעים על <em>רואי חשבון</em>.</h1>
         <p class="sub">רואה חשבון מלא לעסק שלך — AI שעובד 24/7, רו״ח מורשה שחותם, והכל קורה בוואטסאפ.</p>
-        <div class="hq">
-          <p class="hq-q">מה סוג העסק שלך?</p>
-          <p class="hq-t">מחיר סגור תוך 90 שניות</p>
-          <div class="hq-opts">
-            <a class="hq-o" href="panel-prototype-v0.html#biz=osek">עוסק מורשה</a>
-            <a class="hq-o" href="panel-prototype-v0.html#biz=ltd">חברה בע״מ</a>
-            <a class="hq-o hq-w" href="panel-prototype-v0.html#biz=new">עוד אין לי עסק 🌱<small>נפתח לך אותו — זה עלינו</small></a>
-          </div>
-          <p class="hq-m">רואים את המחיר לפני שמשלמים שקל · בלי טלפון · בלי התחייבות</p>
+        <div class="hcta">
+          <a class="btn lg hcta-b" href="panel-prototype-v0.html">בדקו מחיר — 90 שניות</a>
+          <p class="hcta-m">רואים את המחיר לפני שמשלמים שקל · בלי טלפון · בלי איש מכירות</p>
         </div>
-        <a class="hq-alt" href="#how">רק רוצה להבין איך זה עובד ←</a>
       </div>
       <div class="phone">
         <div class="head">
@@ -1633,64 +1626,49 @@ html{direction:rtl}
   .astrip { padding-block: 0; }
 </style>
 <style id="sv-fold">
-  /* ── variant ג: the whole hero in one screen ───────────────────────
-     morning's discipline, measured off their own page at 1366x640:
-     a small headline (theirs is 20px), a short sub, one compact CTA, and
-     the product image starting just above the fold. Everything here is
-     sized down so the device clears the fold instead of peeking.
+  /* ── variant ג: one CTA, one screen ────────────────────────────────
+     morning's actual hero, measured at 1366x640: a 20px headline, a single
+     button at y=350, and the product image starting at 483. The business-type
+     question is not asked on the homepage at all — it is the panel's first
+     question (panel-prototype-v0.html q1), so the hero has one job: get the
+     click. Dropping the three-option card frees ~230px, and that is what buys
+     the device its place above the fold.
      ---------------------------------------------------------------- */
 
   .hero { padding: 18px 0 28px; }
-
-  /* the headline stops being the whole screen */
   .hero .grid.stacked h1 { font-size: clamp(26px, 3.1vw, 38px); margin-bottom: 8px; }
   .hero .grid.stacked .sub { font-size: clamp(14px, 1.15vw, 15.5px); max-width: 700px;
-                             margin-inline: auto; margin-bottom: 12px; }
+                             margin-inline: auto; margin-bottom: 18px; }
 
-  /* the decision card on a diet — every value one step down from the desktop pass */
-  .hq { margin-top: 0; max-width: 540px; }
-  /* Ron: the box around the CTA is dead weight. the buttons ARE the surface —
-     the cream ground carries them, and .hq-w keeps the only white card so the
-     third option still reads as the quiet one. */
-  .hq { background: transparent; border: none; box-shadow: none; padding: 0; border-radius: 0; }
+  /* the single CTA — no card, no box, nothing but the button */
+  .hcta { margin: 0; }
+  .hcta-b { padding: 15px 34px; font-size: 16.5px; box-shadow: 0 8px 24px -10px rgba(91,47,230,.5); }
+  .hcta-b::after { content: " ←"; opacity: .72; }
+  .hcta-b:hover { box-shadow: 0 12px 30px -10px rgba(91,47,230,.58); }
+  .hcta-m { font-size: 12px; color: var(--faint); margin: 10px 0 0; }
 
-  .hq-q { font-size: 17px; margin-bottom: 2px; }
-  /* the card sheds its subtitle and the "just browsing" link — 51px, and the
-     buttons already say what they do. this is the price of one screen. */
-  .hq-t { display: none; }
-  .hq-alt { display: none; }
-  .hq-opts { gap: 8px; }
-  .hq-o { min-height: 44px; padding: 11px 14px; font-size: 15px; }
-  .hq-o:not(.hq-w)::after { font-size: 13px; }
-  .hq-w { padding: 9px 14px; font-size: 13.5px; }
-  .hq-w small { font-size: 11.5px; }
-  .hq-m { font-size: 11px; margin-top: 8px; }
-
-  /* the device sits under the copy and is sized to whatever the fold has left:
-     viewport - nav(69) - hero top(18) - copy block(~300) - bezels(114) - tail(12) */
-  .hero .grid.stacked .phone { margin: 14px auto 0; }
-  /* a 328x243 slab is not a phone. the device keeps a credible aspect ratio and
-     is narrowed instead — it clears the fold from 1440x900 up, and peeks on a
-     1366x768 laptop exactly the way morning lets its own product image peek. */
-  .phone { width: min(268px, 100%); max-width: 268px; }
-  .phone .thread { height: clamp(300px, calc(100vh - 500px), 420px); }
-  .phone .head b { font-size: 13px; }
+  /* the device is sized to whatever the fold has left after the copy:
+     viewport - nav(69) - hero top(18) - copy(~190) - bezels(114) - tail(12) */
+  .hero .grid.stacked .phone { margin: 18px auto 0; width: min(258px, 100%); max-width: 258px; }
+  .phone .thread { height: clamp(210px, calc(100vh - 415px), 500px); }
+  .phone .head b { font-size: 12.5px; }
   .phone .head span { font-size: 10.5px; }
-  .msg { font-size: 12.5px; padding: 7px 11px; }
+  .msg { font-size: 12px; padding: 7px 10px; }
   .msg .t { font-size: 9.5px; }
 
-  /* the trust strip now lives under the device — it is the scroll cue */
+  /* the trust strip sits under the device and is the scroll cue */
   .hero .grid.stacked .trust-strip { margin-top: 16px; padding-top: 12px; font-size: 12px;
                                      gap: 24px; max-width: 640px; margin-inline: auto; }
 
-  /* the halo re-centres on the shorter hero */
-  .hero .blob { top: 210px; width: 560px; height: 470px; opacity: .5; }
+  .hero .blob { top: 200px; width: 540px; height: 460px; opacity: .5; }
 
   @media (max-width: 780px) {
     /* on a phone the fold argument is moot — let it breathe again */
     .hero { padding: 26px 0 40px; }
     .hero .grid.stacked h1 { font-size: clamp(28px, 7.6vw, 36px); }
     .hero .grid.stacked .sub { font-size: 16px; }
+    .hcta-b { display: block; width: 100%; }
+    .hero .grid.stacked .phone { width: min(300px, 100%); max-width: 300px; }
     .phone .thread { height: 372px; }
     .msg { font-size: 13.5px; padding: 9px 13px; }
   }
