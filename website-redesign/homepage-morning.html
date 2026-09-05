@@ -1654,12 +1654,15 @@ html{direction:rtl}
   /* one centred 692px column, exactly their 8/12 of the container */
   .hero .grid.stacked .hcol { max-width: 692px; margin-inline: auto; text-align: center; }
 
-  /* 40/800/1.2 — heavy but not huge. our sans, their weight. */
+  /* Morning set their headline in Ping at 800. Matching the NUMBER in Heebo
+     overshoots badly — Heebo 800 is a far blacker face than Ping 800, so the
+     same value reads as a much heavier headline. Heebo 600 lands near their
+     optical weight. Everything else stays at their measured 500. */
   .hero .grid.stacked h1 {
     font-family: "Heebo", "Segoe UI", system-ui, sans-serif;
-    font-size: clamp(28px, 2.8vw, 40px); font-weight: 800; line-height: 1.2;
+    font-size: clamp(28px, 2.8vw, 40px); font-weight: 600; line-height: 1.2;
     letter-spacing: -.01em; color: var(--ink-dark); margin: 0 0 24px; }
-  .hero .grid.stacked h1 em { color: var(--accent); font-weight: 800; }
+  .hero .grid.stacked h1 em { color: var(--accent); font-weight: 600; }
 
   /* their sub is 20/500 and the SAME colour as the headline — not a grey */
   .hero .grid.stacked .sub {
