@@ -687,6 +687,7 @@
         <p class="sub">רואה חשבון ועורך דין לעסק שלך — AI שעובד 24/7, אפליקציה לחשבוניות, והכל בוואטסאפ.</p>
         <div class="hcta">
           <a class="btn lg hcta-b" href="panel-prototype-v0.html">בדקו מחיר — 90 שניות</a>
+          <p class="hcta-m">לא מרוצים אחרי חודש? תקבלו את הכסף בחזרה בלי שאלות.</p>
         </div>
       </div>
       <div class="phone">
@@ -1673,6 +1674,10 @@ html{direction:rtl}
   .btn.hcta-b:hover { box-shadow: none; background: var(--accent-deep); }
   .btn.hcta-b::after { content: ""; }
 
+  .hcta-m {
+    font-size: 16px; font-weight: 500; line-height: 1.2; color: var(--ink-dark);
+    margin: 24px 0 0; }
+
   /* 40px, then the product — their image starts 40px under the microcopy */
   /* Back to the geometry of the earlier variants: 328 wide, 507 tall. The
      bezel radius (46px), the dynamic island (70x19) and the screen inset are
@@ -1693,6 +1698,7 @@ html{direction:rtl}
     .hero .grid.stacked h1 { font-size: clamp(26px, 7.2vw, 32px); margin-bottom: 18px; }
     .hero .grid.stacked .sub { font-size: 17px; margin-bottom: 26px; }
     .btn.hcta-b { display: block; width: 100%; }
+    .hcta-m { margin-top: 18px; font-size: 14.5px; }
     .hero .grid.stacked .phone { width: min(300px, 100%); max-width: 300px; margin-top: 32px; }
     .phone .thread { height: 372px; }
     .msg { font-size: 13.5px; padding: 9px 13px; }
