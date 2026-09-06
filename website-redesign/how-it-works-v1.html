@@ -614,7 +614,17 @@
       </div>
       <a class="active" aria-current="page" href="how-it-works-v1.html">איך זה עובד</a>
       <a href="pricing-v1.html">מחירון</a>
-      <a href="financial-services.html">שירותים פיננסיים</a>
+      <div class="navdrop">
+        <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">שירותים פיננסיים</span><i class="navdrop-car" aria-hidden="true"></i></button>
+        <div class="navdrop-m" role="menu">
+        <a href="financial-services.html">כל השכבה הפיננסית</a>
+        <a href="financial-services.html#payments">סליקת תשלומים</a>
+        <a href="financial-services.html#credit">אשראי ומימון</a>
+        <a href="financial-services.html#wave-2">שכר, פנסיה וביטוח</a>
+        <a href="financial-services.html#wave-3">כרטיס וחשבון עסקי</a>
+        <a class="sep" href="financial-services.html#triggers">איך זה עובד — שבעת הטריגרים</a>
+        </div>
+      </div>
       <div class="navdrop">
         <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">עלינו</span><i class="navdrop-car" aria-hidden="true"></i></button>
         <div class="navdrop-m" role="menu">
@@ -1640,3 +1650,8 @@ html{direction:rtl}
   }, true);
 })();
 </script>
+<style id="nav-fit">
+  .nav .links, .nav .nav-links { white-space: nowrap; }
+  .nav .links { gap: 18px; }
+  .nav .nav-links { gap: 18px; }
+</style>

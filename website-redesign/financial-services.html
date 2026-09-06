@@ -93,6 +93,11 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
+<style id="nav-fit">
+  .nav .links, .nav .nav-links { white-space: nowrap; }
+  .nav .links { gap: 18px; }
+  .nav .nav-links { gap: 18px; }
+</style>
 </head>
 <body>
 
@@ -119,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <a class="sep" href="switch-to-mycompany.html">כבר יש לי רו״ח — מעבר</a>
         </div>
       </div>
-      <div class="navdrop has-active">
+      <div class="navdrop">
         <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">לחברה בע״מ</span><i class="navdrop-car" aria-hidden="true"></i></button>
         <div class="navdrop-m" role="menu">
         <a href="company.html">כל השירותים לחברה</a>
@@ -133,7 +138,17 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
       <a href="how-it-works-v1.html">איך זה עובד</a>
       <a href="pricing-v1.html">מחירון</a>
-      <a class="active" aria-current="page" href="financial-services.html">שירותים פיננסיים</a>
+      <div class="navdrop has-active">
+        <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">שירותים פיננסיים</span><i class="navdrop-car" aria-hidden="true"></i></button>
+        <div class="navdrop-m" role="menu">
+        <a class="active" aria-current="page" href="financial-services.html">כל השכבה הפיננסית</a>
+        <a href="financial-services.html#payments">סליקת תשלומים</a>
+        <a href="financial-services.html#credit">אשראי ומימון</a>
+        <a href="financial-services.html#wave-2">שכר, פנסיה וביטוח</a>
+        <a href="financial-services.html#wave-3">כרטיס וחשבון עסקי</a>
+        <a class="sep" href="financial-services.html#triggers">איך זה עובד — שבעת הטריגרים</a>
+        </div>
+      </div>
       <div class="navdrop">
         <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">עלינו</span><i class="navdrop-car" aria-hidden="true"></i></button>
         <div class="navdrop-m" role="menu">
@@ -173,6 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
   .segbar{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:26px;padding-top:22px;
     border-top:1px solid var(--hairline);font-size:14.5px;color:var(--ink)}
 
+  .wave,[id]{scroll-margin-top:100px}
   .wave{background:var(--ground);border:1px solid var(--hairline);border-radius:16px;
     padding:26px 28px;box-shadow:var(--shadow);margin-bottom:16px}
   .wave-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
@@ -256,14 +272,14 @@ document.addEventListener('DOMContentLoaded', function () {
       הסדר לא נקבע לפי גודל ההזדמנות אלא לפי שני דברים: כמה מהר אפשר להשיק, וכמה חזק
       האות שמגיע מהנתונים. השלבים שדורשים רישוי הם האחרונים — בכוונה.
     </p>
-    <div class="wave reveal">
+    <div class="wave reveal" id="wave-1">
       <div class="wave-h"><span class="tag w1">שלב 1</span><h3>סליקה ואשראי</h3><span class="when">2026–2027</span></div>
       <div class="wave-items">
-        <div><b>סליקת תשלומים</b><span class="d">סליקה שמחוברת לחשבוניות ולדיווחים — בלי התאמות ידניות בסוף החודש, ובתנאים שנגזרים מהמחזור האמיתי שלכם.</span></div>
-        <div><b>אשראי ומימון</b><span class="d">התראה לפני שנפתח חור בתזרים, והספרים שלכם הם הבקשה. בלי לבנות תיק ידני ובלי להתחנן בסניף.</span></div>
+        <div id="payments"><b>סליקת תשלומים</b><span class="d">סליקה שמחוברת לחשבוניות ולדיווחים — בלי התאמות ידניות בסוף החודש, ובתנאים שנגזרים מהמחזור האמיתי שלכם.</span></div>
+        <div id="credit"><b>אשראי ומימון</b><span class="d">התראה לפני שנפתח חור בתזרים, והספרים שלכם הם הבקשה. בלי לבנות תיק ידני ובלי להתחנן בסניף.</span></div>
       </div>
     </div>
-    <div class="wave reveal">
+    <div class="wave reveal" id="wave-2">
       <div class="wave-h"><span class="tag w2">שלב 2</span><h3>שכר, פנסיה וביטוח</h3><span class="when">2027</span></div>
       <div class="wave-items">
         <div><b>שכר לעובדים</b><span class="d">המודול הזה כבר חי אצלנו כשירות. בשלב הזה הוא נהיה אוטומטי — נקלט עובד, והחובות נפתחות מעצמן.</span></div>
@@ -271,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div><b>ביטוח עסקי</b><span class="d">זיהוי פערי כיסוי ומועדי חידוש, וחיבור לסוכן מורשה. אנחנו לא סוכנות ביטוח.</span></div>
       </div>
     </div>
-    <div class="wave reveal">
+    <div class="wave reveal" id="wave-3">
       <div class="wave-h"><span class="tag w3">שלב 3</span><h3>כרטיס וחשבון עסקי</h3><span class="when">2028+</span></div>
       <div class="wave-items">
         <div><b>כרטיס עסקי</b><span class="d">כרטיס שההוצאות בו מסווגות מעצמן, בלי לצלם קבלות בסוף החודש.</span></div>
@@ -283,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <section>
   <div class="wrap">
-    <span class="eyebrow">איך זה עובד בפועל</span>
+    <span class="eyebrow" id="triggers">איך זה עובד בפועל</span>
     <h2 style="margin-bottom:12px">אות מהספרים, ואז הצעה</h2>
     <p class="lead" style="margin-bottom:30px">
       אין כאן קמפיין. יש שבעה אותות שהמנוע מחפש בנתונים שלכם — וכשאחד מהם נדלק, אתם
