@@ -763,7 +763,10 @@
   var PRE = (location.hash.match(/biz=(osek|ltd|new)/) || [])[1];
   /* tracking: which landing page sent this lead. Every CTA on the site carries ?src=<page>.
      This is the first link of Keyword → Landing → Lead → Monday → MRR. */
-  var SRC = new URLSearchParams(location.search).get("src") || (document.referrer ? document.referrer.replace(/^https?://[^/]+//, "").split(/[?#]/)[0] || "direct" : "direct");
+  var SRC = new URLSearchParams(location.search).get("src") || (function () {
+    try { return document.referrer ? ((new URL(document.referrer).pathname.split("/").pop() || "").replace(".html", "") || "direct") : "direct"; }
+    catch (e) { return "direct"; }
+  })();
   state.src = SRC;
   var VIA = new URLSearchParams(location.search).get("via"); if (VIA) state.via = VIA;
   function q1pre(v) {

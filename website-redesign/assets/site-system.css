@@ -11,9 +11,9 @@
   --faint:#9B9B9B;        /* meta, captions */
 
   /* ---- brand ---- */
-  --brand:#5B2FE6;        /* brand + secondary actions */
-  --brand-deep:#3D1DA8;
-  --brand-soft:#EDE7FC;
+  --brand:#7A2BFF;--accent:var(--brand);--accent-deep:var(--brand-deep);--accent-soft:var(--brand-soft);--money-ink:#2A1670;        /* brand + secondary actions */
+  --brand-deep:#5A19DB;
+  --brand-soft:#F0E8FF;
   --blob:#F1ECFC;
 
   /* ---- accent (illustrations, badges, micro-details — NEVER a button) ---- */
