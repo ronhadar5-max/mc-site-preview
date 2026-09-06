@@ -1,0 +1,751 @@
+<meta name="robots" content="noindex, nofollow" />
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>החלפת רואה חשבון | MyCompany</title>
+<meta name="description" content="החלפת רואה חשבון בלי טלפון אחד: אנחנו מושכים את החומרים מהרו״ח הקודם, מעדכנים מייצג ברשויות ומתחילים לעבוד. מעבר לרואה חשבון אונליין, בכל חודש בשנה." />
+<meta name="theme-color" content="#FAF8F1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=Frank+Ruhl+Libre:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site-system.css" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237B5BFF'/%3E%3Cstop offset='1' stop-color='%235B2FE6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23g)'/%3E%3Cpath d='M32 15l4.6 9.9L47 29l-10.4 4.1L32 43l-4.6-9.9L17 29l10.4-4.1z' fill='%23fff'/%3E%3Ccircle cx='47' cy='47' r='6' fill='%23FF8B3D'/%3E%3C/svg%3E" />
+<style>
+  /* page-local components only — everything else comes from site-system.css */
+  .phead-in{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,60px);align-items:center}
+  @media(max-width:980px){.phead-in{grid-template-columns:1fr;gap:36px}}
+  .segbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding-top:22px;border-top:1px solid var(--hairline);font-size:14.5px;color:var(--ink)}
+  .segbar span{display:inline-flex;align-items:center;gap:8px}
+
+  /* device frame — 9px bezel, 46/37 radii, per the locked spec */
+  .hero-visual{position:relative;display:grid;justify-items:center}
+  .hero-visual::before{content:"";position:absolute;inset:6% 12% 10%;border-radius:50%;
+    background:radial-gradient(ellipse at 50% 50%,rgba(122,43,255,.16),transparent 70%);filter:blur(28px);pointer-events:none}
+  .phone{position:relative;z-index:1;width:min(322px,100%);
+    background:linear-gradient(160deg,#413B31,#2A2620 62%,#37332B);padding:9px;border-radius:46px;
+    box-shadow:0 34px 64px -22px rgba(32,32,32,.42),0 2px 6px rgba(32,32,32,.16),inset 0 0 0 1px rgba(255,255,255,.10)}
+  .screen{position:relative;overflow:hidden;background:var(--ground);border-radius:37px;padding:38px 13px 16px;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+  .island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:74px;height:21px;border-radius:99px;background:#2A2620}
+  .chat-head{display:flex;align-items:center;gap:11px;padding:4px 4px 13px;border-bottom:1px solid var(--hairline);margin-bottom:13px}
+  .chat-head .ava{width:36px;height:36px;border-radius:50%;flex:none;background:linear-gradient(135deg,#7B5BFF,var(--brand));
+    display:grid;place-items:center;font-weight:600;color:#fff;font-size:13px}
+  .chat-head b{display:block;color:var(--ink-dark);font-size:14.5px;font-weight:600;line-height:1.3}
+  .chat-head i{font-style:normal;font-size:12.5px;color:var(--ok);font-weight:600}
+  .chat-head i::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);margin-left:6px}
+  .chat-body{display:grid;gap:9px}
+  .bub{max-width:92%;padding:11px 13px;border-radius:14px;font-size:14px;line-height:1.55}
+  .bub.in{background:var(--tint);color:var(--ink);border-top-right-radius:4px;justify-self:start}
+  .bub.out{background:var(--wa);color:#14532D;border-top-left-radius:4px;justify-self:end}
+  .bub b{color:var(--ink-dark);font-weight:600}
+  .bub .t{display:block;font-size:11px;color:var(--faint);margin-top:5px;font-variant-numeric:tabular-nums lining}
+  .cap{margin-top:18px;font-size:13px;color:var(--faint);text-align:center;max-width:34ch}
+
+  /* calculator */
+  .calc{background:var(--ground);border:1px solid var(--hairline);border-radius:16px;
+    padding:clamp(24px,3.4vw,38px);box-shadow:var(--shadow-lg);max-width:840px;margin:36px auto 0}
+  .calc-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:620px){.calc-row{grid-template-columns:1fr}}
+  .calc label{display:block;font-size:14px;font-weight:600;color:var(--ink-dark);margin-bottom:7px}
+  .calc label small{display:block;font-weight:400;color:var(--faint);font-size:13px;margin-top:2px}
+  .calc input,.calc select{width:100%;border:1px solid var(--hairline);border-radius:6px;padding:12px 14px;
+    font-size:17px;color:var(--ink-dark);background:var(--ground);font-variant-numeric:tabular-nums lining;
+    transition:border-color .16s ease,box-shadow .16s ease}
+  .calc input:focus,.calc select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(122,43,255,.14)}
+  .calc-out{margin-top:24px;padding:24px;border-radius:12px;background:var(--money-pale);border:1px solid #F0B07A}
+  .calc-lines{display:grid;gap:9px;margin-bottom:16px}
+  .calc-lines div{display:flex;justify-content:space-between;gap:16px;font-size:15.5px;color:#7A5510}
+  .calc-lines b{font-weight:600;font-variant-numeric:tabular-nums lining}
+  .calc-total{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    padding-top:16px;border-top:1px solid rgba(122,85,16,.28)}
+  .calc-total span{font-size:16px;font-weight:600;color:#7A5510}
+  .calc-total b{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);color:#7A5510;
+    line-height:1;font-variant-numeric:tabular-nums lining}
+  .calc-note{font-size:13.5px;color:var(--faint);margin-top:14px;text-align:center;max-width:none}
+
+  .steps{display:grid;gap:0;margin-top:8px}
+  .step{display:grid;grid-template-columns:52px 1fr;gap:18px;padding-bottom:24px;position:relative}
+  .step:not(:last-child)::before{content:"";position:absolute;top:50px;bottom:0;right:25px;width:2px;
+    background:linear-gradient(180deg,var(--hairline),transparent)}
+  .step .n{width:50px;height:50px;border-radius:12px;display:grid;place-items:center;background:var(--brand-soft);
+    color:var(--brand);font-family:var(--display);font-weight:400;font-size:19px;border:1px solid #DED3FA}
+  .step h3{font-size:17.5px;margin-bottom:4px;padding-top:10px}
+  .step p{font-size:15.5px;line-height:1.6}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);margin-top:40px}
+  @media(max-width:860px){.two-col{grid-template-columns:1fr;gap:32px}}
+  .cta-band{display:grid;grid-template-columns:1.2fr auto;gap:28px;align-items:center}
+  @media(max-width:800px){.cta-band{grid-template-columns:1fr}.cta-band .btn{width:100%}}
+</style>
+<style id="navdrop-css">
+/* These pages were authored as artifact fragments: the runtime supplied the
+   <html dir="rtl" lang="he"> wrapper. Served as plain files that wrapper is
+   gone, the document falls back to LTR, and every logical property
+   (margin-inline, grid order, text-align:start) flips — the "everything is
+   suddenly left-aligned" bug. Restore it here. */
+html{direction:rtl}
+
+/* The notice strip sat above a sticky nav pinned at top:0, so one pixel of
+   scroll parked the nav over it and its link could never be clicked. Stack
+   them: strip sticks first, nav sticks directly beneath it. --strip-h is
+   measured at runtime so wrapping on narrow screens stays correct. */
+.strip{position:sticky;top:0;z-index:70}
+.nav{top:var(--strip-h,0px)}
+
+/* nav dropdown — generated by nav.js, do not hand-edit.
+   The trigger must be visually indistinguishable from a nav link: same weight,
+   tracking, colour and the same underline-on-hover. It is a <button> for
+   semantics, so every one of those has to be restated explicitly. */
+.navdrop{position:relative;display:inline-block}
+.navdrop>.navdrop-t{
+  background:none;border:none;margin:0;padding:0;cursor:pointer;
+  font-family:inherit;font-size:inherit;line-height:inherit;
+  font-weight:500;letter-spacing:.002em;color:var(--ink,#4A4A4A);
+  display:inline-flex;align-items:center;gap:7px;
+  transition:color .16s ease;
+}
+.navdrop>.navdrop-t>.navdrop-lbl{position:relative;padding-block:3px}
+.navdrop>.navdrop-t>.navdrop-lbl::after{
+  content:"";position:absolute;inset-inline:0;bottom:0;height:1.5px;background:#7A2BFF;
+  transform:scaleX(0);transform-origin:right;transition:transform .18s cubic-bezier(.2,.8,.2,1);
+}
+.navdrop>.navdrop-t:hover,.navdrop.open>.navdrop-t{color:#7A2BFF}
+.navdrop>.navdrop-t:hover>.navdrop-lbl::after,
+.navdrop.open>.navdrop-t>.navdrop-lbl::after{transform:scaleX(1)}
+.navdrop>.navdrop-t>.navdrop-car{
+  width:7px;height:7px;flex:none;
+  border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;
+  transform:rotate(45deg) translate(-1px,-2px);transition:transform .2s cubic-bezier(.2,.8,.2,1);
+}
+.navdrop.open>.navdrop-t>.navdrop-car{transform:rotate(-135deg) translate(-2px,-1px)}
+/* the two page families draw their underline differently — match each exactly:
+   sprint pages (.links)  = 2px sitting 6px below, no padding on the link
+   new pages (.nav-links) = 1.5px at the box edge, 3px padding-block */
+.links .navdrop>.navdrop-t>.navdrop-lbl{padding-block:0}
+.links .navdrop>.navdrop-t>.navdrop-lbl::after{height:2px;bottom:-6px}
+.nav-links .navdrop>.navdrop-t>.navdrop-lbl{padding-block:3px}
+.nav-links .navdrop>.navdrop-t>.navdrop-lbl::after{height:1.5px;bottom:0}
+/* current section — replaces the old inline-style hack */
+.navdrop.has-active>.navdrop-t{color:#7A2BFF;font-weight:600}
+.navdrop-m{
+  position:absolute;top:100%;margin-top:10px;right:0;min-width:212px;z-index:80;
+  background:#fff;border:1px solid #DADADA;border-radius:10px;padding:6px;
+  box-shadow:0 14px 40px -8px rgba(32,32,32,.16);
+  display:none;
+}
+/* transparent bridge across the 10px offset — without it the pointer leaves
+   :hover on the way down and the menu closes before it can be clicked */
+.navdrop-m::before{content:"";position:absolute;top:-12px;left:0;right:0;height:12px}
+.navdrop.open>.navdrop-m{display:grid}
+@media(hover:hover){.navdrop:hover>.navdrop-m{display:grid}}
+.navdrop-m a{display:block;padding:9px 12px;border-radius:6px;font-size:15px;font-weight:500;color:#37332B;white-space:nowrap}
+.navdrop-m a::after{display:none !important}
+.navdrop-m a:hover{background:#F0E8FF;color:#7A2BFF}
+.navdrop-m a.sep{margin-top:6px;padding-top:12px;border-top:1px solid #DADADA;border-radius:0 0 6px 6px}
+.navdrop-m a.active,.links a.active,.nav-links a.active{color:#7A2BFF;font-weight:600}
+@media(max-width:1180px){.navdrop-m{right:auto;left:0}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="nav-logo" href="homepage-morning.html"><img src="assets/logo.png" alt="MyCompany" /></a>
+    <div class="nav-links">
+      <div class="navdrop">
+        <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">פותחים עסק</span><i class="navdrop-car" aria-hidden="true"></i></button>
+        <div class="navdrop-m" role="menu">
+        <a href="open-business.html">פתיחת עסק — מתחילים כאן</a>
+        <a href="osek-morshe-v1.html">פתיחת עוסק מורשה</a>
+        <a href="company.html#start">הקמת חברה בע״מ + רו״ח</a>
+        <a class="sep" href="choose-business-type.html">עוסק או חברה? — בדיקה קצרה</a>
+        </div>
+      </div>
+      <div class="navdrop has-active">
+        <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">רואה חשבון</span><i class="navdrop-car" aria-hidden="true"></i></button>
+        <div class="navdrop-m" role="menu">
+        <a href="online-accountant.html">רואה חשבון אונליין</a>
+        <a href="osek-morshe-v1.html">רואה חשבון לעוסק מורשה</a>
+        <a href="bookkeeping.html">הנהלת חשבונות</a>
+        <a href="annual-report-self-employed.html">דוח שנתי לעצמאי</a>
+        <a class="sep active" aria-current="page" href="switch-to-mycompany.html">כבר יש לי רו״ח — מעבר</a>
+        </div>
+      </div>
+      <div class="navdrop">
+        <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">לחברה בע״מ</span><i class="navdrop-car" aria-hidden="true"></i></button>
+        <div class="navdrop-m" role="menu">
+        <a href="company.html">כל השירותים לחברה</a>
+        <a href="ltd-v1.html">רואה חשבון לחברה</a>
+        <a href="company.html#start">פתיחת חברה + רו״ח</a>
+        <a href="payroll.html">שכר לעובדים</a>
+        <a href="annual-report-company.html">דוח שנתי לחברה</a>
+        <a href="dealer-to-company.html">מעבר מעוסק לחברה</a>
+        <a class="sep" href="switch-to-mycompany.html">מעבר מרו״ח קיים</a>
+        </div>
+      </div>
+      <a href="how-it-works-v1.html">איך זה עובד</a>
+      <a href="pricing-v1.html">מחירון</a>
+      <a href="about-v1.html">עלינו</a>
+      <div class="navdrop">
+        <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">מרכז מידע</span><i class="navdrop-car" aria-hidden="true"></i></button>
+        <div class="navdrop-m" role="menu">
+        <a href="videos-v1.html">מדריכי וידאו</a>
+        <a href="glossary-v1.html">מילון מונחים</a>
+        <a href="faq-v1.html">שאלות נפוצות</a>
+        <a class="sep" href="technology-v1.html">הטכנולוגיה</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a class="nav-tel" href="tel:0555560774">055-556-0774</a>
+      <a class="btn btn-primary" href="#contact">דברו איתנו</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* page-local additions — only what the base lacks */
+  .doors{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+  @media(max-width:620px){.doors{grid-template-columns:1fr}}
+  .door{display:flex;flex-direction:column;gap:5px;padding:17px 19px;border-radius:10px;
+    border:1px solid var(--hairline);background:var(--ground);box-shadow:var(--shadow);
+    text-decoration:none;transition:border-color .16s ease,box-shadow .16s ease,transform .16s var(--ease)}
+  .door:hover{border-color:var(--brand);box-shadow:0 10px 26px -12px rgba(122,43,255,.5);transform:translateY(-2px)}
+  .door b{font-size:17px;font-weight:700;color:var(--ink-dark)}
+  .door span{font-size:14px;color:var(--faint);line-height:1.5}
+  .door:hover b{color:var(--brand)}
+  .doors-alt{margin-top:12px;font-size:14.5px}
+  .doors-alt a{color:var(--brand);font-weight:600}
+  .doors-alt a:hover{text-decoration:underline;text-underline-offset:3px}
+  .second-door{margin-top:40px;border:1px solid var(--hairline);border-radius:14px;box-shadow:var(--shadow);
+    background:linear-gradient(120deg,var(--brand-soft),var(--ground) 66%);padding:clamp(24px,3.2vw,34px);
+    display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center}
+  @media(max-width:800px){.second-door{grid-template-columns:1fr;gap:18px}.second-door .btn{width:100%}}
+  .second-door h3{font-family:var(--display);font-weight:400;font-size:clamp(20px,2.3vw,24px);letter-spacing:-.014em;margin-bottom:9px}
+  .pull-list{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+  .pull-list li{position:relative;padding-inline-start:27px;font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .pull-list li::before{content:"";position:absolute;inset-inline-start:0;top:5px;width:17px;height:17px;border-radius:50%;
+    background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/11px no-repeat}
+  .card p a,.step p a,.two-col p a,.pull-list a,.pnote a{color:var(--brand);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  .band p a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  .side-card{align-self:start}
+  .side-card h3{margin-bottom:9px}
+  .side-card p{font-size:15.5px;line-height:1.6}
+  .pnote{margin-top:22px;font-size:15px;color:var(--ink);max-width:none}
+  .price{font-family:var(--display);font-weight:400;font-size:clamp(26px,3vw,34px);color:var(--ink-dark);line-height:1.1;margin:4px 0 6px;font-variant-numeric:tabular-nums lining}
+  .price small{font-family:var(--sans);font-size:14.5px;color:var(--faint)}
+</style>
+
+<!-- ============ PAGE HEAD ============ -->
+<header class="phead">
+  <div class="wrap phead-in">
+    <div>
+      <nav class="crumb" aria-label="מיקום">
+        <a href="homepage-morning.html">דף הבית</a><span>›</span><a href="online-accountant.html">רואה חשבון</a><span>›</span>החלפת רואה חשבון
+      </nav>
+      <h1>כבר יש לך רואה חשבון?<br />המעבר עלינו.</h1>
+      <p class="lead" style="margin-top:18px">
+        החלפת רואה חשבון נשמעת מסובכת. היא לא צריכה להיות. אנחנו מושכים את החומרים, מעדכנים את הייצוג
+        ברשויות ומכניסים את העסק לעבודה — אתה לא מרים טלפון אחד.
+      </p>
+      <div class="doors">
+        <a class="door" href="osek-morshe-v1.html">
+          <b>אני עוסק מורשה</b>
+          <span>מע״מ, מקדמות, הוצאות מוכרות ודוח שנתי. החל מ-300 ₪ לחודש</span>
+        </a>
+        <a class="door" href="company.html">
+          <b>יש לי חברה</b>
+          <span>דוחות מבוקרים, שכר, משיכות בעלים ורשם החברות. החל מ-1,200 ₪ לחודש</span>
+        </a>
+      </div>
+      <p class="doors-alt"><a href="panel-prototype-v0.html?src=switch-to-mycompany">או: מתחילים את המעבר עכשיו ←</a></p>
+      <div class="segbar">
+        <span>רו״ח מורשים חותמים על כל דוח</span>
+        <span>מערכת מאושרת רשות המסים</span>
+        <span>הכל בוואטסאפ</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="phone">
+        <div class="screen" aria-label="דוגמה לעדכון שמגיע בוואטסאפ במהלך המעבר">
+          <span class="island" aria-hidden="true"></span>
+          <div class="chat-head">
+            <div class="ava">MC</div>
+            <div><b>MyCompany · רו״ח</b><i>מקוון</i></div>
+          </div>
+          <div class="chat-body">
+            <div class="bub in">שלום עמית. דיברנו היום עם המשרד של הרו״ח הקודם. <b>הכרטסות והדוחות בדרך אלינו.</b><span class="t">10:12</span></div>
+            <div class="bub in">החלפת המייצג במע״מ ובמס הכנסה אושרה. מהדיווח הבא אנחנו איתך.<span class="t">10:12</span></div>
+            <div class="bub out">מה אני צריך לעשות מהצד שלי?<span class="t">10:40 ✓✓</span></div>
+            <div class="bub in">כלום. להוריד את האפליקציה ולהמשיך לעבוד. אם תחסר לי הוצאה, אשאל אותך כאן.<span class="t">10:41</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="cap">כך נראה מעבר אצלנו. אתה מקבל עדכונים, לא משימות.</p>
+    </div>
+  </div>
+</header>
+
+<!-- ============ FOUR STEPS ============ -->
+<section id="steps">
+  <div class="wrap">
+    <div class="eyebrow">איך המעבר עובד</div>
+    <h2>ארבעה שלבים. אתה נוכח באחד מהם.</h2>
+    <p class="lead" style="margin-top:12px">
+      השלב הראשון הוא שלך. שלושת הבאים הם שלנו. זה כל ההבדל בין מעבר שמתמשך חודשים
+      למעבר שפשוט קורה.
+    </p>
+
+    <div class="two-col">
+      <div class="steps">
+        <div class="step"><div class="n">1</div><div><h3>מספרים לנו</h3><p>הודעה בוואטסאפ או שיחה קצרה. מי הרו״ח הנוכחי, איזה סוג עסק, מה מפריע. חתימה אחת שמאשרת לנו לפעול בשמך מול הרשויות ומול המשרד הקודם. זה החלק שלך, וזה נגמר כאן.</p></div></div>
+        <div class="step"><div class="n">2</div><div><h3>אנחנו פונים לרו״ח הקודם</h3><p>בכתב, בשמך, בנימוס. מבקשים את הספרים, הדוחות והכרטסות, ומתאמים את המסירה. אם צריך להזכיר, אנחנו מזכירים. אתה לא בשיחה הזאת.</p></div></div>
+        <div class="step"><div class="n">3</div><div><h3>החלפת מייצג ויתרות פתיחה</h3><p>מעדכנים את ה<a href="glossary-v1.html#meyatzeg">מייצג</a> במע״מ, במס הכנסה ובביטוח לאומי. קולטים את יתרות הפתיחה, בודקים שהן מתיישבות עם הדוחות שהוגשו, ומסמנים מה נשאר פתוח.</p></div></div>
+        <div class="step"><div class="n">4</div><div><h3>עובדים</h3><p>אפליקציה לחשבוניות והוצאות בנייד, רו״ח וצוות בוואטסאפ, והדיווח הבא יוצא מאצלנו. מהיום הזה <a href="technology-v1.html">PurpleBrain™</a> עוקב אחרי התיק 24/7, ומי שחותם על הדוח הוא רואה חשבון מורשה.</p></div></div>
+      </div>
+
+      <div class="card side-card">
+        <div class="eyebrow">מה נשאר לך</div>
+        <h3>כמעט כלום</h3>
+        <ul class="pull-list">
+          <li>לאשר לנו לפעול בשמך. חתימה אחת.</li>
+          <li>להוריד את האפליקציה ולהפיק ממנה את החשבונית הבאה.</li>
+          <li>להמשיך לעבוד. על מה שחסר נשאל אותך בוואטסאפ, לא במייל.</li>
+        </ul>
+        <p class="pnote">לא צריך לאסוף קלסרים, לא צריך לנהל שיחה לא נעימה, ולא צריך להבין מה זה יתרות פתיחה. זה התפקיד שלנו, לא שלך.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE PULL ============ -->
+<section id="materials" class="band-tint">
+  <div class="wrap">
+    <div class="eyebrow">החומרים</div>
+    <h2>מה אנחנו מושכים מהרואה חשבון הקודם</h2>
+    <p class="lead" style="margin-top:12px">
+      הרשימה המלאה, כדי שתדע מה עובר. אתה לא צריך לחפש אף פריט מתוכה בעצמך.
+    </p>
+
+    <div class="grid g3" style="margin-top:40px">
+      <div class="card">
+        <div class="num">01</div>
+        <h3>הספרים</h3>
+        <ul class="pull-list">
+          <li>גיבוי מתוכנת הנהלת החשבונות ומאזן בוחן</li>
+          <li>כרטסות לקוחות, ספקים, בנק וקופה</li>
+          <li>התאמות בנק ויתרות פתיחה</li>
+          <li>רשימת נכסים ופחת</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <h3>הדוחות</h3>
+        <ul class="pull-list">
+          <li>דוחות שנתיים שהוגשו: טופס 1301 לעצמאי, טופס 1214 לחברה</li>
+          <li>שומות שהתקבלו על השנים הסגורות</li>
+          <li>הצהרת הון אחרונה, אם הוגשה</li>
+          <li>לחברה: דוחות כספיים מבוקרים, טפסי 106 ו-126</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <h3>מה שעדיין פתוח</h3>
+        <ul class="pull-list">
+          <li>דיווחי מע״מ ומקדמות של השנה הנוכחית</li>
+          <li>חשבוניות והוצאות שעוד לא נקלטו</li>
+          <li>התכתבויות פתוחות עם הרשויות</li>
+          <li>אישורים בתוקף: ניכוי מס במקור וניהול ספרים</li>
+        </ul>
+      </div>
+    </div>
+    <p class="pnote">
+      חלק מהמידע קיים גם אצל הרשויות. ברגע שאנחנו המייצגים, אנחנו מושכים אותו משם ישירות.
+      לכן המעבר לא מחכה לקלסר האחרון.
+    </p>
+  </div>
+</section>
+
+<!-- ============ MID-YEAR ============ -->
+<section id="midyear">
+  <div class="wrap">
+    <div class="band">
+      <div class="eyebrow">תזמון</div>
+      <h2>אפשר באמצע שנה? כן. בכל חודש.</h2>
+      <div class="two-col" style="margin-top:0">
+        <div>
+          <p>
+            המיתוס אומר שמחליפים רואה חשבון בינואר. הרשויות לא דורשות את זה, ואין מועד ״נכון״.
+            מה שכן חשוב: שהמעבר יתואם סביב מועד הדיווח הקרוב, כדי שאף דיווח לא ייפול בין שני משרדים.
+          </p>
+          <p>
+            את התיאום הזה אנחנו עושים. אם דיווח המע״מ נסגר עד ה-15 לחודש, ברור מי מגיש אותו ומה עובר
+            אלינו אחריו. הדוח השנתי של שנת המעבר מוגש לרוב אצלנו, על בסיס הספרים של כל השנה.
+          </p>
+          <p class="kicker">
+            לחכות לסוף השנה זה להישאר עוד חצי שנה במקום שכבר החלטת לעזוב. אין לזה סיבה חשבונאית.
+          </p>
+        </div>
+        <div class="grid" style="grid-auto-rows:auto;gap:14px">
+          <div class="stat"><b>כל חודש</b><span>אפשר להתחיל. לא צריך לחכות לינואר ולא צריך סיבה</span></div>
+          <div class="stat"><b>עד ה-15 לחודש</b><span>מועד דיווח המע״מ. המעבר מתואם סביבו, לא נגדו</span></div>
+          <div class="stat hot"><b>דוח אחד</b><span>לשנת המעבר. יוצא ממשרד אחד, על ספרים של שנה שלמה</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECOND OPINION ============ -->
+<section id="second-opinion" class="band-tint">
+  <div class="wrap">
+    <div class="eyebrow">עוד לא בטוח?</div>
+    <h2>לא חייבים להחליט היום. מתחילים מחוות דעת שנייה.</h2>
+    <p class="lead" style="margin-top:12px">
+      מתי בפעם האחרונה מישהו חיצוני עבר על התיק שלך? רוב בעלי העסקים עונים: אף פעם.
+    </p>
+
+    <div class="second-door">
+      <div>
+        <h3>ביקורת חינם על התיק</h3>
+        <p style="margin:0">
+          רואה חשבון מהצוות עובר על הדוח השנתי האחרון שהוגש, על המקדמות שנקבעו לך ועל ההוצאות שנדרשו.
+          בסוף אתה מקבל תמונת מצב במילים פשוטות: מה בסדר, מה חסר, ומה היינו עושים אחרת.
+          גם אם התשובה היא שהכל מטופל יפה, ואתה נשאר איפה שאתה.
+        </p>
+      </div>
+      <a class="btn btn-primary btn-lg" href="panel-prototype-v0.html?src=switch-to-mycompany">רוצה חוות דעת שנייה</a>
+    </div>
+
+    <div class="grid g2" style="margin-top:40px;grid-auto-rows:auto">
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>אני לקוח פעיל כבר שנה ומתחילת הדרך עד כה אני מקבל שירות יוצא דופן, מהיר ומקצועי בוואטסאפ. בעבר הייתי צריך לרדוף אחרי רואה החשבון שלי, היום אני מרגיש שרואה החשבון שלי רודף אחריי.</p>
+        <div class="who"><div class="av">ס</div><div><b>סלבה גורביץ׳</b><span>עוסק מורשה</span></div></div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>השירות של MyCompany שינה את כל התפיסה שלי על רואי חשבון. המידע זמין, התקשורת קלה ומהירה, והכי חשוב, אני מרגיש שהם תמיד שם בשבילי.</p>
+        <div class="who"><div class="av">ע</div><div><b>עידו ברמי</b><span>עוסק מורשה</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHEN THE OLD ACCOUNTANT WON'T RELEASE ============ -->
+<section id="release">
+  <div class="wrap">
+    <div class="eyebrow">וזה קורה</div>
+    <h2>מה אם הרואה חשבון הקודם לא משחרר חומרים?</h2>
+    <p class="lead" style="margin-top:12px">
+      יש לזה נוהל. אתה לא צריך להתווכח עם אף אחד, ואנחנו לא מחכים בחיבוק ידיים.
+    </p>
+
+    <div class="two-col">
+      <div class="steps">
+        <div class="step"><div class="n">1</div><div><h3>פנייה בכתב, בשמך</h3><p>בקשה מסודרת עם רשימת החומרים ומועד מבוקש. רוב המקרים נסגרים כאן, כי רוב המשרדים פשוט עסוקים, לא עוינים.</p></div></div>
+        <div class="step"><div class="n">2</div><div><h3>מעקב ותזכורות</h3><p>אנחנו חוזרים ומזכירים, מתעדים את ההתכתבות, ומעדכנים אותך בוואטסאפ במה שהתקדם. לא צריך לשאול איפה זה עומד.</p></div></div>
+        <div class="step"><div class="n">3</div><div><h3>מסלול חלופי</h3><p>ברגע שאנחנו המייצגים, חלק גדול מהמידע נמשך ישירות מהרשויות: דיווחים, שומות, מקדמות. במקרים החריגים שדורשים את זה, נכנס לתמונה גם עורך דין.</p></div></div>
+      </div>
+
+      <div class="card side-card">
+        <div class="eyebrow">כדאי לדעת</div>
+        <h3>המסמכים שלך הם שלך</h3>
+        <p>
+          החשבוניות, הקבלות והדוחות שהוגשו בשמך שייכים לעסק, לא למשרד שטיפל בו. חוב פתוח למשרד הקודם
+          הוא עניין שכדאי לסגור, ואנחנו נגיד לך את זה בכנות. אבל החלפת המייצג ברשויות היא בינך לבין הרשויות.
+        </p>
+        <p>
+          ובזמן שהחומרים בדרך, העסק לא עומד. הדיווח הבא יוצא בזמן, על בסיס מה שכבר יש.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICE ============ -->
+<section id="price" class="band-tint">
+  <div class="wrap">
+    <div class="eyebrow">מחיר</div>
+    <h2>מחיר שרואים לפני שמשלמים</h2>
+    <p class="lead" style="margin-top:12px">
+      חבילה חודשית אחת, בלי חיוב לפי שעות ובלי הפתעות בסוף השנה. המעבר עצמו הוא חלק מהקליטה,
+      לא שירות בתוספת תשלום.
+    </p>
+
+    <div class="grid g2" style="margin-top:40px">
+      <div class="card">
+        <div class="eyebrow">עוסק מורשה</div>
+        <div class="price">החל מ-300 ₪ <small>לחודש</small></div>
+        <ul class="pull-list">
+          <li>דיווחי מע״מ ומקדמות, ודוח שנתי בטופס 1301</li>
+          <li>רואה חשבון מורשה חותם על כל דוח</li>
+          <li>אפליקציה לחשבוניות והוצאות</li>
+          <li>רו״ח בוואטסאפ, ו-AI שעוקב אחרי התיק 24/7</li>
+        </ul>
+        <p class="pnote"><a href="osek-morshe-v1.html">מה כלול לעוסק מורשה</a></p>
+      </div>
+      <div class="card">
+        <div class="eyebrow">חברה בע״מ</div>
+        <div class="price">החל מ-1,200 ₪ <small>לחודש</small></div>
+        <ul class="pull-list">
+          <li>הנהלת חשבונות שוטפת ודוחות כספיים מבוקרים</li>
+          <li>דוח שנתי לחברה בטופס 1214, וטפסי 106 ו-126</li>
+          <li>שכר ותלושים, ניכויים וביטוח לאומי</li>
+          <li>רו״ח בוואטסאפ, ו-AI שעוקב אחרי התיק 24/7</li>
+        </ul>
+        <p class="pnote"><a href="company.html">מה כלול לחברה</a></p>
+      </div>
+    </div>
+    <p class="pnote">
+      המחיר המדויק נקבע לפי המחזור וכמות התנועות, ונאמר לך לפני שמתחילים. <a href="pricing-v1.html">המחירון המלא</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap narrow">
+    <div class="eyebrow">שאלות נפוצות</div>
+    <h2>מה שואלים לפני שעוברים</h2>
+    <div style="margin-top:36px;border-top:1px solid var(--hairline)">
+      <details open>
+        <summary>כמה זמן לוקח המעבר?</summary>
+        <div class="a">את החלק שלנו, החלפת המייצג ופתיחת התיק אצלנו, מתחילים באותו יום. מה שקובע את הקצב זה כמה מהר המשרד הקודם משחרר חומרים. בדרך כלל אתה כבר עובד איתנו לפני שהקלסר האחרון הגיע, כי הדיווח השוטף לא תלוי בו.</div>
+      </details>
+      <details>
+        <summary>אני צריך להודיע לרואה החשבון הקודם בעצמי?</summary>
+        <div class="a">לא חובה. אנחנו פונים בשמך, בכתב, ומנהלים את ההתכתבות. אם תרצה להגיד שלום בעצמך, זה תמיד נעים יותר, אבל את הבירוקרטיה אנחנו עושים.</div>
+      </details>
+      <details>
+        <summary>מי מגיש את הדוח השנתי של השנה שבה עברתי?</summary>
+        <div class="a">לרוב אנחנו. הדוח השנתי מוגש אחרי שהשנה נגמרת, על בסיס הספרים של כל השנה, כולל החודשים שטופלו אצל המשרד הקודם. בשביל זה אנחנו מושכים את הכרטסות ואת יתרות הפתיחה, ולא רק את הדוחות הישנים.</div>
+      </details>
+      <details>
+        <summary>יש לי חוב פתוח לרואה החשבון הקודם. זה חוסם את המעבר?</summary>
+        <div class="a">החלפת המייצג ברשויות היא בינך לבין הרשויות, לא בינך לבין המשרד הקודם. חוב פתוח יכול לעכב את מסירת החומרים, ולכן כדאי לסגור אותו. במקביל אנחנו מתחילים לעבוד על מה שכבר קיים, כולל מידע שנמשך ישירות מהרשויות.</div>
+      </details>
+      <details>
+        <summary>מעבר לרואה חשבון אונליין: איך זה עובד בלי פגישות?</summary>
+        <div class="a">כמו שאתה כבר עובד עם כל שאר הספקים שלך. חשבוניות והוצאות באפליקציה, שאלות ותשובות בוואטסאפ, ומסמכים לחתימה מגיעים אליך לנייד. ההבדל היחיד מרו״ח קלאסי הוא שאתה לא צריך לנסוע אליו, ושמישהו עוקב אחרי התיק גם כשאתה לא שואל. <a href="how-it-works-v1.html">איך זה עובד, שלב אחרי שלב</a>.</div>
+      </details>
+      <details>
+        <summary>מה זה בעצם ״מייצג״, ולמה מחליפים אותו?</summary>
+        <div class="a">מייצג הוא מי שרשום ברשויות המס כמי שמורשה לפעול בשמך: להגיש, לדווח ולקבל מכתבים. כשמחליפים רואה חשבון מחליפים גם את המייצג, אחרת ההודעות ממס הכנסה ממשיכות להגיע למשרד שכבר לא מטפל בך. ההגדרה המלאה ב<a href="glossary-v1.html#meyatzeg">מילון המונחים</a>.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "כמה זמן לוקח המעבר?",
+      "acceptedAnswer": {"@type": "Answer", "text": "את החלק שלנו, החלפת המייצג ופתיחת התיק אצלנו, מתחילים באותו יום. מה שקובע את הקצב זה כמה מהר המשרד הקודם משחרר חומרים. בדרך כלל אתה כבר עובד איתנו לפני שהקלסר האחרון הגיע, כי הדיווח השוטף לא תלוי בו."}
+    },
+    {
+      "@type": "Question",
+      "name": "אני צריך להודיע לרואה החשבון הקודם בעצמי?",
+      "acceptedAnswer": {"@type": "Answer", "text": "לא חובה. אנחנו פונים בשמך, בכתב, ומנהלים את ההתכתבות. אם תרצה להגיד שלום בעצמך, זה תמיד נעים יותר, אבל את הבירוקרטיה אנחנו עושים."}
+    },
+    {
+      "@type": "Question",
+      "name": "מי מגיש את הדוח השנתי של השנה שבה עברתי?",
+      "acceptedAnswer": {"@type": "Answer", "text": "לרוב אנחנו. הדוח השנתי מוגש אחרי שהשנה נגמרת, על בסיס הספרים של כל השנה, כולל החודשים שטופלו אצל המשרד הקודם. בשביל זה אנחנו מושכים את הכרטסות ואת יתרות הפתיחה, ולא רק את הדוחות הישנים."}
+    },
+    {
+      "@type": "Question",
+      "name": "יש לי חוב פתוח לרואה החשבון הקודם. זה חוסם את המעבר?",
+      "acceptedAnswer": {"@type": "Answer", "text": "החלפת המייצג ברשויות היא בינך לבין הרשויות, לא בינך לבין המשרד הקודם. חוב פתוח יכול לעכב את מסירת החומרים, ולכן כדאי לסגור אותו. במקביל אנחנו מתחילים לעבוד על מה שכבר קיים, כולל מידע שנמשך ישירות מהרשויות."}
+    },
+    {
+      "@type": "Question",
+      "name": "מעבר לרואה חשבון אונליין: איך זה עובד בלי פגישות?",
+      "acceptedAnswer": {"@type": "Answer", "text": "כמו שאתה כבר עובד עם כל שאר הספקים שלך. חשבוניות והוצאות באפליקציה, שאלות ותשובות בוואטסאפ, ומסמכים לחתימה מגיעים אליך לנייד. ההבדל היחיד מרו״ח קלאסי הוא שאתה לא צריך לנסוע אליו, ושמישהו עוקב אחרי התיק גם כשאתה לא שואל."}
+    },
+    {
+      "@type": "Question",
+      "name": "מה זה בעצם ״מייצג״, ולמה מחליפים אותו?",
+      "acceptedAnswer": {"@type": "Answer", "text": "מייצג הוא מי שרשום ברשויות המס כמי שמורשה לפעול בשמך: להגיש, לדווח ולקבל מכתבים. כשמחליפים רואה חשבון מחליפים גם את המייצג, אחרת ההודעות ממס הכנסה ממשיכות להגיע למשרד שכבר לא מטפל בך."}
+    }
+  ]
+}
+</script>
+
+<!-- ============ CTA ============ -->
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="band cta-band">
+      <div>
+        <h2 style="margin-bottom:12px">המעבר מתחיל בהודעה אחת</h2>
+        <p>
+          משאירים פרטים, רואה חשבון מהצוות חוזר אליך, ומשם אנחנו לוקחים. הרו״ח הקודם, הרשויות,
+          יתרות הפתיחה. אף אחד מהם לא נשאר על השולחן שלך.
+        </p>
+      </div>
+      <a class="btn btn-primary btn-lg" href="panel-prototype-v0.html?src=switch-to-mycompany">להתחלה מהירה ←</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <img src="assets/logo-white.png" alt="MyCompany" />
+      <p>ליווי פיננסי ומשפטי לעוסקים מורשים ולחברות בע״מ בישראל.</p>
+    </div>
+    <div>
+      <b>למי זה מתאים</b>
+      <div class="foot-links">
+        <a href="osek-morshe-v1.html">עוסק מורשה</a>
+        <a href="company.html">חברה בע״מ</a>
+        <a href="glossary-v1.html">מילון מונחים</a>
+      </div>
+    </div>
+    <div>
+      <b>יצירת קשר</b>
+      <div class="foot-links">
+        <a href="tel:0555560774" style="direction:ltr;display:inline-block">055-556-0774</a>
+        <span>הברזל 34, רמת החייל, תל אביב</span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:13.5px">
+    © 2026 כל הזכויות שמורות ל-MyCompany · מערכת מאושרת על ידי רשות המיסים בישראל
+  </div>
+</footer>
+
+<style id="sv-mobilenav">
+  .navburger { display: none; background: none; border: 1px solid var(--hairline); border-radius: 9px;
+    width: 44px; height: 40px; cursor: pointer; padding: 0; flex-direction: column;
+    align-items: center; justify-content: center; gap: 4px; flex: none; }
+  .navburger i { display: block; width: 18px; height: 2px; background: var(--ink-dark); border-radius: 2px;
+    transition: transform .22s cubic-bezier(.2,.8,.2,1), opacity .18s ease; }
+  .navburger.on i:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .navburger.on i:nth-child(2) { opacity: 0; }
+  .navburger.on i:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .navsheet { display: none; background: var(--paper); border-top: 1px solid var(--hairline); }
+  .navsheet .grp { padding: 14px 22px 6px; font-size: 12.5px; font-weight: 700; letter-spacing: .06em; color: var(--accent); }
+  .navsheet a.sub { font-weight: 500; font-size: 15.5px; padding: 11px 22px 11px 34px; }
+  .navsheet.open { display: block; }
+  .navsheet a { display: flex; align-items: center; justify-content: space-between;
+    padding: 15px 22px; font-size: 17px; font-weight: 600; color: var(--ink-dark);
+    text-decoration: none; border-bottom: 1px solid var(--hairline); }
+  .navsheet a::after { content: "←"; color: var(--accent); font-size: 15px; }
+  .navsheet a.cta-line { color: #fff; background: var(--money); border-bottom: none; }
+  .navsheet a.cta-line { color: var(--money-ink); }
+  .navsheet a.cta-line::after { color: var(--money-ink); }
+  @media (max-width: 780px) {
+    .navburger { display: flex; }
+    .nav .in > .btn.sm { margin-inline-start: auto; }
+    .nav .in { gap: 10px; }
+  }
+  @media (min-width: 781px) { .navsheet { display: none !important; } }
+  @media (prefers-reduced-motion: no-preference) {
+    .navsheet.open { animation: sheetin .22s ease both; }
+    @keyframes sheetin { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+<script>
+  (function () {
+    var nav = document.querySelector('.nav'); if (!nav || nav.querySelector('.navburger')) return;
+    var inbar = nav.querySelector('.in'); if (!inbar) return;
+    var links = nav.querySelectorAll('.links a');
+    if (!links.length) return;
+
+    var burger = document.createElement('button');
+    burger.className = 'navburger';
+    burger.setAttribute('aria-label', 'תפריט');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.innerHTML = '<i></i><i></i><i></i>';
+    inbar.appendChild(burger);
+
+    var sheet = document.createElement('nav');
+    sheet.className = 'navsheet';
+    /* group-aware: dropdowns become labelled sections, not one flat list */
+    var box = nav.querySelector('.links, .nav-links');
+    Array.prototype.forEach.call(box ? box.children : [], function (el) {
+      if (el.classList && el.classList.contains('navdrop')) {
+        var g = document.createElement('div'); g.className = 'grp';
+        var lb = el.querySelector('.navdrop-lbl'); g.textContent = lb ? lb.textContent.trim() : '';
+        sheet.appendChild(g);
+        el.querySelectorAll('.navdrop-m a').forEach(function (a) {
+          var c = document.createElement('a'); c.href = a.getAttribute('href'); c.className = 'sub';
+          c.textContent = (a.textContent || '').trim(); sheet.appendChild(c);
+        });
+      } else if (el.tagName === 'A') {
+        var c2 = document.createElement('a'); c2.href = el.getAttribute('href');
+        c2.textContent = (el.textContent || '').trim(); sheet.appendChild(c2);
+      }
+    });
+    var cta = nav.querySelector('.in > .btn.sm');
+    if (cta) {
+      var cl = document.createElement('a');
+      cl.href = cta.getAttribute('href');
+      cl.className = 'cta-line';
+      cl.textContent = (cta.textContent || '').trim();
+      sheet.appendChild(cl);
+    }
+    nav.appendChild(sheet);
+
+    burger.addEventListener('click', function () {
+      var open = sheet.classList.toggle('open');
+      burger.classList.toggle('on', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    sheet.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') { sheet.classList.remove('open'); burger.classList.remove('on'); }
+    });
+  })();
+</script>
+
+<script id="navdrop-js">
+/* nav dropdown toggle + RTL bootstrap — generated by nav.js */
+(function(){
+  /* fragments have no <html dir>; set it so :dir(), form controls and
+     scrollbar placement match the artifact environment */
+  var de=document.documentElement;
+  if(!de.getAttribute('dir')) de.setAttribute('dir','rtl');
+  if(!de.getAttribute('lang')) de.setAttribute('lang','he');
+
+  /* keep the sticky nav parked exactly below the notice strip */
+  var strip=document.querySelector('.strip');
+  function stripH(){
+    if(!strip) return;
+    de.style.setProperty('--strip-h', Math.round(strip.getBoundingClientRect().height)+'px');
+  }
+  stripH();
+  window.addEventListener('resize', stripH, {passive:true});
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(stripH);
+  document.querySelectorAll('.navdrop').forEach(function(d){
+    var t=d.querySelector('.navdrop-t');
+    if(!t) return;
+    t.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=d.classList.toggle('open');
+      t.setAttribute('aria-expanded',open?'true':'false');
+    });
+  });
+  document.addEventListener('click',function(e){
+    document.querySelectorAll('.navdrop.open').forEach(function(d){
+      /* never close on a click INSIDE the menu — doing so removes the anchor
+         mid-click and the browser cancels the navigation */
+      if(d.contains(e.target)) return;
+      d.classList.remove('open');
+      var t=d.querySelector('.navdrop-t'); if(t) t.setAttribute('aria-expanded','false');
+    });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape') return;
+    document.querySelectorAll('.navdrop.open').forEach(function(d){ d.classList.remove('open'); });
+  });
+})();
+</script>
+</body>
+</html>
