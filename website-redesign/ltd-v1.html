@@ -701,6 +701,8 @@ html{direction:rtl}
   .navburger.on i:nth-child(2) { opacity: 0; }
   .navburger.on i:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
   .navsheet { display: none; background: var(--paper); border-top: 1px solid var(--hairline); }
+  .navsheet .grp { padding: 14px 22px 6px; font-size: 12.5px; font-weight: 700; letter-spacing: .06em; color: var(--accent); }
+  .navsheet a.sub { font-weight: 500; font-size: 15.5px; padding: 11px 22px 11px 34px; }
   .navsheet.open { display: block; }
   .navsheet a { display: flex; align-items: center; justify-content: space-between;
     padding: 15px 22px; font-size: 17px; font-weight: 600; color: var(--ink-dark);
@@ -736,11 +738,21 @@ html{direction:rtl}
 
     var sheet = document.createElement('nav');
     sheet.className = 'navsheet';
-    links.forEach(function (a) {
-      var c = document.createElement('a');
-      c.href = a.getAttribute('href');            /* already rewritten by the cross-link map */
-      c.textContent = (a.textContent || '').trim();
-      sheet.appendChild(c);
+    /* group-aware: dropdowns become labelled sections, not one flat list */
+    var box = nav.querySelector('.links, .nav-links');
+    Array.prototype.forEach.call(box ? box.children : [], function (el) {
+      if (el.classList && el.classList.contains('navdrop')) {
+        var g = document.createElement('div'); g.className = 'grp';
+        var lb = el.querySelector('.navdrop-lbl'); g.textContent = lb ? lb.textContent.trim() : '';
+        sheet.appendChild(g);
+        el.querySelectorAll('.navdrop-m a').forEach(function (a) {
+          var c = document.createElement('a'); c.href = a.getAttribute('href'); c.className = 'sub';
+          c.textContent = (a.textContent || '').trim(); sheet.appendChild(c);
+        });
+      } else if (el.tagName === 'A') {
+        var c2 = document.createElement('a'); c2.href = el.getAttribute('href');
+        c2.textContent = (el.textContent || '').trim(); sheet.appendChild(c2);
+      }
     });
     var cta = nav.querySelector('.in > .btn.sm, .nav-right .btn');
     if (cta) {

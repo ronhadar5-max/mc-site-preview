@@ -43,28 +43,6 @@
   .bub .t{display:block;font-size:11px;color:var(--faint);margin-top:5px;font-variant-numeric:tabular-nums lining}
   .cap{margin-top:18px;font-size:13px;color:var(--faint);text-align:center;max-width:34ch}
 
-  /* calculator */
-  .calc{background:var(--ground);border:1px solid var(--hairline);border-radius:16px;
-    padding:clamp(24px,3.4vw,38px);box-shadow:var(--shadow-lg);max-width:840px;margin:36px auto 0}
-  .calc-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  @media(max-width:620px){.calc-row{grid-template-columns:1fr}}
-  .calc label{display:block;font-size:14px;font-weight:600;color:var(--ink-dark);margin-bottom:7px}
-  .calc label small{display:block;font-weight:400;color:var(--faint);font-size:13px;margin-top:2px}
-  .calc input,.calc select{width:100%;border:1px solid var(--hairline);border-radius:6px;padding:12px 14px;
-    font-size:17px;color:var(--ink-dark);background:var(--ground);font-variant-numeric:tabular-nums lining;
-    transition:border-color .16s ease,box-shadow .16s ease}
-  .calc input:focus,.calc select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(122,43,255,.14)}
-  .calc-out{margin-top:24px;padding:24px;border-radius:12px;background:var(--money-pale);border:1px solid #F0B07A}
-  .calc-lines{display:grid;gap:9px;margin-bottom:16px}
-  .calc-lines div{display:flex;justify-content:space-between;gap:16px;font-size:15.5px;color:#7A5510}
-  .calc-lines b{font-weight:600;font-variant-numeric:tabular-nums lining}
-  .calc-total{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
-    padding-top:16px;border-top:1px solid rgba(122,85,16,.28)}
-  .calc-total span{font-size:16px;font-weight:600;color:#7A5510}
-  .calc-total b{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);color:#7A5510;
-    line-height:1;font-variant-numeric:tabular-nums lining}
-  .calc-note{font-size:13.5px;color:var(--faint);margin-top:14px;text-align:center;max-width:none}
-
   .steps{display:grid;gap:0;margin-top:8px}
   .step{display:grid;grid-template-columns:52px 1fr;gap:18px;padding-bottom:24px;position:relative}
   .step:not(:last-child)::before{content:"";position:absolute;top:50px;bottom:0;right:25px;width:2px;
@@ -244,7 +222,8 @@ html{direction:rtl}
       <nav class="crumb" aria-label="מיקום">
         <a href="homepage-morning.html">דף הבית</a><span>›</span><a href="online-accountant.html">רואה חשבון</a><span>›</span>החלפת רואה חשבון
       </nav>
-      <h1>כבר יש לך רואה חשבון?<br />המעבר עלינו.</h1>
+      <div class="eyebrow">מעבר לרואה חשבון אונליין</div>
+      <h1>החלפת רואה חשבון?<br />המעבר עלינו.</h1>
       <p class="lead" style="margin-top:18px">
         החלפת רואה חשבון נשמעת מסובכת. היא לא צריכה להיות. אנחנו מושכים את החומרים, מעדכנים את הייצוג
         ברשויות ומכניסים את העסק לעבודה — אתה לא מרים טלפון אחד.
@@ -256,13 +235,13 @@ html{direction:rtl}
         </a>
         <a class="door" href="company.html">
           <b>יש לי חברה</b>
-          <span>דוחות מבוקרים, שכר, משיכות בעלים ורשם החברות. החל מ-1,200 ₪ לחודש</span>
+          <span>דוחות מבוקרים, שכר, משיכות בעלים ודיווח שנתי לרשם החברות. החל מ-1,200 ₪ לחודש</span>
         </a>
       </div>
       <p class="doors-alt"><a href="panel-prototype-v0.html?src=switch-to-mycompany">או: מתחילים את המעבר עכשיו ←</a></p>
       <div class="segbar">
-        <span>רו״ח מורשים חותמים על כל דוח</span>
-        <span>מערכת מאושרת רשות המסים</span>
+        <span>רואה חשבון אחראי על כל דוח</span>
+        <span>מערכת מאושרת רשות המיסים</span>
         <span>הכל בוואטסאפ</span>
       </div>
     </div>
@@ -300,17 +279,17 @@ html{direction:rtl}
 
     <div class="two-col">
       <div class="steps">
-        <div class="step"><div class="n">1</div><div><h3>מספרים לנו</h3><p>הודעה בוואטסאפ או שיחה קצרה. מי הרו״ח הנוכחי, איזה סוג עסק, מה מפריע. חתימה אחת שמאשרת לנו לפעול בשמך מול הרשויות ומול המשרד הקודם. זה החלק שלך, וזה נגמר כאן.</p></div></div>
+        <div class="step"><div class="n">1</div><div><h3>מספרים לנו</h3><p>הודעה בוואטסאפ או שיחה קצרה. מי הרו״ח הנוכחי, איזה סוג עסק, מה מפריע. כמה חתימות דיגיטליות, כולן בבת אחת מהנייד: ייפוי כוח לרשויות ומכתב למשרד הקודם. זה החלק שלך, וזה נגמר כאן.</p></div></div>
         <div class="step"><div class="n">2</div><div><h3>אנחנו פונים לרו״ח הקודם</h3><p>בכתב, בשמך, בנימוס. מבקשים את הספרים, הדוחות והכרטסות, ומתאמים את המסירה. אם צריך להזכיר, אנחנו מזכירים. אתה לא בשיחה הזאת.</p></div></div>
         <div class="step"><div class="n">3</div><div><h3>החלפת מייצג ויתרות פתיחה</h3><p>מעדכנים את ה<a href="glossary-v1.html#meyatzeg">מייצג</a> במע״מ, במס הכנסה ובביטוח לאומי. קולטים את יתרות הפתיחה, בודקים שהן מתיישבות עם הדוחות שהוגשו, ומסמנים מה נשאר פתוח.</p></div></div>
-        <div class="step"><div class="n">4</div><div><h3>עובדים</h3><p>אפליקציה לחשבוניות והוצאות בנייד, רו״ח וצוות בוואטסאפ, והדיווח הבא יוצא מאצלנו. מהיום הזה <a href="technology-v1.html">PurpleBrain™</a> עוקב אחרי התיק 24/7, ומי שחותם על הדוח הוא רואה חשבון מורשה.</p></div></div>
+        <div class="step"><div class="n">4</div><div><h3>עובדים</h3><p>אפליקציה לחשבוניות והוצאות בנייד, רו״ח וצוות בוואטסאפ, והדיווח הבא יוצא מאצלנו. מהיום הזה <a href="technology-v1.html">PurpleBrain™</a> עוקב אחרי התיק 24/7, ומי שאחראי על הדוח הוא רואה חשבון, לא בוט.</p></div></div>
       </div>
 
       <div class="card side-card">
         <div class="eyebrow">מה נשאר לך</div>
         <h3>כמעט כלום</h3>
         <ul class="pull-list">
-          <li>לאשר לנו לפעול בשמך. חתימה אחת.</li>
+          <li>לאשר לנו לפעול בשמך. חתימות דיגיטליות, בישיבה אחת.</li>
           <li>להוריד את האפליקציה ולהפיק ממנה את החשבונית הבאה.</li>
           <li>להמשיך לעבוד. על מה שחסר נשאל אותך בוואטסאפ, לא במייל.</li>
         </ul>
@@ -324,7 +303,7 @@ html{direction:rtl}
 <section id="materials" class="band-tint">
   <div class="wrap">
     <div class="eyebrow">החומרים</div>
-    <h2>מה אנחנו מושכים מהרואה חשבון הקודם</h2>
+    <h2>מה אנחנו מושכים מרואה החשבון הקודם</h2>
     <p class="lead" style="margin-top:12px">
       הרשימה המלאה, כדי שתדע מה עובר. אתה לא צריך לחפש אף פריט מתוכה בעצמך.
     </p>
@@ -404,7 +383,7 @@ html{direction:rtl}
     <div class="eyebrow">עוד לא בטוח?</div>
     <h2>לא חייבים להחליט היום. מתחילים מחוות דעת שנייה.</h2>
     <p class="lead" style="margin-top:12px">
-      מתי בפעם האחרונה מישהו חיצוני עבר על התיק שלך? רוב בעלי העסקים עונים: אף פעם.
+      מתי בפעם האחרונה מישהו חיצוני עבר על התיק שלך? אם התשובה היא ׳לא זוכר׳, זה בדיוק הרגע.
     </p>
 
     <div class="second-door">
@@ -421,12 +400,10 @@ html{direction:rtl}
 
     <div class="grid g2" style="margin-top:40px;grid-auto-rows:auto">
       <div class="quote">
-        <div class="stars">★★★★★</div>
-        <p>אני לקוח פעיל כבר שנה ומתחילת הדרך עד כה אני מקבל שירות יוצא דופן, מהיר ומקצועי בוואטסאפ. בעבר הייתי צריך לרדוף אחרי רואה החשבון שלי, היום אני מרגיש שרואה החשבון שלי רודף אחריי.</p>
-        <div class="who"><div class="av">ס</div><div><b>סלבה גורביץ׳</b><span>עוסק מורשה</span></div></div>
+        <p>לפני שהצטרפתי ל-MyCompany הייתי מבולבלת ומלאת חרדה בכל מה שקשור לפיננסים של העסק שלי. השירות שלהם מקצועי, נגיש ומהיר. עכשיו אני יודעת בדיוק מה קורה בעסק שלי בכל רגע נתון.</p>
+        <div class="who"><div class="av">נ</div><div><b>נועה אמיר</b><span>עוסקת מורשה</span></div></div>
       </div>
       <div class="quote">
-        <div class="stars">★★★★★</div>
         <p>השירות של MyCompany שינה את כל התפיסה שלי על רואי חשבון. המידע זמין, התקשורת קלה ומהירה, והכי חשוב, אני מרגיש שהם תמיד שם בשבילי.</p>
         <div class="who"><div class="av">ע</div><div><b>עידו ברמי</b><span>עוסק מורשה</span></div></div>
       </div>
@@ -438,27 +415,29 @@ html{direction:rtl}
 <section id="release">
   <div class="wrap">
     <div class="eyebrow">וזה קורה</div>
-    <h2>מה אם הרואה חשבון הקודם לא משחרר חומרים?</h2>
+    <h2>מה אם רואה החשבון הקודם לא משחרר חומרים?</h2>
     <p class="lead" style="margin-top:12px">
       יש לזה נוהל. אתה לא צריך להתווכח עם אף אחד, ואנחנו לא מחכים בחיבוק ידיים.
     </p>
 
     <div class="two-col">
       <div class="steps">
-        <div class="step"><div class="n">1</div><div><h3>פנייה בכתב, בשמך</h3><p>בקשה מסודרת עם רשימת החומרים ומועד מבוקש. רוב המקרים נסגרים כאן, כי רוב המשרדים פשוט עסוקים, לא עוינים.</p></div></div>
+        <div class="step"><div class="n">1</div><div><h3>פנייה בכתב, בשמך</h3><p>בקשה מסודרת עם רשימת החומרים ומועד מבוקש. בדרך כלל זה נסגר כאן. רוב המשרדים פשוט עסוקים, לא עוינים.</p></div></div>
         <div class="step"><div class="n">2</div><div><h3>מעקב ותזכורות</h3><p>אנחנו חוזרים ומזכירים, מתעדים את ההתכתבות, ומעדכנים אותך בוואטסאפ במה שהתקדם. לא צריך לשאול איפה זה עומד.</p></div></div>
-        <div class="step"><div class="n">3</div><div><h3>מסלול חלופי</h3><p>ברגע שאנחנו המייצגים, חלק גדול מהמידע נמשך ישירות מהרשויות: דיווחים, שומות, מקדמות. במקרים החריגים שדורשים את זה, נכנס לתמונה גם עורך דין.</p></div></div>
+        <div class="step"><div class="n">3</div><div><h3>מסלול חלופי</h3><p>ברגע שאנחנו המייצגים, חלק גדול מהמידע נמשך ישירות מהרשויות: דיווחים, שומות, מקדמות. במקרים החריגים שדורשים את זה, נגיד לך בזמן שכדאי לערב עורך דין.</p></div></div>
       </div>
 
       <div class="card side-card">
         <div class="eyebrow">כדאי לדעת</div>
         <h3>המסמכים שלך הם שלך</h3>
         <p>
-          החשבוניות, הקבלות והדוחות שהוגשו בשמך שייכים לעסק, לא למשרד שטיפל בו. חוב פתוח למשרד הקודם
-          הוא עניין שכדאי לסגור, ואנחנו נגיד לך את זה בכנות. אבל החלפת המייצג ברשויות היא בינך לבין הרשויות.
+          המסמכים המקוריים והדוחות שהוגשו בשמך שייכים לעסק, לא למשרד שטיפל בו. ניירות העבודה של המשרד,
+          כמו כרטסות ומאזן בוחן, הם שלו, ולכן חוב פתוח יכול לעכב אותם. נגיד לך את זה בכנות.
+          אבל החלפת המייצג ברשויות היא בינך לבין הרשויות.
         </p>
         <p>
-          ובזמן שהחומרים בדרך, העסק לא עומד. הדיווח הבא יוצא בזמן, על בסיס מה שכבר יש.
+          מרגע שהייצוג עבר אלינו, המכתבים מהרשויות מגיעים אלינו, לא למשרד הקודם, וההגשות בשמך יוצאות מאצלנו.
+          החומרים שלו יכולים להתעכב. התיק שלך לא.
         </p>
       </div>
     </div>
@@ -481,9 +460,8 @@ html{direction:rtl}
         <div class="price">החל מ-300 ₪ <small>לחודש</small></div>
         <ul class="pull-list">
           <li>דיווחי מע״מ ומקדמות, ודוח שנתי בטופס 1301</li>
-          <li>רואה חשבון מורשה חותם על כל דוח</li>
+          <li>רואה חשבון עובר על כל דוח לפני הגשה</li>
           <li>אפליקציה לחשבוניות והוצאות</li>
-          <li>רו״ח בוואטסאפ, ו-AI שעוקב אחרי התיק 24/7</li>
         </ul>
         <p class="pnote"><a href="osek-morshe-v1.html">מה כלול לעוסק מורשה</a></p>
       </div>
@@ -494,13 +472,12 @@ html{direction:rtl}
           <li>הנהלת חשבונות שוטפת ודוחות כספיים מבוקרים</li>
           <li>דוח שנתי לחברה בטופס 1214, וטפסי 106 ו-126</li>
           <li>שכר ותלושים, ניכויים וביטוח לאומי</li>
-          <li>רו״ח בוואטסאפ, ו-AI שעוקב אחרי התיק 24/7</li>
         </ul>
         <p class="pnote"><a href="company.html">מה כלול לחברה</a></p>
       </div>
     </div>
     <p class="pnote">
-      המחיר המדויק נקבע לפי המחזור וכמות התנועות, ונאמר לך לפני שמתחילים. <a href="pricing-v1.html">המחירון המלא</a>.
+      בשתי החבילות: רו״ח בוואטסאפ, ו-AI שעוקב אחרי התיק 24/7. המחיר המדויק נקבע לפי המחזור וכמות התנועות, ונאמר לך לפני שמתחילים. <a href="pricing-v1.html">המחירון המלא</a>.
     </p>
   </div>
 </section>
@@ -525,7 +502,7 @@ html{direction:rtl}
       </details>
       <details>
         <summary>יש לי חוב פתוח לרואה החשבון הקודם. זה חוסם את המעבר?</summary>
-        <div class="a">החלפת המייצג ברשויות היא בינך לבין הרשויות, לא בינך לבין המשרד הקודם. חוב פתוח יכול לעכב את מסירת החומרים, ולכן כדאי לסגור אותו. במקביל אנחנו מתחילים לעבוד על מה שכבר קיים, כולל מידע שנמשך ישירות מהרשויות.</div>
+        <div class="a">החלפת המייצג ברשויות היא בינך לבין הרשויות, לא בינך לבין המשרד הקודם. חוב פתוח יכול לעכב את מסירת החומרים, ולכן כדאי לסגור אותו. במקביל אנחנו מתחילים לעבוד על מה שכבר קיים.</div>
       </details>
       <details>
         <summary>מעבר לרואה חשבון אונליין: איך זה עובד בלי פגישות?</summary>
@@ -562,7 +539,7 @@ html{direction:rtl}
     {
       "@type": "Question",
       "name": "יש לי חוב פתוח לרואה החשבון הקודם. זה חוסם את המעבר?",
-      "acceptedAnswer": {"@type": "Answer", "text": "החלפת המייצג ברשויות היא בינך לבין הרשויות, לא בינך לבין המשרד הקודם. חוב פתוח יכול לעכב את מסירת החומרים, ולכן כדאי לסגור אותו. במקביל אנחנו מתחילים לעבוד על מה שכבר קיים, כולל מידע שנמשך ישירות מהרשויות."}
+      "acceptedAnswer": {"@type": "Answer", "text": "החלפת המייצג ברשויות היא בינך לבין הרשויות, לא בינך לבין המשרד הקודם. חוב פתוח יכול לעכב את מסירת החומרים, ולכן כדאי לסגור אותו. במקביל אנחנו מתחילים לעבוד על מה שכבר קיים."}
     },
     {
       "@type": "Question",
@@ -621,6 +598,15 @@ html{direction:rtl}
   </div>
 </footer>
 
+<script>
+(function(){
+  /* nav shadow after 8px */
+  var nav = document.querySelector('.nav'); if (!nav) return;
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+})();
+</script>
+
 <style id="sv-mobilenav">
   .navburger { display: none; background: none; border: 1px solid var(--hairline); border-radius: 9px;
     width: 44px; height: 40px; cursor: pointer; padding: 0; flex-direction: column;
@@ -631,16 +617,16 @@ html{direction:rtl}
   .navburger.on i:nth-child(2) { opacity: 0; }
   .navburger.on i:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
   .navsheet { display: none; background: var(--paper); border-top: 1px solid var(--hairline); }
-  .navsheet .grp { padding: 14px 22px 6px; font-size: 12.5px; font-weight: 700; letter-spacing: .06em; color: var(--accent); }
+  .navsheet .grp { padding: 14px 22px 6px; font-size: 12.5px; font-weight: 700; letter-spacing: .06em; color: var(--accent, var(--brand)); }
   .navsheet a.sub { font-weight: 500; font-size: 15.5px; padding: 11px 22px 11px 34px; }
   .navsheet.open { display: block; }
   .navsheet a { display: flex; align-items: center; justify-content: space-between;
     padding: 15px 22px; font-size: 17px; font-weight: 600; color: var(--ink-dark);
     text-decoration: none; border-bottom: 1px solid var(--hairline); }
-  .navsheet a::after { content: "←"; color: var(--accent); font-size: 15px; }
+  .navsheet a::after { content: "←"; color: var(--accent, var(--brand)); font-size: 15px; }
   .navsheet a.cta-line { color: #fff; background: var(--money); border-bottom: none; }
-  .navsheet a.cta-line { color: var(--money-ink); }
-  .navsheet a.cta-line::after { color: var(--money-ink); }
+  .navsheet a.cta-line { color: var(--money-ink, #fff); }
+  .navsheet a.cta-line::after { color: var(--money-ink, #fff); }
   @media (max-width: 780px) {
     .navburger { display: flex; }
     .nav .in > .btn.sm { margin-inline-start: auto; }
