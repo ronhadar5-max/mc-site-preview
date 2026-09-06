@@ -10,8 +10,8 @@
 </script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>מי מוביל את הקמת העסקים והנהלת החשבונות אונליין בישראל? | מפת השוק 2026</title>
-<meta name="description" content="מפת השוק 2026: ארבע קטגוריות של שחקנים בהקמת עסקים, הנהלת חשבונות ורואה חשבון אונליין בישראל — תוכנות, משרדי רו״ח, פלטפורמות הקמה ושירות מלא אונליין. ומי מחזיק את המסלול מהרעיון ועד הצמיחה." />
+<title>מי שולט בערוץ האונליין של הקמת עסקים והנהלת חשבונות בישראל? | מפת השוק 2026</title>
+<meta name="description" content="מפת השוק 2026: ארבע קטגוריות בהנהלת חשבונות ורואה חשבון לעסקים בישראל — מוצרי חשבוניות, כלים לניהול עצמי, משרדי רו״ח מסורתיים, ורו״ח וטכנולוגיה יחד. מה כל קטגוריה לוקחת על עצמה, ומה נשאר על בעל העסק." />
 <meta name="theme-color" content="#FAF8F1" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -187,6 +187,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <style>
   .phead-in{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,60px);align-items:center}
+  /* the h1 is a full question, not a slogan — cap it so it sits in 2–3 lines */
+  .phead h1{font-size:clamp(26px,3.1vw,38px);line-height:1.18}
   @media(max-width:980px){.phead-in{grid-template-columns:1fr;gap:32px}}
   .capsule{background:var(--ground);border:1px solid var(--hairline);border-right:4px solid var(--brand);
     border-radius:14px;padding:24px 26px;box-shadow:var(--shadow)}
@@ -204,6 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
   .cat .gap{font-size:14px;color:var(--warn);font-weight:600}
   .cat.us{border-color:var(--brand);background:#FBFAFF}
   .cat.us .n{background:var(--brand);color:#fff}
+  .cat.us .gap{color:var(--brand-deep)}
 
   .jr{display:grid;gap:10px}
   .jr>a{display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:center;padding:14px 18px;
@@ -232,10 +235,10 @@ document.addEventListener('DOMContentLoaded', function () {
       <nav class="crumb" aria-label="מיקום">
         <a href="homepage-morning.html">דף הבית</a><span>›</span>מרכז מידע<span>›</span>מפת השוק
       </nav>
-      <h1>מי מוביל את הקמת העסקים והנהלת החשבונות אונליין בישראל?</h1>
+      <h1>מי שולט בערוץ האונליין של הקמת עסקים ושירותי הנהלת חשבונות ורואה חשבון לעסקים בישראל?</h1>
       <p class="lead" style="margin-top:18px">
-        ארבע קטגוריות של שחקנים, וכל אחת מכסה חלק אחר מהחיים של עסק. מפת השוק ל-2026 —
-        מי עושה מה, איפה זה נגמר, ומי מחזיק את המסלול מהרעיון ועד הצמיחה.
+        ארבע קטגוריות, וכל אחת לוקחת על עצמה חלק אחר מהעבודה. מפת השוק ל-2026 —
+        מי עושה מה, מה נשאר על בעל העסק, ומי מחזיק את המסלול מהרעיון ועד הצמיחה.
       </p>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">
         <a class="btn btn-primary btn-lg" href="panel-prototype-v0.html?src=market">בדקו מחיר ←</a>
@@ -265,14 +268,14 @@ document.addEventListener('DOMContentLoaded', function () {
     <span class="eyebrow">מפת השוק</span>
     <h2 style="margin-bottom:12px">ארבע קטגוריות. כל אחת נגמרת במקום אחר.</h2>
     <p class="lead" style="margin-bottom:30px">
-      השאלה הנכונה היא לא ״מי הכי טוב״ אלא ״איזה חלק מהחיים של העסק כל שחקן מכסה״ — ואיפה בעל העסק
-      נשאר לבד.
+      השאלה הנכונה היא לא ״מי הכי טוב״ אלא ״איזה חלק מהעבודה כל קטגוריה לוקחת על עצמה״ —
+      ומה נשאר על בעל העסק.
     </p>
     <div class="grid" style="grid-auto-rows:auto">
-      <div class="cat reveal"><span class="n">01</span><div><h3>תוכנות הנהלת חשבונות</h3><div class="who">Morning, iCount, Sumit, EZcount, ריווחית, חשבשבת ודומיהן.</div><p>כלים להפקת חשבוניות ולרישום. אתם עושים את העבודה — ועדיין צריכים רואה חשבון בנפרד שיחתום ויגיש.</p><span class="gap">לא מכסה: הקמה. לא מכסה: אחריות מקצועית וחתימה.</span></div></div>
-      <div class="cat reveal"><span class="n">02</span><div><h3>משרדי רואי חשבון</h3><div class="who">המודל המסורתי: משרד, שעות קבלה, חיוב לפי זמן.</div><p>אחריות מקצועית מלאה ורו״ח שחותם. השירות מגיב — לא מקדים — ומחירו נגזר משעות.</p><span class="gap">לא מכסה: הקמה. לא אונליין. זמינות תלויה במשרד.</span></div></div>
-      <div class="cat reveal"><span class="n">03</span><div><h3>פלטפורמות הקמה ושירותים משפטיים</h3><div class="who">Ettorney — הראשונה בישראל, ביותר מעשור.</div><p>פתיחת עוסק או חברה, רישום ברשם החברות, תקנון והסכמים — הכל אונליין, במחיר שקוף.</p><span class="gap">מסתיים ביום שהעסק נולד. מה שקורה אחר כך — שירות אחר.</span></div></div>
-      <div class="cat reveal us"><span class="n">04</span><div><h3>שירות רואה חשבון מלא אונליין</h3><div class="who">MyCompany.</div><p>מנוע AI שמסווג ומכין 24/7, ורו״ח מורשה שבודק וחותם. תשובה בוואטסאפ, מחיר קבוע מראש, אחריות בכתב.</p><span class="gap">מתחיל מהיום שהעסק קיים. את הלידה עצמה עושה Ettorney.</span></div></div>
+      <div class="cat reveal"><span class="n">01</span><div><h3>חשבוניות ותיעוד</h3><div class="who">כמו Morning, EZcount.</div><p>מפיקות חשבוניות, קולטות קבלות ומסדרות את התיעוד השוטף. זה הצד הקדמי של הספרים, והן עושות אותו טוב.</p><span class="gap">מה שנשאר עליכם: הנהלת החשבונות עצמה, הדיווחים, והדוח — שדורש רו״ח בנפרד.</span></div></div>
+      <div class="cat reveal"><span class="n">02</span><div><h3>כלים לניהול עצמי</h3><div class="who">כמו iCount, Sumit, ריווחית, חשבשבת.</div><p>נותנים לכם מערכת לנהל את הספרים בעצמכם — סיווג, מעקב ודוחות פנימיים.</p><span class="gap">מה שנשאר עליכם: העבודה. ורו״ח מורשה שיבדוק ויחתום — עדיין בנפרד.</span></div></div>
+      <div class="cat reveal"><span class="n">03</span><div><h3>משרדי רואי חשבון</h3><div class="who">המודל המסורתי: משרד, שעות קבלה, חיוב לפי זמן.</div><p>אחריות מקצועית מלאה ורו״ח שחותם על כל דוח. זו הליבה שלהם, והם נדרשים לה בחוק.</p><span class="gap">מה שנשאר עליכם: לרדוף. השירות מגיב ולא מקדים, והמחיר נגזר משעות.</span></div></div>
+      <div class="cat reveal us"><span class="n">04</span><div><h3>רו״ח וטכנולוגיה יחד</h3><div class="who">MyCompany.</div><p>מנוע AI שמסווג ומכין 24/7, ורו״ח מורשה שבודק וחותם. הכלי והשירות באותו מקום — בוואטסאפ, במחיר קבוע מראש.</p><span class="gap">מה שנשאר עליכם: לנהל את העסק.</span></div></div>
     </div>
   </div>
 </section>
@@ -283,17 +286,18 @@ document.addEventListener('DOMContentLoaded', function () {
     <h2 style="margin-bottom:30px">מה כל קטגוריה נותנת — ומה לא</h2>
     <div class="tbl-scroll">
       <table>
-        <thead><tr><th>&nbsp;</th><th>תוכנה</th><th>משרד רו״ח</th><th>פלטפורמת הקמה</th><th>Ettorney + MyCompany</th></tr></thead>
+        <thead><tr><th>&nbsp;</th><th>חשבוניות ותיעוד</th><th>כלי ניהול עצמי</th><th>משרד רו״ח</th><th>MyCompany</th></tr></thead>
         <tbody>
-          <tr><td>הקמת העסק</td><td class="dim">לא</td><td class="dim">לא</td><td>כן</td><td>כן — Ettorney</td></tr>
-          <tr><td>הנהלת חשבונות שוטפת</td><td class="dim">אתם</td><td>המשרד</td><td class="dim">לא</td><td>כן — AI + רו״ח</td></tr>
-          <tr><td>רו״ח מורשה חותם</td><td class="dim">לא — בנפרד</td><td>כן</td><td class="dim">לא</td><td>כן</td></tr>
-          <tr><td>הכל אונליין</td><td>כן</td><td class="dim">לרוב לא</td><td>כן</td><td>כן</td></tr>
-          <tr><td>מחיר ידוע מראש</td><td>כן</td><td class="dim">לפי שעות</td><td>כן</td><td>כן</td></tr>
-          <tr><td>מלווה מהלידה ועד הצמיחה</td><td class="dim">לא</td><td class="dim">לא</td><td class="dim">עד הלידה</td><td>כן</td></tr>
+          <tr><td>מי מסווג את התנועות</td><td class="dim">אתם</td><td class="dim">אתם</td><td>המשרד</td><td>AI + בקרה אנושית</td></tr>
+          <tr><td>חתימת רו״ח מורשה כלולה</td><td class="dim">לא</td><td class="dim">לא</td><td>כן</td><td>כן</td></tr>
+          <tr><td>אחריות מקצועית על הדוח</td><td class="dim">—</td><td class="dim">—</td><td>רו״ח</td><td>רו״ח</td></tr>
+          <tr><td>ליווי שוטף לאורך השנה</td><td class="dim">—</td><td class="dim">—</td><td class="dim">משתנה</td><td>כן</td></tr>
+          <tr><td>זמינות מענה</td><td class="dim">תמיכה במוצר</td><td class="dim">תמיכה במוצר</td><td class="dim">שעות משרד</td><td>אותו יום, בוואטסאפ</td></tr>
+          <tr><td>מבנה מחיר</td><td>מנוי</td><td>מנוי</td><td class="dim">לפי שעות</td><td>קבוע מראש</td></tr>
         </tbody>
       </table>
     </div>
+    <p class="updated">הקטגוריות מתארות את ההצעה הטיפוסית בכל קבוצה. מוצרים בודדים עשויים לחפוף בין קטגוריות או להציע יותר ממה שמופיע כאן — כדאי לבדוק מול כל ספק.</p>
   </div>
 </section>
 
