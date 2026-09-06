@@ -698,5 +698,212 @@ html{direction:rtl}
   });
 })();
 </script>
+<style id="sv-launch">
+  /* ── "פותחים לך את העסק" — the Atlas arc, in our world ────────────────
+     Stripe Atlas's hero is ONE card that plays three states: the form
+     (Start your company) → processing (Starting company) → the payoff
+     (Your company is ready). We borrow the arc, not the look: the card is
+     ours, the steps are the real Israeli ones, and the payoff is the thing
+     Atlas does not have — the first WhatsApp message already waiting.
+     Plays once per session, on the way to the panel. Always skippable. */
+  .lx { position: fixed; inset: 0; z-index: 200; display: none; place-items: center;
+        padding: 24px; background: rgba(24,20,34,.34); backdrop-filter: blur(6px);
+        opacity: 0; transition: opacity .28s ease; }
+  .lx.on { display: grid; opacity: 1; }
+  .lx-card { width: min(430px, 100%); background: var(--ground, #fff); border-radius: 20px;
+             box-shadow: 0 30px 80px -20px rgba(28,20,48,.45); overflow: hidden;
+             transform: translateY(10px) scale(.985); transition: transform .32s cubic-bezier(.2,.8,.2,1); }
+  .lx.on .lx-card { transform: none; }
+
+  .lx-bar { height: 3px; background: var(--hairline, #E4E0D6); }
+  .lx-bar i { display: block; height: 100%; width: 0; background: var(--accent, #7A2BFF); }
+  .lx-in { padding: 26px 26px 22px; }
+  .lx-k { font-size: 12.5px; font-weight: 700; letter-spacing: .06em; color: var(--accent, #7A2BFF); margin: 0 0 6px; }
+  .lx-h { font-family: "Frank Ruhl Libre", Georgia, serif; font-weight: 400; font-size: 24px;
+          line-height: 1.2; color: var(--ink-dark, #37332B); margin: 0 0 4px; }
+  .lx-s { font-size: 14.5px; color: var(--faint, #8E887C); margin: 0; min-height: 21px; }
+
+  /* state 1 — the choice */
+  .lx-tiles { display: grid; gap: 8px; margin-top: 18px; }
+  .lx-tile { display: flex; align-items: center; gap: 10px; padding: 13px 14px; border-radius: 12px;
+             border: 1px solid var(--hairline, #E4E0D6); background: var(--paper, #FAF8F1);
+             font-size: 15.5px; font-weight: 600; color: var(--ink-dark, #37332B);
+             transition: border-color .2s ease, background .2s ease, transform .2s cubic-bezier(.2,.8,.2,1); }
+  .lx-tile span.r { width: 15px; height: 15px; border-radius: 50%; border: 2px solid var(--hairline, #DADADA);
+                    flex: none; transition: border-color .2s ease, box-shadow .2s ease; }
+  .lx-tile.pick { border-color: var(--accent, #7A2BFF); background: var(--accent-soft, #F0E8FF); transform: translateX(-3px); }
+  .lx-tile.pick span.r { border-color: var(--accent, #7A2BFF); box-shadow: inset 0 0 0 3px var(--accent, #7A2BFF); }
+
+  /* state 2 — the work */
+  .lx-steps { display: grid; gap: 2px; margin-top: 16px; }
+  .lx-step { display: flex; align-items: center; gap: 11px; padding: 9px 2px; font-size: 15px;
+             color: var(--ink, #4A4A4A); opacity: 0; transform: translateY(6px);
+             transition: opacity .3s ease, transform .3s cubic-bezier(.2,.8,.2,1); }
+  .lx-step.in { opacity: 1; transform: none; }
+  .lx-step i { width: 20px; height: 20px; border-radius: 50%; flex: none; position: relative;
+               border: 2px solid var(--hairline, #DADADA); transition: border-color .25s ease, background .25s ease; }
+  .lx-step i::after { content: ""; position: absolute; inset-inline-start: 5px; top: 2px; width: 5px; height: 9px;
+                      border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg) scale(0);
+                      transition: transform .22s cubic-bezier(.2,.8,.2,1) .05s; }
+  .lx-step.ok i { border-color: var(--good, #1E8A5A); background: var(--good, #1E8A5A); }
+  .lx-step.ok i::after { transform: rotate(45deg) scale(1); }
+  .lx-step.ok { color: var(--ink-dark, #37332B); }
+  .lx-step b { font-weight: 600; }
+
+  /* state 3 — the payoff */
+  .lx-wa { margin-top: 16px; background: var(--wa, #E9FBEF); border-radius: 14px; border-end-end-radius: 4px;
+           padding: 12px 14px; font-size: 14px; line-height: 1.5; color: #2B4237;
+           opacity: 0; transform: translateY(8px); transition: opacity .34s ease, transform .34s cubic-bezier(.2,.8,.2,1); }
+  .lx-wa.in { opacity: 1; transform: none; }
+  .lx-wa b { font-weight: 700; }
+  .lx-wa span { display: block; margin-top: 5px; font-size: 11px; color: #6E8A78; }
+
+  .lx-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+             padding: 14px 26px 18px; border-top: 1px solid var(--hairline, #E4E0D6); }
+  .lx-skip { background: none; border: 0; padding: 6px 2px; cursor: pointer; font: inherit;
+             font-size: 14px; color: var(--faint, #8E887C); }
+  .lx-skip:hover { color: var(--ink-dark, #37332B); text-decoration: underline; text-underline-offset: 3px; }
+  .lx-go { display: inline-block; padding: 10px 20px; border-radius: 10px; background: var(--accent, #7A2BFF);
+           color: #fff; font-size: 15px; font-weight: 600; text-decoration: none; border: 0; cursor: pointer;
+           font-family: inherit; opacity: .35; pointer-events: none; transition: opacity .3s ease; }
+  .lx-go.on { opacity: 1; pointer-events: auto; }
+  .lx-go:hover { background: var(--accent-deep, #5A19DB); }
+  .lx :focus-visible { outline: 3px solid var(--accent-deep, #5A19DB); outline-offset: 3px; }
+  @media (max-width: 480px) { .lx-in { padding: 22px 20px 18px; } .lx-foot { padding: 12px 20px 16px; } .lx-h { font-size: 21px; } }
+</style>
+<div class="lx" id="lx" role="dialog" aria-modal="true" aria-labelledby="lxh" hidden>
+  <div class="lx-card">
+    <div class="lx-bar"><i id="lxbar"></i></div>
+    <div class="lx-in">
+      <p class="lx-k" id="lxk">שלב 1 מתוך 3</p>
+      <h2 class="lx-h" id="lxh">מה סוג העסק שלך?</h2>
+      <p class="lx-s" id="lxs">אותה שאלה שנשאל אותך עוד רגע. ככה זה נראה אחריה.</p>
+      <div class="lx-tiles" id="lxtiles"></div>
+      <div class="lx-steps" id="lxsteps"></div>
+      <div class="lx-wa" id="lxwa" hidden></div>
+    </div>
+    <div class="lx-foot">
+      <button class="lx-skip" id="lxskip" type="button">דלג ←</button>
+      <button class="lx-go" id="lxgo" type="button">בואו נתחיל ←</button>
+    </div>
+  </div>
+</div>
+<script id="sv-launch-js">
+(function () {
+  var box = document.getElementById('lx'); if (!box) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var seen; try { seen = sessionStorage.getItem('mc-launch-seen'); } catch (e) { seen = null; }
+
+  var el = {
+    bar: document.getElementById('lxbar'), k: document.getElementById('lxk'), h: document.getElementById('lxh'),
+    s: document.getElementById('lxs'), tiles: document.getElementById('lxtiles'), steps: document.getElementById('lxsteps'),
+    wa: document.getElementById('lxwa'), skip: document.getElementById('lxskip'), go: document.getElementById('lxgo')
+  };
+
+  var BIZ = {
+    osek: {
+      label: 'עוסק מורשה',
+      steps: [['תיק במע״מ', 'נפתח'], ['תיק במס הכנסה', 'נפתח'], ['תיק בביטוח לאומי', 'נפתח'],
+              ['רו״ח מורשה', 'נקלט לתיק שלך'], ['אפליקציה לחשבוניות', 'מוכנה']],
+      wa: 'היי 👋 כאן MyCompany. התיקים נפתחו, ואני כבר עוקב אחרי המע״מ שלך. <b>אין לך מה לעשות עכשיו.</b>'
+    },
+    ltd: {
+      label: 'חברה בע״מ',
+      steps: [['רישום החברה', 'עם צוות Ettorney'], ['תיקים ברשויות', 'נפתחו'], ['הנהלת חשבונות כפולה', 'פעילה'],
+              ['רו״ח מבקר', 'נקלט לתיק'], ['תמהיל משכורת ודיבידנד', 'מתוכנן לשנה הראשונה']],
+      wa: 'היי 👋 כאן MyCompany. החברה פעילה והתיקים פתוחים. <b>נתחיל מתכנון המשיכה שלך מהחברה.</b>'
+    },
+    "new": {
+      label: 'עוד אין לי עסק',
+      steps: [['בדיקת התאמה', 'עוסק מורשה או חברה'], ['פתיחת התיקים', 'עלינו'], ['רו״ח מורשה', 'נקלט לתיק'],
+              ['אפליקציה לחשבוניות', 'מוכנה'], ['הדיווח הראשון', 'כבר בלוח שלנו']],
+      wa: 'היי 👋 כאן MyCompany. פתחנו לך את העסק. <b>הדיווח הראשון כבר בלוח שלנו — לא תפספס אותו.</b>'
+    }
+  };
+
+  var timers = [], href = null, done = false;
+  function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+  function clear() { timers.forEach(clearTimeout); timers = []; }
+
+  function leave() { if (!href) return; var u = href; href = null; clear(); location.href = u; }
+
+  function finish() {
+    done = true; el.go.classList.add('on'); el.go.focus();
+  }
+
+  function play(kind) {
+    var b = BIZ[kind] || BIZ.osek;
+    el.tiles.innerHTML = ''; el.steps.innerHTML = ''; el.wa.hidden = true; el.wa.classList.remove('in');
+    el.go.classList.remove('on'); done = false;
+
+    Object.keys(BIZ).forEach(function (k) {
+      var t = document.createElement('div'); t.className = 'lx-tile';
+      var r = document.createElement('span'); r.className = 'r'; t.appendChild(r);
+      t.appendChild(document.createTextNode(BIZ[k].label));
+      if (k === kind) t.dataset.pick = '1';
+      el.tiles.appendChild(t);
+    });
+
+    var TOTAL = 6400;
+    el.bar.style.transition = 'width ' + TOTAL + 'ms linear'; el.bar.style.width = '0';
+    requestAnimationFrame(function () { el.bar.style.width = '100%'; });
+
+    /* state 1 — the choice lands */
+    at(700, function () { var p = el.tiles.querySelector('[data-pick]'); if (p) p.classList.add('pick'); });
+
+    /* state 2 — the work */
+    at(1400, function () {
+      el.k.textContent = 'שלב 2 מתוך 3';
+      el.h.textContent = 'פותחים לך את העסק';
+      el.s.textContent = 'בזמן שאתה ממשיך ביום שלך.';
+      el.tiles.style.display = 'none';
+      b.steps.forEach(function (pair, i) {
+        var row = document.createElement('div'); row.className = 'lx-step';
+        var ic = document.createElement('i'); row.appendChild(ic);
+        var strong = document.createElement('b'); strong.textContent = pair[0]; row.appendChild(strong);
+        row.appendChild(document.createTextNode(' ' + pair[1]));
+        el.steps.appendChild(row);
+        at(120 + i * 340, function () { row.classList.add('in'); });
+        at(420 + i * 340, function () { row.classList.add('ok'); });
+      });
+    });
+
+    /* state 3 — the payoff */
+    at(1400 + 420 + b.steps.length * 340 + 260, function () {
+      el.k.textContent = 'שלב 3 מתוך 3';
+      el.h.textContent = 'העסק שלך פעיל';
+      el.s.textContent = 'וזאת ההודעה הראשונה שתקבל.';
+      el.wa.hidden = false;
+      el.wa.innerHTML = b.wa + '<span>MyCompany · עכשיו</span>';
+      requestAnimationFrame(function () { el.wa.classList.add('in'); });
+      finish();
+    });
+  }
+
+  function open(url) {
+    href = url;
+    var m = String(url).match(/biz=(osek|ltd|new)/);
+    box.hidden = false;
+    requestAnimationFrame(function () { box.classList.add('on'); });
+    play(m ? m[1] : 'osek');
+    try { sessionStorage.setItem('mc-launch-seen', '1'); } catch (e) {}
+  }
+
+  el.skip.addEventListener('click', leave);
+  el.go.addEventListener('click', leave);
+  box.addEventListener('click', function (e) { if (e.target === box) leave(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('on')) leave(); });
+
+  /* intercept the CTAs that lead into the panel — once per session, and never
+     when the visitor asked not to be animated at */
+  document.addEventListener('click', function (e) {
+    if (reduce || seen) return;
+    var a = e.target.closest && e.target.closest('a[href*="panel-prototype-v0.html"]');
+    if (!a || a.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    e.preventDefault();
+    open(a.getAttribute('href'));
+  }, true);
+})();
+</script>
 </body>
 </html>
