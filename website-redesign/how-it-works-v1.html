@@ -1089,8 +1089,8 @@
 <script>
   (function () {
     var nav = document.querySelector('.nav'); if (!nav || nav.querySelector('.navburger')) return;
-    var inbar = nav.querySelector('.in'); if (!inbar) return;
-    var links = nav.querySelectorAll('.links a');
+    var inbar = nav.querySelector('.in, .nav-in'); if (!inbar) return;
+    var links = nav.querySelectorAll('.links a, .nav-links a');
     if (!links.length) return;
 
     var burger = document.createElement('button');
@@ -1108,7 +1108,7 @@
       c.textContent = (a.textContent || '').trim();
       sheet.appendChild(c);
     });
-    var cta = nav.querySelector('.in > .btn.sm');
+    var cta = nav.querySelector('.in > .btn.sm, .nav-right .btn');
     if (cta) {
       var cl = document.createElement('a');
       cl.href = cta.getAttribute('href');
