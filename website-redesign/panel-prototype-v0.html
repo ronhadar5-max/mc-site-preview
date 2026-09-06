@@ -765,6 +765,7 @@
      This is the first link of Keyword → Landing → Lead → Monday → MRR. */
   var SRC = new URLSearchParams(location.search).get("src") || (document.referrer ? document.referrer.replace(/^https?://[^/]+//, "").split(/[?#]/)[0] || "direct" : "direct");
   state.src = SRC;
+  var VIA = new URLSearchParams(location.search).get("via"); if (VIA) state.via = VIA;
   function q1pre(v) {
     var LBL = { osek: "עוסק מורשה", ltd: "חברה בע״מ", new: "עוד אין לי עסק" };
     state.biz = v;
@@ -927,7 +928,7 @@
       '<li>ייפוי כוח בחתימה דיגיטלית — בוואטסאפ</li><li>' + next2 + '</li>' +
       '<li>בדיקת רטרו: החזרי מע״מ / מס הכנסה / ביטוח לאומי חצי שנה אחורה</li>' +
       '<li>שיחת היכרות עם רו״ח שרון — אם בא לך. לא חובה.</li></ol></div>' +
-      '<div class="demo-note" style="text-align:center;margin-top:10px">מקור הליד (נכתב ל-CRM): <code dir="ltr">' + String(state.src || 'direct').replace(/[<>&"]/g, '') + '</code></div>' +
+      '<div class="demo-note" style="text-align:center;margin-top:10px">מקור הליד (נכתב ל-CRM): <code dir="ltr">' + String((state.src || 'direct') + (state.via ? ' · via ' + state.via : '')).replace(/[<>&"]/g, '') + '</code></div>' +
       '<button class="restart" onclick="location.search=\'\'">התחל מחדש (פרוטוטייפ)</button></div>');
     chatEl.appendChild(card); scrollDown();
   }

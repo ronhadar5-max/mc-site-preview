@@ -14,56 +14,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237B5BFF'/%3E%3Cstop offset='1' stop-color='%235B2FE6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23g)'/%3E%3Cpath d='M32 15l4.6 9.9L47 29l-10.4 4.1L32 43l-4.6-9.9L17 29l10.4-4.1z' fill='%23fff'/%3E%3Ccircle cx='47' cy='47' r='6' fill='%23FF8B3D'/%3E%3C/svg%3E" />
 <style>
   /* page-local components only — everything else comes from site-system.css */
-  .phead-in{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,60px);align-items:center}
-  @media(max-width:980px){.phead-in{grid-template-columns:1fr;gap:36px}}
   .segbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding-top:22px;border-top:1px solid var(--hairline);font-size:14.5px;color:var(--ink)}
   .segbar span{display:inline-flex;align-items:center;gap:8px}
-
-  /* device frame — 9px bezel, 46/37 radii, per the locked spec */
-  .hero-visual{position:relative;display:grid;justify-items:center}
-  .hero-visual::before{content:"";position:absolute;inset:6% 12% 10%;border-radius:50%;
-    background:radial-gradient(ellipse at 50% 50%,rgba(122,43,255,.16),transparent 70%);filter:blur(28px);pointer-events:none}
-  .phone{position:relative;z-index:1;width:min(322px,100%);
-    background:linear-gradient(160deg,#413B31,#2A2620 62%,#37332B);padding:9px;border-radius:46px;
-    box-shadow:0 34px 64px -22px rgba(32,32,32,.42),0 2px 6px rgba(32,32,32,.16),inset 0 0 0 1px rgba(255,255,255,.10)}
-  .screen{position:relative;overflow:hidden;background:var(--ground);border-radius:37px;padding:38px 13px 16px;
-    box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
-  .island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:74px;height:21px;border-radius:99px;background:#2A2620}
-  .chat-head{display:flex;align-items:center;gap:11px;padding:4px 4px 13px;border-bottom:1px solid var(--hairline);margin-bottom:13px}
-  .chat-head .ava{width:36px;height:36px;border-radius:50%;flex:none;background:linear-gradient(135deg,#7B5BFF,var(--brand));
-    display:grid;place-items:center;font-weight:600;color:#fff;font-size:13px}
-  .chat-head b{display:block;color:var(--ink-dark);font-size:14.5px;font-weight:600;line-height:1.3}
-  .chat-head i{font-style:normal;font-size:12.5px;color:var(--ok);font-weight:600}
-  .chat-head i::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);margin-left:6px}
-  .chat-body{display:grid;gap:9px}
-  .bub{max-width:92%;padding:11px 13px;border-radius:14px;font-size:14px;line-height:1.55}
-  .bub.in{background:var(--tint);color:var(--ink);border-top-right-radius:4px;justify-self:start}
-  .bub.out{background:var(--wa);color:#14532D;border-top-left-radius:4px;justify-self:end}
-  .bub b{color:var(--ink-dark);font-weight:600}
-  .bub .t{display:block;font-size:11px;color:var(--faint);margin-top:5px;font-variant-numeric:tabular-nums lining}
-  .cap{margin-top:18px;font-size:13px;color:var(--faint);text-align:center;max-width:34ch}
-
-  /* calculator */
-  .calc{background:var(--ground);border:1px solid var(--hairline);border-radius:16px;
-    padding:clamp(24px,3.4vw,38px);box-shadow:var(--shadow-lg);max-width:840px;margin:36px auto 0}
-  .calc-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  @media(max-width:620px){.calc-row{grid-template-columns:1fr}}
-  .calc label{display:block;font-size:14px;font-weight:600;color:var(--ink-dark);margin-bottom:7px}
-  .calc label small{display:block;font-weight:400;color:var(--faint);font-size:13px;margin-top:2px}
-  .calc input,.calc select{width:100%;border:1px solid var(--hairline);border-radius:6px;padding:12px 14px;
-    font-size:17px;color:var(--ink-dark);background:var(--ground);font-variant-numeric:tabular-nums lining;
-    transition:border-color .16s ease,box-shadow .16s ease}
-  .calc input:focus,.calc select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(122,43,255,.14)}
-  .calc-out{margin-top:24px;padding:24px;border-radius:12px;background:var(--money-pale);border:1px solid #F0B07A}
-  .calc-lines{display:grid;gap:9px;margin-bottom:16px}
-  .calc-lines div{display:flex;justify-content:space-between;gap:16px;font-size:15.5px;color:#7A5510}
-  .calc-lines b{font-weight:600;font-variant-numeric:tabular-nums lining}
-  .calc-total{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
-    padding-top:16px;border-top:1px solid rgba(122,85,16,.28)}
-  .calc-total span{font-size:16px;font-weight:600;color:#7A5510}
-  .calc-total b{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);color:#7A5510;
-    line-height:1;font-variant-numeric:tabular-nums lining}
-  .calc-note{font-size:13.5px;color:var(--faint);margin-top:14px;text-align:center;max-width:none}
 
   .steps{display:grid;gap:0;margin-top:8px}
   .step{display:grid;grid-template-columns:52px 1fr;gap:18px;padding-bottom:24px;position:relative}
@@ -77,6 +29,16 @@
   @media(max-width:860px){.two-col{grid-template-columns:1fr;gap:32px}}
   .cta-band{display:grid;grid-template-columns:1.2fr auto;gap:28px;align-items:center}
   @media(max-width:800px){.cta-band{grid-template-columns:1fr}.cta-band .btn{width:100%}}
+
+  /* page-local additions — only what the base lacks */
+  .card p a,.step p a,.two-col p a,td a,.ticks a,.pnote a,.segbar a{color:var(--brand);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  .band p a,.band .stat span a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  .band .band-h3{font-family:var(--display);font-weight:400;color:#fff;font-size:clamp(24px,3vw,32px);line-height:1.1;letter-spacing:-.014em;margin-bottom:14px}
+  .ticks{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
+  .ticks li{position:relative;padding-inline-start:22px;font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .ticks li::before{content:"";position:absolute;inset-inline-start:0;top:9px;width:9px;height:9px;border-radius:50%;background:var(--money)}
+  .pnote{margin-top:34px;font-size:16px;color:var(--ink);max-width:78ch;line-height:1.65}
+  .side-cards{align-self:start}
 </style>
 <style id="navdrop-css">
 /* These pages were authored as artifact fragments: the runtime supplied the
@@ -163,10 +125,10 @@ html{direction:rtl}
         </div>
       </div>
       <div class="navdrop">
-        <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">רואה חשבון</span><i class="navdrop-car" aria-hidden="true"></i></button>
+        <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">לעוסק מורשה</span><i class="navdrop-car" aria-hidden="true"></i></button>
         <div class="navdrop-m" role="menu">
-        <a href="online-accountant.html">רואה חשבון אונליין</a>
         <a href="osek-morshe-v1.html">רואה חשבון לעוסק מורשה</a>
+        <a href="online-accountant.html">רואה חשבון אונליין</a>
         <a href="bookkeeping.html">הנהלת חשבונות</a>
         <a href="annual-report-self-employed.html">דוח שנתי לעצמאי</a>
         <a class="sep" href="switch-to-mycompany.html">כבר יש לי רו״ח — מעבר</a>
@@ -204,38 +166,26 @@ html{direction:rtl}
   </div>
 </nav>
 
-<style>
-  /* page-local additions — only what the base lacks */
-  .card p a,.step p a,.two-col p a,td a,.ticks a,.pnote a{color:var(--brand);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-  .band p a,.band .stat span a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-  .band .band-h3{font-family:var(--display);font-weight:400;color:#fff;font-size:clamp(24px,3vw,32px);line-height:1.1;letter-spacing:-.014em;margin-bottom:14px}
-  .ticks{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
-  .ticks li{position:relative;padding-inline-start:22px;font-size:15.5px;line-height:1.55;color:var(--ink)}
-  .ticks li::before{content:"";position:absolute;inset-inline-start:0;top:9px;width:9px;height:9px;border-radius:50%;background:var(--money)}
-  .pnote{margin-top:34px;font-size:16px;color:var(--ink);max-width:78ch;line-height:1.65}
-  .side-cards{align-self:start}
-</style>
-
 <!-- ============ PAGE HEAD ============ -->
 <header class="phead">
   <div class="wrap narrow">
     <nav class="crumb" aria-label="מיקום">
-      <a href="homepage-morning.html">דף הבית</a><span>›</span><a href="ltd-v1.html">לחברה בע״מ</a><span>›</span>מעבר מעוסק לחברה
+      <a href="homepage-morning.html">דף הבית</a><span>›</span><a href="company.html">לחברה בע״מ</a><span>›</span>מעבר מעוסק לחברה
     </nav>
     <h1>מעבר מעוסק מורשה לחברה בע״מ — מתי זה משתלם, ואיך עושים את זה נכון</h1>
     <p class="lead" style="margin-top:18px">
-      רוב העוסקים המורשים שואלים את השאלה הזאת מאוחר מדי: אחרי שנה חזקה, כשהמס כבר שולם.
+      הרבה עוסקים מורשים שואלים את השאלה הזאת מאוחר מדי: אחרי שנה חזקה, כשהמס כבר שולם.
       ואז עונים עליה מהר מדי, רושמים חברה, ומגלים שהסדר היה הפוך.
       כאן עושים את זה בסדר הנכון: קודם בודקים אם זה הזמן, ואז עוברים בלי לשלם על טעויות בדרך.
     </p>
     <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">
-      <a class="btn btn-primary btn-lg" href="panel-prototype-v0.html?src=dealer-to-company">לדבר איתנו ←</a>
       <a class="btn btn-ghost btn-lg" href="choose-business-type.html">לבדוק אם זה הזמן</a>
+      <a class="btn btn-primary btn-lg" href="panel-prototype-v0.html?src=dealer-to-company">לדבר איתנו ←</a>
     </div>
     <div class="segbar">
-      <span>רו״ח מורשים חותמים על כל דוח</span>
-      <span>מערכת מאושרת רשות המסים</span>
-      <span>הכל בוואטסאפ</span>
+      <span>ההקמה המשפטית: צוות <a href="https://ettorney.co.il/" rel="noopener">Ettorney</a></span>
+      <span>התיקים, רו״ח מורשה שחותם על כל דוח והנהלת החשבונות: MyCompany</span>
+      <span>החל מ-1,200 ₪ לחודש, הכל בוואטסאפ</span>
     </div>
   </div>
 </header>
@@ -253,12 +203,12 @@ html{direction:rtl}
       <div class="card">
         <div class="num">01</div>
         <h3>רווח שנשאר בעסק ולא נמשך</h3>
-        <p>כעוסק מורשה אתם משלמים מס שולי על כל הרווח בשנה שבה נוצר, גם על החלק שנשאר בחשבון העסקי. בחברה, רווח שנשאר בחברה ממוסה במס חברות של 23%, והמס הנוסף מגיע רק כשמושכים. ככלל אצבע: כשהרווח שנשאר בעסק משמעותי, זה הזמן לחשב.</p>
+        <p>כעוסק מורשה אתם משלמים מס שולי על כל הרווח בשנה שבה נוצר, גם על החלק שנשאר בחשבון העסקי. בחברה, רווח שנשאר בחברה ממוסה במס חברות של 23%, והמס הנוסף מגיע ככלל רק כשמושכים. מ-2025 יש כלל נפרד לרווחים שנצברים בחברת מעטים מעבר למגן המס, ובודקים אותו בנפרד. <a href="ltd-v1.html#check">בדיקה קצרה כאן</a>. כלל אצבע: כשהרווח שנשאר בעסק משמעותי, זה הזמן לחשב.</p>
       </div>
       <div class="card">
         <div class="num">02</div>
         <h3>שותפים</h3>
-        <p>עוסק מורשה הוא אדם אחד. שני עוסקים שעובדים יחד מתפעלים שתי מערכות דיווח ומחלקים כסף על בסיס הסכמה בלבד. חברה נותנת לזה שלד: מניות, תקנון והסכם מייסדים שקובע מי מקבל מה, גם ביום שלא מסכימים.</p>
+        <p>עוסק מורשה הוא לרוב אדם אחד. גם שותפות בלי חברה נשענת על הסכם ולא על מניות, ולכל שותף דוח שנתי משלו. חברה נותנת לזה שלד: מניות, תקנון והסכם מייסדים שקובע מי מקבל מה, גם ביום שלא מסכימים.</p>
       </div>
       <div class="card">
         <div class="num">03</div>
@@ -268,7 +218,7 @@ html{direction:rtl}
       <div class="card">
         <div class="num">04</div>
         <h3>לקוחות גדולים שדורשים חברה</h3>
-        <p>יש ארגונים שעובדים רק מול חברות: מחלקות רכש, גופים ציבוריים, חלק מהלקוחות בחו״ל. לא בגלל מס, בגלל נהלים. אם הלקוח הגדול הבא שלכם כזה, החברה היא כרטיס הכניסה, והוא צריך להיות מוכן לפני השיחה איתו.</p>
+        <p>יש ארגונים שעובדים רק מול חברות: מחלקות רכש, גופים ציבוריים, חלק מהלקוחות בחו״ל. לא בגלל מס, בגלל נהלים. אם הלקוח הגדול הבא שלכם כזה, החברה היא כרטיס הכניסה, והיא צריכה להיות מוכנה לפני השיחה איתו.</p>
       </div>
       <div class="card">
         <div class="num">05</div>
@@ -278,12 +228,12 @@ html{direction:rtl}
       <div class="card">
         <div class="num">06</div>
         <h3>חשיפה לאחריות</h3>
-        <p>כעוסק מורשה, חוב של העסק הוא חוב שלכם. בחברה האחריות מוגבלת ככלל להון החברה, למעט מקרים של ערבות אישית או התנהלות לא תקינה. בתחומים עם חשיפה גבוהה זה שיקול בפני עצמו, בלי קשר למס.</p>
+        <p>כעוסק מורשה, חוב של העסק הוא חוב שלכם. בחברה החובות הם של החברה ולא שלכם, למעט ערבות אישית או התנהלות לא תקינה. בתחומים עם חשיפה גבוהה זה שיקול בפני עצמו, בלי קשר למס.</p>
       </div>
     </div>
 
     <p class="pnote">
-      <b>ומתי לא?</b> כשכל הרווח נמשך הביתה כל חודש. במצב כזה החברה לא חוסכת מס. היא מוסיפה דוח מבוקר, רשם חברות ועלות שוטפת גבוהה יותר.
+      <b>ומתי לא?</b> כשכל הרווח נמשך הביתה כל חודש. במצב כזה החברה לרוב לא חוסכת מס. היא מוסיפה דוח מבוקר, רשם חברות ועלות שוטפת גבוהה יותר.
       אם זה המצב שלכם, <a href="osek-morshe-v1.html">עוסק מורשה</a> עם ליווי נכון הוא לרוב התשובה.
       לא בטוחים לאן אתם נוטים? <a href="choose-business-type.html">בדיקה קצרה תגיד לכם</a>.
     </p>
@@ -303,9 +253,9 @@ html{direction:rtl}
       <table>
         <thead><tr><th>&nbsp;</th><th>עוסק מורשה</th><th>חברה בע״מ</th></tr></thead>
         <tbody>
-          <tr><td>מס על הרווח</td><td>מס שולי אישי על כל הרווח, בשנה שבה נוצר</td><td>מס חברות 23% על הרווח שנשאר בחברה. מס נוסף רק במשיכה</td></tr>
+          <tr><td>מס על הרווח</td><td>מס שולי אישי על כל הרווח, בשנה שבה נוצר</td><td>מס חברות 23% על הרווח שנשאר בחברה. מס נוסף בעיקר במשיכה</td></tr>
           <tr><td>איך מושכים כסף</td><td>מעבירים לחשבון הפרטי. זה הכסף שלכם</td><td>כשכר בתלוש או כדיבידנד. לכל שקל יש מסלול ותיעוד</td></tr>
-          <tr><td>אחריות</td><td>אישית. חוב של העסק הוא חוב שלכם</td><td>מוגבלת, ככלל, להון החברה</td></tr>
+          <tr><td>אחריות</td><td>אישית. חוב של העסק הוא חוב שלכם</td><td>של החברה, לא שלכם. למעט ערבות אישית</td></tr>
           <tr><td>הדוח השנתי</td><td>טופס 1301, באחריותכם</td><td>דוחות כספיים מבוקרים בחתימת רו״ח, וטופס 1214</td></tr>
           <tr><td>רשם החברות</td><td>לא רלוונטי</td><td>דוח שנתי ואגרה שנתית, כל שנה, גם בלי פעילות</td></tr>
           <tr><td>שכר ותלושים</td><td>תיק ניכויים רק אם יש עובדים</td><td>גם אתם יכולים להיות שכירים בחברה: תלוש, ניכויים, 106 ו-126</td></tr>
@@ -318,7 +268,7 @@ html{direction:rtl}
         <div class="eyebrow">החשבון האמיתי</div>
         <h3 class="band-h3">המס לא נעלם. הוא נדחה, ומתפצל לשניים.</h3>
         <p>
-          בחברה יש שתי שכבות: מס חברות של 23% על הרווח, ואז מס אישי כשהכסף יוצא אליכם, כשכר או כדיבידנד.
+          בחברה יש שתי שכבות על הרווח: מס חברות של 23%, ואז מס דיבידנד כשהרווח הזה יוצא אליכם. שכר הוא מסלול אחר: הוצאה של החברה שמקטינה את הרווח, וממוסה אצלכם כמו כל תלוש.
           החיסכון נוצר בשכבה השנייה. על הרווח שנשאר בחברה משלמים רק את השכבה הראשונה, וההחלטה מתי ואיך למשוך עוברת לידיים שלכם.
         </p>
         <p>
@@ -328,7 +278,7 @@ html{direction:rtl}
       </div>
       <div class="grid" style="grid-auto-rows:auto;gap:14px;align-self:center">
         <div class="stat"><b>23%</b><span>מס חברות על הרווח שנשאר בחברה</span></div>
-        <div class="stat"><b>שתי שכבות</b><span>מס חברות, ואז מס אישי כשמושכים</span></div>
+        <div class="stat"><b>שתי שכבות</b><span>מס חברות, ואז מס דיבידנד כשמושכים</span></div>
         <div class="stat hot"><b>1214</b><span>הטופס השנתי לחברה, במקום 1301 של העצמאי</span></div>
       </div>
     </div>
@@ -379,7 +329,7 @@ html{direction:rtl}
       <div class="grid side-cards" style="gap:14px;grid-auto-rows:auto">
         <div class="card">
           <h3>מה עושה צוות Ettorney</h3>
-          <p>הצד המשפטי של ההקמה: רישום ברשם החברות, תקנון, מניות ומסמכי ההתאגדות. <a href="https://ettorney.co.il/" rel="noopener">ettorney.co.il</a></p>
+          <p>הצד המשפטי של ההקמה, כמו בשלב 1. <a href="https://ettorney.co.il/" rel="noopener">ettorney.co.il</a></p>
         </div>
         <div class="card">
           <h3>מה עושה MyCompany</h3>
@@ -407,32 +357,32 @@ html{direction:rtl}
       <div class="card">
         <div class="num">01</div>
         <h3>סוגרים את העוסק מוקדם מדי</h3>
-        <p>סוגרים את התיק ביום שהחברה נרשמה, ואז מגיע תשלום על חשבונית ישנה, או קבלה על הוצאה שכבר אין לאן לקלוט. במקומו: תקופת חפיפה. העוסק נסגר אחרי שהחשבונית האחרונה שלו שולמה והדיווח האחרון הוגש.</p>
+        <p>סוגרים את התיק ביום שהחברה נרשמה, ואז מגיע תשלום על חשבונית ישנה, או קבלה על הוצאה שכבר אין לאן לקלוט. במקום זה: תקופת חפיפה, כמו בשלב 3 למעלה.</p>
       </div>
       <div class="card">
         <div class="num">02</div>
         <h3>מושכים כסף בלי תיעוד</h3>
-        <p>הכסף בחשבון החברה מרגיש כמו הכסף שלכם. הוא לא. משיכה בלי מסלול, לא שכר ולא דיבידנד, נרשמת כחוב שלכם לחברה ועלולה להיחשב הכנסה. במקומו: כל משיכה מקבלת שם לפני שהיא יוצאת.</p>
+        <p>הכסף בחשבון החברה מרגיש כמו הכסף שלכם. הוא לא. משיכה בלי מסלול, לא שכר ולא דיבידנד, נרשמת כחוב שלכם לחברה ועלולה להיחשב הכנסה. במקום זה: כל משיכה מקבלת שם לפני שהיא יוצאת.</p>
       </div>
       <div class="card">
         <div class="num">03</div>
         <h3>עוברים כי לחבר זה השתלם</h3>
-        <p>אצלו הרווח נשאר בחברה. אצלכם הוא נמשך הביתה כל חודש. אותה חברה, תוצאה הפוכה. במקומו: חישוב על המספרים שלכם, לפני הרישום ולא אחריו.</p>
+        <p>אצלו הרווח נשאר בחברה. אצלכם הוא נמשך הביתה כל חודש. אותה חברה, תוצאה הפוכה. במקום זה: חישוב על המספרים שלכם.</p>
       </div>
       <div class="card">
         <div class="num">04</div>
         <h3>רושמים חברה ומחכים עם התיקים</h3>
-        <p>יש מספר חברה, אין תיק מע״מ, וכבר יוצאת חשבונית ראשונה. במקומו: פתיחת התיקים מתחילה ביום שיש מספר חברה, ולפני החשבונית הראשונה.</p>
+        <p>יש מספר חברה, אין תיק מע״מ, וכבר יוצאת חשבונית ראשונה. במקום זה: פתיחת התיקים מתחילה ביום שיש מספר חברה, ולפני החשבונית הראשונה.</p>
       </div>
       <div class="card">
         <div class="num">05</div>
         <h3>חשבון בנק אחד לשתי ישויות</h3>
-        <p>תשלומים של החברה נכנסים לחשבון של העוסק כי ״זה זמני״. אחר כך קשה להפריד, וכל תנועה דורשת הסבר. במקומו: חשבון על שם החברה לפני התנועה הראשונה.</p>
+        <p>תשלומים של החברה נכנסים לחשבון של העוסק כי ״זה זמני״. אחר כך קשה להפריד, וכל תנועה דורשת הסבר. במקום זה: חשבון נפרד מהיום הראשון, כמו בשלב 2 למעלה.</p>
       </div>
       <div class="card">
         <div class="num">06</div>
         <h3>לא מעדכנים לקוחות וחוזים</h3>
-        <p>החשבונית יוצאת מהחברה, אבל הלקוח משלם לעוסק ומנכה מס במקור על השם הישן. במקומו: הודעה מסודרת לכל לקוח, הסבת חוזים, ואישור ניכוי מס במקור חדש על שם החברה.</p>
+        <p>החשבונית יוצאת מהחברה, אבל הלקוח משלם לעוסק ומנכה מס במקור על השם הישן. במקום זה: הודעה מסודרת לכל לקוח, הסבת חוזים, ואישור ניכוי מס במקור חדש על שם החברה.</p>
       </div>
     </div>
   </div>
@@ -467,7 +417,7 @@ html{direction:rtl}
         <div class="grid" style="grid-auto-rows:auto;gap:14px">
           <div class="stat"><b>החל מ-1,200 ₪</b><span>לחודש, לחברה בע״מ: רו״ח, הנה״ח וניהול שוטף</span></div>
           <div class="stat"><b>החל מ-300 ₪</b><span>לחודש, אם מתברר שעדיף להישאר עוסק מורשה בינתיים</span></div>
-          <div class="stat hot"><b>Ettorney</b><span>ההקמה המשפטית, רישום ברשם החברות, תקנון ומסמכי התאגדות, מתבצעת בנפרד על ידי <a href="https://ettorney.co.il/" rel="noopener">צוות Ettorney</a></span></div>
+          <div class="stat hot"><b>Ettorney</b><span>ההקמה המשפטית מתבצעת בנפרד, על ידי <a href="https://ettorney.co.il/" rel="noopener">צוות Ettorney</a></span></div>
         </div>
         <p style="margin-top:18px;font-size:15px"><a href="company.html">כל מה שכלול בליווי לחברה בע״מ</a></p>
       </div>
@@ -483,19 +433,19 @@ html{direction:rtl}
     <div style="margin-top:36px;border-top:1px solid var(--hairline)">
       <details open>
         <summary>מאיזה רווח שנתי כבר משתלם לעבור לחברה?</summary>
-        <div class="a">אין מספר אחד שנכון לכולם, ומי שנותן לכם מספר בלי לראות את הספרים מנחש. הלוגיקה פשוטה: כל עוד אתם מושכים את כל הרווח הביתה, החברה לרוב לא חוסכת מס, כי אחרי מס חברות של 23% מגיע גם המס האישי במשיכה. החיסכון מתחיל כשחלק משמעותי מהרווח נשאר בחברה. את החישוב עושים על המספרים שלכם, ואפשר להתחיל מ<a href="choose-business-type.html">בדיקה קצרה</a>.</div>
+        <div class="a">אין מספר אחד שנכון לכולם, ומי שנותן לכם מספר בלי לראות את הספרים מנחש. הלוגיקה פשוטה: כל עוד אתם מושכים את כל הרווח הביתה, החברה לרוב לא חוסכת מס, כי אחרי מס חברות של 23% מגיע גם מס הדיבידנד במשיכה. החיסכון מתחיל כשחלק משמעותי מהרווח נשאר בחברה. מתחילים מ<a href="choose-business-type.html">בדיקה קצרה</a>.</div>
       </details>
       <details>
         <summary>חייבים לסגור את העוסק המורשה כשפותחים חברה?</summary>
-        <div class="a">לא באותו יום, ולרוב עדיף שלא. תקופת חפיפה מאפשרת לקבל תשלומים על חשבוניות ישנות ולקלוט הוצאות שעוד שייכות לעוסק. סוגרים אחרי שהחשבונית האחרונה שולמה והדיווח האחרון הוגש. יש מי שמשאיר את העוסק פעיל לפעילות נפרדת, וזה אפשרי, אבל זה אומר שתי מערכות דיווח ושני דוחות שנתיים. אנחנו אומרים לכם מה נכון במקרה שלכם.</div>
+        <div class="a">לא באותו יום, ולרוב עדיף שלא. תקופת חפיפה מאפשרת לקבל תשלומים על חשבוניות ישנות ולקלוט הוצאות שעוד שייכות לעוסק, ורק אז סוגרים. יש מי שמשאיר את העוסק פעיל לפעילות נפרדת, וזה אפשרי, אבל זה אומר שתי מערכות דיווח ושני דוחות שנתיים. אנחנו אומרים לכם מה נכון במקרה שלכם.</div>
       </details>
       <details>
-        <summary>מי רושם את החברה ברשם החברות, אתם?</summary>
-        <div class="a">לא. הרישום ברשם החברות, התקנון ומסמכי ההתאגדות הם עבודה משפטית, ואותה מבצע צוות <a href="https://ettorney.co.il/" rel="noopener">Ettorney</a>. אנחנו נכנסים ברגע שיש מספר חברה: פותחים את התיקים במע״מ, במס הכנסה, בניכויים ובביטוח לאומי, ומנהלים את החברה מהיום הראשון.</div>
+        <summary>מי רושם את החברה ברשם החברות?</summary>
+        <div class="a">לא אנחנו. הרישום ברשם החברות הוא עבודה משפטית, ואותה מבצע צוות <a href="https://ettorney.co.il/" rel="noopener">Ettorney</a>. אנחנו נכנסים ברגע שיש מספר חברה: פותחים את התיקים ומנהלים את החברה מהיום הראשון.</div>
       </details>
       <details>
         <summary>מה קורה עם הציוד, החוזים והלקוחות של העוסק?</summary>
-        <div class="a">הפעילות עוברת לחברה, אבל לא לבד. חוזים מוסבים או נחתמים מחדש על שם החברה, לקוחות מקבלים הודעה מסודרת עם פרטי החברה ואישור ניכוי מס במקור חדש, וציוד ונכסים מועברים בדרך שמתאימה לסוג ולשווי שלהם. איך מעבירים נכסים תלוי במה יש ובכמה הוא שווה, ואת זה מתכננים לפני המעבר, לא אחריו.</div>
+        <div class="a">הפעילות עוברת לחברה, אבל לא לבד. חוזים מוסבים או נחתמים מחדש על שם החברה, לקוחות מקבלים הודעה מסודרת עם פרטי החברה ואישור ניכוי מס במקור חדש, וציוד ונכסים מועברים בדרך שמתאימה לסוג ולשווי שלהם. איך מעבירים נכסים תלוי במה יש ובשווי שלהם, ואת זה מתכננים לפני המעבר, לא אחריו.</div>
       </details>
       <details>
         <summary>כמה זמן לוקח המעבר?</summary>
@@ -517,17 +467,17 @@ html{direction:rtl}
     {
       "@type": "Question",
       "name": "מאיזה רווח שנתי כבר משתלם לעבור לחברה?",
-      "acceptedAnswer": {"@type": "Answer", "text": "אין מספר אחד שנכון לכולם. כל עוד אתם מושכים את כל הרווח הביתה, החברה לרוב לא חוסכת מס, כי אחרי מס חברות של 23% מגיע גם המס האישי במשיכה. החיסכון מתחיל כשחלק משמעותי מהרווח נשאר בחברה. את החישוב עושים על המספרים שלכם."}
+      "acceptedAnswer": {"@type": "Answer", "text": "אין מספר אחד שנכון לכולם. כל עוד אתם מושכים את כל הרווח הביתה, החברה לרוב לא חוסכת מס, כי אחרי מס חברות של 23% מגיע גם מס הדיבידנד במשיכה. החיסכון מתחיל כשחלק משמעותי מהרווח נשאר בחברה."}
     },
     {
       "@type": "Question",
       "name": "חייבים לסגור את העוסק המורשה כשפותחים חברה?",
-      "acceptedAnswer": {"@type": "Answer", "text": "לא באותו יום, ולרוב עדיף שלא. תקופת חפיפה מאפשרת לקבל תשלומים על חשבוניות ישנות ולקלוט הוצאות שעוד שייכות לעוסק. סוגרים אחרי שהחשבונית האחרונה שולמה והדיווח האחרון הוגש. אפשר להשאיר את העוסק פעיל לפעילות נפרדת, אבל זה אומר שתי מערכות דיווח ושני דוחות שנתיים."}
+      "acceptedAnswer": {"@type": "Answer", "text": "לא באותו יום, ולרוב עדיף שלא. תקופת חפיפה מאפשרת לקבל תשלומים על חשבוניות ישנות ולקלוט הוצאות שעוד שייכות לעוסק, ורק אז סוגרים. אפשר להשאיר את העוסק פעיל לפעילות נפרדת, אבל זה אומר שתי מערכות דיווח ושני דוחות שנתיים."}
     },
     {
       "@type": "Question",
       "name": "מי רושם את החברה ברשם החברות?",
-      "acceptedAnswer": {"@type": "Answer", "text": "הרישום ברשם החברות, התקנון ומסמכי ההתאגדות הם עבודה משפטית, ואותה מבצע צוות Ettorney. MyCompany נכנסת ברגע שיש מספר חברה: פתיחת התיקים במע״מ, במס הכנסה, בניכויים ובביטוח לאומי, וניהול החברה מהיום הראשון."}
+      "acceptedAnswer": {"@type": "Answer", "text": "לא אנחנו. הרישום ברשם החברות הוא עבודה משפטית, ואותה מבצע צוות Ettorney. MyCompany נכנסת ברגע שיש מספר חברה: פתיחת התיקים וניהול החברה מהיום הראשון."}
     },
     {
       "@type": "Question",
@@ -568,7 +518,7 @@ html{direction:rtl}
   <div class="wrap foot">
     <div>
       <img src="assets/logo-white.png" alt="MyCompany" />
-      <p>ליווי פיננסי ומשפטי לעוסקים מורשים ולחברות בע״מ בישראל.</p>
+      <p>ליווי חשבונאי ופיננסי לעוסקים מורשים ולחברות בע״מ בישראל.</p>
     </div>
     <div>
       <b>למי זה מתאים</b>
