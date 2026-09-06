@@ -4,80 +4,15 @@
 <meta name="robots" content="noindex, nofollow" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>לקוחות מספרים | MyCompany</title>
-<meta name="description" content="מה בעלי עסקים אומרים על MyCompany אחרי כמה חודשים: חמישה לקוחות, במילים שלהם, בלי עריכה — ומה בעלי עסקים מבקשים מרואה חשבון בפועל." />
+<title>שירותים פיננסיים לעסק | סליקה, אשראי ומימון — MyCompany</title>
+<meta name="description" content="הספרים של העסק שלכם יודעים לפני הבנק. סליקת תשלומים, אשראי ומימון, שכר, פנסיה וביטוח — שכבת השירותים הפיננסיים של MyCompany, מה חי היום ומה בדרך." />
 <meta name="theme-color" content="#FAF8F1" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=Frank+Ruhl+Libre:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/site-system.css" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23A683FF'/%3E%3Cstop offset='1' stop-color='%237A2BFF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23g)'/%3E%3Cpath d='M32 15l4.6 9.9L47 29l-10.4 4.1L32 43l-4.6-9.9L17 29l10.4-4.1z' fill='%23fff'/%3E%3Ccircle cx='47' cy='47' r='6' fill='%23FF8B3D'/%3E%3C/svg%3E" />
-<style>
-  /* page-local components only — everything else comes from site-system.css */
-  .phead-in{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,60px);align-items:center}
-  @media(max-width:980px){.phead-in{grid-template-columns:1fr;gap:36px}}
-  .segbar{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding-top:22px;border-top:1px solid var(--hairline);font-size:14.5px;color:var(--ink)}
-  .segbar span{display:inline-flex;align-items:center;gap:8px}
-
-  /* device frame — 9px bezel, 46/37 radii, per the locked spec */
-  .hero-visual{position:relative;display:grid;justify-items:center}
-  .hero-visual::before{content:"";position:absolute;inset:6% 12% 10%;border-radius:50%;
-    background:radial-gradient(ellipse at 50% 50%,rgba(122,43,255,.16),transparent 70%);filter:blur(28px);pointer-events:none}
-  .phone{position:relative;z-index:1;width:min(322px,100%);
-    background:linear-gradient(160deg,#413B31,#2A2620 62%,#37332B);padding:9px;border-radius:46px;
-    box-shadow:0 34px 64px -22px rgba(32,32,32,.42),0 2px 6px rgba(32,32,32,.16),inset 0 0 0 1px rgba(255,255,255,.10)}
-  .screen{position:relative;overflow:hidden;background:var(--ground);border-radius:37px;padding:38px 13px 16px;
-    box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
-  .island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:74px;height:21px;border-radius:99px;background:#2A2620}
-  .chat-head{display:flex;align-items:center;gap:11px;padding:4px 4px 13px;border-bottom:1px solid var(--hairline);margin-bottom:13px}
-  .chat-head .ava{width:36px;height:36px;border-radius:50%;flex:none;background:linear-gradient(135deg,#7B5BFF,var(--brand));
-    display:grid;place-items:center;font-weight:600;color:#fff;font-size:13px}
-  .chat-head b{display:block;color:var(--ink-dark);font-size:14.5px;font-weight:600;line-height:1.3}
-  .chat-head i{font-style:normal;font-size:12.5px;color:var(--ok);font-weight:600}
-  .chat-head i::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);margin-left:6px}
-  .chat-body{display:grid;gap:9px}
-  .bub{max-width:92%;padding:11px 13px;border-radius:14px;font-size:14px;line-height:1.55}
-  .bub.in{background:var(--tint);color:var(--ink);border-top-right-radius:4px;justify-self:start}
-  .bub.out{background:var(--wa);color:#14532D;border-top-left-radius:4px;justify-self:end}
-  .bub b{color:var(--ink-dark);font-weight:600}
-  .bub .t{display:block;font-size:11px;color:var(--faint);margin-top:5px;font-variant-numeric:tabular-nums lining}
-  .cap{margin-top:18px;font-size:13px;color:var(--faint);text-align:center;max-width:34ch}
-
-  /* calculator */
-  .calc{background:var(--ground);border:1px solid var(--hairline);border-radius:16px;
-    padding:clamp(24px,3.4vw,38px);box-shadow:var(--shadow-lg);max-width:840px;margin:36px auto 0}
-  .calc-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  @media(max-width:620px){.calc-row{grid-template-columns:1fr}}
-  .calc label{display:block;font-size:14px;font-weight:600;color:var(--ink-dark);margin-bottom:7px}
-  .calc label small{display:block;font-weight:400;color:var(--faint);font-size:13px;margin-top:2px}
-  .calc input,.calc select{width:100%;border:1px solid var(--hairline);border-radius:6px;padding:12px 14px;
-    font-size:17px;color:var(--ink-dark);background:var(--ground);font-variant-numeric:tabular-nums lining;
-    transition:border-color .16s ease,box-shadow .16s ease}
-  .calc input:focus,.calc select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(122,43,255,.14)}
-  .calc-out{margin-top:24px;padding:24px;border-radius:12px;background:var(--money-pale);border:1px solid #F0B07A}
-  .calc-lines{display:grid;gap:9px;margin-bottom:16px}
-  .calc-lines div{display:flex;justify-content:space-between;gap:16px;font-size:15.5px;color:#7A5510}
-  .calc-lines b{font-weight:600;font-variant-numeric:tabular-nums lining}
-  .calc-total{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
-    padding-top:16px;border-top:1px solid rgba(122,85,16,.28)}
-  .calc-total span{font-size:16px;font-weight:600;color:#7A5510}
-  .calc-total b{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,40px);color:#7A5510;
-    line-height:1;font-variant-numeric:tabular-nums lining}
-  .calc-note{font-size:13.5px;color:var(--faint);margin-top:14px;text-align:center;max-width:none}
-
-  .steps{display:grid;gap:0;margin-top:8px}
-  .step{display:grid;grid-template-columns:52px 1fr;gap:18px;padding-bottom:24px;position:relative}
-  .step:not(:last-child)::before{content:"";position:absolute;top:50px;bottom:0;right:25px;width:2px;
-    background:linear-gradient(180deg,var(--hairline),transparent)}
-  .step .n{width:50px;height:50px;border-radius:12px;display:grid;place-items:center;background:var(--brand-soft);
-    color:var(--brand);font-family:var(--display);font-weight:400;font-size:19px;border:1px solid #DED3FA}
-  .step h3{font-size:17.5px;margin-bottom:4px;padding-top:10px}
-  .step p{font-size:15.5px;line-height:1.6}
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);margin-top:40px}
-  @media(max-width:860px){.two-col{grid-template-columns:1fr;gap:32px}}
-  .cta-band{display:grid;grid-template-columns:1.2fr auto;gap:28px;align-items:center}
-  @media(max-width:800px){.cta-band{grid-template-columns:1fr}.cta-band .btn{width:100%}}
-</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"he-IL","mainEntity":[{"@type":"Question","name":"מה זה שירותים פיננסיים ב-MyCompany?","acceptedAnswer":{"@type":"Answer","text":"שכבה שנבנית על גבי הנהלת החשבונות: מכיוון שהנתונים הפיננסיים של העסק זורמים אצלנו בזמן אמת, אנחנו יכולים לזהות מתי נדרשת החלטה פיננסית — אשראי, סליקה, פנסיה או ביטוח — ולהביא אותה לפני שהצורך הופך לבעיה. השירותים ניתנים דרך גורמים מורשים, לא על ידינו."}},{"@type":"Question","name":"אילו שירותים פיננסיים זמינים היום?","acceptedAnswer":{"@type":"Answer","text":"נכון להיום זמינים הליבה החשבונאית והמשפטית: הנהלת חשבונות אונליין, דיווחי מע״מ ומקדמות, שכר לעובדים, דוחות שנתיים, ופתיחת עסק וליווי משפטי דרך Ettorney. סליקה ואשראי הם השלב הבא ואינם מוצעים כרגע."}},{"@type":"Question","name":"למה MyCompany יכולה לעשות את זה ובנק לא?","acceptedAnswer":{"@type":"Answer","text":"לבנק יש תמונת חשבון אחת. לנו יש את הספרים: חשבוניות, הוצאות, חובות פתוחים, תשלומים לרשויות ועונתיות. זה מאפשר לזהות מגמה שבועות לפני שהיא מופיעה ביתרה — ולכן הפנייה מקדימה את הצורך במקום להגיב אליו."}},{"@type":"Question","name":"אתם נותנים אשראי בעצמכם?","acceptedAnswer":{"@type":"Answer","text":"לא. אנחנו לא גוף אשראי ולא סוכנות ביטוח. התפקיד שלנו הוא לזהות את הצורך מתוך הנתונים ולחבר לגורם מורשה — מלווה, סולק או סוכן בעל רישיון. ההתקשרות הפיננסית עצמה היא מולו."}},{"@type":"Question","name":"מה קורה לנתונים שלי?","acceptedAnswer":{"@type":"Answer","text":"הנתונים הם שלכם. שום מידע פיננסי לא מועבר לגורם חיצוני בלי אישור מפורש שלכם לכל פנייה בנפרד. זיהוי הצורך קורה אצלנו; השיתוף קורה רק אם ביקשתם."}},{"@type":"Question","name":"מתי זה יהיה זמין?","acceptedAnswer":{"@type":"Answer","text":"סליקה ואשראי מתוכננים כשלב ראשון ב-2026–2027. שכר, פנסיה, השתלמות וביטוח בשלב השני. כרטיס עסקי וחשבון עסקי משובץ בשלב השלישי, מ-2028. השלבים המאוחרים דורשים רישוי, ולכן הם אחרונים."}}]}</script>
 <style id="navdrop-css">
 /* These pages were authored as artifact fragments: the runtime supplied the
    <html dir="rtl" lang="he"> wrapper. Served as plain files that wrapper is
@@ -146,6 +81,18 @@ html{direction:rtl}
 .navdrop-m a.active,.links a.active,.nav-links a.active{color:#7A2BFF;font-weight:600}
 @media(max-width:1180px){.navdrop-m{right:auto;left:0}}
 </style>
+<script id="sv-reveal">
+document.addEventListener('DOMContentLoaded', function () {
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+});
+</script>
 </head>
 <body>
 
@@ -172,7 +119,7 @@ html{direction:rtl}
         <a class="sep" href="switch-to-mycompany.html">כבר יש לי רו״ח — מעבר</a>
         </div>
       </div>
-      <div class="navdrop">
+      <div class="navdrop has-active">
         <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">לחברה בע״מ</span><i class="navdrop-car" aria-hidden="true"></i></button>
         <div class="navdrop-m" role="menu">
         <a href="company.html">כל השירותים לחברה</a>
@@ -186,14 +133,14 @@ html{direction:rtl}
       </div>
       <a href="how-it-works-v1.html">איך זה עובד</a>
       <a href="pricing-v1.html">מחירון</a>
-      <a href="financial-services.html">שירותים פיננסיים</a>
-      <div class="navdrop has-active">
+      <a class="active" aria-current="page" href="financial-services.html">שירותים פיננסיים</a>
+      <div class="navdrop">
         <button class="navdrop-t" type="button" aria-expanded="false" aria-haspopup="true"><span class="navdrop-lbl">עלינו</span><i class="navdrop-car" aria-hidden="true"></i></button>
         <div class="navdrop-m" role="menu">
         <a href="about-v1.html">הסיפור שלנו</a>
         <a href="why-mycompany.html">למה MyCompany</a>
         <a href="team.html">הצוות המקצועי</a>
-        <a class="sep active" aria-current="page" href="reviews.html">לקוחות מספרים</a>
+        <a class="sep" href="reviews.html">לקוחות מספרים</a>
         </div>
       </div>
       <div class="navdrop">
@@ -211,186 +158,200 @@ html{direction:rtl}
       <a class="nav-tel" href="tel:0555560774">055-556-0774</a>
       <a class="btn btn-primary" href="#contact">דברו איתנו</a>
     </div>
+  </div>
+</nav>
 
 <style>
-  /* page-local: components the osek template's CSS does not carry (they live in ltd-v1) */
-  .doors{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .door{display:flex;flex-direction:column;gap:6px;padding:16px 18px;background:var(--ground);border:1px solid var(--hairline);border-radius:14px;text-decoration:none;transition:border-color .16s ease,transform .16s cubic-bezier(.2,.8,.2,1),box-shadow .16s ease}
-  .door b{font-size:17px;font-weight:700;color:var(--ink-dark)}
-  .door span{font-size:14px;color:var(--faint);line-height:1.5}
-  .door:hover{border-color:var(--accent);box-shadow:0 10px 26px -12px rgba(122,43,255,.5);transform:translateY(-2px)}
-  .door:hover b{color:var(--accent)}
-  .door:focus-visible{outline:3px solid var(--accent-deep);outline-offset:3px}
-  .raise-list{display:grid;gap:12px;align-content:start}
-  .raise-list>div{padding:14px 16px;background:var(--ground);border:1px solid var(--hairline);border-radius:12px;font-size:15px;line-height:1.5;color:var(--ink-dark)}
-  .band .raise-list>div{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);color:#fff}
-  .kicker{margin-top:14px;font-weight:600;color:var(--ink-dark)}
-  .band .kicker{color:#fff}
-  @media(max-width:780px){.doors{grid-template-columns:1fr}}
-  @media(prefers-reduced-motion:reduce){.door:hover{transform:none}}
+  .phead-in{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,60px);align-items:center}
+  @media(max-width:980px){.phead-in{grid-template-columns:1fr;gap:32px}}
+  .capsule{background:var(--ground);border:1px solid var(--hairline);border-right:4px solid var(--brand);
+    border-radius:14px;padding:24px 26px;box-shadow:var(--shadow)}
+  .capsule b{display:block;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--brand);margin-bottom:10px}
+  .capsule p{font-size:17px;line-height:1.66;color:var(--ink-dark);max-width:none}
+  .updated{font-size:13.5px;color:var(--faint);margin-top:14px}
+  .segbar{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:26px;padding-top:22px;
+    border-top:1px solid var(--hairline);font-size:14.5px;color:var(--ink)}
+
+  .wave{background:var(--ground);border:1px solid var(--hairline);border-radius:16px;
+    padding:26px 28px;box-shadow:var(--shadow);margin-bottom:16px}
+  .wave-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .wave-h .tag{font-size:12.5px;font-weight:700;letter-spacing:.04em;padding:4px 12px;border-radius:99px;white-space:nowrap}
+  .wave-h .tag.w1{background:var(--money-pale);color:#8A4A12}
+  .wave-h .tag.w2{background:#EFE9DC;color:#6B6355}
+  .wave-h .tag.w3{background:#F1EFEA;color:#8E887C}
+  .wave-h h3{font-size:21px;margin:0}
+  .wave-h .when{font-size:14px;color:var(--faint);font-variant-numeric:tabular-nums}
+  .wave-items{display:grid;gap:12px;margin-top:18px}
+  .wave-items>div{padding:15px 18px;background:var(--paper);border:1px solid var(--hairline);border-radius:12px}
+  .wave-items b{display:block;color:var(--ink-dark);font-size:16.5px;font-weight:600;margin-bottom:4px}
+  .wave-items span.d{display:block;font-size:15px;line-height:1.6;color:var(--ink)}
+
+  .why{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+  @media(max-width:820px){.why{grid-template-columns:1fr}}
+  .why>div{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+    border-radius:14px;padding:20px 22px}
+  .why b{display:block;color:#fff;font-size:17px;font-weight:600;margin-bottom:6px}
+  .why span.d{display:block;font-size:15px;line-height:1.6;color:#E4DCFF}
 </style>
 
-<!-- ============ PAGE HEAD ============ -->
 <header class="phead">
   <div class="wrap phead-in">
     <div>
       <nav class="crumb" aria-label="מיקום">
-        <a href="homepage-morning.html">דף הבית</a><span>›</span><a href="about-v1.html">עלינו</a><span>›</span>לקוחות מספרים
+        <a href="homepage-morning.html">דף הבית</a><span>›</span>שירותים פיננסיים
       </nav>
-      <h1>לקוחות מספרים</h1>
+      <h1>הספרים שלכם יודעים<br>לפני הבנק.</h1>
       <p class="lead" style="margin-top:18px">
-        מה בעלי עסקים אומרים אחרי כמה חודשים איתנו. במילים שלהם, בלי עריכה. חמישה אנשים, חמישה עסקים,
-        ומשפט אחד שחוזר בכולם בניסוחים שונים: פעם רדפתי אחרי רואה החשבון, היום הוא רודף אחריי.
+        אנחנו כבר רואים את התזרים שלכם בזמן אמת — כל חשבונית, כל הוצאה, כל תשלום לרשויות.
+        השכבה הפיננסית היא מה שקורה כשמפסיקים רק לדווח על זה ומתחילים להקדים.
       </p>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">
-        <a class="btn btn-primary btn-lg" href="panel-prototype-v0.html?src=reviews">בדקו מחיר ←</a>
-        <a class="btn btn-ghost btn-lg" href="how-it-works-v1.html">איך זה עובד</a>
+        <a class="btn btn-primary btn-lg" href="panel-prototype-v0.html?src=financial">בדקו מחיר ←</a>
+        <a class="btn btn-ghost btn-lg" href="technology-v1.html">איך המנוע עובד</a>
       </div>
       <div class="segbar">
-        <span>רו״ח מורשים חותמים על כל דוח</span>
-        <span>מערכת מאושרת רשות המסים</span>
-        <span>הכל בוואטסאפ</span>
+        <span>הליבה החשבונאית — חיה היום</span><span>השכבה הפיננסית — דרך גורמים מורשים</span>
       </div>
     </div>
-
-    <div class="hero-visual">
-      <div class="phone">
-        <div class="screen" aria-label="דוגמה לשיחה בוואטסאפ עם רואה החשבון">
-          <span class="island" aria-hidden="true"></span>
-          <div class="chat-head">
-            <div class="ava">MC</div>
-            <div><b>MyCompany · רו״ח</b><i>מקוון</i></div>
-          </div>
-          <div class="chat-body">
-            <div class="bub out">קיבלתי מכתב ממס הכנסה על מקדמות. זה רע?<span class="t">14:02 ✓✓</span></div>
-            <div class="bub in">לא רע, רק לא מעודכן. הם קבעו מקדמה לפי השנה שעברה, והשנה שלך נראית אחרת. אני מגיש בקשה להקטנה היום.<span class="t">14:05</span></div>
-            <div class="bub in">בינתיים אל תשלם לפי המכתב. אעדכן אותך כשהבקשה מאושרת — בדרך כלל זה עניין של ימים.<span class="t">14:05</span></div>
-            <div class="bub out">תודה. חשבתי שאני צריך להתחיל לדאוג<span class="t">14:06 ✓✓</span></div>
-          </div>
-        </div>
+    <div>
+      <div class="capsule">
+        <b>בקצרה</b>
+        <p>
+          MyCompany בונה שכבת שירותים פיננסיים על גבי הנהלת החשבונות: מכיוון שנתוני העסק
+          זורמים אצלנו בזמן אמת, ניתן לזהות מתי נדרשת החלטה פיננסית — סליקה, אשראי, פנסיה
+          או ביטוח — ולהביא אותה לפני שהצורך הופך לבעיה. השירותים ניתנים דרך גורמים מורשים.
+        </p>
+        <p class="updated">מעודכן ל-2026</p>
       </div>
-      <p class="cap">דוגמה. ככה נראית שאלה של שתי שורות, ותשובה שלא מחכה לפגישה.</p>
     </div>
   </div>
 </header>
 
-<!-- ============ TESTIMONIALS (real, whitelist only) ============ -->
 <section>
   <div class="wrap">
-    <div class="eyebrow">במילים שלהם</div>
-    <h2>חמישה לקוחות. בלי עריכה.</h2>
-    <div class="grid g3" style="margin-top:40px">
-      <div class="quote">
-        <p>אני לקוח פעיל כבר שנה ומתחילת הדרך עד כה אני מקבל שירות יוצא דופן, מהיר ומקצועי בוואטסאפ. בעבר הייתי צריך לרדוף אחרי רואה החשבון שלי, היום אני מרגיש שרואה החשבון שלי רודף אחריי. ממליץ בחום!</p>
-        <div class="who"><div class="av">ס</div><div><b>סלבה גורביץ׳</b><span>עוסק מורשה</span></div></div>
-      </div>
-      <div class="quote">
-        <p>בעבר הייתי מרגיש חסר אונים, היום אני מרגיש בשליטה מלאה על הפיננסים של העסק. השירות מדהים, והייעוץ המקצועי בוואטסאפ הוא פשוט גאוני. מומלץ בחום!</p>
-        <div class="who"><div class="av">א</div><div><b>אפי טל</b><span>עוסק מורשה</span></div></div>
-      </div>
-      <div class="quote">
-        <p>אין לכם מושג כמה כיף שיש לכם רואה חשבון פרואקטיבי. השירות אישי, מקצועי. כל שאלה שלי נענית במהירות, תודה רבה!</p>
-        <div class="who"><div class="av">ד</div><div><b>דנה רוזנברג</b><span>עוסק מורשה</span></div></div>
-      </div>
-      <div class="quote">
-        <p>השירות של MyCompany שינה את כל התפיסה שלי על רואי חשבון. המידע זמין, התקשורת קלה ומהירה, והכי חשוב, אני מרגיש שהם תמיד שם בשבילי.</p>
-        <div class="who"><div class="av">ע</div><div><b>עידו ברמי</b><span>עוסק מורשה</span></div></div>
-      </div>
-      <div class="quote">
-        <p>לפני שהצטרפתי ל-MyCompany הייתי מבולבלת ומלאת חרדה בכל מה שקשור לפיננסים של העסק שלי. השירות שלהם מקצועי, נגיש ומהיר. עכשיו אני יודעת בדיוק מה קורה בעסק שלי בכל רגע נתון.</p>
-        <div class="who"><div class="av">נ</div><div><b>נועה אמיר</b><span>עוסקת מורשה</span></div></div>
-      </div>
-      <div class="quote" style="display:flex;flex-direction:column;justify-content:center">
-        <p style="color:var(--ink-dark);font-weight:600">רוצה להיות הבא ברשימה?</p>
-        <p>8 שאלות, 90 שניות, ומחיר סגור. בלי טלפון, בלי איש מכירות.</p>
-        <a class="btn btn-primary" href="panel-prototype-v0.html?src=reviews" style="align-self:flex-start;margin-top:6px">בדקו מחיר ←</a>
+    <div class="band">
+      <span class="eyebrow">למה דווקא אנחנו</span>
+      <h2>לבנק יש חשבון. לנו יש את הספרים.</h2>
+      <p>
+        בנק רואה יתרה. אנחנו רואים למה היא נראית ככה: אילו חשבוניות טרם נגבו, איזו הוצאה
+        חוזרת כל רבעון, מתי נופל תשלום המע״מ הבא, ואיך נראית העונתיות שלכם בשלוש השנים
+        האחרונות. זה ההבדל בין להגיב לבין להקדים.
+      </p>
+      <div class="why">
+        <div><b>הצורך מזוהה, לא מנוחש</b><span class="d">כל הצעה יוצאת מאות בנתונים — לא מקמפיין ולא מרשימת דיוור.</span></div>
+        <div><b>הספרים הם הבקשה</b><span class="d">מה שגורם מממן מבקש לראות כבר קיים אצלנו, מסודר וחתום.</span></div>
+        <div><b>אנחנו לא הצד שמוכר</b><span class="d">לא גוף אשראי ולא סוכנות ביטוח. מזהים, מחברים לגורם מורשה, ונשארים לצידכם.</span></div>
+        <div><b>הנתונים לא זזים בלי אישור</b><span class="d">שום מידע לא מועבר החוצה בלי אישור מפורש שלכם, לכל פנייה בנפרד.</span></div>
       </div>
     </div>
-    <p style="margin-top:22px;font-size:14px;color:var(--ink)">הציטוטים מופיעים כפי שנכתבו על ידי הלקוחות. אנחנו לא מפרסמים דירוגים או מספרי לקוחות — רק מה שאנשים אמרו.</p>
   </div>
 </section>
 
-<!-- ============ WHAT CLIENTS ASK FOR ============ -->
 <section class="band-tint">
   <div class="wrap">
-    <div class="eyebrow">מה בעלי עסקים מבקשים מאיתנו</div>
-    <h2>בעלי עסקים לא מחפשים דיווח מע״מ. הם מחפשים ראש שקט.</h2>
-    <p class="lead" style="margin-top:12px">שבעה משפטים שחוזרים כמעט בכל שיחה ראשונה. ומה עונים להם בפועל.</p>
-    <div class="grid g3" style="margin-top:40px">
-      <div class="card">
-        <div class="num">01</div>
-        <h3>״תורידו ממני את הבירוקרטיה״</h3>
-        <p>פתיחת תיקים, דיווחים, ייצוג מול הרשויות, החלפת מייצג — הכול נעשה אצלנו. אתה לא מרים טלפון לרשות המסים.</p>
+    <span class="eyebrow">מפת הדרכים</span>
+    <h2 style="margin-bottom:12px">שלושה שלבים</h2>
+    <p class="lead" style="margin-bottom:30px">
+      הסדר לא נקבע לפי גודל ההזדמנות אלא לפי שני דברים: כמה מהר אפשר להשיק, וכמה חזק
+      האות שמגיע מהנתונים. השלבים שדורשים רישוי הם האחרונים — בכוונה.
+    </p>
+    <div class="wave reveal">
+      <div class="wave-h"><span class="tag w1">שלב 1</span><h3>סליקה ואשראי</h3><span class="when">2026–2027</span></div>
+      <div class="wave-items">
+        <div><b>סליקת תשלומים</b><span class="d">סליקה שמחוברת לחשבוניות ולדיווחים — בלי התאמות ידניות בסוף החודש, ובתנאים שנגזרים מהמחזור האמיתי שלכם.</span></div>
+        <div><b>אשראי ומימון</b><span class="d">התראה לפני שנפתח חור בתזרים, והספרים שלכם הם הבקשה. בלי לבנות תיק ידני ובלי להתחנן בסניף.</span></div>
       </div>
-      <div class="card">
-        <div class="num">02</div>
-        <h3>״תגידו לי מה צריך לעשות״</h3>
-        <p>כל הודעה נגמרת בפעולה: תשלח את זה, תאשר את זה, אל תשלם לפי המכתב. לא דוח — פעולה.</p>
+    </div>
+    <div class="wave reveal">
+      <div class="wave-h"><span class="tag w2">שלב 2</span><h3>שכר, פנסיה וביטוח</h3><span class="when">2027</span></div>
+      <div class="wave-items">
+        <div><b>שכר לעובדים</b><span class="d">המודול הזה כבר חי אצלנו כשירות. בשלב הזה הוא נהיה אוטומטי — נקלט עובד, והחובות נפתחות מעצמן.</span></div>
+        <div><b>פנסיה והשתלמות</b><span class="d">זיהוי מתוך הספרים של הפקדות שלא בוצעו, וחיבור למשווק פנסיוני בעל רישיון.</span></div>
+        <div><b>ביטוח עסקי</b><span class="d">זיהוי פערי כיסוי ומועדי חידוש, וחיבור לסוכן מורשה. אנחנו לא סוכנות ביטוח.</span></div>
       </div>
-      <div class="card">
-        <div class="num">03</div>
-        <h3>״תדאגו שלא אפספס כלום״</h3>
-        <p><span dir="ltr">PurpleBrain™</span> סורק את החשבון ומאתר הוצאות שלא נקלטו, לפני הדיווח ולא בדוח השנתי.</p>
-      </div>
-      <div class="card">
-        <div class="num">04</div>
-        <h3>״תנו לי לדעת מה קורה בעסק״</h3>
-        <p>צפי מע״מ ומקדמות לפני המועד, לא אחריו. כמה נכנס, כמה יצא, כמה נשאר — כשעוד אפשר לעשות משהו.</p>
-      </div>
-      <div class="card">
-        <div class="num">05</div>
-        <h3>״תהיו זמינים כשאני צריך״</h3>
-        <p>וואטסאפ. שאלה של שתי שורות מקבלת תשובה מאדם עם שם, בלי פגישה ובלי ״נחזור אליך״.</p>
-      </div>
-      <div class="card">
-        <div class="num">06</div>
-        <h3>״תעזרו לי לשלם את המס הנכון״</h3>
-        <p>תכנון מס יזום שלוש פעמים בשנה, מקדמות שמתעדכנות כשהעסק משתנה, והוצאות שנרשמות ביום שקרו.</p>
-      </div>
-      <div class="card">
-        <div class="num">07</div>
-        <h3>״תרכזו לי את הכול״</h3>
-        <p>רואה חשבון, הנהלת חשבונות, האפליקציה לחשבוניות — ערוץ אחד, תיק אחד, אדם אחד שאחראי.</p>
+    </div>
+    <div class="wave reveal">
+      <div class="wave-h"><span class="tag w3">שלב 3</span><h3>כרטיס וחשבון עסקי</h3><span class="when">2028+</span></div>
+      <div class="wave-items">
+        <div><b>כרטיס עסקי</b><span class="d">כרטיס שההוצאות בו מסווגות מעצמן, בלי לצלם קבלות בסוף החודש.</span></div>
+        <div><b>חשבון עסקי משובץ</b><span class="d">השכבה האחרונה והכבדה ביותר רגולטורית — חשבון שמדבר ישירות עם הספרים.</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ NEXT ============ -->
 <section>
   <div class="wrap">
-    <div class="two-col">
-      <div>
-        <div class="eyebrow">רוצה לראות במקום לקרוא</div>
-        <h2 style="margin-bottom:14px">איך זה נראה מבפנים</h2>
-        <p>
-          <a href="videos-v1.html">מדריכי הוידאו</a> מראים את המערכת והוואטסאפ בפעולה. <a href="how-it-works-v1.html">איך זה עובד</a> מסביר את שלושת הצעדים
-          מהשאלה הראשונה ועד רואה חשבון שעובד בשבילך. ו<a href="technology-v1.html">הטכנולוגיה</a> — למי שרוצה להבין מה עושים 21 הסוכנים ברקע.
-        </p>
-      </div>
-      <div class="raise-list">
-        <div><a href="osek-morshe-v1.html">רואה חשבון לעוסק מורשה</a> — החל מ-300 ₪ לחודש</div>
-        <div><a href="company.html">לחברה בע״מ</a> — החל מ-1,200 ₪ לחודש</div>
-        <div><a href="switch-to-mycompany.html">כבר יש לך רואה חשבון?</a> — המעבר עלינו</div>
-        <div><a href="open-business.html">עוד אין לך עסק?</a> — פותחים, ומהיום הראשון יש רו״ח</div>
-      </div>
+    <span class="eyebrow">איך זה עובד בפועל</span>
+    <h2 style="margin-bottom:12px">אות מהספרים, ואז הצעה</h2>
+    <p class="lead" style="margin-bottom:30px">
+      אין כאן קמפיין. יש שבעה אותות שהמנוע מחפש בנתונים שלכם — וכשאחד מהם נדלק, אתם
+      מקבלים הודעה אחת, בזמן שהיא עוד רלוונטית.
+    </p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>תחום</th><th>מה המנוע מזהה</th><th>מה אתם מקבלים</th></tr></thead>
+        <tbody>
+          <tr><td>אשראי</td><td class="dim">צפי היתרה יורד מתחת לסף בשבועיים הקרובים</td><td>״ב-15 בחודש תהיו חסרים 12,400 ₪. רוצים שלוש הצעות?״</td></tr>
+          <tr><td>אשראי</td><td class="dim">המחזור עלה 20% שלושה חודשים ברצף</td><td>״הצמיחה דורשת מימון ביניים — נבדוק תנאים?״</td></tr>
+          <tr><td>סליקה</td><td class="dim">דפוס חיוב מול לקוחות פרטיים, או ריבוי העברות קטנות</td><td>״אתם גובים ידנית. אפשר לחבר סליקה לחשבוניות.״</td></tr>
+          <tr><td>שכר</td><td class="dim">הוצאת שכר חדשה מופיעה בספרים</td><td>״נקלט עובד ראשון — יש חובות דיווח מהחודש הזה.״</td></tr>
+          <tr><td>פנסיה</td><td class="dim">עצמאי רווחי בלי הפקדות לקרן השתלמות</td><td>״לא נוצל מסלול ההפקדה המוכר במס.״</td></tr>
+          <tr><td>ביטוח</td><td class="dim">חברה עם עובדים בלי חבות מעבידים, או חודש חידוש מתקרב</td><td>״יש פער כיסוי — נביא הצעות?״</td></tr>
+          <tr><td>בנקאות</td><td class="dim">עמלות בנק גבוהות או פעילות מרובת בנקים</td><td>״העמלות חריגות ביחס לפעילות שלכם.״</td></tr>
+        </tbody>
+      </table>
     </div>
+    <p class="updated">שני האותות הראשונים — אשראי — הם הראשונים שנבנים, כי הם החזקים ביותר ואינם דורשים רישוי.</p>
   </div>
 </section>
 
-<!-- ============ CTA ============ -->
+<section class="band-tint">
+  <div class="wrap narrow">
+    <span class="eyebrow">מה חי היום</span>
+    <h2 style="margin-bottom:12px">בלי לערבב בין מה שיש למה שיהיה</h2>
+    <p>
+      <b>זמין עכשיו:</b> הנהלת חשבונות אונליין, דיווחי מע״מ ומקדמות, שכר לעובדים, דוחות
+      שנתיים והצהרות הון — עם חתימת רו״ח מורשה. ופתיחת עסק וליווי משפטי דרך Ettorney.
+    </p>
+    <p>
+      <b>עוד לא זמין:</b> כל מה שמסומן בעמוד הזה כשלב 1, 2 או 3. סליקה ואשראי מתוכננים
+      ל-2026–2027; שכר אוטומטי, פנסיה וביטוח לשלב שאחריו; כרטיס וחשבון עסקי מ-2028.
+    </p>
+    <p>
+      כשהשירותים האלה ייצאו לדרך, הם יינתנו <b>דרך גורמים בעלי רישיון</b> — מלווים, סולקים,
+      משווקים פנסיוניים וסוכני ביטוח. MyCompany מזהה את הצורך ומחברת; היא אינה גוף אשראי
+      ואינה סוכנות ביטוח.
+    </p>
+    <p class="updated">מפת דרכים, מעודכנת ל-2026. אין בעמוד זה הצעה לרכישת מוצר פיננסי ואין בו ייעוץ.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <span class="eyebrow">שאלות נפוצות</span>
+    <h2 style="margin-bottom:26px">על השכבה הפיננסית</h2>
+    <details><summary>מה זה שירותים פיננסיים ב-MyCompany?</summary><div class="a">שכבה שנבנית על גבי הנהלת החשבונות: מכיוון שהנתונים הפיננסיים של העסק זורמים אצלנו בזמן אמת, אנחנו יכולים לזהות מתי נדרשת החלטה פיננסית — אשראי, סליקה, פנסיה או ביטוח — ולהביא אותה לפני שהצורך הופך לבעיה. השירותים ניתנים דרך גורמים מורשים, לא על ידינו.</div></details>
+    <details><summary>אילו שירותים פיננסיים זמינים היום?</summary><div class="a">נכון להיום זמינים הליבה החשבונאית והמשפטית: הנהלת חשבונות אונליין, דיווחי מע״מ ומקדמות, שכר לעובדים, דוחות שנתיים, ופתיחת עסק וליווי משפטי דרך Ettorney. סליקה ואשראי הם השלב הבא ואינם מוצעים כרגע.</div></details>
+    <details><summary>למה MyCompany יכולה לעשות את זה ובנק לא?</summary><div class="a">לבנק יש תמונת חשבון אחת. לנו יש את הספרים: חשבוניות, הוצאות, חובות פתוחים, תשלומים לרשויות ועונתיות. זה מאפשר לזהות מגמה שבועות לפני שהיא מופיעה ביתרה — ולכן הפנייה מקדימה את הצורך במקום להגיב אליו.</div></details>
+    <details><summary>אתם נותנים אשראי בעצמכם?</summary><div class="a">לא. אנחנו לא גוף אשראי ולא סוכנות ביטוח. התפקיד שלנו הוא לזהות את הצורך מתוך הנתונים ולחבר לגורם מורשה — מלווה, סולק או סוכן בעל רישיון. ההתקשרות הפיננסית עצמה היא מולו.</div></details>
+    <details><summary>מה קורה לנתונים שלי?</summary><div class="a">הנתונים הם שלכם. שום מידע פיננסי לא מועבר לגורם חיצוני בלי אישור מפורש שלכם לכל פנייה בנפרד. זיהוי הצורך קורה אצלנו; השיתוף קורה רק אם ביקשתם.</div></details>
+    <details><summary>מתי זה יהיה זמין?</summary><div class="a">סליקה ואשראי מתוכננים כשלב ראשון ב-2026–2027. שכר, פנסיה, השתלמות וביטוח בשלב השני. כרטיס עסקי וחשבון עסקי משובץ בשלב השלישי, מ-2028. השלבים המאוחרים דורשים רישוי, ולכן הם אחרונים.</div></details>
+  </div>
+</section>
+
 <section id="contact" style="padding-top:0">
   <div class="wrap">
-    <div class="band cta-band">
-      <div>
-        <h2 style="margin-bottom:12px">המשפט הבא יכול להיות שלך</h2>
-        <p>8 שאלות, 90 שניות, ומחיר סגור. השיחה הראשונה עם רואה החשבון היא אבחון, לא מכירה.</p>
+    <div class="band">
+      <h2 style="margin-bottom:12px">זה מתחיל מהספרים</h2>
+      <p>השכבה הפיננסית עובדת רק כשהנתונים נקיים ובזמן. שם אנחנו מתחילים.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">
+        <a class="btn btn-primary btn-lg" href="panel-prototype-v0.html?src=financial-cta">בדקו מחיר ←</a>
+        <a class="btn btn-ghost btn-lg" href="why-mycompany.html">למה MyCompany</a>
       </div>
-      <a class="btn btn-primary btn-lg" href="panel-prototype-v0.html?src=reviews">בדקו מחיר ←</a>
     </div>
   </div>
-</section>
-
 </section>
 
 <footer>
