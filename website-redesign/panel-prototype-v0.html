@@ -865,7 +865,7 @@
         { label: "ייעוץ", value: "consult", pic: "i-brief", cls: "tile" }, { label: "תוכנה והייטק", value: "tech", pic: "i-code", cls: "tile" },
         { label: "שיווק דיגיטלי", value: "marketing", pic: "i-mega", cls: "tile" }, { label: "עיצוב ויצירה", value: "design", pic: "i-pen", cls: "tile" },
         { label: "בריאות וטיפול", value: "health", pic: "i-med", cls: "tile" }, { label: "משהו אחר", value: "other", pic: "i-plus", cls: "tile" }
-      ], "grid", function () { q7(); });
+      ], "grid", function (v) { state.field = v; q7(); });
     });
   }
   function q7() {
@@ -878,8 +878,124 @@
       });
     });
   }
+  /* ---------- the build moment: one card that does visible work ----------
+     The Atlas arc (progress → checks → payoff), in our palette, and every
+     line personalised with what the visitor actually answered. */
+  var FIELDNAME = { consult: "ייעוץ", tech: "תוכנה והייטק", marketing: "שיווק דיגיטלי",
+                    design: "עיצוב ויצירה", health: "בריאות וטיפול", other: "העסק שלך" };
+  var REVBAND = ["מחזור עד 120 אלף ₪", "מחזור 120–300 אלף ₪", "מחזור 300–700 אלף ₪", "מחזור מעל 700 אלף ₪"];
+  var DEDUCT = {
+    consult:   [12, "נסיעות, כנסים ולימודי המשך"],
+    tech:      [14, "מחשוב, שרתים וקבלני משנה"],
+    marketing: [13, "פרסום, קבלני משנה ורכב"],
+    design:    [12, "ציוד, תוכנות ותערוכות"],
+    health:    [11, "קליניקה, ציוד והשתלמויות"],
+    other:     [12, "רכב, ציוד והוצאות מעורבות"]
+  };
+  function bxIcon() {
+    return '<span class="bx-ic"><svg viewBox="0 0 24 24" aria-hidden="true">' +
+      '<circle class="ring" cx="12" cy="12" r="10.5"/>' +
+      '<circle class="halo" cx="12" cy="12" r="10.5"/>' +
+      '<circle class="disc" cx="12" cy="12" r="11"/>' +
+      '<circle class="arc" cx="12" cy="12" r="10.5"/>' +
+      '<path class="tick" d="M7.3 12.3 l3.2 3.2 L16.9 8.9"/></svg></span>';
+  }
   function build() {
-    botSay(["מעולה. תן לי שנייה — אני בונה לך את החבילה:", "קורא את פרופיל העסק… ✓", "מתאים מסלול דיווחים ומקדמות… ✓", "בודק הטבות והוצאות בתחום שלך… ✓", "סוגר מחיר. קבוע. בלי כוכביות… ✓"], price);
+    var biz = state.biz || 'osek', rev = state.rev == null ? 1 : state.rev;
+    var fld = state.field || 'other', ded = DEDUCT[fld] || DEDUCT.other;
+    var track = biz === 'ltd'
+      ? 'מע״מ חודשי · מקדמות · דוח שנתי מבוקר'
+      : (rev >= 2 ? 'מע״מ חודשי' : 'מע״מ דו-חודשי') + ' · מקדמות מס הכנסה · ביטוח לאומי';
+
+    var STEPS = [
+      { t: 'קורא את פרופיל העסק', w: 'מצליב את התשובות שלך…',
+        d: BIZNAME[biz] + ' · ' + REVBAND[rev] + ' · ' + FIELDNAME[fld] },
+      { t: 'מתאים מסלול דיווחים ומקדמות', w: 'בודק מה החוק מחייב בדיוק אותך…',
+        d: track },
+      { t: 'בודק הטבות והוצאות בתחום שלך', w: 'סורק סעיפי הוצאה מוכרים…',
+        d: '<b>' + ded[0] + ' סעיפים</b> שרלוונטיים לך — ' + ded[1], n: ded[0] },
+      { t: 'סוגר מחיר. קבוע. בלי כוכביות.', w: 'מחשב לפי החבילה שנבנתה…',
+        d: 'מחיר אחד לכל החבילה — לא לפי שעות ולא לפי שאלות', cash: true }
+    ];
+
+    botSay(["מעולה. תן לי שנייה — אני בונה לך את החבילה:"], function () {
+      var rows = STEPS.map(function (s) {
+        return '<div class="bx-step' + (s.cash ? ' cash' : '') + '">' + bxIcon() +
+          '<span class="tx"><b>' + s.t + '</b><span class="d"></span></span></div>';
+      }).join('');
+      var card = el('<div class="bx" aria-live="off">' +
+        '<div class="bx-bar"><i></i></div>' +
+        '<div class="bx-in">' +
+          '<div class="bx-top">' +
+            '<span class="bx-orb"><svg><use href="#i-spark"/></svg></span>' +
+            '<span class="bx-ttl"><p class="bx-k">PurpleBrain™\u200e עובד עכשיו</p>' +
+            '<span class="bx-h">בונה את החבילה שלך</span></span>' +
+            '<span class="bx-n">0/' + STEPS.length + '</span>' +
+          '</div>' +
+          '<div class="bx-steps">' + rows + '</div>' +
+          '<div class="bx-foot" hidden><span>הכל נבדק. הנה המחיר שלך</span><span class="ar">↓</span></div>' +
+        '</div></div>');
+      chatEl.appendChild(card); scrollDown();
+
+      var bar = card.querySelector('.bx-bar i'), n = card.querySelector('.bx-n'),
+          head = card.querySelector('.bx-h'), kick = card.querySelector('.bx-k'),
+          foot = card.querySelector('.bx-foot'), steps = card.querySelectorAll('.bx-step');
+
+      function settle() {
+        card.classList.add('done'); bar.style.width = '100%';
+        kick.textContent = STEPS.length + ' בדיקות הושלמו · הכל חתום';
+        head.textContent = 'החבילה מוכנה.';
+        n.textContent = STEPS.length + '/' + STEPS.length;
+        foot.hidden = false;
+        requestAnimationFrame(function () { foot.classList.add('in'); });
+      }
+
+      if (INSTANT || reduce) {
+        STEPS.forEach(function (s, i) {
+          steps[i].classList.add('in', 'ok');
+          steps[i].querySelector('.d').innerHTML = s.d;
+        });
+        settle(); scrollDown(); price(); return;
+      }
+
+      var START = 560, GAP = 820, WORK = 640, t = [];
+      function at(ms, fn) { t.push(setTimeout(fn, ms)); }
+      bar.style.width = '6%';
+      steps.forEach(function (row, i) {          /* the whole checklist shows up first, then lights up */
+        setTimeout(function () { row.classList.add('in'); scrollDown(); }, 60 + i * 90);
+      });
+
+      STEPS.forEach(function (s, i) {
+        var row = steps[i], det = row.querySelector('.d');
+        at(START + i * GAP, function () {
+          row.classList.add('on');
+          det.textContent = s.w;
+          bar.style.width = Math.round(((i + 0.45) / STEPS.length) * 100) + '%';
+          scrollDown();
+          if (s.n) {                                   /* the count runs while it scans */
+            var t0 = null;
+            requestAnimationFrame(function tick(ts) {
+              if (!t0) t0 = ts;
+              var p = Math.min(1, (ts - t0) / WORK);
+              if (!row.classList.contains('on')) return;
+              det.textContent = 'סורק סעיפי הוצאה מוכרים… ' + Math.max(1, Math.round(s.n * p));
+              if (p < 1) requestAnimationFrame(tick);
+            });
+          }
+        });
+        at(START + i * GAP + WORK, function () {
+          row.classList.remove('on'); row.classList.add('ok');
+          det.innerHTML = s.d;
+          n.textContent = (i + 1) + '/' + STEPS.length;
+          bar.style.width = Math.round(((i + 1) / STEPS.length) * 100) + '%';
+          scrollDown();
+        });
+      });
+
+      var end = START + (STEPS.length - 1) * GAP + WORK;
+      at(end + 240, function () { settle(); scrollDown(); });
+      at(end + 820, price);
+    });
   }
   function price() {
     var name = state.name || 'עמית';
@@ -945,9 +1061,9 @@
   /* deep-link QA jumps: ?s=aha|price|pay|done */
   var jump = new URLSearchParams(location.search).get('s');
   if (jump) {
-    INSTANT = true;
+    INSTANT = (jump !== 'build');
     state = { biz: 'osek', rev: 1, pain: 'surprise', now: 'switch', inv: 1, name: 'עמית', phone: '050-1234567', src: SRC };
-    ({ aha: aha, price: price, pay: pay, done: success }[jump] || q1)();
+    ({ aha: aha, build: build, price: price, pay: pay, done: success }[jump] || q1)();
     setTimeout(function () { INSTANT = false; }, 50);
   } else if (PRE) { q1pre(PRE); } else { q1(); }
 </script>
@@ -1104,6 +1220,113 @@
     .btn.money, .cta.money, .cta.pay { transition: none !important; }
   }
 </style>
+
+<!-- ── The build moment. Was: four beige bubbles ending in "✓".
+     Now: one card that does visible work — the Atlas arc (progress → checks →
+     payoff) in our palette, personalised with what the visitor actually answered. -->
+<style id="sv-build">
+  .bx { position: relative; background: var(--ground); border: 1px solid var(--hairline);
+        border-radius: 14px; max-width: 480px; margin-inline-start: 48px; overflow: hidden;
+        box-shadow: 0 18px 44px -20px rgba(48,26,110,.34), 0 2px 6px -2px rgba(32,32,32,.06); }
+  .bx-bar { height: 3px; background: #EFEBE1; }
+  .bx-bar i { position: relative; display: block; height: 100%; width: 0; overflow: hidden;
+              background: linear-gradient(to left, #7A2BFF, #8B63F2 58%, #FF8B3D);
+              transition: width .45s cubic-bezier(.35,.9,.35,1); }
+  .bx-bar i::after { content: ""; position: absolute; inset: 0; opacity: 0;
+                     background: linear-gradient(to left, transparent, rgba(255,255,255,.85), transparent); }
+  .bx-in { padding: 17px 18px 4px; }
+
+  /* header — the orb, the state, the counter */
+  .bx-top { display: flex; align-items: center; gap: 11px; margin: -17px -18px 0; padding: 15px 18px 13px;
+            background: #FBF8FF; border-bottom: 1px solid #F1EDE3; transition: background .4s ease; }
+  .bx.done .bx-top { background: #F7FCF9; }
+  .bx-orb { width: 34px; height: 34px; border-radius: 50%; flex: none; display: grid; place-items: center;
+            background: linear-gradient(135deg, var(--accent), #8B63F2);
+            box-shadow: 0 8px 18px -8px rgba(122,43,255,.75); }
+  .bx-orb svg { width: 17px; height: 17px; }
+  .bx-ttl { flex: 1; min-width: 0; }
+  .bx-k { margin: 0; font-size: 11.5px; font-weight: 700; letter-spacing: .04em; color: var(--accent);
+          transition: color .3s ease; }
+  .bx-h { margin: 1px 0 0; font-size: 17px; font-weight: 600; color: #37332B; }
+  .bx-n { flex: none; font-size: 12px; font-weight: 700; color: var(--faint);
+          font-variant-numeric: tabular-nums; border: 1px solid var(--hairline);
+          border-radius: 999px; padding: 3px 10px; transition: color .3s ease, border-color .3s ease; }
+  .bx.done .bx-k { color: var(--good); }
+  .bx.done .bx-n { color: var(--good); border-color: #BEE3D0; }
+
+  /* the four checks */
+  .bx-steps { padding: 7px 0 4px; }
+  .bx-step { display: flex; gap: 11px; align-items: flex-start; padding: 9px 10px; border-radius: 11px;
+             opacity: 0; transform: translateY(7px); background: transparent; }
+  .bx-step.in { opacity: 1; transform: none; }
+  .bx-step.on { background: #F6F1FF; }
+  .bx-step .tx { flex: 1; min-width: 0; padding-top: 1px; }
+  .bx-step b { display: block; font-size: 15.5px; font-weight: 600; line-height: 1.35; color: #A7A196;
+               transition: color .3s ease; }
+  .bx-step.on b, .bx-step.ok b { color: #37332B; }
+  .bx-step .d { display: block; font-size: 13px; line-height: 1.45; color: var(--faint); margin-top: 2px;
+                min-height: 19px; }
+  .bx-step.ok .d { color: #5C7A69; }
+  .bx-step.ok.cash .d { color: #B9631C; }
+  .bx-step .d b { display: inline; font-weight: 700; color: inherit; font-size: inherit; }
+
+  /* the icon: hairline ring → spinning accent arc → filled disc with a drawn tick */
+  .bx-ic { flex: none; width: 24px; height: 24px; margin-top: 1px; }
+  .bx-ic svg { width: 24px; height: 24px; display: block; overflow: visible; }
+  .bx-ic .ring { fill: none; stroke: #E2DED2; stroke-width: 2; }
+  .bx-ic .disc { fill: var(--good); transform: scale(0); transform-origin: 12px 12px; }
+  .bx-ic .arc  { fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round;
+                 stroke-dasharray: 17 49; opacity: 0; transform-origin: 12px 12px; }
+  .bx-ic .halo { fill: none; stroke: var(--good); stroke-width: 2; opacity: 0; transform-origin: 12px 12px; }
+  .bx-ic .tick { fill: none; stroke: #fff; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round;
+                 stroke-dasharray: 15; stroke-dashoffset: 15; }
+  .bx-step.on .arc { opacity: 1; }
+  .bx-step.ok .ring { stroke: var(--good); }
+  .bx-step.ok .disc { transform: scale(1); }
+  .bx-step.ok .tick { stroke-dashoffset: 0; }
+  .bx-step.cash.ok .ring { stroke: var(--money); }
+  .bx-step.cash.ok .disc { fill: var(--money); }
+  .bx-step.cash.ok .halo { stroke: var(--money); }
+  .bx-step.cash.ok { background: #FFF7F0; }
+
+  /* the handoff line */
+  .bx-foot { display: flex; align-items: center; gap: 8px; margin: 4px -18px 0; padding: 12px 18px;
+             border-top: 1px solid #F1EDE3; background: #FBFAF6;
+             font-size: 13.5px; font-weight: 600; color: var(--accent);
+             opacity: 0; transform: translateY(5px); }
+  .bx-foot.in { opacity: 1; transform: none; }
+  .bx-foot[hidden] { display: none; }
+  .bx-foot .ar { font-weight: 700; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .bx { animation: rise .34s ease both; }
+    .bx-step { transition: opacity .34s ease, transform .34s cubic-bezier(.2,.8,.2,1), background-color .3s ease; }
+    .bx-foot { transition: opacity .34s ease, transform .34s cubic-bezier(.2,.8,.2,1); }
+    .bx-ic .disc { transition: transform .34s cubic-bezier(.34,1.6,.64,1); }
+    .bx-ic .tick { transition: stroke-dashoffset .3s ease .13s; }
+    .bx-step.on .arc { animation: bxspin .85s linear infinite; }
+    .bx-step.ok .halo { animation: bxhalo .62s ease-out; }
+    .bx-step.on { animation: bxbreathe 1.5s ease-in-out infinite; }
+    .bx.done .bx-orb { animation: bxpop .5s cubic-bezier(.34,1.56,.64,1); }
+    .bx:not(.done) .bx-orb { animation: bxglow 1.9s ease-in-out infinite; }
+    .bx:not(.done) .bx-bar i::after { opacity: 1; animation: bxsweep 1.25s linear infinite; }
+    @keyframes bxspin { to { transform: rotate(360deg); } }
+    @keyframes bxhalo { 0% { opacity: .65; transform: scale(1); } 100% { opacity: 0; transform: scale(1.75); } }
+    @keyframes bxbreathe { 0%, 100% { background-color: #F6F1FF; } 50% { background-color: #F1E9FF; } }
+    @keyframes bxpop { 0% { transform: scale(1); } 45% { transform: scale(1.14); } 100% { transform: scale(1); } }
+    @keyframes bxglow { 0%, 100% { box-shadow: 0 8px 18px -8px rgba(122,43,255,.75); }
+                        50% { box-shadow: 0 8px 22px -6px rgba(122,43,255,.95), 0 0 0 5px rgba(122,43,255,.10); } }
+    @keyframes bxsweep { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
+  }
+  @media (max-width: 560px) {
+    .bx { margin-inline-start: 0; max-width: 100%; }
+    .bx-in { padding: 15px 14px 4px; }
+    .bx-top { margin-inline: -14px; padding-inline: 14px; }
+    .bx-foot { margin-inline: -14px; padding-inline: 14px; }
+    .bx-h { font-size: 16px; }
+  }
+</style>
+
 <script id="sv-top2">
   (function () {
     if ('scrollRestoration' in history) { try { history.scrollRestoration = 'manual'; } catch (e) {} }
