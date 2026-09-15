@@ -97,16 +97,17 @@
   .phone .head b { font-size: 14.5px; display: block; line-height: 1.3; }
   .phone .head span { font-size: 11.5px; color: var(--good); }
   .thread { padding: 12px 2px 0; display: grid; gap: 8px; }
-  .msg { max-width: 86%; padding: 9px 13px; border-radius: 14px; font-size: 13.5px; line-height: 1.5; }
-  .msg.them { background: var(--tint); border-end-start-radius: 4px; }
+  .msg { max-width: 86%; padding: 9px 13px; border-radius: 14px; font-size: 13.5px; line-height: 1.5;
+    box-shadow: 0 1px 1px rgba(28,20,48,.06); }
+  .msg.them { background: var(--ground); border-end-start-radius: 4px; }
   .msg.us { background: var(--wa); margin-inline-start: auto; border-end-end-radius: 4px; color: #2B4237; }
   .msg .t { display: block; font-size: 10px; color: var(--faint); margin-top: 3px; }
   .stamp { font-size: 11.5px; font-weight: 700; color: var(--good); padding: 4px 2px 0; }
 
-  /* rich cards — PurpleBrain's messages read as a real WhatsApp Business template,
-     not a chat bubble: icon + headline, or an icon-badge stat with a status check. */
-  .msg.card { max-width: 94%; background: var(--ground); border: 1px solid var(--hairline);
-    box-shadow: var(--shadow); color: var(--ink); }
+  /* rich cards — still real WhatsApp bubbles (tail corner, tinted fill, chat-thread
+     alignment), just carrying a stat instead of a line of text: icon + headline,
+     or an icon-badge stat with a status check. */
+  .msg.card { max-width: 94%; background: var(--ground); color: var(--ink); }
   .msg.card .mtop { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; color: var(--ink-dark); }
   .msg.card .mtop .e { font-size: 15px; line-height: 1; flex: none; }
   .msg.card .mbody { margin: 5px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--ink); }
@@ -114,7 +115,8 @@
   .msg.card .mbody.tipline b { color: var(--accent-deep); }
   .msg.card .t { margin-top: 6px; }
 
-  .msg.data { display: flex; align-items: center; gap: 10px; padding: 9px 12px; }
+  .msg.data { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: var(--wa); }
+  .msg.data.lav { background: var(--accent-soft); }
   .msg.data .mic { width: 30px; height: 30px; border-radius: 50%; flex: none; display: grid; place-items: center;
     background: linear-gradient(135deg, var(--accent), #8B63F2); box-shadow: 0 4px 10px -4px rgba(122,43,255,.5); }
   .msg.data .mic svg { width: 16px; height: 16px; }
@@ -123,7 +125,7 @@
   .msg.data .mval { display: block; font-size: 18.5px; font-weight: 800; color: var(--ink-dark);
     font-variant-numeric: tabular-nums; letter-spacing: -0.01em; margin-top: 1px; }
   .msg.data .mstat { width: 22px; height: 22px; border-radius: 50%; flex: none; display: grid; place-items: center;
-    background: var(--wa); color: var(--good); }
+    background: var(--good); color: #fff; box-shadow: 0 2px 5px -1px rgba(30,138,90,.5); }
   .msg.data .mstat svg { width: 12px; height: 12px; }
   @media (prefers-reduced-motion: no-preference) {
     .msg.data { animation: msgin .3s ease both, dataglow .9s ease .1s; }
@@ -1175,7 +1177,7 @@
       { cls: 'us', kind: 'data', ic: IC_RECEIPT, lab: 'הוצאות שנשכחו שנמצאו', val: '2,140 ₪' },
       { cls: 'us', kind: 'data', ic: IC_COIN, lab: 'חיסכון במע״מ החודש', val: '385 ₪' },
       { cls: 'them', kind: 'text', t: '11:32', h: 'ההכנסות ירדו החודש. אפשר להקטין מקדמות?' },
-      { cls: 'us', kind: 'data', ic: IC_TARGET, lab: 'מקדמות הוקטנו ל-6.5%', val: '780 ₪ ביד' },
+      { cls: 'us', kind: 'data', tint: 'lav', ic: IC_TARGET, lab: 'מקדמות הוקטנו ל-6.5%', val: '780 ₪ ביד' },
       { cls: 'us', kind: 'tip', e: '💡', h: 'תזכורת: הפקדה לקרן השתלמות עד סוף החודש = <b>הטבת מס של 4,830 ₪</b>.', t: '16:20' },
       { cls: 'them', kind: 'text', t: '16:22', h: 'כן! תודה 🙏' }
     ];
@@ -1184,7 +1186,7 @@
     function render(m) {
       var d = document.createElement('div');
       if (m.kind === 'data') {
-        d.className = 'msg us card data';
+        d.className = 'msg us card data' + (m.tint === 'lav' ? ' lav' : '');
         d.innerHTML = '<span class="mic">' + m.ic + '</span>' +
           '<span class="mtxt"><b>' + m.lab + '</b><span class="mval">' + m.val + '</span></span>' +
           '<span class="mstat">' + IC_CHECK + '</span>';
@@ -1335,9 +1337,18 @@
       0 18px 34px -20px rgba(28,20,48,.42),
       0 48px 90px -38px rgba(28,20,48,.55);
     z-index: 1; }
-  /* the screen — nested radius = outer minus bezel */
-  .phone .screen { position: relative; background: var(--ground); border-radius: 37px;
-    overflow: hidden; padding: 30px 13px 16px; }
+  /* the screen — nested radius = outer minus bezel. Wallpaper tint (not flat white)
+     is what makes the thread read as a real WhatsApp chat instead of a card list. */
+  .phone .screen { position: relative; background: #EAE3D6; border-radius: 37px;
+    overflow: hidden; padding: 30px 13px 16px;
+    background-image:
+      radial-gradient(circle at 18% 22%, rgba(122,43,255,.05) 0 3px, transparent 3px),
+      radial-gradient(circle at 82% 15%, rgba(122,43,255,.045) 0 3px, transparent 3px),
+      radial-gradient(circle at 65% 55%, rgba(122,43,255,.05) 0 3px, transparent 3px),
+      radial-gradient(circle at 12% 72%, rgba(122,43,255,.045) 0 3px, transparent 3px),
+      radial-gradient(circle at 88% 82%, rgba(122,43,255,.05) 0 3px, transparent 3px);
+    background-size: 130px 130px; }
+  .hero .phone .head { background: #F3EDE2; margin: -30px -13px 0; padding: 30px 13px 11px; }
   /* dynamic island, inside the display like the real thing */
   .phone .screen::before { content: ""; position: absolute; top: 9px; left: 50%; transform: translateX(-50%);
     width: 70px; height: 19px; border-radius: 99px; background: #14121B; z-index: 6; }
