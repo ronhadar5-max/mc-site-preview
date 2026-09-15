@@ -102,6 +102,35 @@
   .msg.us { background: var(--wa); margin-inline-start: auto; border-end-end-radius: 4px; color: #2B4237; }
   .msg .t { display: block; font-size: 10px; color: var(--faint); margin-top: 3px; }
   .stamp { font-size: 11.5px; font-weight: 700; color: var(--good); padding: 4px 2px 0; }
+
+  /* rich cards — PurpleBrain's messages read as a real WhatsApp Business template,
+     not a chat bubble: icon + headline, or an icon-badge stat with a status check. */
+  .msg.card { max-width: 94%; background: var(--ground); border: 1px solid var(--hairline);
+    box-shadow: var(--shadow); color: var(--ink); }
+  .msg.card .mtop { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; color: var(--ink-dark); }
+  .msg.card .mtop .e { font-size: 15px; line-height: 1; flex: none; }
+  .msg.card .mbody { margin: 5px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--ink); }
+  .msg.card .mbody.tipline { font-size: 13px; font-weight: 600; color: var(--ink-dark); }
+  .msg.card .mbody.tipline b { color: var(--accent-deep); }
+  .msg.card .t { margin-top: 6px; }
+
+  .msg.data { display: flex; align-items: center; gap: 10px; padding: 9px 12px; }
+  .msg.data .mic { width: 30px; height: 30px; border-radius: 50%; flex: none; display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--accent), #8B63F2); box-shadow: 0 4px 10px -4px rgba(122,43,255,.5); }
+  .msg.data .mic svg { width: 16px; height: 16px; }
+  .msg.data .mtxt { flex: 1; min-width: 0; }
+  .msg.data .mtxt b { display: block; font-size: 11.5px; font-weight: 600; color: var(--faint); }
+  .msg.data .mval { display: block; font-size: 18.5px; font-weight: 800; color: var(--ink-dark);
+    font-variant-numeric: tabular-nums; letter-spacing: -0.01em; margin-top: 1px; }
+  .msg.data .mstat { width: 22px; height: 22px; border-radius: 50%; flex: none; display: grid; place-items: center;
+    background: var(--wa); color: var(--good); }
+  .msg.data .mstat svg { width: 12px; height: 12px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .msg.data { animation: msgin .3s ease both, dataglow .9s ease .1s; }
+    @keyframes dataglow { 0% { box-shadow: var(--shadow), 0 0 0 0 rgba(122,43,255,.35); }
+      55% { box-shadow: var(--shadow), 0 0 0 6px rgba(122,43,255,0); } 100% { box-shadow: var(--shadow); } }
+  }
+
   .thread { height: 372px; overflow-y: hidden; align-content: start; }
   .thread.static { height: auto; overflow-y: visible; }
   .wa-dots { display: inline-flex; gap: 4px; padding: 3px 2px; }
@@ -1135,20 +1164,42 @@
     var thread = document.getElementById('wa-thread');
     var status = document.getElementById('wa-status');
     if (!thread) return;
+    /* three glyphs, one style — white stroke on a solid accent circle, like the icon
+       badges on mycompany.co.il's own phone mock (limited-liability-companies2) */
+    var IC_RECEIPT = '<svg viewBox="0 0 24 24"><path d="M6 3.5h12a1 1 0 0 1 1 1V21l-2.5-1.6L14 21l-2-1.6L10 21l-2.5-1.6L5 21V4.5a1 1 0 0 1 1-1Z" fill="none" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 8.5h7M8.5 12h7M8.5 15.3h4" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>';
+    var IC_PERCENT = '<svg viewBox="0 0 24 24"><circle cx="7.5" cy="7.5" r="2.3" stroke="#fff" stroke-width="1.8" fill="none"/><circle cx="16.5" cy="16.5" r="2.3" stroke="#fff" stroke-width="1.8" fill="none"/><path d="M6.5 17.5 17.5 6.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>';
+    var IC_TARGET = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" stroke="#fff" stroke-width="1.6" fill="none"/><circle cx="12" cy="12" r="4.3" stroke="#fff" stroke-width="1.6" fill="none"/><circle cx="12" cy="12" r="1.1" fill="#fff"/></svg>';
+    var IC_CHECK = '<svg viewBox="0 0 24 24"><path d="M6 12.5 9.5 16 18 7.5" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     var MSGS = [
-      { cls: 'us', t: '08:04 · <span class="tmfix" dir="ltr"><span dir="ltr">PurpleBrain</span><sup class="tms">™</sup></span>', h: 'בוקר טוב עמית ☀️ סרקתי הלילה את החשבון: 3 הוצאות לא נקלטו — 2,140 ₪. טיפלתי. <b>חסכת 385 ₪ במע״מ.</b>' },
-      { cls: 'us', t: '08:05 · <span class="tmfix" dir="ltr"><span dir="ltr">PurpleBrain</span><sup class="tms">™</sup></span>', h: 'וצפי המע״מ ל-15 לחודש: <b>1,842 ₪</b>. סגור מראש. בלי הפתעות.' },
-      { cls: 'them', t: '11:32', h: 'ההכנסות ירדו החודש. אפשר להקטין מקדמות?' },
-      { cls: 'us', t: '11:35 · <span class="tmfix" dir="ltr"><span dir="ltr">PurpleBrain</span><sup class="tms">™</sup></span>', h: 'בדקתי — כן. הקטנה מ-8% ל-6.5% משאירה לך <b>780 ₪ בחודש ביד</b>. רו״ח שרון אישרה, עדכנתי מול רשות המסים ✓' },
-      { cls: 'us', t: '16:20 · <span class="tmfix" dir="ltr"><span dir="ltr">PurpleBrain</span><sup class="tms">™</sup></span>', h: 'תזכורת: הפקדה לקרן השתלמות עד סוף החודש = <b>הטבת מס של 4,830 ₪</b> השנה. להכין הוראת קבע?' },
-      { cls: 'them', t: '16:22', h: 'כן! תודה 🙏' }
+      { cls: 'us', kind: 'info', e: '🌅', h: 'סריקת בוקר הושלמה', b: 'עברתי הלילה על כל התנועות בחשבון עמית — הכל תקין.', t: '08:04' },
+      { cls: 'us', kind: 'data', ic: IC_RECEIPT, lab: 'הוצאות שנשכחו שנמצאו', val: '2,140 ₪' },
+      { cls: 'us', kind: 'data', ic: IC_PERCENT, lab: 'חיסכון במע״מ החודש', val: '385 ₪' },
+      { cls: 'them', kind: 'text', t: '11:32', h: 'ההכנסות ירדו החודש. אפשר להקטין מקדמות?' },
+      { cls: 'us', kind: 'data', ic: IC_TARGET, lab: 'מקדמות הוקטנו ל-6.5%', val: '780 ₪ ביד' },
+      { cls: 'us', kind: 'tip', e: '💡', h: 'תזכורת: הפקדה לקרן השתלמות עד סוף החודש = <b>הטבת מס של 4,830 ₪</b>.', t: '16:20' },
+      { cls: 'them', kind: 'text', t: '16:22', h: 'כן! תודה 🙏' }
     ];
     var STAMP = '✓ כל פעולה מאושרת ע״י רו״ח מורשה';
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function render(m) {
       var d = document.createElement('div');
-      d.className = 'msg ' + m.cls;
-      d.innerHTML = m.h + '<span class="t">' + m.t + '</span>';
+      if (m.kind === 'data') {
+        d.className = 'msg us card data';
+        d.innerHTML = '<span class="mic">' + m.ic + '</span>' +
+          '<span class="mtxt"><b>' + m.lab + '</b><span class="mval">' + m.val + '</span></span>' +
+          '<span class="mstat">' + IC_CHECK + '</span>';
+      } else if (m.kind === 'info') {
+        d.className = 'msg us card info';
+        d.innerHTML = '<span class="mtop"><span class="e">' + m.e + '</span>' + m.h + '</span>' +
+          '<p class="mbody">' + m.b + '</p><span class="t">' + m.t + '</span>';
+      } else if (m.kind === 'tip') {
+        d.className = 'msg us card tip';
+        d.innerHTML = '<p class="mbody tipline"><span class="e">' + m.e + '</span> ' + m.h + '</p>' +
+          '<span class="t">' + m.t + '</span>';
+      } else {
+        d.className = 'msg ' + m.cls;
+        d.innerHTML = m.h + '<span class="t">' + m.t + '</span>';
+      }
       return d;
     }
     if (reduce) {
