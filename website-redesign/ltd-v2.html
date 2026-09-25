@@ -194,320 +194,396 @@ html{direction:rtl}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://ronhadar5-max.github.io/mc-site-preview/#organization","name":"MyCompany","alternateName":"מיי קומפני","legalName":"Attorney Technologies Ltd","url":"https://ronhadar5-max.github.io/mc-site-preview/","inLanguage":"he-IL","areaServed":"IL","description":"רואה חשבון והנהלת חשבונות אונליין לעסקים בישראל — מנוע AI שעובד 24/7 ורו״ח מורשה שחותם על כל דוח. המותג האחות של Ettorney, הפלטפורמה הראשונה בישראל להקמת עסקים אונליין.","founder":{"@type":"Person","@id":"https://ronhadar5-max.github.io/mc-site-preview/website-redesign/about-v1.html#person","name":"רון הדר","jobTitle":"מייסד ומנכ״ל","url":"https://ronhadar5-max.github.io/mc-site-preview/website-redesign/about-v1.html"},"brand":[{"@type":"Brand","name":"MyCompany"},{"@type":"Brand","name":"Ettorney","url":"https://www.ettorney.co.il/"}],"sameAs":["https://www.ettorney.co.il/","https://www.youtube.com/@MycompanyIsrael"],"knowsAbout":["הקמת עסקים אונליין","פתיחת חברה בע״מ","פתיחת עוסק מורשה","הנהלת חשבונות אונליין","רואה חשבון אונליין","דוח שנתי","שכר וניכויים","שירותים פיננסיים לעסקים קטנים"]}</script>
 <style id="v3-css">
-/* ===== v3 — components copied from Stripe Atlas / Daisy / RiseUp, in MyCompany's palette ===== */
+/* ============================================================================
+   v4 — components copied 1:1 from joindaisy.com (hero grid, marquee band, accordion
+   section, twin cards, dark "govern" block, testimonial deck, dropdown), stripe.com/atlas
+   (copy header, detail blocks, numbered columns, form card) and riseup.co.il (rounded
+   panel). Every number below is the computed value read from the live site on 2026-09-25,
+   with Daisy's greens → MyCompany purple, lime → purple CTA, salmon → peach, yellow → orange.
+   ============================================================================ */
 :root{
-  --paper:#FBFAF4;                 /* Daisy #FFFDF4 / RiseUp #F9F7ED, warmed */
-  --ink-dark:#1A1633; --ink:#4B4766; --faint:#7C7894; --hairline:#E7E4F0;
-  --brand:#5B2FE6; --brand-deep:#3B1BA8; --brand-soft:#EFEAFF;
-  --deep:#1C1147;                   /* Daisy deep green #08494B → deep purple */
-  --mid:#4A2BC8;                    /* Daisy green #006956 → mid purple */
-  --money:#FF8B3D; --money-pale:#FFE8D6; --money-soft:#FFC48A;
-  --blue:#1E48B8; --blue-soft:#E6EDFF; --ok:#0F7A45; --wa:#E4F7EC;
+  --cream:#FFFDF4; --ink:#1A1A1A; --muted:#737373; --hair:#B6B6B6; --cardline:#E2E2E2;
+  --purple:#5B2FE6; --purple-inner:#7C5CF0; --deep:#1C1147; --mid:#4A2BC8; --soft:#EFEAFF;
+  --peach:#FFD1A6; --warm:#FFC48A; --orange:#E5731F; --orange-pale:#FFE8D6; --atlas-bg:#F6F9FC;
+  --serif:"Frank Ruhl Libre",Georgia,"Times New Roman",serif;
+  --sans:"Assistant","Heebo","Segoe UI",system-ui,sans-serif;
+  --paper:#FFFDF4; --tint:#F5F2FF; --ink-dark:#1A1A1A; --faint:#737373; --hairline:#E2E2E2;
+  --brand:#5B2FE6; --brand-deep:#3B1BA8; --brand-soft:#EFEAFF; --money:#FF8B3D; --money-pale:#FFE8D6;
+  --cta:#5B2FE6; --cta-deep:#4E25D6; --ok:#0F7A45; --wa:#E4F7EC; --blue:#1E48B8; --blue-soft:#E6EDFF;
   --stripe-shadow:0 13px 27px -5px rgba(50,50,93,.25),0 8px 16px -8px rgba(0,0,0,.3);
-  --stripe-shadow-lg:0 50px 100px -20px rgba(50,50,93,.25),0 30px 60px -30px rgba(0,0,0,.3);
-  --glow-p:0 30px 80px -30px rgba(91,47,230,.45);
   --ease:cubic-bezier(.2,.8,.2,1);
 }
-body{background:var(--paper)}
-h1,h2{font-family:Heebo,Assistant,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.08;color:var(--ink-dark)}
-h1{font-size:clamp(36px,4.8vw,62px)}
-h2{font-size:clamp(28px,3.6vw,44px)}
-h3{font-family:Heebo,Assistant,sans-serif;font-weight:800;letter-spacing:-.01em}
-.lead{font-size:clamp(17px,1.9vw,19px);line-height:1.62;color:var(--ink);font-weight:400}
-.wrap{max-width:1180px}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:25.5px;font-weight:400}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:0;color:var(--ink);margin:0}
+h1{font-size:52px;line-height:62.4px}
+h2{font-size:42px;line-height:50.4px}
+h3{font-size:34px;line-height:40.8px}
+p{margin:0}
+.wrap{max-width:1232px;padding-inline:24px}
+.lead{font-size:17px;line-height:25.5px;color:var(--ink);max-width:none}
+.eyebrow{display:none}
 .phead.v3-hero::before,.phead.v3-hero::after{display:none}
 .fcard{display:none}
+section{padding:0}
 
-/* glass + glow (Ron: the same purple, softened — transparency, floating pieces, a back-glow) */
-.glass{background:rgba(255,255,255,.66);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
-  border:1px solid rgba(255,255,255,.75);box-shadow:var(--glow-p),inset 0 1px 0 rgba(255,255,255,.9)}
-.glass-d{background:rgba(255,255,255,.07);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 80px -30px rgba(0,0,0,.55)}
-.v3-glow{position:absolute;border-radius:50%;filter:blur(56px);opacity:.7;pointer-events:none}
-@keyframes v3drift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(40px,-30px) scale(1.12)}}
-@keyframes v3float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-@keyframes v3floatb{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-9px) rotate(-1.5deg)}}
-@keyframes v3grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-@keyframes v3pulse{0%{box-shadow:0 0 0 0 rgba(23,160,94,.55)}70%{box-shadow:0 0 0 9px rgba(23,160,94,0)}100%{box-shadow:0 0 0 0 rgba(23,160,94,0)}}
-@keyframes v3spin{to{transform:rotate(360deg)}}
-@keyframes v3rings{to{transform:rotate(360deg)}}
-@keyframes v3up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-@keyframes v3dots{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
-@keyframes v3pop{0%,8%{opacity:.35;transform:scale(.92)}18%,82%{opacity:1;transform:scale(1)}92%,100%{opacity:.35;transform:scale(.92)}}
-@keyframes v3check{0%,8%{opacity:0;transform:scale(.4)}18%,82%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(.4)}}
+/* ---------- buttons: Daisy .new-button (50px pill, 12px 40px, 16/24 500, 1px lighter inner border) ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:12px 40px;border-radius:1440px;
+  font-family:var(--sans);font-size:16px;font-weight:500;line-height:24px;letter-spacing:0;border:1px solid transparent;box-shadow:none;transition:background .16s,transform .16s var(--ease)}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--purple);color:#fff;border-color:var(--purple-inner);font-weight:500}
+.btn-primary:hover{background:#4E25D6;color:#fff}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid #E0E0E0;height:36.6px;padding:10px 26.8px;font-size:14.3px;line-height:21.4px}
+.btn-lg{height:50px;padding:12px 40px;font-size:16px}
+.band .btn-primary{background:var(--purple);color:#fff;border-color:var(--purple-inner)}
 
-/* ---------- nav: Daisy grammar (pill buttons, wide panel with descriptions + promo strip) ---------- */
-.nav{background:rgba(251,250,244,.9);border-bottom:1px solid #EEEBF5}
-.nav-links{font-weight:600;font-size:15px}
-.nav-right .btn{border-radius:999px;padding:11px 22px;font-size:15px}
-.nav-tel{border:1px solid var(--hairline);border-radius:999px;padding:9px 16px;font-size:14px;background:#fff}
-.navdrop-m{min-width:300px;padding:12px;border-radius:16px;border-color:var(--hairline);box-shadow:var(--stripe-shadow-lg)}
-.navdrop-m a{padding:10px 12px;border-radius:10px;font-size:15px;color:var(--ink-dark)}
-.navdrop-m a:hover{background:var(--brand-soft);color:var(--brand)}
-.navdrop-m a.sep{border-top-color:var(--hairline);margin-top:8px;padding-top:14px}
-.navdrop-m::after{content:"מחיר סגור אחרי 90 שניות. בלי איש מכירות. ←";display:block;margin-top:10px;padding:14px 14px;border-radius:12px;
-  background:linear-gradient(135deg,#EFEAFF,#F8F5FF);color:var(--brand);font-weight:700;font-size:14px;white-space:normal;line-height:1.4}
+/* ---------- nav: Daisy bar (ghost pill + solid pill), Daisy 786px dropdown with a 278px CTA column ---------- */
+.nav{background:var(--cream);border-bottom:0;box-shadow:none}
+.nav.scrolled{box-shadow:0 4px 8px rgba(0,0,0,.06)}
+.nav-in{padding:14px 0}
+.nav-logo img{height:30px}
+.nav-links{gap:24px;font-size:14.3px;font-weight:500;color:var(--ink)}
+.nav-links a::after,.navdrop>.navdrop-t>.navdrop-lbl::after{display:none}
+.navdrop>.navdrop-t{font-size:14.3px;font-weight:500;color:var(--ink);padding:8px 12px;border-radius:1142px}
+.navdrop>.navdrop-t:hover,.navdrop.open>.navdrop-t{background:#F1F0E8;color:var(--ink)}
+.navdrop.has-active>.navdrop-t{color:var(--purple);font-weight:500}
+.nav-links > a{padding:8px 12px;border-radius:1142px}
+.nav-links > a:hover{background:#F1F0E8;color:var(--ink)}
+.nav-right{gap:12px}
+.nav-tel{display:inline-flex;align-items:center;height:36.6px;padding:10px 26.8px;border:1px solid #E0E0E0;border-radius:1142px;font-size:14.3px;font-weight:500;color:var(--ink);background:transparent}
+.nav-right .btn{height:36.6px;padding:8.9px 26.8px;font-size:12.5px;line-height:18.7px;font-weight:500}
+.navdrop-m{width:786px;min-width:786px;padding:0;border:0;border-radius:12px;background:#fff;box-shadow:0 4px 8px rgba(0,0,0,.06);margin-top:10px;overflow:hidden;display:none;grid-template-columns:1fr}
+.navdrop.open>.navdrop-m{display:grid}
+@media(hover:hover){.navdrop:hover>.navdrop-m{display:grid}}
+.navdrop-m .dd-wrap{display:flex}
+.navdrop-m .dd-links{display:grid;grid-template-columns:218px 218px;gap:0 24px;padding:24px;align-content:start;width:508px;box-sizing:border-box}
+.navdrop-m .dd-links a{display:grid;grid-template-columns:28px 162px;align-items:flex-start;padding:12px 14px;border-radius:6px;font-size:14px;font-weight:500;line-height:19.6px;color:var(--ink);white-space:normal}
+.navdrop-m .dd-links a:hover{background:#F5F5F0;color:var(--ink)}
+.navdrop-m .dd-links a::before{content:"";width:20px;height:20px;margin-top:1px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235B2FE6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M8.5 12.5l2.5 2.5 5-5'/%3E%3C/svg%3E") center/20px no-repeat}
+.navdrop-m .dd-links a small{display:block;font-size:12px;line-height:16.8px;color:var(--muted);font-weight:400;margin-top:5px}
+.navdrop-m .dd-links a.sep{margin:0;padding:12px 14px;border:0;border-radius:6px}
+.navdrop-m .dd-links a.active{color:var(--purple)}
+.navdrop-m .dd-cta{width:278px;flex:none;display:flex;flex-direction:column;gap:22px;padding:22px 24px;background:var(--soft);box-sizing:border-box}
+.navdrop-m .dd-cta b{display:block;font-family:var(--serif);font-weight:400;font-size:26px;line-height:31.2px;color:var(--ink)}
+.navdrop-m .dd-cta p{font-size:14px;line-height:21px;color:var(--ink)}
+.navdrop-m .dd-cta a{display:block;padding:2px 0;font-size:14px;font-weight:500;line-height:19.6px;color:var(--purple);border-radius:0}
+.navdrop-m .dd-cta a:hover{background:none;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:1180px){.navdrop-m{right:auto;left:0}}
 
-/* ---------- buttons: Daisy pill (with the lighter inner border) + purple glow ---------- */
-.btn{border-radius:999px;font-weight:700}
-.btn-primary{background:var(--brand);color:#fff;border:1px solid #7C5CF0;padding:12px 30px;
-  box-shadow:0 14px 34px -10px rgba(91,47,230,.65),0 2px 6px rgba(91,47,230,.25)}
-.btn-primary:hover{background:#4E25D6;color:#fff;box-shadow:0 18px 40px -10px rgba(91,47,230,.7)}
-.btn-ghost{background:#fff;color:var(--ink-dark);border:1px solid #E0E0E0;box-shadow:none;padding:10px 27px}
-.btn-lg{padding:15px 36px;font-size:17px}
-.v3-btn-white{background:#fff;color:var(--brand-deep);border-color:#fff;box-shadow:0 18px 40px -16px rgba(0,0,0,.45)}
-.v3-btn-white:hover{background:#F3EFFF;color:var(--brand-deep)}
-.v3-arrow{width:16px;height:16px;flex:none}
-
-/* ---------- HERO: Stripe Atlas structure (copy + floating card over a 12° band) ---------- */
-.v3-hero{position:relative;overflow:hidden;background:var(--paper);border-bottom:0;padding:clamp(34px,4vw,56px) 0 clamp(120px,14vw,190px)}
-.v3-band{position:absolute;left:-12%;right:-12%;bottom:-34%;height:58%;transform:skewY(-12deg);transform-origin:center;z-index:0;
-  background:linear-gradient(100deg,#EDE7FF 0%,#C4B5FD 28%,#8B5CF6 58%,#5B2FE6 100%)}
-.v3-band-o{bottom:-40%;height:14%;background:linear-gradient(90deg,rgba(255,139,61,0) 0%,rgba(255,139,61,.85) 55%,rgba(255,205,130,.95) 100%);opacity:.9}
-.v3-hero-in{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,64px);align-items:start}
-.v3-hero-copy{animation:v3up .7s var(--ease) both}
-.v3-hero-copy h1{margin-top:6px}
-.v3-hero-copy .lead{margin-top:18px;font-weight:300;font-size:19px;line-height:1.6}
-.v3-cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-top:26px}
-.v3-textlink{font-weight:700;color:var(--brand);font-size:15.5px}
-.v3-textlink:hover{text-decoration:underline;text-underline-offset:3px}
-.v3-proof{display:flex;align-items:center;gap:12px;margin-top:26px}
-.v3-avs{display:flex}
-.v3-avs span{width:36px;height:36px;border-radius:50%;border:2px solid var(--paper);display:grid;place-items:center;font:800 11px Heebo,sans-serif;color:#fff;margin-inline-start:-10px}
-.v3-avs span:first-child{margin-inline-start:0}
-.v3-stars{display:inline-flex;gap:2px;color:#F5A623;font-size:15px;letter-spacing:1px}
-.v3-proof small{font-size:14px;color:var(--ink);font-weight:600}
-.segbar{margin-top:26px}
-.v3-hero-card-wrap{position:relative;display:grid;justify-items:end;padding-top:12px;animation:v3up .8s .15s var(--ease) both}
-.v3-atlas{position:relative;z-index:2;width:min(400px,100%);background:#fff;border-radius:8px;box-shadow:var(--stripe-shadow-lg);padding:26px 26px 22px;
-  display:grid;gap:14px;animation:v3float 9s ease-in-out infinite}
-.v3-atlas h3{font-size:19px;font-weight:800;margin:0}
-.v3-field{display:grid;gap:6px;font-size:13px;color:var(--ink);font-weight:600}
-.v3-field div{display:flex;align-items:center;gap:8px;border:1px solid #E3E8EE;border-radius:6px;padding:0 12px;height:42px}
-.v3-field input{border:0;outline:0;flex:1;min-width:0;font:600 15px Assistant,sans-serif;color:var(--ink-dark);background:transparent}
-.v3-ok{display:inline-flex;align-items:center;gap:5px;font:700 12px Assistant,sans-serif;color:var(--ok)}
-.v3-lbl{font-size:13px;color:var(--ink);font-weight:600;margin-top:2px}
-.v3-radio{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center;border:1px solid #E3E8EE;border-radius:6px;padding:10px 12px;cursor:pointer;transition:border-color .16s,background .16s}
-.v3-radio input{margin:0;accent-color:var(--brand);grid-row:span 2}
-.v3-radio b{font-size:14.5px;color:var(--ink-dark)}
-.v3-radio span{font-size:12.5px;color:var(--faint);line-height:1.4}
-.v3-radio:hover{border-color:#C9C2E6}
-.v3-radio:has(input:checked){border-color:var(--brand);background:#F8F5FF}
-.v3-atlas-btn{margin-top:4px;background:var(--brand);color:#fff;border:0;border-radius:999px;padding:12px 18px;font:700 15px Assistant,sans-serif;cursor:pointer;
-  box-shadow:0 12px 28px -10px rgba(91,47,230,.6);transition:transform .16s var(--ease),background .16s}
-.v3-atlas-btn:hover{background:#4E25D6;transform:translateY(-1px)}
-.v3-fine{margin:0;font-size:12px;color:var(--faint);text-align:center}
-@media(max-width:980px){.v3-hero-in{grid-template-columns:1fr}.v3-hero-card-wrap{justify-items:center}.v3-band{bottom:-20%;height:44%}}
-
-/* ---------- WHATSAPP BLOCK: RiseUp's big rounded block, Instagram purple softened ---------- */
-.v3-wa-sec{padding:0 0 clamp(52px,7vw,92px)}
-.v3-block{position:relative;overflow:hidden;border-radius:36px;padding:clamp(34px,4.6vw,64px);color:#fff;
-  background:radial-gradient(120% 90% at 85% 10%,#8B5CF6 0%,#5B2FE6 45%,#4A25C7 100%);
-  display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(24px,4vw,56px);align-items:center;box-shadow:0 40px 100px -40px rgba(91,47,230,.6)}
-.v3-rings{position:absolute;left:38%;top:50%;width:1200px;height:1200px;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
+/* ---------- HERO: Daisy .header_component — 616|616 grid, 480px content column, image 616×533 ---------- */
+.d-hero{background:var(--cream);border-bottom:0;padding:70px 0 100px}
+.d-hero-grid{display:grid;grid-template-columns:616px 616px;justify-content:center;align-items:stretch}
+.d-hero-content{display:flex;flex-direction:column;justify-content:space-between;gap:32px;width:480px;max-width:480px}
+.d-hero-top{display:flex;flex-direction:column;gap:32px}
+.d-hero-head{display:flex;flex-direction:column;gap:20px}
+.d-hero-head .crumb{margin:0 0 -6px;font-size:13.5px;color:var(--muted)}
+.d-btns{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.d-proof{display:flex;flex-wrap:wrap;align-items:center;gap:20px;height:54px}
+.d-avs{display:flex;align-items:center}
+.d-avs span{width:54px;height:54px;border-radius:50%;border:3px solid var(--cream);display:grid;place-items:center;font:700 14px var(--sans);color:#fff;margin-inline-start:-14px}
+.d-avs span:first-child{margin-inline-start:0}
+.d-rating{display:flex;flex-direction:column;gap:2px}
+.d-stars{color:#F5A623;font-size:16px;letter-spacing:2px;line-height:1}
+.d-rating small{font-size:14px;color:var(--ink);font-weight:500}
+.d-hero-visual{position:relative;width:616px;height:533px;border-radius:20px;overflow:hidden;
+  background:radial-gradient(120% 90% at 85% 10%,#8B5CF6 0%,#5B2FE6 45%,#4A25C7 100%)}
+.d-hero-visual .rings{position:absolute;left:50%;top:50%;width:1100px;height:1100px;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
   background:repeating-radial-gradient(circle,rgba(255,255,255,.09) 0 2px,rgba(255,255,255,0) 2px 54px)}
-.v3-block-copy{position:relative;z-index:1}
-.v3-block h2{color:#fff;margin:14px 0 14px}
-.v3-block p{color:#E4DBFF;font-size:17.5px;line-height:1.62;max-width:52ch}
-.v3-live{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:700;color:#fff}
-.v3-live i{width:9px;height:9px;border-radius:50%;background:#7CE0A8;animation:v3pulse 2s infinite}
-.v3-ticks{list-style:none;margin:18px 0 26px;padding:0;display:grid;gap:10px}
-.v3-ticks li{display:flex;gap:10px;align-items:flex-start;font-size:16px;color:#fff;line-height:1.5}
-.v3-ticks li::before{content:"";flex:none;width:20px;height:20px;margin-top:3px;border-radius:50%;background:rgba(255,255,255,.18)
-  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFB27A' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/12px no-repeat}
-.v3-stage{position:relative;z-index:1;height:640px;display:grid;place-items:center}
-.v3-phone{animation:none}
-.v3-phone .screen{min-height:560px}
-.v3-phone .chat-body{min-height:380px;align-content:start}
+.d-hero-visual .phone{position:absolute;left:50%;top:44px;transform:translateX(-50%);width:300px;animation:none}
+.d-hero-visual .phone .screen{min-height:470px}
+.d-hero-visual .phone .chat-body{min-height:300px;align-content:start}
+.d-live{position:absolute;top:18px;inset-inline-start:18px;display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:1440px;padding:8px 14px;font-size:13.5px;font-weight:500;color:#fff;z-index:3}
+.d-live i{width:9px;height:9px;border-radius:50%;background:#7CE0A8;animation:v4pulse 2s infinite}
+.d-float{position:absolute;z-index:3;width:236px;background:#fff;border-radius:12px;padding:14px 16px;display:grid;gap:8px;font-size:13.5px;line-height:19px;color:var(--ink);box-shadow:0 13px 27px -5px rgba(50,50,93,.25),0 8px 16px -8px rgba(0,0,0,.3)}
+.d-float .from{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.d-float .from b{color:var(--ink);font-size:13px;font-weight:500}
+.d-float .dot{width:22px;height:22px;border-radius:50%;background:var(--purple);color:#fff;font:700 11px/22px var(--sans);text-align:center;flex:none}
+.d-float .chip{display:inline-flex;border-radius:1440px;padding:5px 10px;font:500 12px/1 var(--sans);width:max-content}
+.d-float .chip.o{background:var(--orange-pale);color:#B4470A}.d-float .chip.g{background:var(--wa);color:var(--ok)}.d-float .chip.p{background:var(--soft);color:var(--purple)}
+.d-f1{inset-inline-end:16px;bottom:120px;animation:v4float 8s ease-in-out infinite}
+.d-f2{inset-inline-start:16px;bottom:38px;animation:v4float 9s ease-in-out infinite;animation-delay:-3s}
 .bub.typing{display:inline-flex;gap:5px;align-items:center;padding:12px 14px}
-.bub.typing i{width:7px;height:7px;border-radius:50%;background:#9A97AE;animation:v3dots 1.2s infinite}
+.bub.typing i{width:7px;height:7px;border-radius:50%;background:#9A97AE;animation:v4dots 1.2s infinite}
 .bub.typing i:nth-child(2){animation-delay:.2s}.bub.typing i:nth-child(3){animation-delay:.4s}
-.bub.new{animation:v3up .35s var(--ease) both}
-.v3-g{position:absolute;width:min(250px,44%);border-radius:18px;padding:14px 16px;display:grid;gap:8px;font-size:13.5px;line-height:1.5;color:var(--ink-dark);
-  background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.9);
-  box-shadow:0 26px 60px -24px rgba(20,10,60,.55),inset 0 1px 0 #fff}
-.v3-g .from{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--faint)}
-.v3-g .from b{color:var(--ink-dark);font-size:13px}
-.v3-g .dot{width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;font:800 11px/24px Heebo,sans-serif;text-align:center;flex:none}
-.v3-g .chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 10px;font:700 12px/1 Assistant,sans-serif;width:max-content}
-.v3-g .chip.o{background:var(--money-pale);color:#B4470A}.v3-g .chip.g{background:var(--wa);color:var(--ok)}.v3-g .chip.p{background:var(--brand-soft);color:var(--brand)}
-.v3-g1{right:-2%;top:4%;animation:v3float 8s ease-in-out infinite}
-.v3-g2{right:2%;bottom:8%;animation:v3floatb 9s ease-in-out infinite}
-.v3-g3{left:-2%;top:10%;animation:v3floatb 10s ease-in-out infinite}
-.v3-g4{left:1%;bottom:12%;animation:v3float 9s ease-in-out infinite;animation-delay:-3s}
-.v3-timer{display:flex;align-items:center;gap:12px}
-.v3-clock{width:44px;height:44px;border-radius:50%;border:3px solid var(--brand);position:relative;flex:none;background:#fff}
-.v3-clock::before{content:"";position:absolute;left:50%;top:50%;width:2px;height:16px;background:var(--brand);transform-origin:50% 100%;transform:translate(-50%,-100%) rotate(0deg);animation:v3spin 4s linear infinite}
-.v3-clock::after{content:"";position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--brand);transform:translate(-50%,-50%)}
-.v3-timer b{font:800 22px/1 Heebo,sans-serif;color:var(--ink-dark);display:block}
-.v3-timer span{font-size:12.5px;color:var(--faint)}
-@media(max-width:980px){.v3-block{grid-template-columns:1fr}.v3-stage{height:auto;padding:10px 0 6px}.v3-g{display:none}.v3-phone{width:min(300px,100%)}}
+.bub.new{animation:v4up .35s var(--ease) both}
+@keyframes v4float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes v4pulse{0%{box-shadow:0 0 0 0 rgba(124,224,168,.6)}70%{box-shadow:0 0 0 9px rgba(124,224,168,0)}100%{box-shadow:0 0 0 0 rgba(124,224,168,0)}}
+@keyframes v4dots{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+@keyframes v4up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes v4marq{from{transform:translateX(0)}to{transform:translateX(50%)}}
+@keyframes v4marq2{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media(max-width:1280px){.d-hero-grid{grid-template-columns:1fr 1fr;gap:32px}.d-hero-content,.d-hero-visual{width:100%;max-width:none}}
+@media(max-width:900px){.d-hero-grid{grid-template-columns:1fr}.d-hero-visual{height:520px}.d-hero{padding:40px 0 60px}h1{font-size:40px;line-height:48px}}
 
-/* ---------- ORCHESTRATED: Daisy accordion + floating dashboard/event cards ---------- */
-.v3-orch{padding:clamp(52px,7vw,92px) 0}
-.v3-orch-in{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,70px);align-items:center}
-.v3-acc{margin-top:28px;border-top:1px solid var(--hairline)}
-.v3-acc-item{border-bottom:1px solid var(--hairline)}
-.v3-acc-item button{width:100%;background:none;border:0;padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;
-  font:700 17.5px Assistant,sans-serif;color:var(--ink-dark);text-align:start}
-.v3-acc-item button i{flex:none;width:22px;height:22px;position:relative}
-.v3-acc-item button i::before,.v3-acc-item button i::after{content:"";position:absolute;background:var(--ink-dark);left:50%;top:50%;transform:translate(-50%,-50%);transition:transform .25s var(--ease)}
-.v3-acc-item button i::before{width:16px;height:2px}
-.v3-acc-item button i::after{width:2px;height:16px}
-.v3-acc-item.open button{color:var(--brand)}
-.v3-acc-item.open button i::before,.v3-acc-item.open button i::after{background:var(--brand)}
-.v3-acc-item.open button i::after{transform:translate(-50%,-50%) rotate(90deg)}
-.v3-acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s var(--ease)}
-.v3-acc-item.open .v3-acc-body{grid-template-rows:1fr}
-.v3-acc-body > div{overflow:hidden}
-.v3-acc-body p{margin:0 0 18px;font-size:15.5px;line-height:1.62;color:var(--ink);max-width:52ch}
-.v3-orch-visual{position:relative;min-height:520px}
-.v3-orch-visual .v3-glow{width:420px;height:420px;background:#B79CFF;left:-10%;top:-8%}
-.v3-orch-visual .v3-glow.o{width:300px;height:300px;background:#FFC48A;right:-8%;bottom:-6%;animation-delay:-6s}
-.v3-dash{position:absolute;inset-inline-start:0;top:8%;width:min(560px,92%);border-radius:18px;padding:22px 22px 18px;z-index:1}
-.v3-dash-head{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--faint);margin-bottom:14px}
-.v3-dash-head b{color:var(--ink-dark);font-size:14px}
-.v3-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.v3-kpi{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:12px 14px}
-.v3-kpi span{display:block;font-size:12px;color:var(--faint)}
-.v3-kpi b{display:block;font:800 22px/1.2 Heebo,sans-serif;color:var(--ink-dark);margin-top:6px;font-variant-numeric:tabular-nums}
-.v3-kpi b.p{color:var(--brand)}
-.v3-chart{margin-top:16px;background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:14px 16px 12px}
-.v3-chart-t{display:flex;justify-content:space-between;font-size:12.5px;color:var(--faint);margin-bottom:10px}
-.v3-chart-t b{color:var(--ink-dark);font-size:13.5px}
-.v3-bars{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;height:110px;align-items:end}
-.v3-bars i{display:block;border-radius:6px 6px 3px 3px;background:linear-gradient(180deg,#8B5CF6,#5B2FE6);height:0;transition:height 1.1s var(--ease)}
-.v3-bars i.o{background:linear-gradient(180deg,#FFC48A,#FF8B3D)}
-.v3-dash.in .v3-bars i{height:var(--h)}
-.v3-bars-l{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin-top:6px;font-size:10.5px;color:var(--faint);text-align:center}
-.v3-event{position:absolute;inset-inline-end:0;bottom:6%;width:min(300px,80%);background:#fff;border:1px solid var(--hairline);border-radius:12px;box-shadow:var(--stripe-shadow-lg);overflow:hidden;z-index:2;animation:v3float 8s ease-in-out infinite}
-.v3-event-h{background:var(--brand);color:#fff;font:700 13.5px Assistant,sans-serif;padding:10px 14px}
-.v3-event-b{padding:12px 14px;display:grid;gap:8px;font-size:12.5px;color:var(--ink)}
-.v3-event-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.v3-event-row span{display:block;font-size:11px;color:var(--faint)}
-.v3-event-row b{display:block;color:var(--ink-dark);font-size:13px}
-.v3-event-b a{color:var(--brand);font-weight:700;font-size:12.5px}
-@media(max-width:980px){.v3-orch-in{grid-template-columns:1fr}.v3-orch-visual{min-height:0;display:grid;gap:14px}.v3-dash,.v3-event{position:static;width:100%;animation:none}.v3-orch-visual .v3-glow{display:none}.v3-kpi{padding:10px}.v3-kpi b{font-size:16px}.v3-kpi span{font-size:11px}.v3-bars{gap:5px}}
+/* ---------- BAND: Daisy .logo_component — 226px heading + marquee, 60px padding, fade overlays ---------- */
+.d-band{background:var(--peach);padding:60px 0}
+.d-band-grid{display:grid;grid-template-columns:226px 1fr;align-items:center}
+.d-band h3{font-size:34px;line-height:40.8px}
+.d-marquee{position:relative;height:82px;overflow:hidden;display:flex;align-items:center}
+.d-marquee::before,.d-marquee::after{content:"";position:absolute;top:0;bottom:0;width:112px;z-index:2;pointer-events:none}
+.d-marquee::before{inset-inline-start:0;background:linear-gradient(to left,var(--peach) 40.1%,rgba(255,209,166,0))}
+.d-marquee::after{inset-inline-end:0;background:linear-gradient(to right,var(--peach) 40.1%,rgba(255,209,166,0))}
+.d-track{display:flex;align-items:center;gap:64px;width:max-content;animation:v4marq 40s linear infinite}
+.d-track span{white-space:nowrap;font-family:var(--serif);font-size:26px;line-height:1;color:var(--ink);display:inline-flex;align-items:center;gap:14px}
+.d-track span::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--purple);opacity:.7}
+@media(max-width:900px){.d-band-grid{grid-template-columns:1fr;gap:20px}}
 
-/* ---------- TWIN CARDS: Daisy's dark/yellow pair, 17.8px radius, numbers in white boxes ---------- */
-.v3-twins-sec{padding:0 0 clamp(52px,7vw,92px)}
-.v3-twins{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.v3-twin{position:relative;overflow:hidden;border-radius:17.8px;padding:clamp(28px,3.6vw,44px) clamp(24px,3.4vw,40px);display:flex;flex-direction:column;gap:16px;min-height:440px}
-.v3-twin h2{font-size:clamp(26px,3vw,36px);margin:0}
-.v3-twin p{font-size:16.5px;line-height:1.6;max-width:44ch}
-.v3-twin-dark{background:var(--deep);color:#fff}
-.v3-twin-dark h2{color:#fff}.v3-twin-dark p{color:#CFC4F5}
-.v3-twin-dark .v3-glow{width:420px;height:420px;background:#7C4DFF;right:-20%;top:-30%;opacity:.55}
-.v3-twin-orange{background:var(--money-soft);color:var(--ink-dark)}
-.v3-twin-orange p{color:#5A3A20}
-.v3-team{position:relative;z-index:1;margin-top:auto;display:grid;gap:14px}
-.v3-team-row{display:flex;gap:10px;flex-wrap:wrap}
-.v3-pro{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 14px 8px 8px;font-size:13.5px;font-weight:600}
-.v3-pro i{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#8B5CF6,#5B2FE6);display:grid;place-items:center;color:#fff;font:800 11px Heebo,sans-serif;flex:none}
-.v3-chan{display:flex;gap:8px;flex-wrap:wrap}
-.v3-chan span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.14);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700}
-.v3-chan svg{width:15px;height:15px}
-.v3-nums{margin-top:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.v3-nums div{background:#fff;border-radius:12px;padding:16px 12px;text-align:center}
-.v3-nums b{display:block;font:800 clamp(24px,2.6vw,34px)/1.1 Heebo,sans-serif;color:var(--ink-dark);font-variant-numeric:tabular-nums}
-.v3-nums span{display:block;font-size:12.5px;color:var(--ink);margin-top:6px;line-height:1.35}
-@media(max-width:860px){.v3-twins{grid-template-columns:1fr}.v3-twin{min-height:0}.v3-nums{gap:8px}.v3-nums div{padding:12px 8px}.v3-nums b{font-size:20px}.v3-nums span{font-size:11.5px}}
+/* ---------- ORCHESTRATED: Daisy .home-features1 — 436px column, accordion on #B6B6B6 hairlines, 624×701 gallery ---------- */
+.d-orch{padding:100px 24px}
+.d-orch-flex{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;max-width:1232px;margin:0 auto;padding:0}
+.d-orch-left{width:436px;max-width:436px;flex:none;margin-inline-end:32px}
+.d-orch-left h2{margin-bottom:22px}
+.d-orch-left > p{margin-bottom:64px}
+.d-acc{border-bottom:1px solid var(--hair)}
+.d-acc-item{display:flex;flex-direction:column}
+.d-acc-item > button{display:flex;justify-content:space-between;align-items:center;width:100%;padding:16px 0;border:0;border-top:1px solid var(--hair);background:none;cursor:pointer;
+  font-family:var(--sans);font-size:17px;line-height:25.5px;font-weight:700;color:var(--ink);text-align:start}
+.d-acc-item.open > button{color:var(--purple)}
+.d-acc-item > button i{position:relative;width:24px;height:24px;flex:none;margin-inline-start:24px;transition:transform .25s var(--ease)}
+.d-acc-item > button i::before,.d-acc-item > button i::after{content:"";position:absolute;left:50%;top:50%;background:currentColor;transform:translate(-50%,-50%)}
+.d-acc-item > button i::before{width:16px;height:2px}
+.d-acc-item > button i::after{width:2px;height:16px;transition:opacity .2s}
+.d-acc-item.open > button i::after{opacity:0}
+.d-acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s var(--ease)}
+.d-acc-item.open .d-acc-body{grid-template-rows:1fr}
+.d-acc-body > div{overflow:hidden}
+.d-acc-body p{max-width:404px;font-size:14px;line-height:21px;color:var(--ink);margin:0 0 16px}
+.d-orch-gallery{display:grid;justify-items:end;width:724px;flex:none}
+.d-orch-image{position:relative;width:624px;height:701px;border-radius:20px;overflow:visible;background:linear-gradient(160deg,#F1ECFF,#E4DBFF 60%,#D6C8FF)}
+.d-orch-image::before{content:"";position:absolute;inset:0;border-radius:20px;background:repeating-radial-gradient(circle at 70% 30%,rgba(91,47,230,.07) 0 2px,rgba(91,47,230,0) 2px 46px)}
+.d-cal{position:absolute;top:56px;inset-inline-start:40px;width:460px;background:#fff;border-radius:12px;box-shadow:0 13px 27px -5px rgba(50,50,93,.25),0 8px 16px -8px rgba(0,0,0,.3);padding:18px 20px 16px;font-size:12.5px;color:var(--ink)}
+.d-cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.d-cal-head b{font-weight:500;font-size:14px}
+.d-cal-head span{color:var(--muted)}
+.d-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.d-kpi{background:#FAFAF5;border:1px solid #EEEEE8;border-radius:8px;padding:12px}
+.d-kpi span{display:block;font-size:12px;color:var(--muted)}
+.d-kpi b{display:block;font-size:20px;line-height:1.2;font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums}
+.d-kpi b.p{color:var(--purple)}
+.d-bars{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;height:96px;align-items:end;margin-top:14px;padding-top:10px;border-top:1px solid #EEEEE8}
+.d-bars i{display:block;border-radius:4px 4px 2px 2px;background:var(--purple);height:0;transition:height 1.1s var(--ease)}
+.d-bars i.o{background:var(--warm)}
+.d-cal.in .d-bars i{height:var(--h)}
+.d-legend{display:flex;gap:16px;margin-top:8px;font-size:11.5px;color:var(--muted)}
+.d-legend i{display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--purple);margin-inline-end:6px}
+.d-legend i.o{background:var(--warm)}
+.d-event{position:absolute;bottom:64px;inset-inline-end:-40px;width:300px;background:#fff;border-radius:12px;box-shadow:0 13px 27px -5px rgba(50,50,93,.25),0 8px 16px -8px rgba(0,0,0,.3);overflow:hidden;animation:v4float 8s ease-in-out infinite}
+.d-event-h{background:var(--purple);color:#fff;font-size:13.5px;font-weight:500;padding:10px 14px}
+.d-event-b{padding:12px 14px;display:grid;gap:8px;font-size:12.5px;line-height:17px;color:var(--ink)}
+.d-event-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.d-event-row span{display:block;font-size:11px;color:var(--muted)}
+.d-event-row b{display:block;font-weight:500;font-size:13px}
+.d-event-b a{color:var(--purple);font-weight:500;font-size:12.5px}
+@media(max-width:1180px){.d-orch-flex{flex-direction:column}.d-orch-left{width:100%;max-width:none;margin:0}.d-orch-gallery{width:100%;justify-items:stretch}.d-orch-image{width:100%;height:auto;padding:24px;display:grid;gap:16px}.d-cal,.d-event{position:static;width:100%;animation:none}}
 
-/* ---------- Daisy grid cards + dark band with glass tiles ---------- */
-.band-tint{background:#F5F2FF;border-block:1px solid #ECE7FA}
-.card{border-radius:16px;border:1px solid var(--hairline);box-shadow:none;background:#fff;transition:transform .22s var(--ease),box-shadow .22s}
-.card:hover{transform:translateY(-3px);box-shadow:var(--stripe-shadow)}
-.card .num{font-family:Heebo,sans-serif;font-weight:800;width:40px;height:40px;border-radius:10px;background:var(--brand-soft);color:var(--brand)}
-.grid.g3 .card:nth-child(3n+2) .num,.grid.g4 .card:nth-child(4n+2) .num{background:var(--money-pale);color:#B4470A}
-.grid.g3 .card:nth-child(3n) .num,.grid.g4 .card:nth-child(4n+3) .num{background:var(--blue-soft);color:var(--blue)}
-.grid.g4 .card:nth-child(4n) .num{background:var(--wa);color:var(--ok)}
-.eyebrow{text-transform:none;letter-spacing:0;font-size:15px;font-weight:600;color:var(--brand)}
-.eyebrow::before{width:10px;height:10px;border-radius:3px;background:var(--brand)}
-.band{background:var(--deep);border-radius:24px;position:relative;overflow:hidden}
-.band::before{content:"";position:absolute;right:-20%;top:-60%;width:60%;height:160%;border-radius:50%;background:radial-gradient(closest-side,rgba(124,77,255,.5),rgba(124,77,255,0));pointer-events:none}
-.band::after{content:"";position:absolute;left:-15%;bottom:-70%;width:45%;height:150%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,139,61,.3),rgba(255,139,61,0));pointer-events:none}
+/* ---------- TWINS: Daisy .how-we-treat_card — 600px, 40px 0, radius 20, faces marquee, 250×139 metric boxes ---------- */
+.d-twins-sec{padding:0 24px 100px}
+.d-twins{display:flex;justify-content:center;gap:24px;max-width:1232px;margin:0 auto}
+.d-twin{width:600px;max-width:600px;display:flex;flex-direction:column;align-items:stretch;padding:40px 0;border-radius:20px;overflow:hidden;text-align:center}
+.d-twin-dark{background:var(--deep);color:#fff}
+.d-twin-dark h2{color:#fff}
+.d-twin-warm{background:var(--warm);color:var(--ink)}
+.d-twin-content{max-width:482px;margin:0 auto 48px;padding:0 2px}
+.d-twin-content h2{margin-bottom:22px}
+.d-twin-content p{max-width:400px;margin:0 auto}
+.d-faces{display:flex;overflow:hidden;margin-bottom:32px}
+.d-faces.second{margin-bottom:0;padding-top:4.8px}
+.d-faces-track{display:flex;gap:64px;width:max-content;padding-inline-end:64px;animation:v4marq2 30s linear infinite}
+.d-faces.second .d-faces-track{animation:v4marq 34s linear infinite}
+.d-face{width:128px;height:128px;border-radius:128px;flex:none;display:grid;place-items:center;text-align:center;padding:10px;box-sizing:border-box;font-size:14px;line-height:18px;font-weight:500;color:#fff}
+.d-face b{display:block;font-family:var(--serif);font-size:30px;line-height:1;font-weight:400;margin-bottom:6px}
+.d-face.a{background:linear-gradient(135deg,#8B5CF6,#5B2FE6)}
+.d-face.b{background:linear-gradient(135deg,#FFC48A,#FF8B3D);color:var(--ink)}
+.d-face.c{background:linear-gradient(135deg,#7CE0A8,#0F9D6A)}
+.d-face.d{background:linear-gradient(135deg,#9DB8FF,#1E48B8)}
+.d-metrics{display:flex;flex-direction:column;gap:20px;padding:0 32px}
+.d-metrics-row{display:flex;justify-content:center;gap:20px}
+.d-metric{width:250px;padding:20.8px 16px 22.4px;background:var(--cream);border-radius:10px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.d-metric b{font-family:var(--serif);font-weight:400;font-size:42px;line-height:50.4px;color:var(--ink);font-variant-numeric:tabular-nums}
+.d-metric span{max-width:192px;font-size:14px;line-height:21px;color:var(--ink)}
+@media(max-width:1280px){.d-twins{flex-direction:column;align-items:center}}
+@media(max-width:680px){.d-twin{width:100%}.d-metrics-row{flex-direction:column;align-items:center}.d-metric{width:100%}}
+
+/* ---------- GOVERN: Daisy .home-features2 — 960px, 64px top, 480px centered head, 28px tabs, 20px 20px 0 0 screenshot ---------- */
+.d-govern{background:var(--deep);color:#fff;overflow:clip;padding:0 24px}
+.d-govern-in{max-width:960px;margin:0 auto;padding-top:64px}
+.d-govern-head{max-width:480px;margin:0 auto 48px;text-align:center}
+.d-govern-head h2{color:#fff;margin-bottom:22px}
+.d-govern-head p{font-size:18px;line-height:27px;color:#fff}
+.d-tabs{display:flex;justify-content:center;gap:24px;font-weight:500;font-size:17px;margin:0 auto}
+.d-tabs a{display:block;height:28px;line-height:26px;text-align:center;color:rgba(255,255,255,.6);border-bottom:2px solid transparent}
+.d-tabs a.on{color:#fff;border-bottom-color:#FFB27A}
+.d-tabs a:hover{color:#fff}
+.d-shot{width:960px;max-width:100%;height:505px;margin:27px auto 0;border-radius:20px 20px 0 0;overflow:hidden;background:#fff;color:var(--ink);display:grid;grid-template-columns:150px 1fr;box-shadow:0 -10px 40px -20px rgba(0,0,0,.5)}
+.d-side{background:var(--purple);color:#fff;padding:22px 16px;display:flex;flex-direction:column;gap:14px;font-size:13px;font-weight:500}
+.d-side img{height:18px;width:auto;margin-bottom:12px;align-self:flex-start}
+.d-side span{padding:6px 8px;border-radius:6px;opacity:.85}
+.d-side span.on{background:#fff;color:var(--purple);opacity:1}
+.d-main{padding:18px 22px;display:grid;grid-template-columns:1fr 200px;gap:16px;align-content:start;background:#FAFAF6}
+.d-topbar{grid-column:1/-1;display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted)}
+.d-topbar b{color:var(--ink);font-weight:500}
+.d-shot-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.d-shot-kpi{background:#fff;border:1px solid #EEEEE8;border-radius:8px;padding:14px}
+.d-shot-kpi span{display:block;font-size:12.5px;color:var(--muted)}
+.d-shot-kpi b{display:block;font-size:24px;font-weight:700;margin-top:10px;font-variant-numeric:tabular-nums}
+.d-shot-kpi b.p{color:var(--purple)}
+.d-table{background:#fff;border:1px solid #EEEEE8;border-radius:8px;padding:14px;font-size:12.5px}
+.d-table h4{margin:0 0 10px;font:500 15px var(--sans);color:var(--ink)}
+.d-table table{width:100%;border-collapse:collapse;min-width:0}
+.d-table th,.d-table td{padding:6px 4px;font-size:12px;text-align:start;border-bottom:1px solid #F0F0EA;background:none;color:var(--ink);font-weight:400}
+.d-table th{color:var(--muted);font-weight:400}
+.d-table td:last-child{background:none;color:var(--ink);font-weight:500}
+.d-table tr:last-child td{border-bottom:0}
+.d-aside{display:grid;gap:12px;align-content:start}
+.d-aside .d-shot-kpi b{font-size:18px}
+.d-bar-h{display:grid;gap:8px;margin-top:8px}
+.d-bar-h span{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--muted)}
+.d-bar-h i{display:block;height:10px;border-radius:2px;background:var(--purple)}
+.d-bar-h i.o{background:var(--warm)}
+@media(max-width:900px){.d-shot{grid-template-columns:1fr;height:auto}.d-side{flex-direction:row;flex-wrap:wrap}.d-main{grid-template-columns:1fr}.d-aside{display:none}}
+
+/* ---------- ATLAS blocks: .Copy header (18/28 caption, 38/48 title, 18/28 body), detail blocks, numbered columns ---------- */
+.a-sec{background:var(--atlas-bg);padding:96px 0}
+.a-sec.cream{background:var(--cream)}
+.a-wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.a-copy{display:grid;gap:24px;max-width:810px;padding-inline-end:112px}
+.a-caption{font-family:var(--sans);font-size:18px;line-height:28px;font-weight:500;letter-spacing:.2px;color:var(--orange)}
+.a-title{font-family:var(--sans);font-size:38px;line-height:48px;font-weight:600;letter-spacing:-.2px;color:#0A2540}
+.a-body{font-size:18px;line-height:28px;font-weight:300;letter-spacing:.2px;color:#425466}
+.a-cols2{display:grid;grid-template-columns:540px 540px;gap:32px 0;margin-top:64px}
+.a-cols4{display:grid;grid-template-columns:repeat(4,270px);gap:32px 0;margin-top:64px}
+.a-block{display:grid;gap:8px;padding-inline-end:64px;box-sizing:border-box}
+.a-cols4 .a-block{padding-inline-end:32px}
+.a-icon{display:flex;align-items:flex-end;height:40px;margin-bottom:8px}
+.a-icon svg{width:40px;height:40px}
+.a-num{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--orange-pale);color:var(--orange);font-size:14px;font-weight:600;margin-top:8px}
+.a-block h3{font-family:var(--sans);font-size:15px;line-height:24px;font-weight:600;letter-spacing:.2px;color:#0A2540}
+.a-block p{font-size:15px;line-height:24px;font-weight:300;letter-spacing:.2px;color:#425466}
+.a-block p a{color:var(--orange);font-weight:500}
+@media(max-width:1120px){.a-cols2{grid-template-columns:1fr 1fr}.a-cols4{grid-template-columns:1fr 1fr}.a-copy{padding-inline-end:0}}
+@media(max-width:700px){.a-cols2,.a-cols4{grid-template-columns:1fr}.a-block{padding-inline-end:0}.a-title{font-size:30px;line-height:38px}}
+
+/* Atlas form card (.Card--shadowMedium: 8px radius, 24px padding, two-layer shadow) used in the tracks section */
+.a-card{background:#fff;border-radius:8px;padding:24px;box-shadow:var(--stripe-shadow)}
+.a-card h4{margin:0 0 14px;font:500 19px/27px var(--sans);color:#0A2540}
+.a-field{display:grid;gap:6px;font-size:13px;color:#425466;margin-bottom:14px}
+.a-field div{display:flex;align-items:center;gap:8px;border:1px solid #E3E8EE;border-radius:6px;padding:0 12px;height:40px}
+.a-field input{border:0;outline:0;flex:1;min-width:0;font:500 15px var(--sans);color:#0A2540;background:transparent}
+.a-ok{display:inline-flex;align-items:center;gap:5px;font:500 12px var(--sans);color:var(--ok)}
+.a-lbl{font-size:13px;color:#425466;margin-bottom:8px}
+.a-radio{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:center;border:1px solid #E3E8EE;border-radius:6px;padding:10px 12px;margin-bottom:8px;cursor:pointer}
+.a-radio input{margin:0;accent-color:var(--purple);grid-row:span 2}
+.a-radio b{font-size:14px;font-weight:500;color:#0A2540}
+.a-radio span{font-size:12.5px;color:#425466}
+.a-radio:has(input:checked){border-color:var(--purple);background:#F8F5FF}
+.a-btn{display:inline-flex;align-items:center;justify-content:center;height:33px;padding:3px 16px 6px;border-radius:16.5px;border:0;background:var(--purple);color:#fff;font:500 15px/24px var(--sans);letter-spacing:.2px;cursor:pointer;margin-top:8px}
+.a-btn:hover{background:#4E25D6}
+
+/* ---------- tracks (site content) on the Atlas grid ---------- */
+.d-tracks{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.track{border:1px solid var(--cardline);border-radius:12px;box-shadow:none;background:#fff;padding:28px}
+.track:hover{box-shadow:7px 0 20.8px rgba(0,0,0,.08);transform:none}
+.track h3{font-family:var(--serif);font-weight:400;font-size:26px;line-height:31.2px;margin-bottom:10px}
+.track-tag{border-radius:1440px;font-weight:500}
+.track-a .track-tag{background:var(--soft);color:var(--purple)}
+.track-b .track-tag{background:var(--orange-pale);color:#B4470A}
+.track li::before{background-color:var(--purple)}
+.second-door{border-radius:12px;border:1px solid var(--cardline);box-shadow:none;background:var(--soft);margin-top:24px}
+.second-door h3{font-family:var(--serif);font-weight:400;font-size:26px;line-height:31.2px}
+@media(max-width:860px){.d-tracks{grid-template-columns:1fr}}
+
+/* ---------- Daisy testimonials: 368px copy column + 640px deck slider (445×296 cards, 28px padding, 12px radius) ---------- */
+.d-testi{padding:100px 24px}
+.d-testi-flex{display:flex;justify-content:center;align-items:center;gap:16px;max-width:1216px;margin:0 auto}
+.d-testi-left{width:368px;max-width:368px;flex:none;margin-inline-end:192px}
+.d-testi-left h2{max-width:357px}
+.d-testi-left .d-btns{margin-top:34px}
+.d-testi-slider{position:relative;width:640px;flex:none;padding:48px 32px}
+.d-deck{position:relative;height:298px}
+.d-tcard{position:absolute;top:0;inset-inline-start:0;width:448px;height:298px;padding:28px;box-sizing:border-box;background:#fff;border:1px solid var(--cardline);border-radius:12px;box-shadow:7px 0 20.8px rgba(0,0,0,.08);display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;transition:transform .5s var(--ease),opacity .5s}
+.d-tcard:nth-child(1){z-index:3}
+.d-tcard:nth-child(2){z-index:2;transform:translateX(34px) scale(.94);opacity:.6}
+.d-tcard:nth-child(3){z-index:1;transform:translateX(68px) scale(.88);opacity:.3}
+[dir="rtl"] .d-tcard:nth-child(2){transform:translateX(-34px) scale(.94)}
+[dir="rtl"] .d-tcard:nth-child(3){transform:translateX(-68px) scale(.88)}
+.d-tcard p{font-size:17px;line-height:25.5px;color:var(--ink);margin-bottom:48px}
+.d-tclient{display:flex;align-items:center;gap:12px;height:64px}
+.d-tclient .av{width:48px;height:48px;border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;font:700 13px var(--sans)}
+.d-tclient b{display:block;font-weight:500;font-size:15px}
+.d-tclient span{display:block;font-size:13px;color:var(--muted)}
+.d-tclient .d-stars{font-size:12px;letter-spacing:1px;margin-top:2px}
+.d-arrow{position:absolute;top:50%;width:32px;height:32px;margin-top:-16px;border-radius:50%;border:1px solid var(--cardline);background:#fff;display:grid;place-items:center;cursor:pointer;z-index:4}
+.d-arrow.prev{inset-inline-start:0}
+.d-arrow.next{inset-inline-end:0}
+.d-dots{display:flex;justify-content:center;gap:8px;margin-top:8px}
+.d-dots i{width:44px;height:3px;background:var(--cardline);border-radius:2px}
+.d-dots i.on{background:var(--purple)}
+@media(max-width:1180px){.d-testi-flex{flex-direction:column;align-items:flex-start}.d-testi-left{margin:0}.d-testi-slider{width:100%;padding:48px 0}.d-tcard{width:min(448px,100%)}}
+
+/* ---------- Daisy light CTA ("Learn more about bringing Daisy…") ---------- */
+.d-cta{padding:100px 24px}
+.d-cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:1232px;margin:0 auto}
+.d-cta-art{position:relative;height:360px;display:grid;place-items:center}
+.d-cta-art::before{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(closest-side,rgba(91,47,230,.22),rgba(91,47,230,0))}
+.d-cta-art img{position:relative;width:300px;height:300px;border-radius:50%;object-fit:cover;border:8px solid #fff;box-shadow:var(--stripe-shadow)}
+.d-cta-copy h2{margin-bottom:22px}
+.d-cta-copy p{max-width:460px;margin-bottom:34px}
+@media(max-width:900px){.d-cta-grid{grid-template-columns:1fr}.d-cta-art{height:300px}}
+
+/* ---------- site sections kept from v1, restyled to the same grammar ---------- */
+.band-tint{background:var(--soft);border-block:0}
+.band{background:var(--deep);border-radius:20px;position:relative;overflow:hidden}
+.band::before{content:"";position:absolute;right:-20%;top:-60%;width:60%;height:160%;border-radius:50%;background:radial-gradient(closest-side,rgba(124,77,255,.45),rgba(124,77,255,0));pointer-events:none}
+.band::after{display:none}
 .band>*{position:relative;z-index:1}
-.band h2{color:#fff}.band p{color:#CFC4F5}
-.band .eyebrow{color:#FFB27A}.band .eyebrow::before{background:var(--money)}
-.band .kicker{border-right-color:var(--money);color:#fff}
-.band .btn-primary{background:var(--money);color:var(--ink-dark);border-color:#FFB27A;box-shadow:0 14px 34px -10px rgba(255,139,61,.6)}
-.band .btn-primary:hover{background:#FF7A20;color:var(--ink-dark)}
-.stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:16px;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
-.stat b{font-family:Heebo,sans-serif;font-weight:800;color:#fff}
-.stat span{color:#B8A9F2}
+.band h2{color:#fff;font-size:42px;line-height:50.4px}
+.band p{color:#CFC4F5}
+.band .kicker{border-right-color:#FFB27A;color:#fff}
+.stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:12px}
+.stat b{font-family:var(--serif);font-weight:400;font-size:34px;color:#fff}
+.stat span{color:#CFC4F5}
 .stat.hot{background:rgba(255,139,61,.18);border-color:rgba(255,178,122,.5)}
 .stat.hot b{color:#FFB27A}
-.band.two-col{background:linear-gradient(160deg,#F5F2FF,#fff 70%);border:1px solid var(--hairline)}
-.band.two-col::before,.band.two-col::after{display:none}
-.band.two-col h2{color:var(--ink-dark)}.band.two-col p{color:var(--ink)}
-.band.two-col .eyebrow{color:var(--brand)}.band.two-col .eyebrow::before{background:var(--brand)}
-.raise-list div{background:#fff;border:1px solid var(--hairline);color:var(--ink-dark);border-radius:14px;box-shadow:var(--stripe-shadow)}
-.track{border-radius:18px;box-shadow:none}
-.track:hover{box-shadow:var(--stripe-shadow)}
-.track h3{font-family:Heebo,sans-serif;font-weight:800}
-.track-tag{border-radius:999px}
-.track-a .track-tag{background:var(--brand-soft);color:var(--brand)}
-.track-b .track-tag{background:var(--money-pale);color:#B4470A}
-.second-door{border-radius:18px;background:linear-gradient(120deg,var(--brand-soft),#fff 66%);box-shadow:none}
-.second-door h3{font-family:Heebo,sans-serif;font-weight:800}
-.check{border-radius:18px;box-shadow:var(--stripe-shadow-lg)}
-.yn button{border-radius:999px;padding:9px 20px}
-.yn button.on{background:var(--brand);border-color:var(--brand)}
-.check-out{border-radius:12px}
-.tbl-scroll{border-radius:18px;box-shadow:none}
-thead th{background:#F5F2FF}
-thead th:last-child{background:var(--brand)}
-td:last-child{background:#F8F6FF;color:var(--brand-deep)}
-summary::after{color:var(--brand)}
-details .a a{color:var(--brand)}
-footer{background:var(--paper);color:var(--ink);border-top:1px solid #EEEBF5}
+.band.two-col{background:#fff;border:1px solid var(--cardline)}
+.band.two-col::before{display:none}
+.band.two-col h2{color:var(--ink)}.band.two-col p{color:var(--ink)}
+.raise-list div{background:var(--cream);border:1px solid var(--cardline);color:var(--ink);border-radius:10px;box-shadow:none;font-weight:500}
+.check{border-radius:12px;border:1px solid var(--cardline);box-shadow:7px 0 20.8px rgba(0,0,0,.08)}
+.check-q p{font-weight:500}
+.yn button{border-radius:1440px;padding:9px 20px;border-color:#E0E0E0;font-weight:500}
+.yn button:hover{border-color:var(--purple);color:var(--purple)}
+.yn button.on{background:var(--purple);border-color:var(--purple);color:#fff}
+.check-out{border-radius:10px;background:var(--soft);border-color:#E3DBFF}
+.check-out.hot{background:var(--orange-pale);border-color:#FFC98A}
+.check-out.ok{background:var(--wa);border-color:#A9DCC0}
+.card{border-radius:12px;border:1px solid var(--cardline);box-shadow:none;background:#fff;padding:28px}
+.card:hover{box-shadow:7px 0 20.8px rgba(0,0,0,.08);transform:none}
+.card h3{font-family:var(--sans);font-weight:700;font-size:17px;line-height:25.5px}
+.card .num{font-family:var(--sans);font-weight:500;width:32px;height:32px;border-radius:50%;background:var(--soft);color:var(--purple);font-size:14px}
+.grid.g3 .card:nth-child(3n+2) .num{background:var(--orange-pale);color:#B4470A}
+.grid.g3 .card:nth-child(3n) .num{background:var(--blue-soft);color:var(--blue)}
+.card p a,.lead a,details .a a,.track li a{color:var(--purple)}
+.tbl-scroll{border-radius:12px;box-shadow:none;border-color:var(--cardline)}
+thead th{background:var(--soft)}
+thead th:last-child{background:var(--purple)}
+td:last-child{background:#F8F5FF;color:var(--brand-deep)}
+summary{font-weight:500}
+summary::after{color:var(--purple)}
+details{border-bottom-color:var(--cardline)}
+footer{background:var(--cream);color:var(--ink);border-top:1px solid var(--cardline);padding:44px 0 56px}
 footer img{content:url("assets/logo.png")}
-footer b{color:var(--ink-dark)}
-footer a:hover{color:var(--brand)}
-footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
-.nav .navsheet a.cta-line{background:var(--brand);color:#fff}
+footer b{color:var(--ink)}
+footer a:hover{color:var(--purple)}
+footer .wrap[style]{border-top-color:var(--cardline) !important;color:var(--muted)}
+.nav .navsheet{background:var(--cream)}
+.nav .navsheet a.cta-line{background:var(--purple);color:#fff}
 .nav .navsheet a.cta-line::after{color:#fff}
-
-/* ---------- DIGITAL OPS: Atlas "How it works" numbered columns + animated flow card ---------- */
-.v3-digital .v3-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:38px}
-.v3-steps > div{padding:0 28px 0 0;border-inline-start:1px solid var(--hairline);padding-inline-start:28px}
-.v3-steps > div:first-child{border-inline-start:0;padding-inline-start:0}
-.v3-num{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--money-pale);color:#B4470A;font:700 13px Assistant,sans-serif;margin-bottom:14px}
-.v3-steps h3{font-size:19px;margin-bottom:8px}
-.v3-steps p{font-size:15.5px;line-height:1.6;color:var(--ink);margin:0}
-.v3-flow{position:relative;margin:40px auto 0;max-width:860px;border-radius:18px;padding:22px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:stretch}
-.v3-step{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:14px;display:grid;gap:8px;position:relative;animation:v3pop 7s ease-in-out infinite}
-.v3-step:nth-child(2){animation-delay:.9s}.v3-step:nth-child(3){animation-delay:1.8s}.v3-step:nth-child(4){animation-delay:2.7s}
-.v3-step small{font-size:11.5px;color:var(--faint)}
-.v3-step b{font-size:14.5px;color:var(--ink-dark);line-height:1.35}
-.v3-step em{font-style:normal;font-size:12.5px;color:var(--ink)}
-.v3-step .ck{position:absolute;top:-9px;inset-inline-end:-9px;width:24px;height:24px;border-radius:50%;background:var(--ok);display:grid;place-items:center;animation:v3check 7s ease-in-out infinite;box-shadow:0 6px 14px -4px rgba(15,122,69,.6)}
-.v3-step:nth-child(2) .ck{animation-delay:.9s}.v3-step:nth-child(3) .ck{animation-delay:1.8s}.v3-step:nth-child(4) .ck{animation-delay:2.7s}
-.v3-step:not(:last-child)::after{content:"";position:absolute;top:50%;inset-inline-end:-11px;width:8px;height:8px;border-top:2px solid #C9C2E6;border-left:2px solid #C9C2E6;transform:translateY(-50%) rotate(-135deg)}
-@media(max-width:860px){.v3-digital .v3-steps{grid-template-columns:1fr;gap:22px}.v3-steps > div{border:0;padding:0}.v3-flow{grid-template-columns:1fr 1fr}.v3-step:not(:last-child)::after{display:none}}
-
-/* ---------- REVIEWS: Daisy testimonial cards (10.7px radius, 25px padding, side shadow) ---------- */
-.v3-reviews{padding:clamp(52px,7vw,92px) 0 0}
-.v3-rev-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
-.v3-rev-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-.v3-rev{background:#fff;border:1px solid #E2E2E2;border-radius:10.7px;padding:25px;box-shadow:7px 0 18.6px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:14px}
-.v3-rev p{margin:0;font-size:16px;line-height:1.62;color:var(--ink-dark)}
-.v3-rev .who{display:flex;align-items:center;gap:12px;margin-top:auto}
-.v3-rev .av{width:40px;height:40px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font:800 12px Heebo,sans-serif}
-.v3-rev .who b{display:block;font-size:15px;color:var(--ink-dark)}
-.v3-rev .who span{font-size:13px;color:var(--faint)}
-.v3-dots{display:flex;justify-content:center;gap:8px;margin-top:26px}
-.v3-dots i{width:44px;height:3px;background:#E2E2E2;border-radius:2px}
-.v3-dots i.on{background:var(--brand)}
-@media(max-width:900px){.v3-rev-row{grid-template-columns:1fr}}
-
-/* reveal helper (hooked into the page's IntersectionObserver) */
+.v3-section{padding:100px 24px}
+.v3-section .wrap{padding:0}
+.v3-section h2{margin-bottom:22px}
+.v3-section .lead{margin-bottom:48px;max-width:640px}
 .rv.reveal{opacity:0;transform:translateY(14px)}
 .rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  .v3-band,.v3-rings,.v3-glow,.v3-atlas,.v3-g,.v3-event,.v3-step,.v3-step .ck,.v3-clock::before,.v3-live i{animation:none !important}
-  .v3-hero-copy,.v3-hero-card-wrap{animation:none}
-}
+@media(prefers-reduced-motion:reduce){.d-track,.d-faces-track,.d-float,.d-event,.d-live i{animation:none !important}}
 </style>
 
 </head>
@@ -589,220 +665,232 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
   </div>
 </nav>
 
-<!-- ============ HERO — Stripe Atlas structure: copy + floating card over a 12° gradient band ============ -->
-<header class="phead v3-hero">
-  <div class="v3-band" aria-hidden="true"></div>
-  <div class="v3-band v3-band-o" aria-hidden="true"></div>
-  <div class="wrap v3-hero-in">
-    <div class="v3-hero-copy">
-      <nav class="crumb" aria-label="מיקום">
-        <a href="homepage-morning.html">דף הבית</a><span>›</span>למי זה מתאים<span>›</span>חברה בע״מ
-      </nav>
-      <h1>רואה חשבון לחברה בע״מ<br />שמתכנן איתך את המשיכה, לא רק חותם על הדוח</h1>
-      <p class="lead">
-        החברה מרוויחה. השאלה היא כמה מזה באמת מגיע אליך, ובאיזו דרך. משיכות בעלים,
-        תמהיל משכורת מול דיבידנד ורווחים שנשארו בחברה — אצל רוב היזמים כל אלה מתבררים
-        בדוח השנתי, כשכבר אי אפשר לתכנן, רק לשלם.
-      </p>
-      <div class="v3-cta-row">
-        <a class="btn btn-primary btn-lg" href="#contact">ביקורת חינם על התיק <svg class="v3-arrow" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M15 9H3M8 4L3 9l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a class="v3-textlink" href="#check">בדיקת רווחים כלואים ב-30 שניות ←</a>
+<!-- ============ HERO — Daisy .header_component: 616|616 grid, 480px content column, 616×533 visual ============ -->
+<header class="phead d-hero">
+  <div class="wrap d-hero-grid">
+    <div class="d-hero-content">
+      <div class="d-hero-top">
+        <div class="d-hero-head">
+          <nav class="crumb" aria-label="מיקום"><a href="homepage-morning.html">דף הבית</a><span>›</span>למי זה מתאים<span>›</span>חברה בע״מ</nav>
+          <h1>רואה חשבון לחברה בע״מ שמתכנן איתך את המשיכה, לא רק חותם על הדוח</h1>
+          <p>החברה מרוויחה. השאלה היא כמה מזה באמת מגיע אליך, ובאיזו דרך. משיכות בעלים, תמהיל משכורת מול דיבידנד ורווחים שנשארו בחברה — אצל רוב היזמים כל אלה מתבררים בדוח השנתי, כשכבר אי אפשר לתכנן, רק לשלם.</p>
+        </div>
+        <div class="d-btns">
+          <a class="btn btn-primary" href="#contact">ביקורת חינם על התיק של החברה</a>
+          <a class="btn btn-ghost" href="#check">בדיקת רווחים כלואים</a>
+        </div>
       </div>
-      <div class="v3-proof">
-        <div class="v3-avs" aria-hidden="true"><span style="background:#5B2FE6">ס״ג</span><span style="background:#FF8B3D;color:#1A1633">א״ט</span><span style="background:#1E48B8">ד״ר</span></div>
-        <span class="v3-stars" aria-label="חמישה כוכבים">★★★★★</span>
-        <small>ביקורות אמיתיות של בעלי עסקים · Google</small>
-      </div>
-      <div class="segbar">
-        <span>מלווים מאות עסקים בישראל</span>
-        <span>מערכת מאושרת רשות המיסים</span>
-        <span>רו״ח, הנה״ח ועו״ד בערוץ אחד</span>
+      <div class="d-proof">
+        <div class="d-avs" aria-hidden="true"><span style="background:#5B2FE6">ס״ג</span><span style="background:#FF8B3D;color:#1A1A1A">א״ט</span><span style="background:#1E48B8">ד״ר</span></div>
+        <div class="d-rating"><span class="d-stars" aria-label="חמישה כוכבים">★★★★★</span><small>ביקורות אמיתיות של בעלי עסקים · Google</small></div>
       </div>
     </div>
 
-    <div class="v3-hero-card-wrap">
-      <form class="v3-atlas" action="#contact" onsubmit="return false">
-        <h3>איפה החברה שלך היום?</h3>
-        <label class="v3-field"><span>שם החברה</span><div><input type="text" value="סטודיו עמית בע״מ" aria-label="שם החברה" /><em class="v3-ok"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#0F7A45"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>תקין</em></div></label>
-        <div class="v3-lbl">בוחרים מסלול</div>
-        <label class="v3-radio"><input type="radio" name="track" checked /><b>כבר יש לי חברה</b><span>מעבר מסודר מרו״ח קיים, בכל חודש בשנה</span></label>
-        <label class="v3-radio"><input type="radio" name="track" /><b>מקים חברה חדשה</b><span>מהרעיון עד חברה פעילה עם תיקים וחשבון בנק</span></label>
-        <label class="v3-radio"><input type="radio" name="track" /><b>רק רוצה עין שנייה</b><span>חוות דעת על הדוחות, בלי להחליף היום</span></label>
-        <button class="v3-atlas-btn" type="submit">מתחילים — 15 דק׳ עם רו״ח</button>
-        <p class="v3-fine">בלי איש מכירות. שום פרט לא נשמר לפני שתאשרו.</p>
-      </form>
+    <div class="d-hero-visual" aria-label="שיחת וואטסאפ עם רואה החשבון, לדוגמה">
+      <div class="rings" aria-hidden="true"></div>
+      <span class="d-live"><i aria-hidden="true"></i>רו״ח מקוון עכשיו · מענה תוך 4 דק׳</span>
+      <div class="phone">
+        <div class="screen">
+          <span class="island" aria-hidden="true"></span>
+          <div class="chat-head"><div class="ava">MC</div><div><b>MyCompany · רו״ח</b><i>מקוון</i></div></div>
+          <div class="chat-body" id="v3chat"></div>
+        </div>
+      </div>
+      <div class="d-float d-f1" aria-hidden="true">
+        <div class="from"><span class="dot">P</span><b>MyCompany</b><span>· 03:14</span></div>
+        <div>הוצאה שנשכחה: חשבונית של ₪600 מספק הענן לא נקלטה. ₪108 מע״מ חוזרים אליך.</div>
+        <span class="chip g">נוסף לדוח</span>
+      </div>
+      <div class="d-float d-f2" aria-hidden="true">
+        <div class="from"><span class="dot">P</span><b>תכנון מס</b></div>
+        <div>קרן השתלמות ₪833 בחודש = ₪12,778 פחות מס השנה.</div>
+        <span class="chip o">₪12,778 חיסכון בשנה</span>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- ============ WHATSAPP BLOCK — RiseUp's rounded block, the Instagram purple softened ============ -->
-<section class="v3-wa-sec">
-  <div class="wrap">
-    <div class="v3-block">
-      <div class="v3-rings" aria-hidden="true"></div>
-      <div class="v3-block-copy">
-        <span class="v3-live"><i aria-hidden="true"></i>רו״ח מקוון עכשיו · מענה חציוני 4 דק׳</span>
-        <h2>הכל קורה בוואטסאפ.<br />גם ב-3 לפנות בוקר.</h2>
-        <p>PurpleBrain™ קורא כל חשבונית, מחשב כל דיווח ומתריע לפני כל דדליין. מה שהוא לא בטוח בו — עובר לרו״ח מורשה שחותם. ואתם? שואלים בבוקר, מקבלים תשובה מבן אדם עם שם.</p>
-        <ul class="v3-ticks">
-          <li>תובנה לפני שביקשתם — לא דוח אחרי</li>
-          <li>תשובה מקצועית באותו היום, בוואטסאפ, בטלפון או בזום</li>
-          <li>כל חריגה עוברת לרו״ח מורשה לאישור וחתימה</li>
-        </ul>
-        <a class="btn btn-primary v3-btn-white" href="#contact">לראות את זה על החברה שלכם</a>
-      </div>
-      <div class="v3-stage">
-        <div class="phone v3-phone">
-          <div class="screen" aria-label="שיחת וואטסאפ לדוגמה עם רואה החשבון">
-            <span class="island" aria-hidden="true"></span>
-            <div class="chat-head">
-              <div class="ava">MC</div>
-              <div><b>MyCompany · רו״ח</b><i>מקוון</i></div>
-            </div>
-            <div class="chat-body" id="v3chat"></div>
-          </div>
-        </div>
-        <div class="v3-g v3-g1" aria-hidden="true">
-          <div class="from"><span class="dot">P</span><b>MyCompany</b><span>· 03:14</span></div>
-          <div>מצאתי הוצאה שנשכחה: חשבונית של ₪600 מספק הענן לא נקלטה. <b>₪108 מע״מ חוזרים אליך.</b></div>
-          <span class="chip g">נוסף לדוח</span>
-        </div>
-        <div class="v3-g v3-g2" aria-hidden="true">
-          <div class="from"><span class="dot">P</span><b>דוח מע״מ 09–10/26</b></div>
-          <div><b>₪3,412</b> · מוגש ב-15/11</div>
-          <span class="chip p">נחתם ע״י רו״ח מורשה</span>
-        </div>
-        <div class="v3-g v3-g3 v3-timer" aria-hidden="true">
-          <span class="v3-clock"></span>
-          <div><b>4 דק׳</b><span>זמן מענה חציוני לשאלה מקצועית</span></div>
-        </div>
-        <div class="v3-g v3-g4" aria-hidden="true">
-          <div class="from"><span class="dot">P</span><b>תכנון מס</b></div>
-          <div>קרן השתלמות ₪833 בחודש = <b>₪12,778 פחות מס השנה.</b></div>
-          <span class="chip o">₪12,778 חיסכון בשנה</span>
-        </div>
+<!-- ============ BAND — Daisy .logo_component: heading + marquee on the salmon band ============ -->
+<section class="d-band">
+  <div class="wrap d-band-grid">
+    <h3>מאות עסקים, בכל תחום</h3>
+    <div class="d-marquee" aria-label="תחומי העיסוק של הלקוחות שלנו">
+      <div class="d-track">
+        <span>עורכי דין</span><span>יועצים</span><span>מתכנתים</span><span>שיווק דיגיטלי</span><span>רופאים</span><span>תיווך נדל״ן</span><span>אדריכלות ועיצוב</span><span>איקומרס</span><span>פסיכותרפיסטים</span><span>קוסמטיקה</span>
+        <span>עורכי דין</span><span>יועצים</span><span>מתכנתים</span><span>שיווק דיגיטלי</span><span>רופאים</span><span>תיווך נדל״ן</span><span>אדריכלות ועיצוב</span><span>איקומרס</span><span>פסיכותרפיסטים</span><span>קוסמטיקה</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ ORCHESTRATED — Daisy accordion + floating dashboard and event card ============ -->
-<section class="v3-orch">
-  <div class="wrap v3-orch-in">
-    <div>
-      <h2>החברה שלך — מסונכרנת.</h2>
-      <p class="lead" style="margin-top:14px">כל חלק בניהול הכספי של החברה מחובר למערכת אחת. אז הכל עובד ביחד — ואתם רואים יותר, בלי לרדוף אחרי אף אחד.</p>
-      <div class="v3-acc" id="v3acc">
-        <div class="v3-acc-item open">
+<!-- ============ ORCHESTRATED — Daisy .home-features1: 436px accordion column + 624×701 gallery ============ -->
+<section class="d-orch">
+  <div class="d-orch-flex">
+    <div class="d-orch-left">
+      <h2>החברה שלך מנוהלת מתוך מערכת אחת</h2>
+      <p>כל חלק בניהול הכספי של החברה מחובר למערכת אחת. אז הכל עובד ביחד, ואתם מקבלים יותר — בלי לרדוף אחרי אף אחד.</p>
+      <div class="d-acc" id="v3acc">
+        <div class="d-acc-item open">
           <button type="button" aria-expanded="true">תובנות פרואקטיביות<i aria-hidden="true"></i></button>
-          <div class="v3-acc-body"><div><p>המערכת סורקת את החברה כל יום: הוצאה שלא נקלטה, יתרת בעלים שמתקרבת לתקרה, מע״מ שיוצא גבוה מהרגיל. אתם מקבלים הודעה עם המספר ומה עושים איתו — לפני מועד הדיווח, לא אחריו.</p></div></div>
+          <div class="d-acc-body"><div><p>המערכת סורקת את החברה כל יום: הוצאה שלא נקלטה, יתרת בעלים שמתקרבת לתקרה, מע״מ שיוצא גבוה מהרגיל. אתם מקבלים הודעה עם המספר ומה עושים איתו — לפני מועד הדיווח, לא אחריו.</p></div></div>
         </div>
-        <div class="v3-acc-item">
+        <div class="d-acc-item">
           <button type="button" aria-expanded="false">זמינות ומהירות<i aria-hidden="true"></i></button>
-          <div class="v3-acc-body"><div><p>שאלה מקצועית בבוקר — תשובה מרו״ח באותו יום. זמן המענה החציוני שלנו בוואטסאפ הוא 4 דקות, ולשאלות גדולות יותר יש טלפון וזום. לא תור, לא ״יחזור אליך״.</p></div></div>
+          <div class="d-acc-body"><div><p>שאלה מקצועית בבוקר — תשובה מרו״ח באותו יום. זמן המענה החציוני שלנו בוואטסאפ הוא 4 דקות, ולשאלות גדולות יותר יש טלפון וזום. לא תור, לא ״יחזור אליך״.</p></div></div>
         </div>
-        <div class="v3-acc-item">
+        <div class="d-acc-item">
           <button type="button" aria-expanded="false">חיסכון במיסים<i aria-hidden="true"></i></button>
-          <div class="v3-acc-body"><div><p>תמהיל משכורת ודיבידנד שנקבע מראש, קרן השתלמות ופנסיה בגובה הנכון, הוצאות שנשכחו שחוזרות לדוח. הלקוחות שלנו חוסכים בממוצע 25,438 ₪ בשנה — ואת המספר המדויק שלכם נגיד אחרי שנסתכל על הדוחות.</p></div></div>
+          <div class="d-acc-body"><div><p>תמהיל משכורת ודיבידנד שנקבע מראש, קרן השתלמות ופנסיה בגובה הנכון, הוצאות שנשכחו שחוזרות לדוח. הלקוחות שלנו חוסכים בממוצע 25,438 ₪ בשנה — ואת המספר המדויק שלכם נגיד אחרי שנסתכל על הדוחות.</p></div></div>
         </div>
-        <div class="v3-acc-item">
+        <div class="d-acc-item">
           <button type="button" aria-expanded="false">שליטה במספרים<i aria-hidden="true"></i></button>
-          <div class="v3-acc-body"><div><p>מזומן בבנק, מע״מ שמתגבש, רווח נקי אחרי מס — בלוח אחד שמתעדכן כל יום, ובהודעה כשמשהו זז. יודעים כמה באמת נשאר, לא רק כמה נכנס.</p></div></div>
+          <div class="d-acc-body"><div><p>מזומן בבנק, מע״מ שמתגבש, רווח נקי אחרי מס — בלוח אחד שמתעדכן כל יום, ובהודעה כשמשהו זז. יודעים כמה באמת נשאר, לא רק כמה נכנס.</p></div></div>
         </div>
-        <div class="v3-acc-item">
+        <div class="d-acc-item">
           <button type="button" aria-expanded="false">צוות מקצוענים, לא בוט<i aria-hidden="true"></i></button>
-          <div class="v3-acc-body"><div><p>רואי חשבון עם שנים של ניסיון בחברות בע״מ, מנהלת חשבונות אישית ועו״ד מהבית. ה-AI מכין. בן אדם עם רישיון מחליט, חותם — ועונה לכם בשם.</p></div></div>
+          <div class="d-acc-body"><div><p>רואי חשבון עם שנים של ניסיון בחברות בע״מ, מנהלת חשבונות אישית ועו״ד מהבית. ה-AI מכין. בן אדם עם רישיון מחליט, חותם — ועונה לכם בשם.</p></div></div>
         </div>
       </div>
     </div>
-    <div class="v3-orch-visual">
-      <div class="v3-glow" aria-hidden="true"></div>
-      <div class="v3-glow o" aria-hidden="true"></div>
-      <div class="v3-dash glass" id="v3dash" aria-label="לוח בקרה לדוגמה">
-        <div class="v3-dash-head"><b>סטודיו עמית בע״מ · ספטמבר 2026</b><span>עודכן לפני 2 דק׳</span></div>
-        <div class="v3-kpis">
-          <div class="v3-kpi"><span>מזומן בבנק</span><b>₪186,420</b></div>
-          <div class="v3-kpi"><span>מע״מ לתשלום · 15/11</span><b class="p">₪3,412</b></div>
-          <div class="v3-kpi"><span>רווח נקי משוער · השנה</span><b>₪222,230</b></div>
-        </div>
-        <div class="v3-chart">
-          <div class="v3-chart-t"><b>הכנסות מול הוצאות</b><span>8 חודשים אחרונים</span></div>
-          <div class="v3-bars" aria-hidden="true">
+    <div class="d-orch-gallery">
+      <div class="d-orch-image">
+        <div class="d-cal" id="v3dash" aria-label="לוח בקרה לדוגמה">
+          <div class="d-cal-head"><b>סטודיו עמית בע״מ · ספטמבר 2026</b><span>עודכן לפני 2 דק׳</span></div>
+          <div class="d-kpis">
+            <div class="d-kpi"><span>מזומן בבנק</span><b>₪186,420</b></div>
+            <div class="d-kpi"><span>מע״מ לתשלום · 15/11</span><b class="p">₪3,412</b></div>
+            <div class="d-kpi"><span>רווח נקי משוער · השנה</span><b>₪222,230</b></div>
+          </div>
+          <div class="d-bars" aria-hidden="true">
             <i style="--h:52%"></i><i class="o" style="--h:30%"></i><i style="--h:64%"></i><i class="o" style="--h:36%"></i><i style="--h:71%"></i><i class="o" style="--h:33%"></i><i style="--h:92%"></i><i class="o" style="--h:41%"></i>
           </div>
-          <div class="v3-bars-l" aria-hidden="true"><span>פבר</span><span></span><span>אפר</span><span></span><span>יונ</span><span></span><span>ספט</span><span></span></div>
+          <div class="d-legend" aria-hidden="true"><span><i></i>הכנסות</span><span><i class="o"></i>הוצאות</span></div>
         </div>
-      </div>
-      <div class="v3-event" aria-hidden="true">
-        <div class="v3-event-h">דוח מע״מ 09–10/2026</div>
-        <div class="v3-event-b">
-          <div class="v3-event-row"><div><span>מועד</span><b>15/11</b></div><div><span>סכום</span><b>₪3,412</b></div><div><span>סטטוס</span><b>מוגש אוטומטית</b></div></div>
-          <div>נחתם ע״י רו״ח מורשה. אין מה לעשות מצדכם — רק לדעת.</div>
-          <a href="#contact">לצפייה בדוח ↗</a>
+        <div class="d-event" aria-hidden="true">
+          <div class="d-event-h">דוח מע״מ 09–10/2026</div>
+          <div class="d-event-b">
+            <div class="d-event-row"><div><span>מועד</span><b>15/11</b></div><div><span>סכום</span><b>₪3,412</b></div><div><span>סטטוס</span><b>מוגש אוטומטית</b></div></div>
+            <div>נחתם ע״י רו״ח מורשה. אין מה לעשות מצדכם — רק לדעת.</div>
+            <a href="#contact">לצפייה בדוח ↗</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ TWIN CARDS — Daisy's dark / yellow pair ============ -->
-<section class="v3-twins-sec">
-  <div class="wrap v3-twins">
-    <div class="v3-twin v3-twin-dark rv">
-      <div class="v3-glow" aria-hidden="true"></div>
-      <h2>מטפלים בחברה שלכם כאילו היא שלנו</h2>
-      <p>רואי חשבון עם שנים של ניסיון בחברות בע״מ, מנהלת חשבונות אישית ועו״ד מהבית — צוות אחד, עם שם ופנים. וואטסאפ, טלפון או זום. הבחירה שלכם.</p>
-      <div class="v3-team">
-        <div class="v3-team-row">
-          <span class="v3-pro"><i>רו״ח</i>רו״ח מלווה קבוע לחברה</span>
-          <span class="v3-pro"><i>הנה״ח</i>מנהלת חשבונות אישית</span>
-          <span class="v3-pro"><i>עו״ד</i>עורך דין מהבית</span>
+<!-- ============ TWINS — Daisy .how-we-treat_card pair ============ -->
+<section class="d-twins-sec">
+  <div class="d-twins">
+    <div class="d-twin d-twin-dark">
+      <div class="d-twin-content">
+        <h2>מטפלים בחברה שלכם כאילו היא שלנו</h2>
+        <p>רואי חשבון, מנהלת חשבונות ועו״ד — צוות אחד, עם שם ופנים. וואטסאפ, טלפון או זום. הבחירה שלכם.</p>
+      </div>
+      <div class="d-faces" aria-hidden="true">
+        <div class="d-faces-track">
+          <div class="d-face a"><div><b>רו״ח</b>מלווה קבוע</div></div><div class="d-face b"><div><b>הנה״ח</b>אישית</div></div><div class="d-face c"><div><b>עו״ד</b>מהבית</div></div><div class="d-face d"><div><b>4 דק׳</b>מענה</div></div>
+          <div class="d-face a"><div><b>רו״ח</b>מלווה קבוע</div></div><div class="d-face b"><div><b>הנה״ח</b>אישית</div></div><div class="d-face c"><div><b>עו״ד</b>מהבית</div></div><div class="d-face d"><div><b>4 דק׳</b>מענה</div></div>
         </div>
-        <div class="v3-chan">
-          <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a8 8 0 01-11.8 7L4 20l1.6-4A8 8 0 1120 11.5z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>וואטסאפ</span>
-          <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>טלפון</span>
-          <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2" stroke="#fff" stroke-width="1.8"/><path d="M16 10l5-3v10l-5-3" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>זום</span>
+      </div>
+      <div class="d-faces second" aria-hidden="true">
+        <div class="d-faces-track">
+          <div class="d-face d"><div><b>זום</b>כשצריך</div></div><div class="d-face a"><div><b>וואטסאפ</b>כל יום</div></div><div class="d-face c"><div><b>טלפון</b>אותו יום</div></div><div class="d-face b"><div><b>24/7</b>המנוע</div></div>
+          <div class="d-face d"><div><b>זום</b>כשצריך</div></div><div class="d-face a"><div><b>וואטסאפ</b>כל יום</div></div><div class="d-face c"><div><b>טלפון</b>אותו יום</div></div><div class="d-face b"><div><b>24/7</b>המנוע</div></div>
         </div>
       </div>
     </div>
-    <div class="v3-twin v3-twin-orange rv">
-      <h2>ומנהלים אותה כמו עסק</h2>
-      <p>מודדים הכל — מהבריאות הפיננסית של החברה שלכם ועד הביצועים שלנו מולכם.</p>
-      <div class="v3-nums">
-        <div><b data-count="25438" data-prefix="₪">₪0</b><span>חיסכון שנתי ממוצע במס</span></div>
-        <div><b data-count="4">0</b><span>דק׳ זמן מענה חציוני בוואטסאפ</span></div>
-        <div><b data-count="100" data-suffix="%">0%</b><span>דוחות שהוגשו בזמן</span></div>
+    <div class="d-twin d-twin-warm">
+      <div class="d-twin-content">
+        <h2>ומנהלים אותה כמו עסק</h2>
+        <p>מודדים הכל — מהבריאות הפיננסית של החברה שלכם ועד הביצועים שלנו מולכם.</p>
+      </div>
+      <div class="d-metrics">
+        <div class="d-metrics-row">
+          <div class="d-metric"><b data-count="25438" data-prefix="₪">₪0</b><span>חיסכון שנתי ממוצע במס</span></div>
+          <div class="d-metric"><b data-count="4">0</b><span>דק׳ זמן מענה חציוני בוואטסאפ</span></div>
+        </div>
+        <div class="d-metrics-row">
+          <div class="d-metric"><b data-count="100" data-suffix="%">0%</b><span>דוחות שהוגשו בזמן</span></div>
+          <div class="d-metric"><b data-count="3">0</b><span>ימי עסקים בממוצע למעבר מרו״ח קודם</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ WHY LTD IS DIFFERENT ============ -->
-<section class="band-tint">
-  <div class="wrap">
-    <div class="eyebrow">למה זה משחק אחר</div>
-    <h2>חברה בע״מ היא לא עוסק מורשה בגדול</h2>
-    <p class="lead" style="margin-top:12px">
-      זו לא אותה עבודה עם יותר אפסים. ארבעה דברים משתנים ברגע שפתחתם חברה, וכל אחד מהם עולה כסף כשמפספסים אותו.
-    </p>
-    <div class="grid g4" style="margin-top:40px">
-      <div class="card">
-        <div class="num">01</div>
+<!-- ============ GOVERN — Daisy .home-features2 (deep green → deep purple): tabs + dashboard screenshot ============ -->
+<section class="d-govern">
+  <div class="d-govern-in">
+    <div class="d-govern-head">
+      <h2>הכל במקום אחד. גם המספרים.</h2>
+      <p>הלוח של MyCompany מראה לכם את החברה כמו שרואה החשבון רואה אותה — מזומן, מע״מ, רווח ותשלומים שמתקרבים — ומחזיר אתכם לשליטה.</p>
+    </div>
+    <nav class="d-tabs" aria-label="לשוניות הלוח">
+      <a class="on" href="#govern">כספים</a><a href="#govern">התראות</a><a href="#govern">דוחות</a><a href="#govern">סיכום 360°</a>
+    </nav>
+    <div class="d-shot" id="govern" aria-label="לוח הבקרה של MyCompany, לדוגמה">
+      <aside class="d-side">
+        <img src="assets/logo-white.png" alt="MyCompany" />
+        <span>בית</span><span class="on">כספים</span><span>התראות</span><span>דוחות</span><span>שכר</span>
+      </aside>
+      <div class="d-main">
+        <div class="d-topbar"><span>מזומן בבנק: <b>₪186,420</b></span><span>עודכן לפני <b>2 דק׳</b></span></div>
+        <div>
+          <div class="d-shot-kpis">
+            <div class="d-shot-kpi"><span>הכנסות החודש</span><b>₪64,530</b></div>
+            <div class="d-shot-kpi"><span>הוצאות החודש</span><b>₪21,340</b></div>
+            <div class="d-shot-kpi"><span>מע״מ לתשלום · 15/11</span><b class="p">₪3,412</b></div>
+          </div>
+          <div class="d-table" style="margin-top:12px">
+            <h4>הוצאות ספטמבר</h4>
+            <table>
+              <thead><tr><th>סעיף</th><th>תקציב</th><th>בפועל</th></tr></thead>
+              <tbody>
+                <tr><td>שכר</td><td>₪31,500</td><td>₪31,500</td></tr>
+                <tr><td>ספקים</td><td>₪9,800</td><td>₪8,240</td></tr>
+                <tr><td>רכב ודלק</td><td>₪2,400</td><td>₪2,915</td></tr>
+                <tr><td>תוכנה וענן</td><td>₪1,900</td><td>₪1,860</td></tr>
+                <tr><td>ביטוחים</td><td>₪1,200</td><td>₪1,200</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="d-aside">
+          <div class="d-shot-kpi"><span>יתרת בעלים</span><b class="p">₪84,000</b><div class="d-bar-h"><span><i style="width:84%"></i>84%</span><span><i class="o" style="width:100%"></i>תקרה 100K</span></div></div>
+          <div class="d-shot-kpi"><span>חשבון עסקי</span><b>₪186,420</b><div style="font-size:11.5px;color:#737373;margin-top:6px">עו״ש · חיסכון ₪120,000</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY LTD — Stripe Atlas .Copy header + 2×2 ComposableDetailBlock ============ -->
+<section class="a-sec">
+  <div class="a-wrap">
+    <header class="a-copy">
+      <div class="a-caption">למה זה משחק אחר</div>
+      <h2 class="a-title">חברה בע״מ היא לא עוסק מורשה בגדול</h2>
+      <p class="a-body">זו לא אותה עבודה עם יותר אפסים. ארבעה דברים משתנים ברגע שפתחתם חברה, וכל אחד מהם עולה כסף כשמפספסים אותו.</p>
+    </header>
+    <div class="a-cols2">
+      <div class="a-block rv">
+        <div class="a-icon"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="6" y="4" width="28" height="32" rx="4" fill="#E5731F" opacity=".18"/><path d="M13 14h14M13 20h14M13 26h9" stroke="#E5731F" stroke-width="2.4" stroke-linecap="round"/></svg></div>
         <h3>דוח מבוקר הוא חוק</h3>
         <p>חברה חייבת ב<a href="glossary-v1.html#duhot">דוחות כספיים מבוקרים</a> חתומים ברואה חשבון. אין גרסה של ״אני אגיש לבד השנה״. זו חובה סטטוטורית, לא שאלה של נוחות.</p>
       </div>
-      <div class="card">
-        <div class="num">02</div>
+      <div class="a-block rv">
+        <div class="a-icon"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="4" y="10" width="15" height="22" rx="3" fill="#5B2FE6" opacity=".18"/><rect x="21" y="10" width="15" height="22" rx="3" fill="#5B2FE6" opacity=".35"/><path d="M8 20h7M25 20h7" stroke="#5B2FE6" stroke-width="2.4" stroke-linecap="round"/></svg></div>
         <h3>שני כיסים, לא אחד</h3>
         <p>הכסף בחשבון <a href="glossary-v1.html#hevra">החברה</a> הוא לא הכסף שלכם. לכל שקל צריך מסלול: משכורת, <a href="glossary-v1.html#dividend">דיבידנד</a>, החזר הוצאות או הלוואת בעלים.</p>
       </div>
-      <div class="card">
-        <div class="num">03</div>
+      <div class="a-block rv">
+        <div class="a-icon"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="14" r="7" fill="#0F9D6A" opacity=".25"/><path d="M7 34c0-6 6-10 13-10s13 4 13 10" stroke="#0F9D6A" stroke-width="2.4" stroke-linecap="round"/></svg></div>
         <h3>יש לכם תלושים, גם לבד</h3>
         <p>ברגע שאתם שכירים בחברה שלכם נכנסים שכר, ניכויים, פנסיה ו<a href="glossary-v1.html#nikuyim">תיק ניכויים</a> שרץ כל חודש. עולם תפעולי שלעוסק פשוט אין.</p>
       </div>
-      <div class="card">
-        <div class="num">04</div>
+      <div class="a-block rv">
+        <div class="a-icon"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M8 34V12l12-6 12 6v22" fill="#1E48B8" opacity=".18"/><path d="M8 34h24M14 20h4M22 20h4M14 27h4M22 27h4" stroke="#1E48B8" stroke-width="2.4" stroke-linecap="round"/></svg></div>
         <h3>רשם החברות לא שוכח</h3>
         <p>דוח שנתי, אגרה, שינויי בעלות ומינויים. גם חברה בלי פעילות ממשיכה לצבור חובות ב<a href="glossary-v1.html#rasham">רשם החברות</a> בשקט.</p>
       </div>
@@ -811,20 +899,19 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
 </section>
 
 <!-- ============ THE OWNER-DRAW LANDMINE ============ -->
-<section>
+<section class="v3-section">
   <div class="wrap">
     <div class="band">
-      <div class="eyebrow">המוקש הכי נפוץ</div>
       <h2>משכתם כסף מהחברה. יש לזה תקרה, ויש לזה שעון.</h2>
       <div class="two-col" style="margin-top:0">
         <div>
-          <p>
+          <p style="margin-bottom:14px">
             הסיפור שחוזר אצל יזמים שוב ושוב. מושכים מהחשבון לאורך השנה כי זו החברה שלכם, ואף אחד
             לא אומר כלום. אבל ל<a href="glossary-v1.html#mishichat-baalim" style="color:#fff;text-decoration:underline;text-underline-offset:3px">סעיף 3(ט1)</a>
             יש שני מספרים שכדאי להכיר: <b>תקרה של 100,000 ₪</b>, שמתחתיה המשיכה לא נחשבת הכנסה,
             <b>ושעון שמתחיל לרוץ ברגע שעברתם אותה</b>.
           </p>
-          <p>
+          <p style="margin-bottom:14px">
             מרגע שהיתרה חצתה את התקרה, יש לכם עד <b>סוף שנת המס שאחרי</b> לסגור אותה. לא נסגרה,
             והיא נחשבת הכנסה שלכם — כדיבידנד, כמשכורת או כהכנסה עסקית, לפי סדר שהחוק קובע ולא אתם.
           </p>
@@ -843,16 +930,14 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
 </section>
 
 <!-- ============ TRAPPED PROFITS SELF-CHECK ============ -->
-<section id="check" class="band-tint">
+<section id="check" class="v3-section band-tint">
   <div class="wrap">
-    <div class="eyebrow">חדש מ-2025 — ורוב בעלי החברות לא יודעים</div>
     <h2>יש רווחים שנשארו בחברה? יש עליהם החלטה שנתית.</h2>
-    <p class="lead" style="max-width:76ch;margin-top:12px">
+    <p class="lead" style="max-width:76ch">
       תיקון 277 קבע ש<a href="glossary-v1.html#revahim-kluim">חברת מעטים</a> עם רווחים צבורים שלא חולקו
       עומדת כל שנה מול בחירה: לחלק דיבידנד של <b>6%</b> מהרווחים הצבורים, או לשלם <b>2%</b> על מה שלא חולק.
       החוק לא חל על כל חברה — יש מגן מס שמכסה חלק גדול מהן. <b>בדקו ב-30 שניות אם הוא מכסה אתכם.</b>
     </p>
-
     <div class="check">
       <div class="check-q">
         <p>החברה היא חברת מעטים — עד חמישה בעלי שליטה?<small>רוב החברות הפרטיות בישראל כן</small></p>
@@ -870,7 +955,6 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
         <p>חילקתם השנה דיבידנד של לפחות 6% מהרווחים הצבורים?<small>זו החלופה שמייתרת את תוספת המס</small></p>
         <div class="yn" data-q="3"><button data-v="1">כן</button><button data-v="0">לא</button></div>
       </div>
-
       <div class="check-out" id="checkOut">ענו על ארבע השאלות ותקבלו אינדיקציה מיידית, בלי להשאיר פרטים.</div>
       <p class="check-note">
         אינדיקציה בלבד, לא חוות דעת. יש חריגים, בין היתר חברה מועדפת ומפעל תעשייתי או טכנולוגי
@@ -881,75 +965,44 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
 </section>
 
 <!-- ============ WHAT'S INCLUDED ============ -->
-<section>
+<section class="v3-section">
   <div class="wrap">
-    <div class="eyebrow">מה כלול</div>
     <h2>הכל תחת גג אחד, בערוץ אחד</h2>
-    <p class="lead" style="margin-top:12px">רואה חשבון, מנהלת חשבונות ועורך דין. לא שלושה ספקים שמאשימים אחד את השני.</p>
-
-    <div class="grid g3" style="margin-top:40px">
-      <div class="card">
-        <div class="num">01</div>
-        <h3>תמהיל משכורת ודיבידנד</h3>
-        <p>נקבע מראש בתחילת השנה ומתעדכן תוך כדי. כמה משכורת, כמה <a href="glossary-v1.html#dividend">דיבידנד</a>, מתי ולמה — ולא מתגלה בדיעבד.</p>
-      </div>
-      <div class="card">
-        <div class="num">02</div>
-        <h3>דוחות כספיים מבוקרים בזמן</h3>
-        <p>לוח זמנים שנקבע מראש ומתקיים, כולל דוח 1214 ודיווח לרשם החברות. לא מייל בהול על שנה שנגמרה מזמן.</p>
-      </div>
-      <div class="card">
-        <div class="num">03</div>
-        <h3>שכר ותלושים</h3>
-        <p>לכם ולעובדים: תלושים, ניכויים, פנסיה, 106 ו-126, וטיפול בכניסה ויציאה. רץ כל חודש בלי שתזכירו.</p>
-      </div>
-      <div class="card">
-        <div class="num">04</div>
-        <h3>דיווחים שוטפים</h3>
-        <p><a href="glossary-v1.html#maam">מע״מ</a>, <a href="glossary-v1.html#mikdamot">מקדמות</a>, ניכויים וביטוח לאומי. אתם מקבלים התראה לפני, לא קנס אחרי.</p>
-      </div>
-      <div class="card">
-        <div class="num">05</div>
-        <h3>הכל בוואטסאפ, כולל הרו״ח</h3>
-        <p>שואלים בבוקר, מקבלים תשובה מאדם אמיתי עם שם. בלי מייל שנעלם ובלי ״הוא יחזור אליך״.</p>
-      </div>
-      <div class="card">
-        <div class="num">06</div>
-        <h3>עורך דין בבית</h3>
-        <p>הסכם מייסדים, <a href="glossary-v1.html#takanon">תקנון</a>, <a href="glossary-v1.html#saif-102">אופציות לעובדים</a>, חוזי לקוח וספק. אותה חברה, אותו צוות.</p>
-      </div>
+    <p class="lead">רואה חשבון, מנהלת חשבונות ועורך דין. לא שלושה ספקים שמאשימים אחד את השני.</p>
+    <div class="grid g3">
+      <div class="card"><div class="num">01</div><h3>תמהיל משכורת ודיבידנד</h3><p>נקבע מראש בתחילת השנה ומתעדכן תוך כדי. כמה משכורת, כמה <a href="glossary-v1.html#dividend">דיבידנד</a>, מתי ולמה — ולא מתגלה בדיעבד.</p></div>
+      <div class="card"><div class="num">02</div><h3>דוחות כספיים מבוקרים בזמן</h3><p>לוח זמנים שנקבע מראש ומתקיים, כולל דוח 1214 ודיווח לרשם החברות. לא מייל בהול על שנה שנגמרה מזמן.</p></div>
+      <div class="card"><div class="num">03</div><h3>שכר ותלושים</h3><p>לכם ולעובדים: תלושים, ניכויים, פנסיה, 106 ו-126, וטיפול בכניסה ויציאה. רץ כל חודש בלי שתזכירו.</p></div>
+      <div class="card"><div class="num">04</div><h3>דיווחים שוטפים</h3><p><a href="glossary-v1.html#maam">מע״מ</a>, <a href="glossary-v1.html#mikdamot">מקדמות</a>, ניכויים וביטוח לאומי. אתם מקבלים התראה לפני, לא קנס אחרי.</p></div>
+      <div class="card"><div class="num">05</div><h3>הכל בוואטסאפ, כולל הרו״ח</h3><p>שואלים בבוקר, מקבלים תשובה מאדם אמיתי עם שם. בלי מייל שנעלם ובלי ״הוא יחזור אליך״.</p></div>
+      <div class="card"><div class="num">06</div><h3>עורך דין בבית</h3><p>הסכם מייסדים, <a href="glossary-v1.html#takanon">תקנון</a>, <a href="glossary-v1.html#saif-102">אופציות לעובדים</a>, חוזי לקוח וספק. אותה חברה, אותו צוות.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ============ DIGITAL OPS — Atlas "How it works" + animated flow ============ -->
-<section class="v3-digital band-tint">
-  <div class="wrap">
-    <div class="eyebrow">100% דיגיטלי</div>
-    <h2>חשבוניות והוצאות — באפליקציה. אפס הקלדה.</h2>
-    <p class="lead" style="margin-top:12px">מפיקים חשבונית, מצלמים הוצאה — וזהו. הסיווג, ההתאמה והדיווח קורים מאחורי הקלעים, ואתם רואים בדוח מה נכנס.</p>
-    <div class="v3-steps">
-      <div class="rv"><span class="v3-num">1</span><h3>מפיקים חשבונית</h3><p>מהטלפון, בשתי לחיצות. החשבונית יוצאת ללקוח ונרשמת אצלנו באותה שנייה — בלי להעביר שום דבר.</p></div>
-      <div class="rv"><span class="v3-num">2</span><h3>מצלמים הוצאה</h3><p>קבלה מהדלק, חשבונית מספק — צילום אחד באפליקציה. המנוע קורא את הסכום, המע״מ והספק ומסווג לבד.</p></div>
-      <div class="rv"><span class="v3-num">3</span><h3>הכל מחכה בדוח</h3><p>כל תנועה יושבת במקום הנכון לפני מועד הדיווח. מה שלא ברור עובר לעין אנושית — ואתם מקבלים הודעה רק אם צריך אתכם.</p></div>
-    </div>
-    <div class="v3-flow glass" aria-hidden="true">
-      <div class="v3-step"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><small>חשבונית #1042</small><b>הופקה ללקוח · ₪4,800</b><em>מהאפליקציה, 09:41</em></div>
-      <div class="v3-step"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><small>הוצאה</small><b>דלק · ₪312 · צולמה</b><em>הסכום והמע״מ נקראו אוטומטית</em></div>
-      <div class="v3-step"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><small>סיווג</small><b>רכב · 45% מוכר</b><em>לפי הכלל שרו״ח אישר לחברה</em></div>
-      <div class="v3-step"><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span><small>דוח מע״מ 09–10</small><b>יושב בדוח, מוכן להגשה</b><em>נחתם ע״י רו״ח · מוגש ב-15/11</em></div>
+<!-- ============ DIGITAL — Stripe Atlas "How it works": 4×270 numbered columns ============ -->
+<section class="a-sec">
+  <div class="a-wrap">
+    <header class="a-copy">
+      <div class="a-caption">100% דיגיטלי</div>
+      <h2 class="a-title">חשבוניות והוצאות — באפליקציה. אפס הקלדה.</h2>
+      <p class="a-body">מפיקים חשבונית, מצלמים הוצאה — וזהו. הסיווג, ההתאמה והדיווח קורים מאחורי הקלעים, ואתם רואים בדוח מה נכנס.</p>
+    </header>
+    <div class="a-cols4">
+      <div class="a-block rv"><div class="a-icon"><div class="a-num">1</div></div><h3>מפיקים חשבונית</h3><p>מהטלפון, בשתי לחיצות. החשבונית יוצאת ללקוח ונרשמת אצלנו באותה שנייה — בלי להעביר שום דבר.</p></div>
+      <div class="a-block rv"><div class="a-icon"><div class="a-num">2</div></div><h3>מצלמים הוצאה</h3><p>קבלה מהדלק, חשבונית מספק — צילום אחד באפליקציה. המנוע קורא את הסכום, המע״מ והספק.</p></div>
+      <div class="a-block rv"><div class="a-icon"><div class="a-num">3</div></div><h3>הסיווג קורה לבד</h3><p>כל תנועה יושבת בסעיף הנכון לפי הכללים שרו״ח אישר לחברה. מה שלא ברור עובר לעין אנושית.</p></div>
+      <div class="a-block rv"><div class="a-icon"><div class="a-num">4</div></div><h3>הדוח מוכן לפני המועד</h3><p>מע״מ, מקדמות וניכויים מחכים חתומים. אתם מקבלים הודעה רק אם צריך אתכם — אחרת רק ״הוגש ✓״.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ============ TWO TRACKS ============ -->
-<section>
+<!-- ============ TWO TRACKS — the Atlas form card next to the two tracks ============ -->
+<section class="v3-section">
   <div class="wrap">
-    <div class="eyebrow">שתי נקודות כניסה</div>
     <h2>מקימים חברה, או מחליפים רואה חשבון?</h2>
-    <p class="lead" style="margin-top:12px">שני מצבים שונים לגמרי. אנחנו עושים את שניהם, ומתחילים בשאלה איפה אתם עומדים.</p>
-
-    <div class="tracks">
+    <p class="lead">שני מצבים שונים לגמרי. אנחנו עושים את שניהם, ומתחילים בשאלה איפה אתם עומדים.</p>
+    <div class="d-tracks">
       <div class="track track-a" id="track-new">
         <span class="track-tag">מסלול 1</span>
         <h3>מקימים חברה חדשה</h3>
@@ -963,7 +1016,6 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
         </ul>
         <a class="btn btn-primary" href="#contact">מתחילים בהקמה</a>
       </div>
-
       <div class="track track-b" id="track-switch">
         <span class="track-tag">מסלול 2</span>
         <h3>מחליפים רואה חשבון</h3>
@@ -978,7 +1030,6 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
         <a class="btn btn-primary" href="#contact">מתחילים במעבר</a>
       </div>
     </div>
-
     <div class="second-door">
       <div>
         <h3>עוד לא בטוחים שאתם רוצים להחליף?</h3>
@@ -988,22 +1039,18 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
           תמהיל המשכורת והדיבידנד, ונגיד לכם מה מצאנו. גם אם התשובה היא שהכל מטופל יפה.
         </p>
       </div>
-      <a class="btn btn-primary btn-lg" href="#contact">רוצה חוות דעת שנייה</a>
+      <a class="btn btn-primary" href="#contact">רוצה חוות דעת שנייה</a>
     </div>
   </div>
 </section>
 
 <!-- ============ RAISE / DUE DILIGENCE ============ -->
-<section class="band-tint">
+<section class="v3-section band-tint">
   <div class="wrap">
     <div class="band two-col">
       <div>
-        <div class="eyebrow">לקראת גיוס או עסקה</div>
         <h2 style="margin-bottom:14px">משקיע לא שואל כמה החברה מרוויחה. הוא מבקש לראות.</h2>
-        <p>
-          חברה עם דוחות מסודרים עוברת בדיקת נאותות בשבועות. חברה בלי, מגלה את הפערים בדיוק
-          כשהיא הכי צריכה שהכל יהיה חלק.
-        </p>
+        <p>חברה עם דוחות מסודרים עוברת בדיקת נאותות בשבועות. חברה בלי, מגלה את הפערים בדיוק כשהיא הכי צריכה שהכל יהיה חלק.</p>
       </div>
       <div class="raise-list">
         <div>דוחות מבוקרים ערוכים ומוכנים ל-Data Room</div>
@@ -1016,9 +1063,8 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
 </section>
 
 <!-- ============ COMPARISON ============ -->
-<section>
+<section class="v3-section">
   <div class="wrap">
-    <div class="eyebrow">ההבדל בפועל</div>
     <h2>רואה חשבון קלאסי מול MyCompany</h2>
     <div class="tbl-scroll" style="margin-top:36px">
       <table>
@@ -1037,43 +1083,40 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
   </div>
 </section>
 
-<!-- ============ REVIEWS — Daisy testimonial cards ============ -->
-<section class="v3-reviews">
-  <div class="wrap">
-    <div class="v3-rev-head">
-      <div>
-        <div class="eyebrow">לקוחות מספרים</div>
-        <h2>לא רק אנחנו אומרים</h2>
-      </div>
-      <a class="btn btn-primary" href="reviews.html">כל הביקורות</a>
+<!-- ============ REVIEWS — Daisy .testimonial_component: copy column + deck slider ============ -->
+<section class="d-testi">
+  <div class="d-testi-flex">
+    <div class="d-testi-left">
+      <h2>לא רק אנחנו אומרים</h2>
+      <div class="d-btns"><a class="btn btn-primary" href="reviews.html">כל הביקורות</a></div>
     </div>
-    <div class="v3-rev-row">
-      <div class="v3-rev rv">
-        <span class="v3-stars" aria-label="חמישה כוכבים">★★★★★</span>
-        <p>״בעבר הייתי צריך לרדוף אחרי רואה החשבון שלי, היום אני מרגיש שרואה החשבון שלי רודף אחריי.״</p>
-        <div class="who"><span class="av">ס״ג</span><div><b>סלבה גורביץ׳</b><span>עוסק מורשה · שנה במערכת</span></div></div>
+    <div class="d-testi-slider">
+      <div class="d-deck" id="v3deck">
+        <div class="d-tcard">
+          <p>״בעבר הייתי צריך לרדוף אחרי רואה החשבון שלי, היום אני מרגיש שרואה החשבון שלי רודף אחריי.״</p>
+          <div class="d-tclient"><span class="av">ס״ג</span><div><b>סלבה גורביץ׳</b><span>עוסק מורשה · שנה במערכת</span><span class="d-stars" aria-label="חמישה כוכבים">★★★★★</span></div></div>
+        </div>
+        <div class="d-tcard">
+          <p>״בעבר הייתי מרגיש חסר אונים, היום אני בשליטה מלאה על הפיננסים. הייעוץ בוואטסאפ הוא פשוט גאוני.״</p>
+          <div class="d-tclient"><span class="av" style="background:#FF8B3D;color:#1A1A1A">א״ט</span><div><b>אפי טל</b><span>עוסק מורשה</span><span class="d-stars" aria-label="חמישה כוכבים">★★★★★</span></div></div>
+        </div>
+        <div class="d-tcard">
+          <p>״אין לכם מושג כמה כיף שיש רואה חשבון פרואקטיבי. כל שאלה נענית במהירות.״</p>
+          <div class="d-tclient"><span class="av" style="background:#1E48B8">ד״ר</span><div><b>ד״ר דנה רוזנברג</b><span>עוסקת מורשה</span><span class="d-stars" aria-label="חמישה כוכבים">★★★★★</span></div></div>
+        </div>
       </div>
-      <div class="v3-rev rv">
-        <span class="v3-stars" aria-label="חמישה כוכבים">★★★★★</span>
-        <p>״בעבר הייתי מרגיש חסר אונים, היום אני בשליטה מלאה על הפיננסים. הייעוץ בוואטסאפ הוא פשוט גאוני.״</p>
-        <div class="who"><span class="av" style="background:#FF8B3D;color:#1A1633">א״ט</span><div><b>אפי טל</b><span>עוסק מורשה</span></div></div>
-      </div>
-      <div class="v3-rev rv">
-        <span class="v3-stars" aria-label="חמישה כוכבים">★★★★★</span>
-        <p>״אין לכם מושג כמה כיף שיש רואה חשבון פרואקטיבי. כל שאלה נענית במהירות.״</p>
-        <div class="who"><span class="av" style="background:#1E48B8">ד״ר</span><div><b>ד״ר דנה רוזנברג</b><span>עוסקת מורשה</span></div></div>
-      </div>
+      <button type="button" class="d-arrow prev" aria-label="הביקורת הקודמת"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5" stroke="#1A1A1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button type="button" class="d-arrow next" aria-label="הביקורת הבאה"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M15 9H3M8 4L3 9l5 5" stroke="#1A1A1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="d-dots" id="v3dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
     </div>
-    <div class="v3-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
   </div>
 </section>
 
 <!-- ============ FAQ ============ -->
-<section>
+<section class="v3-section band-tint">
   <div class="wrap narrow">
-    <div class="eyebrow">שאלות נפוצות</div>
     <h2>מה יזמים שואלים אותנו</h2>
-    <div style="margin-top:36px;border-top:1px solid var(--hairline)">
+    <div style="margin-top:36px;border-top:1px solid var(--cardline)">
       <details open>
         <summary>מה זה חוק הרווחים הכלואים ולמה כולם מדברים עליו?</summary>
         <div class="a">מ-2025, חברת מעטים שצברה רווחים ולא חילקה אותם עומדת כל שנה מול בחירה: לחלק דיבידנד של 6% מהרווחים הצבורים (5% ב-2025), או לשלם תוספת מס של 2% על היתרה. הנקודה שרוב הפאניקה מפספסת היא <b>מגן המס</b>: לפני החישוב מנכים את הגבוה מבין 750,000 ₪, ההוצאות השנתיות של החברה ועלות הנכסים. הרבה חברות מגלות שהמגן מכסה אותן לגמרי. <a href="#check">אפשר לבדוק כאן ב-30 שניות</a>, או לקרוא את <a href="glossary-v1.html#revahim-kluim">ההגדרה המלאה במילון</a>.</div>
@@ -1106,19 +1149,14 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
   </div>
 </section>
 
-<!-- ============ CTA ============ -->
-<section id="contact" style="padding-top:0">
-  <div class="wrap">
-    <div class="band cta-band">
-      <div>
-        <h2 style="margin-bottom:12px">ביקורת חינם על התיק של החברה</h2>
-        <p>
-          לא שיחת מכירה ולא הרצאה. עוברים על ארבעה דברים שכמעט תמיד מסתתר בהם כסף:
-          יתרות בעלים, רווחים צבורים, תמהיל משכורת ודיבידנד, ודוחות ואגרות פתוחים.
-          בסוף אתם מקבלים תמונת מצב — גם אם לא תתקדמו איתנו.
-        </p>
-      </div>
-      <a class="btn btn-primary btn-lg" href="homepage-morning.html#panel">להתחלה מהירה ←</a>
+<!-- ============ CTA — Daisy "Learn more about bringing Daisy to your building." ============ -->
+<section id="contact" class="d-cta">
+  <div class="d-cta-grid">
+    <div class="d-cta-art" aria-hidden="true"><img src="ron-photo.jpg" alt="" /></div>
+    <div class="d-cta-copy">
+      <h2>ביקורת חינם על התיק של החברה.</h2>
+      <p>לא שיחת מכירה ולא הרצאה. עוברים על ארבעה דברים שכמעט תמיד מסתתר בהם כסף: יתרות בעלים, רווחים צבורים, תמהיל משכורת ודיבידנד, ודוחות ואגרות פתוחים. בסוף אתם מקבלים תמונת מצב — גם אם לא תתקדמו איתנו.</p>
+      <a class="btn btn-primary" href="homepage-morning.html#panel">להתחלה מהירה</a>
     </div>
   </div>
 </section>
@@ -1126,6 +1164,61 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
 <script id="v3-js">
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Daisy dropdown: descriptions under each generated link + the CTA column ---- */
+  var DESC = {
+    'פתיחת עסק — מתחילים כאן':'עוסק או חברה, תיקים ורו״ח מהיום הראשון',
+    'פתיחת עוסק מורשה':'פותחים את התיקים במע״מ, מס הכנסה וביטוח לאומי',
+    'הקמת חברה בע״מ + רו״ח':'רשם החברות, תקנון, תיקים ורואה חשבון מלווה',
+    'עוסק או חברה? — בדיקה קצרה':'שאלון של דקה שאומר מה נכון לכם',
+    'רואה חשבון לעוסק מורשה':'מע״מ, מקדמות ודוח שנתי — החל מ-300 ₪',
+    'רואה חשבון אונליין':'רו״ח מורשה שעונה בוואטסאפ, לא במייל',
+    'הנהלת חשבונות אונליין':'חשבוניות והוצאות באפליקציה, מסווגות לבד',
+    'דוח שנתי לעצמאי':'כלול במנוי, מוכן לפני המועד',
+    'כבר יש לי רו״ח — מעבר':'אנחנו אוספים את התיק ומודיעים לו בשמכם',
+    'כל השירותים לחברה':'הנה״ח כפולה, דוחות מבוקרים, שכר ועו״ד',
+    'רואה חשבון לחברה':'מתכנן איתכם את המשיכה, לא רק חותם',
+    'פתיחת חברה + רו״ח':'הקמה מלאה ותכנון המשיכה לשנה הראשונה',
+    'שכר לעובדים':'תלושים, 102, 126 ו-856 — בלי תוספת',
+    'דוח שנתי לחברה':'מבוקר, בזמן, כולל דיווח לרשם',
+    'מעבר מעוסק לחברה':'מתי זה משתלם ומה זה דורש',
+    'מעבר מרו״ח קיים':'3 ימי עסקים בממוצע וזה סגור',
+    'כל השכבה הפיננסית':'סליקה, אשראי, שכר ופנסיה על הספרים שלכם',
+    'סליקת תשלומים':'סליקה שמדברת עם הדיווחים',
+    'אשראי ומימון':'הספרים הם הבקשה — בלי תיק ידני',
+    'שכר, פנסיה וביטוח':'השלב השני של השכבה הפיננסית',
+    'כרטיס וחשבון עסקי':'השלב השלישי — בנקאות משובצת',
+    'איך זה עובד — שבעת הטריגרים':'מה מפעיל הצעה, ומתי',
+    'הסיפור שלנו':'למה בנינו את זה, ומי אנחנו',
+    'למה MyCompany':'שלושה דברים שאף משרד ואף תוכנה לא נותנים ביחד',
+    'הצוות המקצועי':'רואי חשבון, מנהלי חשבונות ועו״ד',
+    'לקוחות מספרים':'ביקורות אמיתיות, במילים שלהם',
+    'בלוג':'מדריכים לבעלי עסקים, לא לרואי חשבון',
+    'מפת השוק — מי מוביל':'מי עושה מה בשוק, בלי יחסי ציבור',
+    'מדריכי וידאו':'17 סרטונים קצרים',
+    'מילון מונחים':'26 מונחים, כל אחד עם המספר שלו',
+    'שאלות נפוצות':'24 תשובות, בלי ז׳רגון',
+    'הטכנולוגיה':'21 סוכנים ורו״ח שחותם'
+  };
+  document.querySelectorAll('.nav .navdrop-m').forEach(function(menu){
+    if (menu.querySelector('.dd-wrap')) return;
+    var links = Array.prototype.slice.call(menu.querySelectorAll('a'));
+    var wrap = document.createElement('div'); wrap.className = 'dd-wrap';
+    var list = document.createElement('div'); list.className = 'dd-links';
+    links.forEach(function(a){
+      var t = (a.textContent || '').trim();
+      a.textContent = t;
+      if (DESC[t]) { var s = document.createElement('small'); s.textContent = DESC[t]; a.appendChild(s); }
+      list.appendChild(a);
+    });
+    var cta = document.createElement('div'); cta.className = 'dd-cta';
+    var b = document.createElement('b'); b.textContent = 'ביקורת חינם על התיק שלכם';
+    var p = document.createElement('p'); p.textContent = 'רו״ח עובר על יתרות הבעלים, הרווחים הצבורים ותמהיל המשכורת — ואומר מה מצא. 15 דקות, בלי איש מכירות.';
+    var l = document.createElement('a'); l.href = '#contact'; l.textContent = 'קובעים שיחה ←';
+    cta.appendChild(b); cta.appendChild(p); cta.appendChild(l);
+    wrap.appendChild(list); wrap.appendChild(cta);
+    menu.appendChild(wrap);
+  });
 
   /* ---- WhatsApp autoplay: the conversation writes itself, then loops ---- */
   var chat = document.getElementById('v3chat');
@@ -1139,48 +1232,50 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
       {who:'in',  t:'מטפל. פרוטוקול הדירקטוריון יגיע אלייך לחתימה מחר.', at:'09:33'}
     ];
     function bubble(m){
-      var d = document.createElement('div');
-      d.className = 'bub ' + m.who + ' new';
+      var d = document.createElement('div'); d.className = 'bub ' + m.who + ' new';
       d.appendChild(document.createTextNode(m.t));
-      var s = document.createElement('span'); s.className = 't';
-      s.textContent = m.at + (m.who === 'out' ? ' ✓✓' : '');
-      d.appendChild(s);
-      return d;
+      var s = document.createElement('span'); s.className = 't'; s.textContent = m.at + (m.who === 'out' ? ' ✓✓' : '');
+      d.appendChild(s); return d;
     }
-    function typing(){
-      var d = document.createElement('div'); d.className = 'bub in typing';
-      for (var i=0;i<3;i++){ d.appendChild(document.createElement('i')); }
-      return d;
-    }
-    if (reduce) {
-      script.forEach(function(m){ chat.appendChild(bubble(m)); });
-    } else {
+    function typing(){ var d = document.createElement('div'); d.className = 'bub in typing'; for (var i=0;i<3;i++){ d.appendChild(document.createElement('i')); } return d; }
+    function trim(){ while (chat.children.length > 3) chat.removeChild(chat.firstChild); }
+    if (reduce) { script.slice(0,3).forEach(function(m){ chat.appendChild(bubble(m)); }); }
+    else {
       var i = 0;
-      function step(){
+      (function step(){
         if (i >= script.length) { i = 0; setTimeout(function(){ chat.textContent = ''; step(); }, 5200); return; }
         var m = script[i];
-        if (m.who === 'in') {
-          var ty = typing(); chat.appendChild(ty);
-          setTimeout(function(){ ty.remove(); chat.appendChild(bubble(m)); trim(); i++; setTimeout(step, 1500); }, 1100);
-        } else {
-          setTimeout(function(){ chat.appendChild(bubble(m)); trim(); i++; setTimeout(step, 1300); }, 700);
-        }
-      }
-      function trim(){ while (chat.children.length > 4) chat.removeChild(chat.firstChild); }
-      step();
+        if (m.who === 'in') { var ty = typing(); chat.appendChild(ty); trim(); setTimeout(function(){ ty.remove(); chat.appendChild(bubble(m)); trim(); i++; setTimeout(step, 1500); }, 1100); }
+        else { setTimeout(function(){ chat.appendChild(bubble(m)); trim(); i++; setTimeout(step, 1300); }, 700); }
+      })();
     }
   }
 
   /* ---- Daisy accordion ---- */
   var acc = document.getElementById('v3acc');
   if (acc) {
-    acc.querySelectorAll('.v3-acc-item > button').forEach(function(b){
+    acc.querySelectorAll('.d-acc-item > button').forEach(function(b){
       b.addEventListener('click', function(){
         var item = b.parentNode, open = item.classList.contains('open');
-        acc.querySelectorAll('.v3-acc-item').forEach(function(x){ x.classList.remove('open'); x.querySelector('button').setAttribute('aria-expanded','false'); });
+        acc.querySelectorAll('.d-acc-item').forEach(function(x){ x.classList.remove('open'); x.querySelector('button').setAttribute('aria-expanded','false'); });
         if (!open) { item.classList.add('open'); b.setAttribute('aria-expanded','true'); }
       });
     });
+  }
+
+  /* ---- Daisy testimonial deck: rotate cards ---- */
+  var deck = document.getElementById('v3deck'), dots = document.getElementById('v3dots');
+  function rotate(dir){
+    if (!deck) return;
+    if (dir > 0) deck.appendChild(deck.firstElementChild); else deck.insertBefore(deck.lastElementChild, deck.firstElementChild);
+    if (dots) { var idx = Array.prototype.indexOf.call(deck.children, deck.querySelector('.d-tcard')); }
+  }
+  document.querySelectorAll('.d-arrow.next').forEach(function(b){ b.addEventListener('click', function(){ rotate(1); }); });
+  document.querySelectorAll('.d-arrow.prev').forEach(function(b){ b.addEventListener('click', function(){ rotate(-1); }); });
+  if (deck && dots) {
+    var order = Array.prototype.slice.call(deck.children);
+    var obs = new MutationObserver(function(){ var first = deck.firstElementChild; var k = order.indexOf(first); Array.prototype.forEach.call(dots.children, function(d, j){ d.classList.toggle('on', j === k); }); });
+    obs.observe(deck, {childList:true});
   }
 
   /* ---- counters + bars when they scroll into view ---- */
@@ -1192,7 +1287,6 @@ footer .wrap[style]{border-top-color:#EEEBF5 !important;color:var(--faint)}
     function tick(ts){ if(!t0) t0 = ts; var p = Math.min(1,(ts-t0)/dur); var e = 1 - Math.pow(1-p,3); el.textContent = fmt(Math.round(target*e)); if(p<1) requestAnimationFrame(tick); }
     requestAnimationFrame(tick);
   }
-  var seen = false;
   if ('IntersectionObserver' in window) {
     var io2 = new IntersectionObserver(function(es){
       es.forEach(function(e){
