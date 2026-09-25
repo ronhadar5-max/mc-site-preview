@@ -367,7 +367,7 @@ h3{font-family:Heebo,Assistant,sans-serif;font-weight:800;letter-spacing:-.01em}
 .v3-dash{position:absolute;inset-inline-start:0;top:8%;width:min(560px,92%);border-radius:18px;padding:22px 22px 18px;z-index:1}
 .v3-dash-head{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--faint);margin-bottom:14px}
 .v3-dash-head b{color:var(--ink-dark);font-size:14px}
-.v3-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.v3-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .v3-kpi{background:#fff;border:1px solid var(--hairline);border-radius:12px;padding:12px 14px}
 .v3-kpi span{display:block;font-size:12px;color:var(--faint)}
 .v3-kpi b{display:block;font:800 22px/1.2 Heebo,sans-serif;color:var(--ink-dark);margin-top:6px;font-variant-numeric:tabular-nums}
@@ -383,11 +383,11 @@ h3{font-family:Heebo,Assistant,sans-serif;font-weight:800;letter-spacing:-.01em}
 .v3-event{position:absolute;inset-inline-end:0;bottom:6%;width:min(300px,80%);background:#fff;border:1px solid var(--hairline);border-radius:12px;box-shadow:var(--stripe-shadow-lg);overflow:hidden;z-index:2;animation:v3float 8s ease-in-out infinite}
 .v3-event-h{background:var(--brand);color:#fff;font:700 13.5px Assistant,sans-serif;padding:10px 14px}
 .v3-event-b{padding:12px 14px;display:grid;gap:8px;font-size:12.5px;color:var(--ink)}
-.v3-event-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.v3-event-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .v3-event-row span{display:block;font-size:11px;color:var(--faint)}
 .v3-event-row b{display:block;color:var(--ink-dark);font-size:13px}
 .v3-event-b a{color:var(--brand);font-weight:700;font-size:12.5px}
-@media(max-width:980px){.v3-orch-in{grid-template-columns:1fr}.v3-orch-visual{min-height:0;display:grid;gap:14px}.v3-dash,.v3-event{position:static;width:100%;animation:none}.v3-orch-visual .v3-glow{display:none}}
+@media(max-width:980px){.v3-orch-in{grid-template-columns:1fr}.v3-orch-visual{min-height:0;display:grid;gap:14px}.v3-dash,.v3-event{position:static;width:100%;animation:none}.v3-orch-visual .v3-glow{display:none}.v3-kpi{padding:10px}.v3-kpi b{font-size:16px}.v3-kpi span{font-size:11px}.v3-bars{gap:5px}}
 
 /* ---------- TWIN CARDS: Daisy's dark/yellow pair, 17.8px radius, numbers in white boxes ---------- */
 .v3-twins-sec{padding:0 0 clamp(52px,7vw,92px)}
@@ -407,11 +407,11 @@ h3{font-family:Heebo,Assistant,sans-serif;font-weight:800;letter-spacing:-.01em}
 .v3-chan{display:flex;gap:8px;flex-wrap:wrap}
 .v3-chan span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.14);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700}
 .v3-chan svg{width:15px;height:15px}
-.v3-nums{margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.v3-nums{margin-top:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .v3-nums div{background:#fff;border-radius:12px;padding:16px 12px;text-align:center}
 .v3-nums b{display:block;font:800 clamp(24px,2.6vw,34px)/1.1 Heebo,sans-serif;color:var(--ink-dark);font-variant-numeric:tabular-nums}
 .v3-nums span{display:block;font-size:12.5px;color:var(--ink);margin-top:6px;line-height:1.35}
-@media(max-width:860px){.v3-twins{grid-template-columns:1fr}.v3-twin{min-height:0}}
+@media(max-width:860px){.v3-twins{grid-template-columns:1fr}.v3-twin{min-height:0}.v3-nums{gap:8px}.v3-nums div{padding:12px 8px}.v3-nums b{font-size:20px}.v3-nums span{font-size:11.5px}}
 
 /* ---------- Daisy grid cards + dark band with glass tiles ---------- */
 .band-tint{background:#F5F2FF;border-block:1px solid #ECE7FA}
